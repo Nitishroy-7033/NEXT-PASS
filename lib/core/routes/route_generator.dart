@@ -12,7 +12,7 @@ class RouteGenerator {
         page: () => const HomeView(),
         transition: Transition.fadeIn,
       ),
-      
+
     ];
   }
 }
