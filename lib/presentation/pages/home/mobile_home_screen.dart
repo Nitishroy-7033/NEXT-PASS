@@ -8,7 +8,7 @@ class MobileHomeScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.deepOrange,
       body: SafeArea(child: Column(children: [
-           Text("Mobile Home Page")
+           Text("Mobile Home")
       ],),)
     );
   }
