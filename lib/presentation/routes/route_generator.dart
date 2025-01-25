@@ -1,6 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:next_pass/presentation/views/home/home_screen.dart';
+import 'package:next_pass/presentation/views/home/home_view.dart';
 
 // Import your screens here
 import 'app_routes.dart';
@@ -10,7 +9,7 @@ class RouteGenerator {
     return [
       GetPage(
         name: AppRoutes.home,
-        page: () => HomeScreen(),
+        page: () => const HomeView(),
         transition: Transition.fadeIn,
       ),
       
