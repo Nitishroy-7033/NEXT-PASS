@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:next_pass/presentation/routes/app_routes.dart';
-import 'package:next_pass/presentation/routes/route_generator.dart';
+
+
+import 'core/routes/app_routes.dart';
+import 'core/routes/route_generator.dart';
 
 void main() {
   runApp(const MyApp());
