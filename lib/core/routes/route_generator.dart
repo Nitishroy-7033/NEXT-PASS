@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
-import 'package:next_pass/presentation/views/home/home_view.dart';
 
 // Import your screens here
+import '../../features/home/presentation/screens/home_view.dart';
 import 'app_routes.dart';
 
 class RouteGenerator {
