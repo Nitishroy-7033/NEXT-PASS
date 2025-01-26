@@ -20,10 +20,10 @@ class MyApp extends StatelessWidget {
       initialRoute: AppRoutes.login,
       getPages: RouteGenerator.getRoutes(),
       initialBinding: AuthBinding(),
-      //   unknownRoute: GetPage(
-      //   name: AppRoutes.notFound,
-      //   // page: () => NotFoundScreen(),
-      // )
+        unknownRoute: GetPage(
+        name: AppRoutes.notFound,
+        // page: () => NotFoundScreen(),
+      )
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
