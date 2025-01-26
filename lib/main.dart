@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'NEXT PASS',
-      initialRoute: AppRoutes.login,
+      initialRoute: AppRoutes.splace,
       getPages: RouteGenerator.getRoutes(),
       initialBinding: AuthBinding(),
       //   unknownRoute: GetPage(
@@ -29,6 +29,11 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
 
       ),
+      // home:  const Scaffold(
+      //   body: Center(
+      //     child: Text("Hello World"),
+      //   ),
+      // ),
     );
   }
 }
