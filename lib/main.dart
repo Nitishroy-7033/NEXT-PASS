@@ -15,6 +15,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'NEXT PASS',
       initialRoute: AppRoutes.home, 
       getPages: RouteGenerator.getRoutes(),
@@ -30,5 +31,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
-// HI MY Name is Rahul This is a Pull request for Testing purpose
