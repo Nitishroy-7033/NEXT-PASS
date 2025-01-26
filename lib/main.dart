@@ -6,11 +6,7 @@ import 'features/auth/presentation/getx/bindings/auth_binding.dart';
 
 
 void main() {
-
-
   runApp(const MyApp());
-
-
 }
 
 class MyApp extends StatelessWidget {
@@ -28,7 +24,6 @@ class MyApp extends StatelessWidget {
       //   name: AppRoutes.notFound,
       //   // page: () => NotFoundScreen(),
       // )
-
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,

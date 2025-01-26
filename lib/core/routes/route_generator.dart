@@ -3,7 +3,7 @@ import 'package:next_pass/features/auth/presentation/getx/bindings/auth_binding.
 import 'package:next_pass/features/auth/presentation/screens/login_screen.dart';
 
 // Import your screens here
-import '../../features/home/presentation/screens/home_view.dart';
+import '../../features/home/presentation/views/home_view.dart';
 import 'app_routes.dart';
 
 class RouteGenerator {
