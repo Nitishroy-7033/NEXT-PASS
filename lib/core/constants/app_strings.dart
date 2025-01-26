@@ -13,4 +13,7 @@ class AppStrings {
   // Buttons
   static const String buttonRetry = "Retry";
   static const String buttonSubmit = "Submit";
+
+
+  String welcome = "Welcome";
 }
