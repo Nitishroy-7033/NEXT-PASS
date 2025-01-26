@@ -19,10 +19,10 @@ class MyApp extends StatelessWidget {
       title: 'NEXT PASS',
       initialRoute: AppRoutes.home, 
       getPages: RouteGenerator.getRoutes(),
-      // unknownRoute: GetPage(
-      //   name: AppRoutes.notFound,
-      //   // page: () => NotFoundScreen(),
-      // ),
+      unknownRoute: GetPage(
+        name: AppRoutes.notFound,
+        // page: () => NotFoundScreen(),
+      ),
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
