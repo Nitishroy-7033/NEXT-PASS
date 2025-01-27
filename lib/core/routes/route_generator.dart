@@ -7,7 +7,7 @@ import 'package:next_pass/features/auth/presentation/views/sign_up_view.dart';
 // Import your screens here
 import '../../features/auth/presentation/views/master_password_view.dart';
 import '../../features/home/presentation/views/home_view.dart';
-import '../../features/splace/presentation/views/splace_view.dart';
+import '../../features/splash/presentation/views/splace_view.dart';
 import 'app_routes.dart';
 
 class RouteGenerator {
