@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:next_pass/core/constants/app_themes.dart';
 import 'core/routes/app_routes.dart';
 import 'core/routes/route_generator.dart';
 import 'features/auth/presentation/getx/bindings/auth_binding.dart';
@@ -24,11 +25,7 @@ class MyApp extends StatelessWidget {
       //   name: AppRoutes.notFound,
       //   // page: () => NotFoundScreen(),
       // )
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-
-      ),
+      theme: AppThemes.lightTheme,
       // home:  const Scaffold(
       //   body: Center(
       //     child: Text("Hello World"),
