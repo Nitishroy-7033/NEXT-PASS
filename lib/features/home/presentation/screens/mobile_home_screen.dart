@@ -7,12 +7,15 @@ class MobileHomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  const Scaffold(
-      backgroundColor: AppColors.backgroundLight,
-      body: Center(child: Text("Mobile Home Screen",style: TextStyle(fontSize: 23),)),
-     
-     
-    
+    return const SafeArea(
+      child: Scaffold(
+        backgroundColor: AppColors.backgroundLight,
+        body: Center(
+            child: Text(
+          "Mobile Home Screen djdk",
+          style: TextStyle(fontSize: 23),
+        )),
+      ),
     );
   }
 }
