@@ -1,6 +1,6 @@
 class AppStrings {
   // General
-  static const String appName = "My Awesome App";
+  static const String appName = "Next Pass";
 
   // Error Messages
   static const String errorNetwork = "Please check your internet connection.";
