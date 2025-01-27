@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'NEXT PASS',
-      initialRoute: AppRoutes.splace,
+      initialRoute: AppRoutes.masterPassword,
       getPages: RouteGenerator.getRoutes(),
       initialBinding: AuthBinding(),
       //   unknownRoute: GetPage(
