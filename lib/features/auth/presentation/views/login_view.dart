@@ -4,7 +4,7 @@ import 'package:next_pass/features/auth/presentation/screens/mobile/mobile_login
 import 'package:next_pass/features/home/presentation/screens/mobile_home_screen.dart';
 import 'package:next_pass/features/home/presentation/screens/web_home_screen.dart';
 
-import '../screens/tab/tab_login_screen.dart';
+
 import '../screens/web/web_login_screen.dart';
 
 class LoginView extends StatelessWidget {
@@ -14,7 +14,7 @@ class LoginView extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Responsive(
         mobile: MobileLoginScreen(),
-        tablet: TabLoginScreen(),
+        tablet: WebLoginScreen(),
         desktop: WebLoginScreen());
   }
 }
