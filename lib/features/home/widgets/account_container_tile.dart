@@ -15,11 +15,9 @@ class AccountContainerTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.primaryContainer,
-        borderRadius: BorderRadius.circular(10),
-      ),
+    return Card(
+      elevation: 0.0,
+      color: Theme.of(context).colorScheme.primaryContainer,
       child: ListTile(
         title: Text(
           title,
@@ -54,7 +52,7 @@ class AccountContainerTile extends StatelessWidget {
           color: Theme.of(context).colorScheme.tertiary,
         ),
         onTap: ontap,
-        minTileHeight: 70,
+        
       ),
     );
   }
