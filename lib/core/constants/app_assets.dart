@@ -16,4 +16,6 @@ class IconsAssets {
   static const String paymentCardIcon = "${iconBasePath}payment_card_icon.svg";
   static const String personProfileIcon = "${iconBasePath}person_profile_icon.svg";
   static const String searchIcon = "${iconBasePath}search_icon.svg";
+  static const String homeIcon = "assets/icons/home.png";
+  static const String settingsIcon = "assets/icons/settings.png";
 }

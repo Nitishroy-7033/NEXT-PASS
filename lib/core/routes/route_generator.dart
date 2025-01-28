@@ -3,6 +3,7 @@ import 'package:next_pass/features/auth/presentation/getx/bindings/auth_binding.
 import 'package:next_pass/features/auth/presentation/screens/mobile/mobile_login_screen.dart';
 import 'package:next_pass/features/auth/presentation/views/login_view.dart';
 import 'package:next_pass/features/auth/presentation/views/sign_up_view.dart';
+import 'package:next_pass/features/auth/presentation/screens/sign_up.dart';
 
 // Import your screens here
 import '../../features/auth/presentation/views/master_password_view.dart';
@@ -37,6 +38,12 @@ class RouteGenerator {
         transition: Transition.fadeIn,
 
       ),
+      // GetPage(
+      //   name: AppRoutes.signup , 
+      //   page: () =>  SignupScreen(),
+      //   transition: Transition.fadeIn,
+
+      // ),
       GetPage(
         name: AppRoutes.home,
         page: () => const HomeView(),
