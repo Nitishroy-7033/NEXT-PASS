@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:next_pass/core/constants/app_assets.dart';
-import 'package:next_pass/res/assets_res.dart';
-import 'package:next_pass/res/font_res.dart';
 
 // class CustomTextField extends StatelessWidget {
 //   final String hintText;
