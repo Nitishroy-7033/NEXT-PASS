@@ -17,6 +17,7 @@ class AppThemes {
       secondaryContainer: AppColors.secondaryContainerLight,
       tertiary: AppColors.labelLight,
       error: AppColors.error,
+      onPrimary: AppColors.fontLight,
     ),
     //button theme
     buttonTheme: const ButtonThemeData(
@@ -39,6 +40,7 @@ class AppThemes {
       secondaryContainer: AppColors.secondaryContainerDark,
       tertiary: AppColors.labelDark,
       error: AppColors.error,
+      onPrimary: AppColors.fontDark,
     ),
     // button theme
     buttonTheme: const ButtonThemeData(

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../getx/controllers/auth_controller.dart';
+import '../../getx/controllers/auth_controller.dart';
 
 
-class SignupScreen extends StatelessWidget {
-  const SignupScreen({super.key});
+class MobileSignUpScreen extends StatelessWidget {
+  const MobileSignUpScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

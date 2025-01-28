@@ -5,7 +5,6 @@ import 'core/routes/app_routes.dart';
 import 'core/routes/route_generator.dart';
 import 'features/auth/presentation/getx/bindings/auth_binding.dart';
 
-
 void main() {
   runApp(const MyApp());
 }
