@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:next_pass/core/constants/app_themes.dart';
+import 'package:next_pass/features/splash/presentation/getx/bindings/splash_binding.dart';
 import 'core/routes/app_routes.dart';
 import 'core/routes/route_generator.dart';
 import 'features/auth/presentation/getx/bindings/auth_binding.dart';
@@ -18,9 +19,9 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'NEXT PASS',
-      initialRoute: AppRoutes.masterPassword,
+      initialRoute: AppRoutes.splash,
       getPages: RouteGenerator.getRoutes(),
-      initialBinding: AuthBinding(),
+      initialBinding: SplashBinding(),
       //   unknownRoute: GetPage(
       //   name: AppRoutes.notFound,
       //   // page: () => NotFoundScreen(),
