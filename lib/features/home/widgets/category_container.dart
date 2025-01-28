@@ -14,59 +14,50 @@ class CategoryContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return
-        // Container(
-        //   height: 100,
-        //   width: 100,
-        //   decoration: BoxDecoration(
-        //     color: Theme.of(context).colorScheme.primaryContainer,
-        //     borderRadius: BorderRadius.circular(10),
-        //   ),
-        //   child:
-        SizedBox(
+    return Container(
       height: 100,
       width: 100,
-      child: Card(
+      decoration: BoxDecoration(
         color: Theme.of(context).colorScheme.primaryContainer,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            SizedBox(
-              height: 30,
-              width: 30,
-              child: SvgPicture.asset(
-                icon,
-                colorFilter: ColorFilter.mode(
-                  Theme.of(context).colorScheme.tertiary,
-                  BlendMode.srcIn,
-                ),
+        borderRadius: BorderRadius.circular(10),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          SizedBox(
+            height: 25,
+            width: 25,
+            child: SvgPicture.asset(
+              icon,
+              colorFilter: ColorFilter.mode(
+                Theme.of(context).colorScheme.primary,
+                BlendMode.srcIn,
               ),
             ),
-            SizedBox(
-              height: 5,
+          ),
+          const SizedBox(
+            height: 5,
+          ),
+          Text(
+            title,
+            style: const TextStyle(
+              fontFamily: FontRes.MONTSERRAT_SEMIBOLD,
             ),
-            Text(
-              title,
-              style: TextStyle(
-                fontFamily: FontRes.MONTSERRAT_SEMIBOLD,
-              ),
+          ),
+          const SizedBox(
+            height: 5,
+          ),
+          Text(
+            "$count Password",
+            style: TextStyle(
+              fontFamily: FontRes.MONTSERRAT_REGULAR,
+              color: Theme.of(context).colorScheme.tertiary,
+              fontSize: 10,
             ),
-            SizedBox(
-              height: 5,
-            ),
-            Text(
-              "${count} Password",
-              style: TextStyle(
-                fontFamily: FontRes.MONTSERRAT_REGULAR,
-                color: Theme.of(context).colorScheme.tertiary,
-                fontSize: 10,
-              ),
-            ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
-    // );
   }
 }

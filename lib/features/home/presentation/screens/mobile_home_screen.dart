@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:next_pass/core/constants/app_assets.dart';
-import 'package:next_pass/core/widgets/custom_text_field.dart';
+import 'package:next_pass/features/home/widgets/account_container_tile.dart';
 import 'package:next_pass/features/home/widgets/category_container.dart';
 import 'package:next_pass/res/assets_res.dart';
 import 'package:next_pass/res/font_res.dart';
@@ -12,7 +12,6 @@ class MobileHomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     TextEditingController homeSearchController = TextEditingController();
-    TextEditingController controller = TextEditingController();
     return SafeArea(
       child: Scaffold(
         backgroundColor: Theme.of(context).colorScheme.surface,
@@ -35,7 +34,7 @@ class MobileHomeScreen extends StatelessWidget {
                   const SizedBox(
                     width: 10,
                   ),
-                  Text(
+                  const Text(
                     'Rose Poole',
                     style: TextStyle(
                       fontFamily: FontRes.MONTSERRAT_SEMIBOLD,
@@ -44,7 +43,7 @@ class MobileHomeScreen extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               TextField(
@@ -100,54 +99,99 @@ class MobileHomeScreen extends StatelessWidget {
               ),
             ],
           ),
+          scrolledUnderElevation: 0.0,
           toolbarHeight: 130,
-          // backgroundColor: Colors.white,
         ),
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Category',
-                style: TextStyle(
-                  fontFamily: FontRes.MONTSERRAT_SEMIBOLD,
-                  fontSize: 20,
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Text(
+                  'Category',
+                  style: TextStyle(
+                    fontFamily: FontRes.MONTSERRAT_SEMIBOLD,
+                    fontSize: 18,
+                  ),
                 ),
-              ),
-              SizedBox(
-                height: 15,
-              ),
-              Row(
-                // spacing: 14,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  CategoryContainer(
-                    icon: IconsAssets.browserIcon,
-                    title: "Browser",
-                    count: "20",
+                const SizedBox(
+                  height: 15,
+                ),
+                const Row(
+                  // spacing: 14,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    CategoryContainer(
+                      icon: IconsAssets.browserIcon,
+                      title: "Browser",
+                      count: "20",
+                    ),
+                    CategoryContainer(
+                      icon: IconsAssets.mobileIcon,
+                      title: "Mobile",
+                      count: "13",
+                    ),
+                    CategoryContainer(
+                      icon: IconsAssets.paymentCardIcon,
+                      title: "Payment",
+                      count: "05",
+                    ),
+                  ],
+                ),
+                const Padding(
+                  padding: EdgeInsets.symmetric(vertical: 10),
+                  child: Text(
+                    'Latest Account',
+                    style: TextStyle(
+                      fontFamily: FontRes.MONTSERRAT_SEMIBOLD,
+                      fontSize: 18,
+                    ),
                   ),
-                  CategoryContainer(
-                    icon: IconsAssets.mobileIcon,
-                    title: "Mobile",
-                    count: "13",
-                  ),
-                  CategoryContainer(
-                    icon: IconsAssets.paymentCardIcon,
-                    title: "Payment",
-                    count: "05",
-                  ),
-                ],
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              // CustomTextField(hintText: 'hintText', controller: controller)
-              // CustomTextField(
-              //     hintText: 'Enter Your Full Name',
-              //     controller: homeSearchController),
-              CustomTextField(),
-            ],
+                ),
+                Column(
+                  spacing: 10.0,
+                  children: [
+                    AccountContainerTile(
+                      title: "Spotify",
+                      subTitle: "rosepoole@email.com",
+                      imageUrl: IconsAssets.spotifyLogoUrl,
+                      ontap: () {},
+                    ),
+                    AccountContainerTile(
+                      title: "Netflix",
+                      subTitle: "rosepoole@email.com",
+                      imageUrl: IconsAssets.netflixLogoUrl,
+                      ontap: () {},
+                    ),
+                    AccountContainerTile(
+                      title: "Instagram",
+                      subTitle: "rosepoole@email.com",
+                      imageUrl: IconsAssets.instagramLogoUrl,
+                      ontap: () {},
+                    ),
+                    AccountContainerTile(
+                      title: "Slack",
+                      subTitle: "rosepoole@email.com",
+                      imageUrl: IconsAssets.slackLogoUrl,
+                      ontap: () {},
+                    ),
+                    AccountContainerTile(
+                      title: "Discord",
+                      subTitle: "rosepoole@email.com",
+                      imageUrl: IconsAssets.discordLogoUrl,
+                      ontap: () {},
+                    ),
+                    AccountContainerTile(
+                      title: "GitHub",
+                      subTitle: "rosepoole@email.com",
+                      imageUrl: IconsAssets.githubLogoUrl,
+                      ontap: () {},
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       ),

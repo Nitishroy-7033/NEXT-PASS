@@ -8,7 +8,7 @@ class AssetsRes {
 
   static const String PLUGIN_NAME = 'next_pass';
   static const String PLUGIN_VERSION = '1.0.0+1';
-  // static const String PERSON_PROFILE = 'assets/icons/person_profile.svg';
+  static const String PERSON_PROFILE = 'assets/icons/person_profile.svg';
   static const String APP_LOGO = 'assets/images/app_logo.png';
   static const String DEMO_PROFILE_IMAGE = 'assets/images/demo_profile_image.jpg';
 }
