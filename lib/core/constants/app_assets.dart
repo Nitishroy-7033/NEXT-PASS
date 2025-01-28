@@ -1,15 +1,19 @@
-class AppAssets {
+class AppImageAssets {
+  // Image base url
+  static const String imageBasePath = "assets/images/";
   // Images
-  static const String logo = "assets/images/logo.png";
-  static const String placeholder = "assets/images/placeholder.png";
-
-  // Icons
-  static const String homeIcon = "assets/icons/home.png";
-  static const String settingsIcon = "assets/icons/settings.png";
+  static const String appLogo = "${imageBasePath}app_logo.png";
+  static const String demoProfileImage =
+      "${imageBasePath}demo_profile_image.png";
 }
 
-
-class IconsAssets{
-  static const String BASEPATH = "assets/icons/";
-  static const String person = "${BASEPATH}Person.png";
+class IconsAssets {
+  // Icon base url
+  static const String iconBasePath = "assets/icons/";
+  // Icons
+  static const String browserIcon = "${iconBasePath}browser_icon.svg";
+  static const String mobileIcon = "${iconBasePath}mobile_icon.svg";
+  static const String paymentCardIcon = "${iconBasePath}payment_card_icon.svg";
+  static const String personProfileIcon = "${iconBasePath}person_profile_icon.svg";
+  static const String searchIcon = "${iconBasePath}search_icon.svg";
 }
