@@ -7,6 +7,7 @@ class ResponsiveBuilder extends StatelessWidget {
   final Widget desktop;
 
   const ResponsiveBuilder({
+    super.key,
     required this.mobile,
     required this.tablet,
     required this.desktop,

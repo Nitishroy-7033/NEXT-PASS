@@ -3,10 +3,10 @@ import 'package:get/get.dart';
 import 'package:next_pass/core/constants/app_assets.dart';
 import 'package:next_pass/features/splash/presentation/getx/controllers/splash_controller.dart';
 
-
 class MobileSplashScreen extends StatelessWidget {
-  
   final SplashController controller = Get.put(SplashController());
+
+  MobileSplashScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -21,10 +21,13 @@ class MobileSplashScreen extends StatelessWidget {
               width: 200,
               height: 200,
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             const Text(
               'Simplify Your Life, One Tap at a Time.',
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
+              style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white),
             ),
           ],
         ),
