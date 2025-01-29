@@ -3,7 +3,6 @@ import 'app_colors.dart';
 
 class AppThemes {
 
-  // Light Theme //
   static ThemeData lightTheme = ThemeData(
     brightness: Brightness.light,
     useMaterial3: true,
@@ -25,12 +24,10 @@ class AppThemes {
     ),
   );
 
-  // Dark Theme //
   static ThemeData darkTheme = ThemeData(
     brightness: Brightness.dark,
     useMaterial3: true,
     primaryColor: AppColors.primaryDark,
-    // color scheme
     colorScheme: const ColorScheme.dark(
       primary: AppColors.primaryDark,
       secondary: AppColors.secondaryDark,
@@ -40,7 +37,6 @@ class AppThemes {
       tertiary: AppColors.labelDark,
       error: AppColors.error,
     ),
-    // button theme
     buttonTheme: const ButtonThemeData(
       buttonColor: AppColors.primaryDark,
       textTheme: ButtonTextTheme.primary,

@@ -5,4 +5,5 @@ class AppRoutes {
   static const String masterPassword = '/masterPassword';
   static const String home = '/home';
   static const String getStarted = '/getStarted';
+  static const String notFound = '/notFound';
 }
