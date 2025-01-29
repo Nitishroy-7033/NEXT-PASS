@@ -14,8 +14,13 @@ class AppStrings {
   static const String buttonRetry = "Retry";
   static const String buttonSubmit = "Submit";
 
-
   String welcome = "Welcome";
 
   static const String privacy = "Protect your privacy from Hacker";
+
+  // Bottom NavBar Title
+  static const String navHomeTitle = 'Home';
+  static const String navGenerateTitle = 'Generate';
+  static const String navAddTitle = 'Add';
+  static const String navSettingsTitle = 'Settings';
 }

@@ -5,6 +5,7 @@ import 'package:next_pass/features/getStarted/presentations/view/get_started_vie
 import 'package:next_pass/features/not_found/presentation/views/not_found_view.dart';
 
 // Import your screens here
+import 'package:next_pass/features/auth/presentation/views/dashboard_view.dart';
 import '../../features/auth/presentation/views/master_password_view.dart';
 import '../../features/home/presentation/views/home_view.dart';
 import '../../features/splash/presentation/views/splace_view.dart';
@@ -46,6 +47,11 @@ class RouteGenerator {
       GetPage(
         name: AppRoutes.notFound,
         page: () => const NotFoundView(),
+        transition: Transition.fadeIn,
+      ),
+      GetPage(
+        name: AppRoutes.dashboard,
+        page: () => const DashboardView(),
         transition: Transition.fadeIn,
       ),
     ];

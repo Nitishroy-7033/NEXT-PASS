@@ -16,17 +16,16 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'NEXT PASS',
-      initialRoute: AppRoutes.home,
-      getPages: RouteGenerator.getRoutes(),
-      initialBinding: SplashBinding(),
-      theme: AppThemes.lightTheme,
-      darkTheme: AppThemes.darkTheme,
+        debugShowCheckedModeBanner: false,
+        title: 'NEXT PASS',
+        initialRoute: AppRoutes.dashboard,
+        getPages: RouteGenerator.getRoutes(),
+        initialBinding: SplashBinding(),
+        theme: AppThemes.lightTheme,
+        darkTheme: AppThemes.darkTheme,
         unknownRoute: GetPage(
-        name: AppRoutes.notFound,
-        page: () => const NotFoundView(),
-      )
-    );
+          name: AppRoutes.notFound,
+          page: () => const NotFoundView(),
+        ));
   }
 }
