@@ -7,12 +7,12 @@ class SplashController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    _navigateToHome();
+    _navigateToGetStarted();
   }
 
-  void _navigateToHome() {
-    Timer(const Duration(seconds: 5), () {
-      Get.offNamed('/home');
+  void _navigateToGetStarted() {
+    Timer(const Duration(seconds: 3), () {
+      Get.offNamed('/getStarted');
     });
   }
 }

@@ -3,8 +3,8 @@ class AppImageAssets {
   static const String imageBasePath = "assets/images/";
   // Images
   static const String appLogo = "${imageBasePath}app_logo.png";
-  static const String demoProfileImage =
-      "${imageBasePath}demo_profile_image.png";
+  static const String demoProfileImage = "${imageBasePath}demo_profile_image.png";
+  static const String getStarted = "${imageBasePath}getstarted.png";
 }
 
 class IconsAssets {
@@ -16,4 +16,6 @@ class IconsAssets {
   static const String paymentCardIcon = "${iconBasePath}payment_card_icon.svg";
   static const String personProfileIcon = "${iconBasePath}person_profile_icon.svg";
   static const String searchIcon = "${iconBasePath}search_icon.svg";
+  static const String googleIcon = "${iconBasePath}Google.png";
+  static const String facebookIcon = "${iconBasePath}Facebook.png";
 }
