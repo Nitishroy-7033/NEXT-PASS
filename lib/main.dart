@@ -4,7 +4,6 @@ import 'package:next_pass/core/constants/app_themes.dart';
 import 'package:next_pass/features/splash/presentation/getx/bindings/splash_binding.dart';
 import 'core/routes/app_routes.dart';
 import 'core/routes/route_generator.dart';
-import 'features/auth/presentation/getx/bindings/auth_binding.dart';
 
 
 void main() {
@@ -19,7 +18,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'NEXT PASS',
-      initialRoute: AppRoutes.splash,
+      initialRoute: AppRoutes.home,
       getPages: RouteGenerator.getRoutes(),
       initialBinding: SplashBinding(),
       //   unknownRoute: GetPage(
@@ -27,11 +26,6 @@ class MyApp extends StatelessWidget {
       //   // page: () => NotFoundScreen(),
       // )
       theme: AppThemes.lightTheme,
-      // home:  const Scaffold(
-      //   body: Center(
-      //     child: Text("Hello World"),
-      //   ),
-      // ),
     );
   }
 }

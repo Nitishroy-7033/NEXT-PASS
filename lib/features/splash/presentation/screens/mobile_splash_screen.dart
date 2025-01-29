@@ -22,7 +22,7 @@ class MobileSplashScreen extends StatelessWidget {
               height: 200,
             ),
             SizedBox(height: 20),
-            Text(
+            const Text(
               'Simplify Your Life, One Tap at a Time.',
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
             ),
