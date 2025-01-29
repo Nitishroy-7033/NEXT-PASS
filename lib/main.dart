@@ -18,11 +18,12 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'NEXT PASS',
-      initialRoute: AppRoutes.home,
+      initialRoute: AppRoutes.allWidgetsScreen,
       getPages: RouteGenerator.getRoutes(),
       initialBinding: SplashBinding(),
       theme: AppThemes.lightTheme,
       darkTheme: AppThemes.darkTheme,
+      themeMode: ThemeMode.dark,
         unknownRoute: GetPage(
         name: AppRoutes.notFound,
         page: () => const NotFoundView(),

@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:next_pass/core/widgets/all_widgets_screen.dart';
 import 'package:next_pass/features/auth/presentation/getx/bindings/auth_binding.dart';
 import 'package:next_pass/features/auth/presentation/screens/mobile/mobile_login_screen.dart';
 import 'package:next_pass/features/auth/presentation/views/login_view.dart';
@@ -53,6 +54,11 @@ class RouteGenerator {
       GetPage(
         name: AppRoutes.notFound,
         page: () => const NotFoundView(),
+        transition: Transition.fadeIn,
+      ),
+      GetPage(
+        name: AppRoutes.allWidgetsScreen,
+        page: () => const AllWidgetsScreen(),
         transition: Transition.fadeIn,
       ),
 
