@@ -16,4 +16,6 @@ class AppStrings {
 
 
   String welcome = "Welcome";
+
+  static const String privacy = "Protect your privacy from Hacker";
 }

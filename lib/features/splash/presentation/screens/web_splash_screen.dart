@@ -21,7 +21,7 @@ class WebSplaceScreen extends StatelessWidget {
             ),
             SizedBox(height: 20),
             Text(
-              'Welcome to My App',
+              'Simplify Your Life, One Tap at a Time.',
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.white),
             ),
           ],
