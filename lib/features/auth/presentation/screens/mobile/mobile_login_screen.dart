@@ -29,7 +29,7 @@ class MobileLoginScreen extends StatelessWidget {
             Obx(() => controller.isLoading.value
                 ? const CircularProgressIndicator()
                 : ElevatedButton(
-              onPressed: controller.login,
+              onPressed: (){},
               child: const Text("Login"),
             )),
           ],
