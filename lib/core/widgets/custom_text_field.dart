@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class CustomTextField extends StatelessWidget {
   final String hintText;
@@ -10,7 +11,7 @@ class CustomTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextField(
-      controller: controller,
+      autofocus: false,
       decoration: InputDecoration(
         hintText: hintText,
         border: const OutlineInputBorder(),
