@@ -25,9 +25,8 @@ class MyApp extends StatelessWidget {
       darkTheme: AppThemes.darkTheme,
       themeMode: ThemeMode.dark,
         unknownRoute: GetPage(
-        name: AppRoutes.notFound,
-        page: () => const NotFoundView(),
-      )
-    );
+          name: AppRoutes.notFound,
+          page: () => const NotFoundView(),
+        ));
   }
 }

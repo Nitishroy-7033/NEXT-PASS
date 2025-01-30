@@ -8,6 +8,7 @@ import 'package:next_pass/features/getStarted/presentations/view/get_started_vie
 import 'package:next_pass/features/not_found/presentation/views/not_found_view.dart';
 
 // Import your screens here
+import 'package:next_pass/features/auth/presentation/views/dashboard_view.dart';
 import '../../features/auth/presentation/views/master_password_view.dart';
 import '../../features/home/presentation/views/home_view.dart';
 import '../../features/splash/presentation/views/splace_view.dart';
@@ -16,35 +17,30 @@ import 'app_routes.dart';
 class RouteGenerator {
   static List<GetPage> getRoutes() {
     return [
-
       GetPage(
         name: AppRoutes.splash,
         page: () => const SplaceView(),
         transition: Transition.fadeIn,
-
       ),
       GetPage(
         name: AppRoutes.getStarted,
         page: () => const GetStartedView(),
         transition: Transition.fadeIn,
-
       ),
       GetPage(
         name: AppRoutes.signUp,
         page: () => const SignUpView(),
         transition: Transition.fadeIn,
-
       ),
       GetPage(
         name: AppRoutes.login,
         page: () => const LoginView(),
         transition: Transition.fadeIn,
-
-      ),  GetPage(
+      ),
+      GetPage(
         name: AppRoutes.masterPassword,
         page: () => const MasterPasswordView(),
         transition: Transition.fadeIn,
-
       ),
       GetPage(
         name: AppRoutes.home,
@@ -57,11 +53,15 @@ class RouteGenerator {
         transition: Transition.fadeIn,
       ),
       GetPage(
+        name: AppRoutes.dashboard,
+        page: () => const DashboardView(),
+        transition: Transition.fadeIn,
+      ),
+        GetPage(
         name: AppRoutes.allWidgetsScreen,
         page: () => const AllWidgetsScreen(),
         transition: Transition.fadeIn,
       ),
-
 
     ];
   }
