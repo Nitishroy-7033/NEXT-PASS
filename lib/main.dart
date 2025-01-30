@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
       //   name: AppRoutes.notFound,
       //   // page: () => NotFoundScreen(),
       // )
-      theme: AppThemes.lightTheme,
+      theme: AppThemes.darkTheme,
       // home:  const Scaffold(
       //   body: Center(
       //     child: Text("Hello World"),
