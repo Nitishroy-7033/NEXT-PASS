@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class WebSplaceScreen extends StatelessWidget {
-  const WebSplaceScreen({super.key});
+class MobileNotFoundScreen extends StatelessWidget {
+  const MobileNotFoundScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

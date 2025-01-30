@@ -18,9 +18,9 @@ class MobileMasterPasswordScreen extends StatelessWidget {
         ),
         elevation: 0,
         backgroundColor: Colors.white,
-        actions: [
+        actions: const [
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: EdgeInsets.all(8.0),
             child: CircleAvatar(
               backgroundImage: NetworkImage(
                 'https://via.placeholder.com/150', // Replace with actual profile image URL
@@ -66,7 +66,7 @@ class MobileMasterPasswordScreen extends StatelessWidget {
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(12),
                         ),
-                        suffixIcon: Icon(Icons.visibility_off),
+                        suffixIcon: const Icon(Icons.visibility_off),
                       ),
                     ),
                     const SizedBox(height: 8),

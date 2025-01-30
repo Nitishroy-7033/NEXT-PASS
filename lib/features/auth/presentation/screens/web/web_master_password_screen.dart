@@ -29,9 +29,9 @@ class WebMasterPasswordScreen extends StatelessWidget {
         ),
         elevation: 0,
         backgroundColor: Colors.white,
-        actions: [
+        actions: const [
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: EdgeInsets.all(8.0),
             child: CircleAvatar(
               backgroundImage: NetworkImage(
                 'https://via.placeholder.com/150', // Replace with actual profile image URL
@@ -41,7 +41,8 @@ class WebMasterPasswordScreen extends StatelessWidget {
         ],
       ),
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 100, vertical: 20), // Adjusted padding for web
+        padding: const EdgeInsets.symmetric(
+            horizontal: 100, vertical: 20), // Adjusted padding for web
         child: Center(
           child: SingleChildScrollView(
             child: Card(
@@ -66,7 +67,8 @@ class WebMasterPasswordScreen extends StatelessWidget {
                     const SizedBox(height: 16),
                     const Text(
                       'Master Password',
-                      style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+                      style:
+                          TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
                     ),
                     const SizedBox(height: 8),
                     TextFormField(
@@ -76,7 +78,7 @@ class WebMasterPasswordScreen extends StatelessWidget {
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(12),
                         ),
-                        suffixIcon: Icon(Icons.visibility_off),
+                        suffixIcon: const Icon(Icons.visibility_off),
                       ),
                     ),
                     const SizedBox(height: 8),

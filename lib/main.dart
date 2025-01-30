@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:next_pass/core/constants/app_themes.dart';
+import 'package:next_pass/features/not_found/presentation/views/not_found_view.dart';
+import 'package:next_pass/features/splash/presentation/getx/bindings/splash_binding.dart';
 import 'core/routes/app_routes.dart';
 import 'core/routes/route_generator.dart';
-import 'features/auth/presentation/getx/bindings/auth_binding.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,19 +18,15 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'NEXT PASS',
-      initialRoute: AppRoutes.home, // INITIAL ROUTE CHANGE KARNA HAI
+      initialRoute: AppRoutes.home,//AppRoutes.allWidgetsScreen,
       getPages: RouteGenerator.getRoutes(),
-      initialBinding: AuthBinding(),
-      //   unknownRoute: GetPage(
-      //   name: AppRoutes.notFound,
-      //   // page: () => NotFoundScreen(),
-      // )
-      theme: AppThemes.darkTheme,
-      // home:  const Scaffold(
-      //   body: Center(
-      //     child: Text("Hello World"),
-      //   ),
-      // ),
-    );
+      initialBinding: SplashBinding(),
+      theme: AppThemes.lightTheme,
+      darkTheme: AppThemes.darkTheme,
+      themeMode: ThemeMode.dark,
+        unknownRoute: GetPage(
+          name: AppRoutes.notFound,
+          page: () => const NotFoundView(),
+        ));
   }
 }

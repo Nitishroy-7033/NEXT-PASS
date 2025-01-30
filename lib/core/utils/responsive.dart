@@ -12,8 +12,6 @@
 //       MediaQuery.of(context).size.width >= 1200;
 // }
 
-
-
 import 'package:flutter/material.dart';
 
 class Responsive extends StatelessWidget {
@@ -22,6 +20,7 @@ class Responsive extends StatelessWidget {
   final Widget desktop;
 
   const Responsive({
+    super.key,
     required this.mobile,
     required this.tablet,
     required this.desktop,

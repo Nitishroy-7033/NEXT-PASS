@@ -3,8 +3,6 @@ import 'package:flutter_svg/svg.dart';
 import 'package:next_pass/core/constants/app_assets.dart';
 import 'package:next_pass/features/home/widgets/account_container_tile.dart';
 import 'package:next_pass/features/home/widgets/category_container.dart';
-import 'package:next_pass/res/assets_res.dart';
-import 'package:next_pass/res/font_res.dart';
 
 class MobileHomeScreen extends StatelessWidget {
   const MobileHomeScreen({super.key});
@@ -26,7 +24,7 @@ class MobileHomeScreen extends StatelessWidget {
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(20),
                       child: Image.asset(
-                        AssetsRes.DEMO_PROFILE_IMAGE,
+                        AppImageAssets.demoProfileImage,
                         fit: BoxFit.cover,
                       ),
                     ),
@@ -34,17 +32,12 @@ class MobileHomeScreen extends StatelessWidget {
                   const SizedBox(
                     width: 10,
                   ),
-                  const Text(
-                    'Rose Poole',
-                    style: TextStyle(
-                      fontFamily: FontRes.MONTSERRAT_SEMIBOLD,
-                      fontSize: 18,
-                    ),
-                  ),
+                  Text('Rose Poole',
+                      style: Theme.of(context).textTheme.headlineLarge),
                 ],
               ),
               const SizedBox(
-                height: 20,
+                height: 10,
               ),
               TextField(
                 autofocus: false,
@@ -57,12 +50,7 @@ class MobileHomeScreen extends StatelessWidget {
                     maxHeight: 40,
                   ),
                   hintText: "search your vaults",
-                  hintStyle: TextStyle(
-                    color: Theme.of(context).colorScheme.tertiary,
-                    fontSize: 14,
-                    fontWeight: FontWeight.w400,
-                    fontFamily: FontRes.MONTSERRAT_REGULAR,
-                  ),
+                  hintStyle: Theme.of(context).textTheme.labelMedium,
                   prefixIcon: Padding(
                     padding: const EdgeInsets.all(12.0),
                     child: SvgPicture.asset(
@@ -91,16 +79,12 @@ class MobileHomeScreen extends StatelessWidget {
                 maxLines: 1,
                 cursorColor: Theme.of(context).colorScheme.onPrimary,
                 cursorWidth: 1.5,
-                style: TextStyle(
-                  color: Theme.of(context).colorScheme.onPrimary,
-                  fontFamily: FontRes.MONTSERRAT_REGULAR,
-                  fontSize: 16,
-                ),
+                style: Theme.of(context).textTheme.bodyMedium,
               ),
             ],
           ),
           scrolledUnderElevation: 0.0,
-          toolbarHeight: 130,
+          toolbarHeight: 100,
         ),
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -108,18 +92,14 @@ class MobileHomeScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text(
-                  'Category',
-                  style: TextStyle(
-                    fontFamily: FontRes.MONTSERRAT_SEMIBOLD,
-                    fontSize: 18,
+                Padding(
+                  padding: const EdgeInsets.only(top: 10, bottom: 15),
+                  child: Text(
+                    'Category',
+                    style: Theme.of(context).textTheme.headlineLarge,
                   ),
                 ),
-                const SizedBox(
-                  height: 15,
-                ),
                 const Row(
-                  // spacing: 14,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     CategoryContainer(
@@ -139,14 +119,11 @@ class MobileHomeScreen extends StatelessWidget {
                     ),
                   ],
                 ),
-                const Padding(
-                  padding: EdgeInsets.symmetric(vertical: 10),
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 10),
                   child: Text(
                     'Latest Account',
-                    style: TextStyle(
-                      fontFamily: FontRes.MONTSERRAT_SEMIBOLD,
-                      fontSize: 18,
-                    ),
+                    style: Theme.of(context).textTheme.headlineLarge,
                   ),
                 ),
                 Column(

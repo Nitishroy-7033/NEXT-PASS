@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:next_pass/res/font_res.dart';
 
 class AccountContainerTile extends StatelessWidget {
   final String imageUrl;
@@ -21,19 +20,11 @@ class AccountContainerTile extends StatelessWidget {
       child: ListTile(
         title: Text(
           title,
-          style: TextStyle(
-            fontFamily: FontRes.MONTSERRAT_SEMIBOLD,
-            color: Theme.of(context).colorScheme.onPrimary,
-            fontSize: 16,
-          ),
+          style: Theme.of(context).textTheme.bodyMedium,
         ),
         subtitle: Text(
           subTitle,
-          style: TextStyle(
-            fontFamily: FontRes.MONTSERRAT_REGULAR,
-            fontSize: 14,
-            color: Theme.of(context).colorScheme.tertiary,
-          ),
+          style:Theme.of(context).textTheme.labelMedium,
         ),
         leading: SizedBox(
           height: 35,

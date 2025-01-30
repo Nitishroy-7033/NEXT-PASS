@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:next_pass/res/font_res.dart';
 
 class CategoryContainer extends StatelessWidget {
   final String icon;
@@ -41,20 +40,14 @@ class CategoryContainer extends StatelessWidget {
           ),
           Text(
             title,
-            style: const TextStyle(
-              fontFamily: FontRes.MONTSERRAT_SEMIBOLD,
-            ),
+            style: Theme.of(context).textTheme.headlineMedium,
           ),
           const SizedBox(
             height: 5,
           ),
           Text(
             "$count Password",
-            style: TextStyle(
-              fontFamily: FontRes.MONTSERRAT_REGULAR,
-              color: Theme.of(context).colorScheme.tertiary,
-              fontSize: 10,
-            ),
+            style: Theme.of(context).textTheme.labelSmall,
           ),
         ],
       ),
