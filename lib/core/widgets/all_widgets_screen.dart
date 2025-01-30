@@ -18,6 +18,12 @@ class AllWidgetsScreen extends StatelessWidget {
           padding: const EdgeInsets.all(20),
           child: Column(
             children: [
+              Row(
+                children: [
+                  Text("Enter name",style: Theme.of(context).textTheme.labelLarge,),
+                ],
+              ),
+              const SizedBox(height: 10),
               TextFormField(
                 style: const TextStyle(
                   fontSize: 18,

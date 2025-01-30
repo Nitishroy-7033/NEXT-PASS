@@ -26,7 +26,7 @@ class PrimaryOutlineIconButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(0),
           border: Border.all(
             color: outlineColor ?? Theme.of(context).colorScheme.onSurface,
-            width: 2,
+            width: 1,
           ),
         ),
         child: SvgPicture.asset(
