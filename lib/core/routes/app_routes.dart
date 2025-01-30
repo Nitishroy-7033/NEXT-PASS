@@ -7,4 +7,5 @@ class AppRoutes {
   static const String getStarted = '/getStarted';
   static const String notFound = '/notFound';
   static const String dashboard = '/dashboard';
+  static const String allWidgetsScreen = '/allWidgetsScreen';
 }
