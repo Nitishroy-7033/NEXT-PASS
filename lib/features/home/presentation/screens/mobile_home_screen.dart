@@ -127,7 +127,6 @@ class MobileHomeScreen extends StatelessWidget {
                   ),
                 ),
                 Column(
-                  spacing: 5.0,
                   children: [
                     AccountContainerTile(
                       title: "Spotify",
