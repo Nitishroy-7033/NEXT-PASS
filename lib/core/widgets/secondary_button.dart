@@ -1,19 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class PrimaryButton extends StatelessWidget {
+class SecondaryButton extends StatelessWidget {
   final String text;
   final VoidCallback onPressed;
   final String? icon;
-
   final Color? color;
-  final Color? backgroundColor;
-  const PrimaryButton(
+  final Color? outlineColor;
+  const SecondaryButton(
       {super.key,
       required this.text,
       required this.onPressed,
       this.icon,
-      this.backgroundColor,
+      this.outlineColor,
       this.color});
 
   @override
@@ -26,8 +25,12 @@ class PrimaryButton extends StatelessWidget {
         height: 50,
         padding: const EdgeInsets.all(10),
         decoration: BoxDecoration(
-          color: backgroundColor ?? Theme.of(context).colorScheme.primary,
+         
           borderRadius: BorderRadius.circular(0),
+          border: Border.all(
+            color: outlineColor ?? Theme.of(context).colorScheme.onSurface,
+            width: 1,
+          ),
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,

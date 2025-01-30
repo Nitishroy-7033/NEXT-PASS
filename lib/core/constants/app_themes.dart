@@ -128,7 +128,7 @@ class AppThemes {
       titleTextStyle: TextStyle(
         fontSize: 18,
         fontWeight: FontWeight.w600,
-        color: AppColors.backgroundDark,
+        color: AppColors.fontDark,
         fontFamily: "Montserrat",
       ),
     ),
