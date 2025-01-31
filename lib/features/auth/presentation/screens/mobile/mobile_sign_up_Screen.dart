@@ -9,7 +9,7 @@ class MobileSignUpScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.find<AuthController>();
+    final controller = Get.put(AuthController());
 
     return Scaffold(
       appBar: AppBar(title: const Text("Signup")),
@@ -18,15 +18,15 @@ class MobileSignUpScreen extends StatelessWidget {
         child: Column(
           children: [
             TextField(
-              decoration: const InputDecoration(labelText: 'Name'),
+              decoration: const InputDecoration(hintText: 'Name'),
               onChanged: (value) => controller.name.value = value,
             ),
             TextField(
-              decoration: const InputDecoration(labelText: 'Email'),
+              decoration: const InputDecoration(hintText: 'Email'),
               onChanged: (value) => controller.email.value = value,
             ),
             TextField(
-              decoration: const InputDecoration(labelText: 'Password'),
+              decoration: const InputDecoration(hintText: 'Password'),
               obscureText: true,
               onChanged: (value) => controller.password.value = value,
             ),
@@ -34,7 +34,7 @@ class MobileSignUpScreen extends StatelessWidget {
             Obx(() => controller.isLoading.value
                 ? const CircularProgressIndicator()
                 : ElevatedButton(
-              onPressed: controller.signup,
+              onPressed: (){},
               child: const Text("Signup"),
             )),
           ],

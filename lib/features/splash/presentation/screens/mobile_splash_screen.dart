@@ -15,19 +15,16 @@ class MobileSplashScreen extends StatelessWidget {
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
+          children: [
             Image.asset(
               AppImageAssets.appLogo, // Replace with your animated image
               width: 200,
               height: 200,
             ),
             const SizedBox(height: 20),
-            const Text(
+            Text(
               'Simplify Your Life, One Tap at a Time.',
-              style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white),
+              style: Theme.of(context).textTheme.bodyLarge
             ),
           ],
         ),
