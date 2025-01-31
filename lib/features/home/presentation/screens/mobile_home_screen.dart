@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 import 'package:next_pass/core/constants/app_assets.dart';
 import 'package:next_pass/features/home/widgets/account_container_tile.dart';
 import 'package:next_pass/features/home/widgets/category_container.dart';
@@ -34,6 +35,25 @@ class MobileHomeScreen extends StatelessWidget {
                   ),
                   Text('Rose Poole',
                       style: Theme.of(context).textTheme.headlineLarge),
+                  const Spacer(),
+                  InkWell(
+                    onTap: () {},
+                    borderRadius: BorderRadius.circular(20),
+                    child: SizedBox(
+                      height: 35,
+                      width: 35,
+                      child: Padding(
+                        padding: const EdgeInsets.all(7.0),
+                        child: SvgPicture.asset(
+                          IconsAssets.notificationIcon,
+                          colorFilter: ColorFilter.mode(
+                            Theme.of(context).colorScheme.onSurface,
+                            BlendMode.srcIn,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
                 ],
               ),
               const SizedBox(
@@ -43,8 +63,6 @@ class MobileHomeScreen extends StatelessWidget {
                 autofocus: false,
                 controller: homeSearchController,
                 decoration: InputDecoration(
-                  // isDense: true,
-
                   contentPadding: const EdgeInsets.only(bottom: 5, right: 5),
                   constraints: const BoxConstraints(
                     maxHeight: 40,
@@ -61,7 +79,6 @@ class MobileHomeScreen extends StatelessWidget {
                       ),
                     ),
                   ),
-
                   fillColor: Theme.of(context).colorScheme.primaryContainer,
                   filled: true,
                   enabledBorder: OutlineInputBorder(
@@ -77,15 +94,31 @@ class MobileHomeScreen extends StatelessWidget {
                   ),
                 ),
                 maxLines: 1,
-                cursorColor: Theme.of(context).colorScheme.onPrimary,
+                cursorColor: Theme.of(context).colorScheme.onSurface,
                 cursorWidth: 1.5,
                 style: Theme.of(context).textTheme.bodyMedium,
               ),
             ],
           ),
           scrolledUnderElevation: 0.0,
-          toolbarHeight: 100,
+          toolbarHeight: 95,
+          backgroundColor: Theme.of(context).colorScheme.surface,
         ),
+        // Floation Action Button for Add new password
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {},
+          backgroundColor: Theme.of(context).colorScheme.primary,
+          heroTag: null,
+          tooltip: "Add Password",
+          child: SvgPicture.asset(
+            IconsAssets.addIcon,
+            colorFilter: ColorFilter.mode(
+              Theme.of(context).colorScheme.surface,
+              BlendMode.srcIn,
+            ),
+          ),
+        ),
+        // Body
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16),
           child: SingleChildScrollView(
@@ -99,23 +132,26 @@ class MobileHomeScreen extends StatelessWidget {
                     style: Theme.of(context).textTheme.headlineLarge,
                   ),
                 ),
-                const Row(
+                Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     CategoryContainer(
                       icon: IconsAssets.browserIcon,
                       title: "Browser",
                       count: "20",
+                      onTap: () {},
                     ),
                     CategoryContainer(
                       icon: IconsAssets.mobileIcon,
                       title: "Mobile",
                       count: "13",
+                      onTap: () {},
                     ),
                     CategoryContainer(
                       icon: IconsAssets.paymentCardIcon,
                       title: "Payment",
                       count: "05",
+                      onTap: () {},
                     ),
                   ],
                 ),

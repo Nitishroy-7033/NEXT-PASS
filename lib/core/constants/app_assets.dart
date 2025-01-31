@@ -20,6 +20,8 @@ class IconsAssets {
   static const String facebookIcon = "${iconBasePath}Facebook.png";
   static const String homeIcon = "${iconBasePath}home_icon.svg";
   static const String settingsIcon = "${iconBasePath}settings_icon.svg";
+  static const String notificationIcon = "${iconBasePath}notification_icon.svg";
+  static const String addIcon = "${iconBasePath}add_icon.svg";
 
   // NETWORK ASSETS
   static const String spotifyLogoUrl =

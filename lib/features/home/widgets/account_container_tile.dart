@@ -16,6 +16,7 @@ class AccountContainerTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       elevation: 0.0,
+      clipBehavior: Clip.hardEdge,
       color: Theme.of(context).colorScheme.primaryContainer,
       child: ListTile(
         title: Text(
@@ -24,7 +25,7 @@ class AccountContainerTile extends StatelessWidget {
         ),
         subtitle: Text(
           subTitle,
-          style:Theme.of(context).textTheme.labelMedium,
+          style: Theme.of(context).textTheme.labelMedium,
         ),
         leading: SizedBox(
           height: 35,
@@ -43,6 +44,7 @@ class AccountContainerTile extends StatelessWidget {
           color: Theme.of(context).colorScheme.tertiary,
         ),
         onTap: ontap,
+        splashColor: Theme.of(context).colorScheme.secondaryContainer,
         
       ),
     );
