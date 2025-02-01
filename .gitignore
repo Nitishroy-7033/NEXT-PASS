@@ -68,3 +68,8 @@ pubspec.lock
 
 # Node modules
 backend/node_modules/
+NextPassAPI/.vs/
+NextPassAPI/NextPassAPI/obj/
+NextPassAPI/NextPassAPI.Data/obj/
+NextPassAPI/NextPassAPI.Identity/obj/
+NextPassAPI/NextPassAPI/bin/Debug/
