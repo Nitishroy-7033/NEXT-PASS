@@ -1,9 +1,14 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
 using NextPassAPI.Data.Models;
 using NextPassAPI.Data.Models.Requests;
 using NextPassAPI.Data.Models.Responses;
+using NextPassAPI.Identity.AuthHandler;
 using NextPassAPI.Services.Interfaces;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
 
 namespace NextPassAPI.Controllers
 {
@@ -12,10 +17,12 @@ namespace NextPassAPI.Controllers
     public class AuthController : ControllerBase
     {
         private readonly IAuthService _authService;
-
-        public AuthController(IAuthService authService)
+        private readonly IConfiguration _configuration;
+        private readonly AuthHandler _authHandler;
+        public AuthController(IAuthService authService, IConfiguration configuration,AuthHandler authHandler)
         {
-            _authService = authService;
+            _authService = authService;            _configuration = configuration;
+            _authHandler = authHandler;
         }
 
 
@@ -30,7 +37,9 @@ namespace NextPassAPI.Controllers
                     var emptyResponse = new ApiResponse<User>(false, "Invalid email or password", null);
                     return Unauthorized(emptyResponse);
                 }
-                var response = new ApiResponse<User>(true, "User logged in successfully", user);
+                
+                var authReponse = _authHandler.GenerateToken(user);
+                var response = new ApiResponse<AuthResponse>(true, "User logged in successfully", authReponse);
                 return Ok(response);
             }
             catch (Exception ex)

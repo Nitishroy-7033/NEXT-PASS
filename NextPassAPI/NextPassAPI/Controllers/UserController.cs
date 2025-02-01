@@ -4,6 +4,7 @@ using NextPassAPI.Data.Models.Requests;
 using NextPassAPI.Data.Models.Responses;
 using NextPassAPI.Data.Models;
 using NextPassAPI.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 
 namespace NextPassAPI.Controllers
 {
@@ -33,7 +34,7 @@ namespace NextPassAPI.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, errorResponse);
             }
         }
-
+        [Authorize]
         [HttpGet("{email}")]
         public async Task<IActionResult> GetUserByEmail(string email)
         {

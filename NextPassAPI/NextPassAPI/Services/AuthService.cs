@@ -3,48 +3,43 @@ using NextPassAPI.Data.Repositories.Interfaces;
 using BCrypt.Net;
 using NextPassAPI.Data.Models.Requests;
 using NextPassAPI.Services.Interfaces;
+using Microsoft.AspNetCore.Authentication.OAuth;
+using NextPassAPI.Identity.AuthHandler;
 namespace NextPassAPI.Services
 {
     public class AuthService : IAuthService
     {
 
         private readonly IUserRepository _userRepository;
-        public AuthService(IUserRepository userRepository)
+        private readonly AuthHandler _authHandler;
+
+        public AuthService(IUserRepository userRepository, AuthHandler authHandler)
         {
             _userRepository = userRepository;
+            _authHandler = authHandler;
         }
 
-
-        public async Task<User> LoginUser(string email, string password)
+        public async Task<User?> LoginUser(string email, string password)
         {
-            var hashedPassword = HashPassword(password);
-
             var user = await _userRepository.GetUserByEmail(email);
-            if(user != null && BCrypt.Net.BCrypt.Verify(password, user.HashedPassword))
-            {
-                return user;
-            }
-            return null;
+            return user != null && _authHandler.VerifyPassword(password, user.HashedPassword) ? user : null;
         }
 
-        public async Task<User> RegisterUser(UserRequest userRequest)
+        public async Task<User> RegisterUser(UserRequest request)
         {
-            var newUser = new User
+            var user = new User
             {
-                Email = userRequest.Email,
-                HashedPassword = HashPassword(userRequest.Password),
-                FirstName = userRequest.FirstName,
-                LastName = userRequest.LastName,
+                Email = request.Email,
+                HashedPassword = _authHandler.HashPassword(request.Password),
+                FirstName = request.FirstName,
+                LastName = request.LastName,
                 CreatedAt = DateTime.UtcNow,
                 LastLogin = DateTime.UtcNow,
                 IsVerified = false,
-                IsDeleted = false
+                IsDeleted = false,
+                Role = "User" // Default role
             };
-            return await _userRepository.CreateUser(newUser);
-        }
-        public  string HashPassword(string password)
-        {
-            return BCrypt.Net.BCrypt.HashPassword(password);
+            return await _userRepository.CreateUser(user);
         }
     }
 }

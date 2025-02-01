@@ -8,11 +8,13 @@
 
   <ItemGroup>
     <PackageReference Include="BCrypt.Net" Version="0.1.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.12" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\NextPassAPI.Data\NextPassAPI.Data.csproj" />
+    <ProjectReference Include="..\NextPassAPI.Identity\NextPassAPI.Identity.csproj" />
   </ItemGroup>
 
 </Project>

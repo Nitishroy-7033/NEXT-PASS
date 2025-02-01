@@ -24,7 +24,8 @@ namespace NextPassAPI.Services
                 CreatedAt = DateTime.UtcNow,
                 LastLogin = DateTime.UtcNow,
                 IsVerified = false,
-                IsDeleted = false
+                IsDeleted = false,
+                Role="User"
             };
 
             return await _userRepository.CreateUser(newUser);
