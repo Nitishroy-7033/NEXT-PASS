@@ -8,4 +8,5 @@ class AppRoutes {
   static const String notFound = '/notFound';
   static const String dashboard = '/dashboard';
   static const String allWidgetsScreen = '/allWidgetsScreen';
+  static const String newCredential = '/newCredential';
 }

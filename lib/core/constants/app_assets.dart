@@ -12,7 +12,7 @@ class IconsAssets {
   static const String mobileIcon = "${iconBasePath}mobile_icon.svg";
   static const String paymentCardIcon = "${iconBasePath}payment_card_icon.svg";
   static const String personProfileIcon =
-      "${iconBasePath}person_profile_icon.svg";
+      "${iconBasePath}person_profile.svg";
   static const String searchIcon = "${iconBasePath}search_icon.svg";
   static const String lockIcon = "${iconBasePath}lock_icon.svg";
   static const String mailIcon = "${iconBasePath}mail_icon.svg";
