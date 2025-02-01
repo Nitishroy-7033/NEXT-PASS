@@ -27,7 +27,7 @@ class PrimaryButton extends StatelessWidget {
         padding: const EdgeInsets.all(10),
         decoration: BoxDecoration(
           color: backgroundColor ?? Theme.of(context).colorScheme.primary,
-          borderRadius: BorderRadius.circular(0),
+          borderRadius: BorderRadius.circular(10),
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,

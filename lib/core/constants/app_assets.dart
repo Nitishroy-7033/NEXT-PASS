@@ -22,6 +22,8 @@ class IconsAssets {
   static const String settingsIcon = "${iconBasePath}settings_icon.svg";
   static const String notificationIcon = "${iconBasePath}notification_icon.svg";
   static const String addIcon = "${iconBasePath}add_icon.svg";
+  static const String bookmarkIcon = "${iconBasePath}bookmark_icon.svg";
+  static const String securityIcon = "${iconBasePath}security_icon.svg";
 
   // NETWORK ASSETS
   static const String spotifyLogoUrl =

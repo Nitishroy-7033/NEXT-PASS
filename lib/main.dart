@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'NEXT PASS',
-        initialRoute: AppRoutes.allWidgetsScreen,
+        initialRoute: AppRoutes.home, //AppRoutes.allWidgetsScreen,
         getPages: RouteGenerator.getRoutes(),
         initialBinding: SplashBinding(),
         theme: AppThemes.lightTheme,
@@ -27,6 +27,6 @@ class MyApp extends StatelessWidget {
         unknownRoute: GetPage(
           name: AppRoutes.notFound,
           page: () => const NotFoundView(),
-        ));
+        ),);
   }
 }
