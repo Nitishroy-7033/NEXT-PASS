@@ -71,7 +71,7 @@ class MobileMasterPasswordScreen extends StatelessWidget {
                     ),
                     const SizedBox(height: 8),
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Row(
                           children: [
@@ -84,7 +84,10 @@ class MobileMasterPasswordScreen extends StatelessWidget {
                         ),
                         TextButton(
                           onPressed: () {},
-                          child: const Text('Forgot password?'),
+                          child: const Text(
+                            'Forgot password?',
+                            style: TextStyle(fontSize: 12),
+                          ),
                         ),
                       ],
                     ),

@@ -15,8 +15,6 @@ class AuthBinding extends Bindings {
     Get.lazyPut(() => LoginUseCase(Get.find()));
     Get.lazyPut(() => SignupUseCase(Get.find()));
     Get.lazyPut(() => AuthController(
-      loginUseCase: Get.find(),
-      signupUseCase: Get.find(),
     ));
   }
 }

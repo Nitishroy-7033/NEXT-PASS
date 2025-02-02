@@ -120,9 +120,17 @@ class MobileLoginScreen extends StatelessWidget {
              const SizedBox(height: 40),
             PrimaryButton(text: "Login", onPressed: () {}),
             const SizedBox(height: 20),
-            Text("Dont Have an account? Sign Up")
+
+            Text("Dont Have an account? Sign Up"),
             
             
+
+            Obx(() => controller.isLoading.value
+                ? const CircularProgressIndicator()
+                : ElevatedButton(
+              onPressed: (){},
+              child: const Text("Login"),
+            )),
           ],
         ),
       ),
