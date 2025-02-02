@@ -1,6 +1,7 @@
 class AppStrings {
   // General
   static const String appName = "Next Pass";
+  static const String creat_acc="Create Account";
 
   // Error Messages
   static const String errorNetwork = "Please check your internet connection.";
