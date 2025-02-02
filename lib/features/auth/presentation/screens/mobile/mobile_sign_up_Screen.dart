@@ -60,8 +60,6 @@ class MobileSignUpScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    final controller = Get.put(AuthController());
-
 
     return Scaffold(
       backgroundColor: Colors.black,
@@ -192,30 +190,26 @@ class MobileSignUpScreen extends StatelessWidget {
               child: Text("By Signing up, you agree to our Terms of service and Privacy Policy"),
             ),
             const SizedBox(height: 20),
-            Text("Already Have an account? Sign In")
+            Text("Already Have an account? Sign In"),
             
             
 
             TextField(
               decoration: const InputDecoration(hintText: 'Name'),
-              onChanged: (value) => controller.name.value = value,
+              
             ),
             TextField(
               decoration: const InputDecoration(hintText: 'Email'),
-              onChanged: (value) => controller.email.value = value,
             ),
             TextField(
               decoration: const InputDecoration(hintText: 'Password'),
               obscureText: true,
-              onChanged: (value) => controller.password.value = value,
             ),
             const SizedBox(height: 20),
-            Obx(() => controller.isLoading.value
-                ? const CircularProgressIndicator()
-                : ElevatedButton(
+         ElevatedButton(
               onPressed: (){},
               child: const Text("Signup"),
-            )),
+            ),
 
           ],
         ),
