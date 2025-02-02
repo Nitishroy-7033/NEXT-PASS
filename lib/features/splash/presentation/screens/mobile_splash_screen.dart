@@ -4,8 +4,7 @@ import 'package:next_pass/core/constants/app_assets.dart';
 import 'package:next_pass/features/splash/presentation/getx/controllers/splash_controller.dart';
 
 class MobileSplashScreen extends StatelessWidget {
-  final SplashController controller = Get.put(SplashController());
-
+  final  controller = Get.find<SplashController>();
   MobileSplashScreen({super.key});
 
   @override
