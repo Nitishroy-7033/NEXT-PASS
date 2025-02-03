@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -35,14 +36,20 @@ class PrimaryButton extends StatelessWidget {
             if (icon != null)
               SvgPicture.asset(
                 icon!,
-                color: color ?? Theme.of(context).colorScheme.onSurface,
+                colorFilter: ColorFilter.mode(
+                  color ?? Theme.of(context).colorScheme.onSurface,
+                  BlendMode.srcIn,
+                ),
               ),
             if (icon != null) const SizedBox(width: 10),
             Text(
               text,
-              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                    color: color ?? Theme.of(context).colorScheme.onSurface,
-                  ),
+              style: (MediaQuery.of(context).size.width > 800)
+                  ? Theme.of(context).textTheme.bodyMedium?.copyWith(
+                        color: color ?? Theme.of(context).colorScheme.onSurface
+                      )
+                  : Theme.of(context).textTheme.bodySmall?.copyWith(
+                      color: color ?? Theme.of(context).colorScheme.onSurface),
             )
           ],
         ),

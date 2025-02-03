@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:next_pass/core/constants/app_assets.dart';
 import 'package:next_pass/core/widgets/primary_button.dart';
+import 'package:next_pass/core/widgets/sidebar%20for%20web/sidebar_tab.dart';
 import 'package:next_pass/features/home/widgets/account_container_tile.dart';
 import 'package:next_pass/features/home/widgets/category_container.dart';
 
@@ -46,9 +47,11 @@ class WebHomeScreen extends StatelessWidget {
                     onPressed: () {},
                   ),
                 ),
+                SidebarTab(),
               ],
             ),
           )),
+          // LEFT LAYOUT AREA
           Expanded(
             flex: 6,
             child: Column(
