@@ -36,6 +36,7 @@ class AddNewCredentialForm extends StatelessWidget {
           ),
           const SizedBox(height: 10),
           TextFormField(
+            textInputAction: TextInputAction.next,
             controller:controller. siteUrl,
             decoration: const InputDecoration(
               prefixIcon: Icon(Icons.language),
@@ -55,12 +56,14 @@ class AddNewCredentialForm extends StatelessWidget {
           ),
           const SizedBox(height: 10),
           TextFormField(
+            textInputAction: TextInputAction.next,
             controller: controller.userName,
             decoration: const InputDecoration(
               prefixIcon: Icon(Icons.person),
               hintText: "User Name",
             ),
           ),
+         
           const SizedBox(
             height: 20,
           ),
@@ -74,6 +77,7 @@ class AddNewCredentialForm extends StatelessWidget {
           ),
           const SizedBox(height: 10),
           TextFormField(
+            textInputAction: TextInputAction.next,
             controller: controller.password,
             obscureText: true,
             decoration: const InputDecoration(
@@ -94,6 +98,7 @@ class AddNewCredentialForm extends StatelessWidget {
           ),
           const SizedBox(height: 10),
           TextFormField(
+            textInputAction: TextInputAction.next,
             controller: controller.emailId,
             obscureText: true,
             decoration: const InputDecoration(
@@ -114,6 +119,7 @@ class AddNewCredentialForm extends StatelessWidget {
           ),
           const SizedBox(height: 10),
           TextFormField(
+            textInputAction: TextInputAction.done,
             controller: controller.mobileNumber,
             obscureText: true,
             decoration: const InputDecoration(
