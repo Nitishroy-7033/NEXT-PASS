@@ -16,7 +16,6 @@ class _AuthScreenState extends State<AuthScreen> {
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 24),
         child: Column(
-          // mainAxisAlignment: MainAxisAlignment.center,
           children: [
             SizedBox(height: 50,),
             Image.asset(AppImageAssets.appLogo,height: 100,),
