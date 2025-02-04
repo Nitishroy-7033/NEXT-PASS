@@ -7,7 +7,11 @@ import 'features/add_new_credential/data/interface.dart';
 class DependencyInjection {
   static void init() {
     Get.lazyPut(() => http.Client());
+<<<<<<< HEAD
     Get.lazyPut(() => ApiClient(baseUrl: "https://next-pass-g6gfa2add9aeaafa.centralus-01.azurewebsites.net/")..init());
+=======
+    Get.lazyPut(() => ApiClient(baseUrl: "https://api.example.com")..init());
+>>>>>>> c48c9f7 (Add new credential feature with mobile and web interfaces, repository, and routing updates)
     Get.lazyPut<CredentialInterface>(() => CredentialRepository());
   }
 }
