@@ -12,7 +12,11 @@ class NavBarController extends GetxController {
     Center(child: Text('Settings')),
   ];
 
-  void changeTab(int index) {
+  changeTab(int index) {
     selectedIndex.value = index;
+  }
+
+  navbarItems(Widget icon, String label) {
+    return BottomNavigationBarItem(icon: icon, label: label);
   }
 }
