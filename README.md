@@ -49,4 +49,4 @@ Passwords are the keys to our digital world, but managing them is often a hassle
 * Internship Form : Google Form
 
 
-Footer - Nitish kumar
+Footer - Nitish kumar and other team member
