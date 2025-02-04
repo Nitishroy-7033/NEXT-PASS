@@ -1,15 +1,17 @@
 import 'package:get/get.dart';
 import 'package:next_pass/core/widgets/all_widgets_screen.dart';
+import 'package:next_pass/features/auth/presentation/screens/mobile/mobile_dashboard.dart';
 import 'package:next_pass/features/add_new_credential/presentation/views/view_add_new_credential.dart';
+
 import 'package:next_pass/features/auth/presentation/screens/mobile/auth_tab.dart';
 import 'package:next_pass/features/auth/presentation/views/auth_tab_view.dart';
+
 import 'package:next_pass/features/auth/presentation/views/login_view.dart';
 import 'package:next_pass/features/auth/presentation/views/sign_up_view.dart';
 import 'package:next_pass/features/getStarted/presentations/view/get_started_view.dart';
 import 'package:next_pass/features/not_found/presentation/views/not_found_view.dart';
 
 // Import your screens here
-import 'package:next_pass/features/auth/presentation/views/dashboard_view.dart';
 import '../../features/auth/presentation/views/master_password_view.dart';
 import '../../features/home/presentation/views/home_view.dart';
 import '../../features/splash/presentation/views/splace_view.dart';
@@ -60,20 +62,19 @@ class RouteGenerator {
       ),
       GetPage(
         name: AppRoutes.dashboard,
-        page: () => const DashboardView(),
+        page: () => const MobileDashboard(),
         transition: Transition.fadeIn,
       ),
-        GetPage(
+      GetPage(
         name: AppRoutes.allWidgetsScreen,
         page: () => const AllWidgetsScreen(),
         transition: Transition.fadeIn,
       ),
-        GetPage(
+      GetPage(
         name: AppRoutes.newCredential,
         page: () => const ViewAddNewCredential(),
         transition: Transition.fadeIn,
       ),
-
     ];
   }
 }
