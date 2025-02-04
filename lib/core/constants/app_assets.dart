@@ -29,13 +29,13 @@ class IconsAssets {
   static const String spotifyLogoUrl =
       "https://storage.googleapis.com/pr-newsroom-wp/1/2023/05/Spotify_Primary_Logo_RGB_Green.png";
   static const String netflixLogoUrl =
-      "https://images.ctfassets.net/4cd45et68cgf/Rx83JoRDMkYNlMC9MKzcB/2b14d5a59fc3937afd3f03191e19502d/Netflix-Symbol.png?w=700&h=456";
+      "https://i.ytimg.com/vi/Fe3sszhqwAE/hq720.jpg?sqp=-oaymwE7CK4FEIIDSFryq4qpAy0IARUAAAAAGAElAADIQj0AgKJD8AEB-AH-CYAC0AWKAgwIABABGH8gEygUMA8=&rs=AOn4CLA1arEYPCiQvf5fvlflvbECRYtotQ";
   static const String instagramLogoUrl =
       "https://i.pinimg.com/1200x/24/37/73/2437730f7e3a5705e205e67fa2cd1020.jpg";
   static const String discordLogoUrl =
       "https://logos-world.net/wp-content/uploads/2020/12/Discord-Emblem.png";
   static const String slackLogoUrl =
-      "https://cdn.mos.cms.futurecdn.net/SDDw7CnuoUGax6x9mTo7dd.jpg";
+      "";
   static const String githubLogoUrl =
       "https://cdn-icons-png.flaticon.com/512/25/25231.png";
 }
