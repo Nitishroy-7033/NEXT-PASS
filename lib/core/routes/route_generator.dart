@@ -1,8 +1,8 @@
 import 'package:get/get.dart';
 import 'package:next_pass/core/widgets/all_widgets_screen.dart';
 import 'package:next_pass/features/add_new_credential/presentation/views/view_add_new_credential.dart';
-import 'package:next_pass/features/auth/presentation/getx/bindings/auth_binding.dart';
-import 'package:next_pass/features/auth/presentation/screens/mobile/mobile_login_screen.dart';
+import 'package:next_pass/features/auth/presentation/screens/mobile/auth_tab.dart';
+import 'package:next_pass/features/auth/presentation/views/auth_tab_view.dart';
 import 'package:next_pass/features/auth/presentation/views/login_view.dart';
 import 'package:next_pass/features/auth/presentation/views/sign_up_view.dart';
 import 'package:next_pass/features/getStarted/presentations/view/get_started_view.dart';
@@ -31,6 +31,11 @@ class RouteGenerator {
       GetPage(
         name: AppRoutes.signUp,
         page: () => const SignUpView(),
+        transition: Transition.fadeIn,
+      ),
+      GetPage(
+        name: AppRoutes.authtab,
+        page: () => const AuthTabView(),
         transition: Transition.fadeIn,
       ),
       GetPage(
