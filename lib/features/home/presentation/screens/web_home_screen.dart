@@ -3,8 +3,9 @@ import 'package:flutter_svg/svg.dart';
 import 'package:next_pass/core/constants/app_assets.dart';
 import 'package:next_pass/core/widgets/primary_button.dart';
 import 'package:next_pass/core/widgets/sidebar%20for%20web/sidebar_tab.dart';
-import 'package:next_pass/features/home/widgets/account_container_tile.dart';
-import 'package:next_pass/features/home/widgets/category_container.dart';
+import 'package:next_pass/core/widgets/sidebar%20for%20web/web_sidebar.dart';
+import 'package:next_pass/features/home/presentation/widgets/account_container_tile.dart';
+import 'package:next_pass/features/home/presentation/widgets/category_container.dart';
 
 class WebHomeScreen extends StatelessWidget {
   const WebHomeScreen({super.key});
@@ -47,7 +48,7 @@ class WebHomeScreen extends StatelessWidget {
                     onPressed: () {},
                   ),
                 ),
-                SidebarTab(),
+                WebSidebar(),
               ],
             ),
           )),
