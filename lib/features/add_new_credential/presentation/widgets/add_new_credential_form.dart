@@ -36,10 +36,7 @@ class AddNewCredentialForm extends StatelessWidget {
           ),
           const SizedBox(height: 10),
           TextFormField(
-<<<<<<< HEAD
             textInputAction: TextInputAction.next,
-=======
->>>>>>> c48c9f7 (Add new credential feature with mobile and web interfaces, repository, and routing updates)
             controller:controller. siteUrl,
             decoration: const InputDecoration(
               prefixIcon: Icon(Icons.language),
@@ -59,23 +56,14 @@ class AddNewCredentialForm extends StatelessWidget {
           ),
           const SizedBox(height: 10),
           TextFormField(
-<<<<<<< HEAD
             textInputAction: TextInputAction.next,
-=======
->>>>>>> c48c9f7 (Add new credential feature with mobile and web interfaces, repository, and routing updates)
             controller: controller.userName,
             decoration: const InputDecoration(
               prefixIcon: Icon(Icons.person),
               hintText: "User Name",
             ),
           ),
-<<<<<<< HEAD
          
-=======
->>>>>>> c48c9f7 (Add new credential feature with mobile and web interfaces, repository, and routing updates)
-          const SizedBox(
-            height: 20,
-          ),
           Row(
             children: [
               Text(
@@ -86,10 +74,7 @@ class AddNewCredentialForm extends StatelessWidget {
           ),
           const SizedBox(height: 10),
           TextFormField(
-<<<<<<< HEAD
             textInputAction: TextInputAction.next,
-=======
->>>>>>> c48c9f7 (Add new credential feature with mobile and web interfaces, repository, and routing updates)
             controller: controller.password,
             obscureText: true,
             decoration: const InputDecoration(
@@ -110,10 +95,7 @@ class AddNewCredentialForm extends StatelessWidget {
           ),
           const SizedBox(height: 10),
           TextFormField(
-<<<<<<< HEAD
             textInputAction: TextInputAction.next,
-=======
->>>>>>> c48c9f7 (Add new credential feature with mobile and web interfaces, repository, and routing updates)
             controller: controller.emailId,
             obscureText: true,
             decoration: const InputDecoration(
@@ -134,10 +116,7 @@ class AddNewCredentialForm extends StatelessWidget {
           ),
           const SizedBox(height: 10),
           TextFormField(
-<<<<<<< HEAD
             textInputAction: TextInputAction.done,
-=======
->>>>>>> c48c9f7 (Add new credential feature with mobile and web interfaces, repository, and routing updates)
             controller: controller.mobileNumber,
             obscureText: true,
             decoration: const InputDecoration(

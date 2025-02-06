@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:next_pass/core/widgets/navbar.dart';
-import 'package:next_pass/features/auth/presentation/getx/controllers/navbar_controller.dart';
+import 'package:next_pass/features/dashboard/presentation/widgets/navbar.dart';
+import 'package:next_pass/features/dashboard/controllers/navbar_controller.dart';
 
 class MobileDashboard extends StatelessWidget {
   const MobileDashboard({super.key});
