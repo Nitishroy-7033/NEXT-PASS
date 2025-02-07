@@ -2,6 +2,11 @@ import 'package:flutter/material.dart';
 import 'app_colors.dart';
 
 class AppThemes {
+  bool isLightTheme = true;
+  isDarkTheme() {
+    return !isLightTheme;
+  }
+
   static ThemeData lightTheme = ThemeData(
     brightness: Brightness.light,
     useMaterial3: true,
@@ -98,9 +103,9 @@ class AppThemes {
       fillColor: AppColors.primaryLight.withOpacity(0.1),
       filled: true,
       border: const UnderlineInputBorder(
-          borderSide: BorderSide(color: AppColors.primaryLight,width: 2)),
+          borderSide: BorderSide(color: AppColors.primaryLight, width: 2)),
       focusedBorder: const UnderlineInputBorder(
-          borderSide: BorderSide(color: AppColors.primaryLight,width: 2)),
+          borderSide: BorderSide(color: AppColors.primaryLight, width: 2)),
     ),
     buttonTheme: const ButtonThemeData(
       buttonColor: AppColors.primaryLight,
@@ -108,6 +113,7 @@ class AppThemes {
     ),
   );
 
+  // dark theme
   static ThemeData darkTheme = ThemeData(
     brightness: Brightness.dark,
     useMaterial3: true,
@@ -132,7 +138,7 @@ class AppThemes {
         fontFamily: "Montserrat",
       ),
     ),
-     inputDecorationTheme: InputDecorationTheme(
+    inputDecorationTheme: InputDecorationTheme(
       hintStyle: const TextStyle(
         fontSize: 15,
         fontWeight: FontWeight.w500,
@@ -148,9 +154,9 @@ class AppThemes {
       fillColor: AppColors.primaryDark.withOpacity(0.1),
       filled: true,
       border: const UnderlineInputBorder(
-          borderSide: BorderSide(color: AppColors.primaryDark,width: 2)),
+          borderSide: BorderSide(color: AppColors.primaryDark, width: 2)),
       focusedBorder: const UnderlineInputBorder(
-          borderSide: BorderSide(color: AppColors.primaryDark,width: 2)),
+          borderSide: BorderSide(color: AppColors.primaryDark, width: 2)),
     ),
     textTheme: const TextTheme(
       headlineLarge: TextStyle(

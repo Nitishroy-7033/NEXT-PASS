@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:next_pass/core/constants/app_assets.dart';
-import 'package:next_pass/features/home/presentation/widgets/account_container_tile.dart';
 import 'package:next_pass/features/home/presentation/widgets/category_container.dart';
 
 class WebHomeScreen extends StatelessWidget {
@@ -48,46 +47,6 @@ class WebHomeScreen extends StatelessWidget {
               style: Theme.of(context).textTheme.headlineLarge,
             ),
           ),
-          // Column(
-          //   children: [
-          //     AccountContainerTile(
-          //       title: "Spotify",
-          //       subTitle: "rosepoole@email.com",
-          //       imageUrl: IconsAssets.spotifyLogoUrl,
-          //       ontap: () {},
-          //     ),
-          //     AccountContainerTile(
-          //       title: "Netflix",
-          //       subTitle: "rosepoole@email.com",
-          //       imageUrl: IconsAssets.netflixLogoUrl,
-          //       ontap: () {},
-          //     ),
-          //     AccountContainerTile(
-          //       title: "Instagram",
-          //       subTitle: "rosepoole@email.com",
-          //       imageUrl: IconsAssets.instagramLogoUrl,
-          //       ontap: () {},
-          //     ),
-          //     AccountContainerTile(
-          //       title: "Slack",
-          //       subTitle: "rosepoole@email.com",
-          //       imageUrl: IconsAssets.slackLogoUrl,
-          //       ontap: () {},
-          //     ),
-          //     AccountContainerTile(
-          //       title: "Discord",
-          //       subTitle: "rosepoole@email.com",
-          //       imageUrl: IconsAssets.discordLogoUrl,
-          //       ontap: () {},
-          //     ),
-          //     AccountContainerTile(
-          //       title: "GitHub",
-          //       subTitle: "rosepoole@email.com",
-          //       imageUrl: IconsAssets.githubLogoUrl,
-          //       ontap: () {},
-          //     ),
-          //   ],
-          // ),
         ],
       ),
     );

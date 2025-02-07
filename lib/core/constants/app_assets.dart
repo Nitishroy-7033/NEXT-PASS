@@ -1,18 +1,20 @@
+// App Images Assets
 class AppImageAssets {
   static const String imageBasePath = "assets/images/";
   static const String appLogo = "${imageBasePath}app_logo.png";
   static const String demoProfileImage =
       "${imageBasePath}demo_profile_image.jpg";
   static const String getStarted = "${imageBasePath}getstarted.png";
+  static const String favouriteImage = "${imageBasePath}faviourite_image.png";
 }
 
+// SVG Icons Assets
 class IconsAssets {
   static const String iconBasePath = "assets/icons/";
   static const String browserIcon = "${iconBasePath}browser_icon.svg";
   static const String mobileIcon = "${iconBasePath}mobile_icon.svg";
   static const String paymentCardIcon = "${iconBasePath}payment_card_icon.svg";
-  static const String personProfileIcon =
-      "${iconBasePath}person_profile.svg";
+  static const String personProfileIcon = "${iconBasePath}person_profile.svg";
   static const String searchIcon = "${iconBasePath}search_icon.svg";
   static const String lockIcon = "${iconBasePath}lock_icon.svg";
   static const String mailIcon = "${iconBasePath}mail_icon.svg";
@@ -24,6 +26,8 @@ class IconsAssets {
   static const String addIcon = "${iconBasePath}add_icon.svg";
   static const String bookmarkIcon = "${iconBasePath}bookmark_icon.svg";
   static const String securityIcon = "${iconBasePath}security_icon.svg";
+  static const String passwordIcon = "${iconBasePath}password_icon.svg";
+  static const String profileIcon = "${iconBasePath}profile_icon.svg";
 
   // NETWORK ASSETS
   static const String spotifyLogoUrl =
