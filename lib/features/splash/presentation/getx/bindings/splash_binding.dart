@@ -6,7 +6,6 @@ import 'package:next_pass/features/splash/presentation/getx/controllers/splash_c
 class SplashBinding extends Bindings {
   @override
   void dependencies() {
-    // You can add your controllers here if needed
     Get.lazyPut<SplashController>(() => SplashController());
   }
 }

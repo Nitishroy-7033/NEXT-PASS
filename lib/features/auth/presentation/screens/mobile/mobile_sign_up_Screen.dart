@@ -1,44 +1,70 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-
-import '../../getx/controllers/auth_controller.dart';
-
-
 class MobileSignUpScreen extends StatelessWidget {
   const MobileSignUpScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(AuthController());
-
-    return Scaffold(
-      appBar: AppBar(title: const Text("Signup")),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          children: [
-            TextField(
-              decoration: const InputDecoration(hintText: 'Name'),
-              onChanged: (value) => controller.name.value = value,
+    return Container(
+      child: Column(
+        children: [
+          Row(
+            children: [
+              Text(
+                "User Name",
+                style: Theme.of(context).textTheme.labelMedium,
+              ),
+            ],
+          ),
+          const SizedBox(height: 10),
+          TextFormField(
+            textInputAction: TextInputAction.next,
+            decoration: const InputDecoration(
+              prefixIcon: Icon(Icons.person),
+              hintText: "User Name",
             ),
-            TextField(
-              decoration: const InputDecoration(hintText: 'Email'),
-              onChanged: (value) => controller.email.value = value,
+          ),
+         
+          const SizedBox(
+            height: 20,
+          ),
+          Row(
+            children: [
+              Text(
+                "Password",
+                style: Theme.of(context).textTheme.labelMedium,
+              ),
+            ],
+          ),
+          const SizedBox(height: 10),
+          TextFormField(
+            textInputAction: TextInputAction.next,
+            obscureText: true,
+            decoration: const InputDecoration(
+              prefixIcon: Icon(Icons.password),
+              hintText: "**********",
             ),
-            TextField(
-              decoration: const InputDecoration(hintText: 'Password'),
-              obscureText: true,
-              onChanged: (value) => controller.password.value = value,
+          ),
+          const SizedBox(
+            height: 20,
+          ),
+          Row(
+            children: [
+              Text(
+                "Email",
+                style: Theme.of(context).textTheme.labelMedium,
+              ),
+            ],
+          ),
+          const SizedBox(height: 10),
+          TextFormField(
+            textInputAction: TextInputAction.next,
+            obscureText: true,
+            decoration: const InputDecoration(
+              prefixIcon: Icon(Icons.alternate_email),
+              hintText: "user@gmail.com",
             ),
-            const SizedBox(height: 20),
-            Obx(() => controller.isLoading.value
-                ? const CircularProgressIndicator()
-                : ElevatedButton(
-              onPressed: (){},
-              child: const Text("Signup"),
-            )),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

@@ -12,7 +12,7 @@ class AllWidgetsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('All Widgets Screen'),
+          title: const Text('All Widgets Screen'),
         ),
         body: Padding(
           padding: const EdgeInsets.all(20),
@@ -20,7 +20,10 @@ class AllWidgetsScreen extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  Text("Enter name",style: Theme.of(context).textTheme.labelLarge,),
+                  Text(
+                    "Enter name",
+                    style: Theme.of(context).textTheme.labelLarge,
+                  ),
                 ],
               ),
               const SizedBox(height: 10),
@@ -43,7 +46,7 @@ class AllWidgetsScreen extends StatelessWidget {
                     Icons.done,
                     color: Theme.of(context).colorScheme.primary,
                   ),
-                  prefixIcon: Icon(Icons.person),
+                  prefixIcon: const Icon(Icons.person),
                 ),
               ),
               const SizedBox(height: 20),

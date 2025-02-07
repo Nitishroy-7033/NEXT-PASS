@@ -64,3 +64,16 @@ Thumbs.db
 
 # Dart and Flutter dependencies
 pubspec.lock
+
+# Node modules
+backend/node_modules/
+NextPassAPI/.vs/
+NextPassAPI/NextPassAPI/obj/
+NextPassAPI/NextPassAPI.Data/obj/
+NextPassAPI/NextPassAPI.Identity/obj/
+NextPassAPI/NextPassAPI/bin/Debug/
+NextPassAPI/NextPassAPI.Data/bin/
+NextPassAPI/NextPassAPI.Data/bin/Debug/net8.0/NextPassAPI.Data.pdb
+
+# FVM Version Cache
+.fvm/

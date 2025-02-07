@@ -1,40 +1,57 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-
-import '../../getx/controllers/auth_controller.dart';
+import 'package:next_pass/core/constants/app_assets.dart';
+import 'package:next_pass/core/widgets/primary_button.dart';
 
 class MobileLoginScreen extends StatelessWidget {
   const MobileLoginScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.find<AuthController>();
-
-    return Scaffold(
-      appBar: AppBar(title: const Text("Login")),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          children: [
-            TextField(
-              decoration: const InputDecoration(labelText: 'Email'),
-              onChanged: (value) => controller.email.value = value,
+    return Container(
+      child: Column(
+        children: [
+          Row(
+            children: [
+              Text(
+                "Email",
+                style: Theme.of(context).textTheme.labelMedium,
+              ),
+            ],
+          ),
+          const SizedBox(height: 10),
+          TextFormField(
+            textInputAction: TextInputAction.next,
+            obscureText: true,
+            decoration: const InputDecoration(
+              prefixIcon: Icon(Icons.alternate_email),
+              hintText: "user@gmail.com",
             ),
-            TextField(
-              decoration: const InputDecoration(labelText: 'Password'),
-              obscureText: true,
-              onChanged: (value) => controller.password.value = value,
+          ),
+          Row(
+            children: [
+              Text(
+                "Password",
+                style: Theme.of(context).textTheme.labelMedium,
+              ),
+            ],
+          ),
+          const SizedBox(height: 10),
+          TextFormField(
+            textInputAction: TextInputAction.next,
+            obscureText: true,
+            decoration: const InputDecoration(
+              prefixIcon: Icon(Icons.alternate_email),
+              hintText: "**********",
             ),
-            const SizedBox(height: 20),
-            Obx(() => controller.isLoading.value
-                ? const CircularProgressIndicator()
-                : ElevatedButton(
-              onPressed: (){},
-              child: const Text("Login"),
-            )),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
 }
+
+
+
+
+
+
