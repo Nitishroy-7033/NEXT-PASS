@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:next_pass/core/constants/app_assets.dart';
+import 'package:next_pass/core/constants/app_strings.dart';
 import 'package:next_pass/core/widgets/primary_button.dart';
 import 'package:next_pass/features/dashboard/presentation/widgets/sidebar_tab.dart';
 import 'package:next_pass/features/dashboard/controllers/web_sidebar_controller.dart';
@@ -60,35 +61,35 @@ class WebDashboard extends StatelessWidget {
                           children: [
                             SidebarTab(
                               icon: IconsAssets.homeIcon,
-                              title: 'Home',
+                              title: AppStrings.sidebarHomeTitle,
                               onTap: () => sidebarController.setIndex(0),
                               isSelected:
                                   sidebarController.selectedIndex.value == 0,
                             ),
                             SidebarTab(
                               icon: IconsAssets.securityIcon,
-                              title: 'Protection',
+                              title: AppStrings.sidebarProtectionTitle,
                               onTap: () => sidebarController.setIndex(1),
                               isSelected:
                                   sidebarController.selectedIndex.value == 1,
                             ),
                             SidebarTab(
                               icon: IconsAssets.bookmarkIcon,
-                              title: 'Bookmarks',
+                              title: AppStrings.sidebarBookmarkTitle,
                               onTap: () => sidebarController.setIndex(2),
                               isSelected:
                                   sidebarController.selectedIndex.value == 2,
                             ),
                             SidebarTab(
                               icon: IconsAssets.personProfileIcon,
-                              title: 'Account',
+                              title: AppStrings.sidebarAccountTitle,
                               onTap: () => sidebarController.setIndex(3),
                               isSelected:
                                   sidebarController.selectedIndex.value == 3,
                             ),
                             SidebarTab(
                               icon: IconsAssets.settingsIcon,
-                              title: 'Settings',
+                              title: AppStrings.sidebarSettingsTitle,
                               onTap: () => sidebarController.setIndex(4),
                               isSelected:
                                   sidebarController.selectedIndex.value == 4,
@@ -207,7 +208,7 @@ class WebDashboard extends StatelessWidget {
                   ),
                   // SCREENS VIEW FOR DIFFERENT TABS
                   Padding(
-                    padding: const EdgeInsets.all(20.0),
+                    padding: const EdgeInsets.all(10.0),
                     child: Obx(
                       () => sidebarController.getWebScreen(),
                     ),

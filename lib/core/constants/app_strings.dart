@@ -24,4 +24,11 @@ class AppStrings {
   static const String navGenerateTitle = 'Generate';
   static const String navAddTitle = 'Add';
   static const String navSettingsTitle = 'Settings';
+
+  // Web Sidebar Title
+  static const String sidebarHomeTitle = 'Home';
+  static const String sidebarProtectionTitle = 'Protection';
+  static const String sidebarBookmarkTitle = 'Bookmarks';
+  static const String sidebarAccountTitle = 'Account';
+  static const String sidebarSettingsTitle = 'Settings';
 }

@@ -43,12 +43,8 @@ class PrimaryButton extends StatelessWidget {
             if (icon != null) const SizedBox(width: 10),
             Text(
               text,
-              style: (MediaQuery.of(context).size.width > 800)
-                  ? Theme.of(context).textTheme.bodyMedium?.copyWith(
-                        color: color ?? Theme.of(context).colorScheme.onSurface
-                      )
-                  : Theme.of(context).textTheme.bodySmall?.copyWith(
-                      color: color ?? Theme.of(context).colorScheme.onSurface),
+              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                  color: color ?? Theme.of(context).colorScheme.onSurface),
             )
           ],
         ),

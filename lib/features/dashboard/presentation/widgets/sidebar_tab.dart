@@ -1,6 +1,6 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:next_pass/core/constants/app_assets.dart';
 
 class SidebarTab extends StatelessWidget {
   final String title;
@@ -20,28 +20,41 @@ class SidebarTab extends StatelessWidget {
       clipBehavior: Clip.hardEdge,
       elevation: 0,
       child: ListTile(
-        leading: Padding(
-          padding: const EdgeInsets.all(15.0),
-          child: SvgPicture.asset(
-            icon,
-            colorFilter: ColorFilter.mode(
-                (isSelected)
-                    ? Theme.of(context).colorScheme.primary
-                    : Theme.of(context).colorScheme.tertiary,
-                BlendMode.srcIn),
-          ),
-        ),
-        title: Text(
-          title,
-          style: (isSelected)
-              ? Theme.of(context).textTheme.bodyMedium?.copyWith(
-                    color: Theme.of(context).colorScheme.primary,
-                    fontWeight: FontWeight.w500,
-                  )
-              : Theme.of(context).textTheme.bodyMedium?.copyWith(
-                    color: Theme.of(context).colorScheme.tertiary,
-                  ),
-        ),
+        minLeadingWidth: 0,
+        leading: (MediaQuery.of(context).size.width > 1000)
+            ? Padding(
+                padding: const EdgeInsets.all(15.0),
+                child: SvgPicture.asset(
+                  icon,
+                  colorFilter: ColorFilter.mode(
+                      (isSelected)
+                          ? Theme.of(context).colorScheme.primary
+                          : Theme.of(context).colorScheme.tertiary,
+                      BlendMode.srcIn),
+                ),
+              )
+            : const SizedBox.shrink(),
+        title: (MediaQuery.of(context).size.width > 1000)
+            ? AutoSizeText(
+                title,
+                style: (isSelected)
+                    ? Theme.of(context).textTheme.bodyMedium?.copyWith(
+                          color: Theme.of(context).colorScheme.primary,
+                          fontWeight: FontWeight.w500,
+                        )
+                    : Theme.of(context).textTheme.bodyMedium?.copyWith(
+                          color: Theme.of(context).colorScheme.tertiary,
+                        ),
+                maxLines: 1,
+              )
+            : SvgPicture.asset(
+                icon,
+                colorFilter: ColorFilter.mode(
+                    (isSelected)
+                        ? Theme.of(context).colorScheme.primary
+                        : Theme.of(context).colorScheme.tertiary,
+                    BlendMode.srcIn),
+              ),
         selected: isSelected,
         selectedTileColor: Theme.of(context).colorScheme.secondaryContainer,
         splashColor: Colors.transparent,
