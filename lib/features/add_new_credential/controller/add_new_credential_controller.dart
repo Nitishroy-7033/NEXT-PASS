@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:next_pass/features/add_new_credential/data/credential_repository.dart';
 
 import '../data/interface.dart';
 import '../models/new_credenatial.dart';
 
 class AddNewCredentialController extends GetxController {
-final CredentialInterface credentialRepository = Get.find<CredentialInterface>();
+  final CredentialInterface credentialRepository =
+      Get.find<CredentialInterface>();
 
   // Controllers for the form fields
   TextEditingController siteUrl = TextEditingController();
@@ -23,7 +23,6 @@ final CredentialInterface credentialRepository = Get.find<CredentialInterface>()
       emailId: emailId.text,
       password: password.text,
       phoneNumber: mobileNumber.text,
-      
     );
 
     final success =

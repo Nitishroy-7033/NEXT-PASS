@@ -1,42 +1,38 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:next_pass/core/constants/app_strings.dart';
+import 'package:next_pass/core/constants/app_assets.dart';
 import 'package:next_pass/features/auth/presentation/getx/controllers/navbar_controller.dart';
 
-class Navbar extends StatelessWidget {
-  final NavBarController navBarController = Get.put(NavBarController());
+class CustomNavBar extends StatelessWidget {
+  final NavController navController = Get.put(NavController());
 
-  Navbar({super.key});
+  CustomNavBar({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Obx(
-      () => BottomNavigationBar(
-        currentIndex: navBarController.selectedIndex.value,
-        onTap: navBarController.changeTab,
-        selectedItemColor: Colors.green,
-        unselectedItemColor: Colors.grey,
-        elevation: 1,
-        backgroundColor: Colors.white,
-        landscapeLayout: BottomNavigationBarLandscapeLayout.spread,
-        items: [
-          navBarController.navbarItems(
-            const Icon(Icons.home_outlined),
-            AppStrings.navHomeTitle,
+      () => Padding(
+        padding: const EdgeInsets.all(12.0),
+        child: Container(
+          padding: const EdgeInsets.symmetric(vertical: 10),
+          decoration: BoxDecoration(
+            color: Theme.of(context).colorScheme.surface,
+            borderRadius: BorderRadius.circular(20),
+            boxShadow: [
+              BoxShadow(color: Colors.grey.shade600, blurRadius: 5),
+            ],
           ),
-          navBarController.navbarItems(
-            const Icon(Icons.key_outlined),
-            AppStrings.navGenerateTitle,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              navController.navItem(0, IconsAssets.homeIcon),
+              navController.navItem(1, IconsAssets.passwordIcon),
+              navController.navItem(2, IconsAssets.settingsIcon),
+              navController.navItem(3, IconsAssets.bookMarkIcon),
+              navController.navItem(4, IconsAssets.profileIcon),
+            ],
           ),
-          navBarController.navbarItems(
-            const Icon(Icons.add),
-            AppStrings.navAddTitle,
-          ),
-          navBarController.navbarItems(
-            const Icon(Icons.settings_outlined),
-            AppStrings.navSettingsTitle,
-          ),
-        ],
+        ),
       ),
     );
   }

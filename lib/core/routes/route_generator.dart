@@ -3,7 +3,6 @@ import 'package:next_pass/core/widgets/all_widgets_screen.dart';
 import 'package:next_pass/features/auth/presentation/screens/mobile/mobile_dashboard.dart';
 import 'package:next_pass/features/add_new_credential/presentation/views/view_add_new_credential.dart';
 
-import 'package:next_pass/features/auth/presentation/screens/mobile/auth_tab.dart';
 import 'package:next_pass/features/auth/presentation/views/auth_tab_view.dart';
 
 import 'package:next_pass/features/auth/presentation/views/login_view.dart';

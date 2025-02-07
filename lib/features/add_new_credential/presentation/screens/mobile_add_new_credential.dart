@@ -1,6 +1,4 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:next_pass/features/add_new_credential/controller/add_new_credential_controller.dart';
 import 'package:next_pass/features/add_new_credential/presentation/widgets/add_new_credential_form.dart';
@@ -17,7 +15,7 @@ class MobileAddNewCredential extends StatelessWidget {
       ),
       body: Padding(
         padding: const EdgeInsets.all(10),
-        child: ListView (
+        child: ListView(
           children: [
             const SizedBox(height: 20),
             Row(
@@ -33,7 +31,9 @@ class MobileAddNewCredential extends StatelessWidget {
                 ),
               ],
             ),
-            const SizedBox(height: 20,),
+            const SizedBox(
+              height: 20,
+            ),
             const AddNewCredentialForm()
           ],
         ),
