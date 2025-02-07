@@ -1,7 +1,7 @@
 class AppStrings {
   // General
   static const String appName = "Next Pass";
-  static const String creat_acc="Create Account";
+  static const String creat_acc = "Create Account";
 
   // Error Messages
   static const String errorNetwork = "Please check your internet connection.";
@@ -18,10 +18,4 @@ class AppStrings {
   String welcome = "Welcome";
 
   static const String privacy = "Protect your privacy from Hacker";
-
-  // Bottom NavBar Title
-  static const String navHomeTitle = 'Home';
-  static const String navGenerateTitle = 'Generate';
-  static const String navAddTitle = 'Add';
-  static const String navSettingsTitle = 'Settings';
 }

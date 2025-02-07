@@ -8,11 +8,12 @@ class MobileDashboard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final NavBarController navBarController = Get.put(NavBarController());
+    final NavController navBarController = Get.put(NavController());
     return Scaffold(
-      bottomNavigationBar: Navbar(),
+      bottomNavigationBar: CustomNavBar(),
       body: Obx(
-          () => navBarController.pages[navBarController.selectedIndex.value]),
+        () => navBarController.pages[navBarController.selectedIndex.value],
+      ),
     );
   }
 }
