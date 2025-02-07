@@ -18,4 +18,17 @@ class AppStrings {
   String welcome = "Welcome";
 
   static const String privacy = "Protect your privacy from Hacker";
+
+  // Bottom NavBar Title
+  static const String navHomeTitle = 'Home';
+  static const String navGenerateTitle = 'Generate';
+  static const String navAddTitle = 'Add';
+  static const String navSettingsTitle = 'Settings';
+
+  // Web Sidebar Title
+  static const String sidebarHomeTitle = 'Home';
+  static const String sidebarProtectionTitle = 'Protection';
+  static const String sidebarBookmarkTitle = 'Bookmarks';
+  static const String sidebarAccountTitle = 'Account';
+  static const String sidebarSettingsTitle = 'Settings';
 }
