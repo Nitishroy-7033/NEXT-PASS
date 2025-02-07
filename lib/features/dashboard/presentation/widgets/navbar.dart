@@ -1,40 +1,39 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:next_pass/features/dashboard/controllers/navbar_controller.dart';
 
 import '../../../../core/constants/app_assets.dart';
+import 'nav_bar_icon_button.dart';
 
 class CustomNavBar extends StatelessWidget {
-  final NavController navController = Get.put(NavController());
 
   CustomNavBar({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Obx(
-      () => Padding(
-        padding: const EdgeInsets.all(12.0),
-        child: Container(
-          padding: const EdgeInsets.symmetric(vertical: 10),
-          decoration: BoxDecoration(
-            color: Theme.of(context).colorScheme.surface,
-            borderRadius: BorderRadius.circular(20),
-            boxShadow: [
-              BoxShadow(color: Colors.grey.shade600, blurRadius: 5),
-            ],
-          ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              navController.navItem(0, IconsAssets.homeIcon),
-              navController.navItem(1, IconsAssets.passwordIcon),
-              navController.navItem(2, IconsAssets.settingsIcon),
-              navController.navItem(3, IconsAssets.bookmarkIcon),
-              navController.navItem(4, IconsAssets.profileIcon),
-            ],
+    return Container(
+        height: 50,
+        margin: const EdgeInsets.only(bottom: 10),
+        width: 230,
+        padding: EdgeInsets.all(5),
+        decoration: BoxDecoration(
+          color: Theme.of(context).colorScheme.primaryContainer,
+          borderRadius: BorderRadius.circular(20),
+          border: Border.all(
+            color: Theme.of(context).colorScheme.onPrimaryContainer.withOpacity(0.2),
+            width: 1,
           ),
         ),
-      ),
-    );
+        child: const Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            NavBarButton(icon: IconsAssets.homeIcon,index: 0,),
+            NavBarButton(icon: IconsAssets.passwordIcon,index: 1,),
+            NavBarButton(icon: IconsAssets.bookmarkIcon,index: 2,),
+            NavBarButton(icon: IconsAssets.profileIcon,index: 3),
+          ],
+        ),
+      );
   }
 }
