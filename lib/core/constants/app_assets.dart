@@ -4,7 +4,7 @@ class AppImageAssets {
   static const String appLogo = "${imageBasePath}app_logo.png";
   static const String demoProfileImage =
       "${imageBasePath}demo_profile_image.jpg";
-  static const String getStarted = "${imageBasePath}getstarted.png";
+  static const String getStarted = "${imageBasePath}get_started_image.jpg";
   static const String favouriteImage = "${imageBasePath}faviourite_image.png";
 }
 

@@ -17,7 +17,7 @@ class AppStrings {
 
   String welcome = "Welcome";
 
-  static const String privacy = "Protect your privacy from Hacker";
+  //static const String privacy = "Protect your privacy from Hacker";
 
   // Bottom NavBar Title
   static const String navHomeTitle = 'Home';
@@ -31,4 +31,5 @@ class AppStrings {
   static const String sidebarBookmarkTitle = 'Bookmarks';
   static const String sidebarAccountTitle = 'Account';
   static const String sidebarSettingsTitle = 'Settings';
+  static const String privacy = "Your Digital Security Starts Here ";
 }
