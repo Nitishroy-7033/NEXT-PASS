@@ -61,7 +61,7 @@ class RouteGenerator {
       GetPage(
         name: AppRoutes.dashboard,
         page: () => const DashboardView(),
-        transition: Transition.fadeIn,
+        transition: Transition.leftToRightWithFade,
       ),
       GetPage(
         name: AppRoutes.allWidgetsScreen,

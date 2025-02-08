@@ -43,3 +43,10 @@ class IconsAssets {
   static const String githubLogoUrl =
       "https://cdn-icons-png.flaticon.com/512/25/25231.png";
 }
+
+
+class AnimationAssets {
+  static const String animationBasePath = "assets/animations/";
+  static const String splashLockAnimation = "${animationBasePath}lock_animation.json";
+
+}
