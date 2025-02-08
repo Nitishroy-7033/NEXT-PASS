@@ -16,7 +16,7 @@ class NavBarButton extends StatelessWidget {
         navController.selectedIndex.value = index;
       },
       child: Obx(()=>AnimatedContainer(
-        duration: Duration(milliseconds: 200),
+        duration: const Duration(milliseconds: 200),
         curve: Curves.easeInBack,
         height: 40,
         width: 40,

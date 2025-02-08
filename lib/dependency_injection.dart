@@ -1,7 +1,6 @@
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:next_pass/features/add_new_credential/data/credential_repository.dart';
-import 'package:next_pass/features/dashboard/controllers/navbar_controller.dart';
 import 'core/network/api_client.dart';
 import 'features/add_new_credential/data/interface.dart';
 
