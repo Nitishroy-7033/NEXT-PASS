@@ -1,4 +1,4 @@
-# Password Manager Project 
+![image](https://github.com/user-attachments/assets/bdcbb09b-578f-4f43-9c9f-7098a4d96a93)# Password Manager Project 
 
 Passwords are the keys to our digital world, but managing them is often a hassle. With this Password Manager project, we’re solving the widespread problem of password overload while teaching ourselves critical concepts in data security and encryption. Unlike third-party solutions, this project puts you in control of your sensitive data. Whether for personal use or showcasing your skills as a developer, this project combines utility, security, and innovation. It’s not just a tool—it’s a practical learning experience that benefits users and developers alike. 
 
@@ -28,8 +28,25 @@ Passwords are the keys to our digital world, but managing them is often a hassle
     * Team/Family Accounts
     * Password Usage Analytics.
 
-
-
+# Commit Pattern 
+🚀 : Improved Performance
+✨ : Added New Feature
+🐛 : Fixed a Bug
+🛠️ : Code Refactoring
+🎨 : Updated UI/UX
+📝 : Updated Documentation
+✅ : Added/Updated Tests
+🔧 : Updated Configuration
+🔥 : Removed Unused Code
+🚚 : Moved/Renamed Files
+🗃️ : Database Changes
+♻️ : Code Cleanup
+🛑 : Critical Hotfix
+🔖 : Released New Version
+🚀 : Deployment Changes
+🏗️ : Updated Build Process
+📦 : Updated Dependencies
+🔥 : Breaking Change
 
 📺 Join Related Channels
 
