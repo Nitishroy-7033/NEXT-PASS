@@ -31,4 +31,15 @@ class AppStrings {
   static const String sidebarBookmarkTitle = 'Bookmarks';
   static const String sidebarAccountTitle = 'Account';
   static const String sidebarSettingsTitle = 'Settings';
+
+
+  // For Master password
+ static const String masterPasswordTitle = 'Master Password';
+ static const String masterPasswordSubtitle = 'Enter your master password';
+ static const String masterPasswordButton = 'Unlock';
+ static const String masterPasswordRemember = 'Remember me';
+ static const String masterPasswordForgot = 'Forgot password?';
+ static const String masterPasswordBiometrics = 'Or unlock with biometrics';
+
+
 }
