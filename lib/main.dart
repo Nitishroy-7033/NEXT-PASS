@@ -8,8 +8,8 @@ import 'dependency_injection.dart';
 import 'features/splash/presentation/getx/bindings/splash_binding.dart';
 
 void main() {
-   WidgetsFlutterBinding.ensureInitialized();
-   DependencyInjection.init();
+  WidgetsFlutterBinding.ensureInitialized();
+  DependencyInjection.init();
   runApp(const MyApp());
 }
 
@@ -21,9 +21,9 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'NEXT PASS',
-      initialRoute: AppRoutes.newCredential,
+      initialRoute: AppRoutes.dashboard,
       getPages: RouteGenerator.getRoutes(),
-       initialBinding: SplashBinding(),
+      initialBinding: SplashBinding(),
       theme: AppThemes.lightTheme,
       darkTheme: AppThemes.darkTheme,
       themeMode: ThemeMode.dark,

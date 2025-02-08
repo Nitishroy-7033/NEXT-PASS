@@ -1,7 +1,7 @@
 class AppStrings {
   // General
   static const String appName = "Next Pass";
-  static const String creat_acc="Create Account";
+  static const String creat_acc = "Create Account";
 
   // Error Messages
   static const String errorNetwork = "Please check your internet connection.";
@@ -24,4 +24,11 @@ class AppStrings {
   static const String navGenerateTitle = 'Generate';
   static const String navAddTitle = 'Add';
   static const String navSettingsTitle = 'Settings';
+
+  // Web Sidebar Title
+  static const String sidebarHomeTitle = 'Home';
+  static const String sidebarProtectionTitle = 'Protection';
+  static const String sidebarBookmarkTitle = 'Bookmarks';
+  static const String sidebarAccountTitle = 'Account';
+  static const String sidebarSettingsTitle = 'Settings';
 }

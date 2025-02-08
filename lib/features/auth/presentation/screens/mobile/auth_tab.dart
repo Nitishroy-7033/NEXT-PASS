@@ -4,6 +4,8 @@ import 'package:next_pass/features/auth/presentation/screens/mobile/mobile_login
 import 'package:next_pass/features/auth/presentation/screens/mobile/mobile_sign_up_Screen.dart';
 
 class AuthScreen extends StatefulWidget {
+  const AuthScreen({super.key});
+
   @override
   _AuthScreenState createState() => _AuthScreenState();
 }
@@ -14,25 +16,30 @@ class _AuthScreenState extends State<AuthScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 24),
+        padding: const EdgeInsets.symmetric(horizontal: 24),
         child: Column(
           children: [
-            SizedBox(height: 50,),
-            Image.asset(AppImageAssets.appLogo,height: 100,),
-            SizedBox(height: 30),
-            Text(
+            const SizedBox(
+              height: 50,
+            ),
+            Image.asset(
+              AppImageAssets.appLogo,
+              height: 100,
+            ),
+            const SizedBox(height: 30),
+            const Text(
               "Login or Sign Up Today",
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
-            SizedBox(height: 25),
-            Text(
+            const SizedBox(height: 25),
+            const Text(
               "Discover new connections and meaningful relationships with our dating app",
               textAlign: TextAlign.center,
               style: TextStyle(fontSize: 14, color: Colors.grey),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Container(
-              padding: EdgeInsets.all(10),
+              padding: const EdgeInsets.all(10),
               decoration: BoxDecoration(
                 color: Theme.of(context).colorScheme.primaryContainer,
                 borderRadius: BorderRadius.circular(20),
@@ -57,14 +64,18 @@ class _AuthScreenState extends State<AuthScreen> {
                             },
                             child: Container(
                               decoration: BoxDecoration(
-                                color: selectedIndex == 0 ? Colors.white : Colors.transparent,
+                                color: selectedIndex == 0
+                                    ? Colors.white
+                                    : Colors.transparent,
                                 borderRadius: BorderRadius.circular(20),
                               ),
                               alignment: Alignment.center,
                               child: Text(
                                 'Login',
                                 style: TextStyle(
-                                  color: selectedIndex == 0 ? Colors.black : Colors.grey,
+                                  color: selectedIndex == 0
+                                      ? Colors.black
+                                      : Colors.grey,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
@@ -80,14 +91,18 @@ class _AuthScreenState extends State<AuthScreen> {
                             },
                             child: Container(
                               decoration: BoxDecoration(
-                                color: selectedIndex == 1 ? Colors.white : Colors.transparent,
+                                color: selectedIndex == 1
+                                    ? Colors.white
+                                    : Colors.transparent,
                                 borderRadius: BorderRadius.circular(20),
                               ),
                               alignment: Alignment.center,
                               child: Text(
                                 'SignUp',
                                 style: TextStyle(
-                                  color: selectedIndex == 1 ? Colors.black : Colors.grey,
+                                  color: selectedIndex == 1
+                                      ? Colors.black
+                                      : Colors.grey,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
@@ -97,8 +112,10 @@ class _AuthScreenState extends State<AuthScreen> {
                       ],
                     ),
                   ),
-                  SizedBox(height: 20),
-                  selectedIndex == 0 ? MobileLoginScreen() : MobileSignUpScreen(),
+                  const SizedBox(height: 20),
+                  selectedIndex == 0
+                      ? const MobileLoginScreen()
+                      : const MobileSignUpScreen(),
                 ],
               ),
             ),
@@ -108,4 +125,3 @@ class _AuthScreenState extends State<AuthScreen> {
     );
   }
 }
-
