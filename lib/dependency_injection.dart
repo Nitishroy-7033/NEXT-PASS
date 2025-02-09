@@ -12,5 +12,6 @@ class DependencyInjection {
             "https://next-pass-g6gfa2add9aeaafa.centralus-01.azurewebsites.net/")
       ..init());
     Get.lazyPut<CredentialInterface>(() => CredentialRepository());
+    // new line
   }
 }
