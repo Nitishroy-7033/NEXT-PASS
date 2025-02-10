@@ -8,6 +8,12 @@ class AssetsRes {
 
   static const String PLUGIN_NAME = 'next_pass';
   static const String PLUGIN_VERSION = '1.0.0+1';
-  static const String LOCK_ICON = 'assets/icons/lock_icon.svg';
-  static const String MAIL_ICON = 'assets/icons/mail_icon.svg';
+  static const String LOCK_ANIMATION = 'assets/animations/lock_animation.json';
+  static const String BIOMETRIC_ICON = 'assets/icons/Biometric_icon.svg';
+  static const String STAR = 'assets/icons/Star.svg';
+  static const String CROSS_ICON = 'assets/icons/cross_icon.svg';
+  static const String ELLIPSE_ICON = 'assets/icons/ellipse_icon.svg';
+  static const String POLYGON_ICON = 'assets/icons/polygon_icon.svg';
+  static const String RECTANGLE_ICON = 'assets/icons/rectangle_icon.svg';
+  static const String SECOND_LOCK_ICON = 'assets/icons/second_lock_icon.svg';
 }

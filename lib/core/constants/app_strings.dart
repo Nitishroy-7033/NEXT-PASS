@@ -34,12 +34,13 @@ class AppStrings {
 
 
   // For Master password
- static const String masterPasswordTitle = 'Master Password';
- static const String masterPasswordSubtitle = 'Enter your master password';
- static const String masterPasswordButton = 'Unlock';
- static const String masterPasswordRemember = 'Remember me';
- static const String masterPasswordForgot = 'Forgot password?';
- static const String masterPasswordBiometrics = 'Or unlock with biometrics';
+
+ static const String masterPasswordSubtitle = 'Enter your PIN';
+
+
+ static const String masterPasswordForgot = 'Forgot PIN?';
+static const String masterPasswordPrivacy = 'Privacy Policy';
+static const String masterPasswordTerms = 'Terms & Services';
 
 
 }

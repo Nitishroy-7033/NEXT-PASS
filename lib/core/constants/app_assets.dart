@@ -28,6 +28,13 @@ class IconsAssets {
   static const String securityIcon = "${iconBasePath}security_icon.svg";
   static const String passwordIcon = "${iconBasePath}password_icon.svg";
   static const String profileIcon = "${iconBasePath}profile_icon.svg";
+  static const String second_lock_icon = "${iconBasePath}second_lock_icon.svg";
+  static const String crossIcon = "${iconBasePath}cross_icon.svg";
+  static const String biometric_icon = "${iconBasePath}Biometric_icon.svg";
+  static const String polygon_icon = "${iconBasePath}polygon_icon.svg";
+  static const String star_icon = "${iconBasePath}Star.svg";
+  static const String rectangle_icon = "${iconBasePath}rectangle_icon.svg";
+  static const String ellipse_icon = "${iconBasePath}ellipse_icon.svg";
 
   // NETWORK ASSETS
   static const String spotifyLogoUrl =
