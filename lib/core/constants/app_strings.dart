@@ -31,4 +31,16 @@ class AppStrings {
   static const String sidebarBookmarkTitle = 'Bookmarks';
   static const String sidebarAccountTitle = 'Account';
   static const String sidebarSettingsTitle = 'Settings';
+
+
+  // For Master password
+
+ static const String masterPasswordSubtitle = 'Enter your PIN';
+
+
+ static const String masterPasswordForgot = 'Forgot PIN?';
+static const String masterPasswordPrivacy = 'Privacy Policy';
+static const String masterPasswordTerms = 'Terms & Services';
+
+
 }

@@ -10,8 +10,9 @@ import 'package:next_pass/features/getStarted/presentations/view/get_started_vie
 import 'package:next_pass/features/not_found/presentation/views/not_found_view.dart';
 
 // Import your screens here
-import '../../features/auth/presentation/views/master_password_view.dart';
+
 import '../../features/home/presentation/views/home_view.dart';
+import '../../features/master_password/presentation/views/master_password_view.dart';
 import '../../features/splash/presentation/views/splace_view.dart';
 import 'app_routes.dart';
 
