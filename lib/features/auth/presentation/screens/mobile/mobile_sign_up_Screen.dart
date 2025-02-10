@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:next_pass/core/widgets/primary_button.dart';
 class MobileSignUpScreen extends StatelessWidget {
   const MobileSignUpScreen({super.key});
 
@@ -24,26 +23,7 @@ class MobileSignUpScreen extends StatelessWidget {
               hintText: "User Name",
             ),
           ),
-          const SizedBox(
-            height: 20,
-          ),
-          Row(
-            children: [
-              Text(
-                "Email",
-                style: Theme.of(context).textTheme.labelMedium,
-              ),
-            ],
-          ),
-          const SizedBox(height: 10),
-          TextFormField(
-            textInputAction: TextInputAction.next,
-            obscureText: true,
-            decoration: const InputDecoration(
-              prefixIcon: Icon(Icons.alternate_email),
-              hintText: "user@gmail.com",
-            ),
-          ),
+         
           const SizedBox(
             height: 20,
           ),
@@ -64,9 +44,26 @@ class MobileSignUpScreen extends StatelessWidget {
               hintText: "**********",
             ),
           ),
-          
-          SizedBox(height: 20,),
-          PrimaryButton(text: 'Signup', onPressed: (){}),
+          const SizedBox(
+            height: 20,
+          ),
+          Row(
+            children: [
+              Text(
+                "Email",
+                style: Theme.of(context).textTheme.labelMedium,
+              ),
+            ],
+          ),
+          const SizedBox(height: 10),
+          TextFormField(
+            textInputAction: TextInputAction.next,
+            obscureText: true,
+            decoration: const InputDecoration(
+              prefixIcon: Icon(Icons.alternate_email),
+              hintText: "user@gmail.com",
+            ),
+          ),
         ],
       ),
     );
