@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 import 'package:next_pass/core/constants/app_assets.dart';
+import 'package:next_pass/core/routes/app_routes.dart';
 import 'package:next_pass/features/home/presentation/widgets/account_container_tile.dart';
 import 'package:next_pass/features/home/presentation/widgets/category_container.dart';
 
@@ -36,7 +38,9 @@ class MobileHomeScreen extends StatelessWidget {
                       style: Theme.of(context).textTheme.headlineLarge),
                   const Spacer(),
                   InkWell(
-                    onTap: () {},
+                    onTap: () {
+                      Get.toNamed(AppRoutes.authtab);
+                    },
                     borderRadius: BorderRadius.circular(20),
                     child: SizedBox(
                       height: 35,
