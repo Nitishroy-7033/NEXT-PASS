@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:next_pass/core/constants/app_assets.dart';
 
 class AccountContainerTile extends StatelessWidget {
   final String imageUrl;
@@ -16,6 +18,7 @@ class AccountContainerTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       elevation: 0.0,
+      clipBehavior: Clip.hardEdge,
       color: Theme.of(context).colorScheme.primaryContainer,
       child: ListTile(
         title: Text(
@@ -24,18 +27,29 @@ class AccountContainerTile extends StatelessWidget {
         ),
         subtitle: Text(
           subTitle,
-          style:Theme.of(context).textTheme.labelMedium,
+          style: Theme.of(context).textTheme.labelMedium,
         ),
         leading: SizedBox(
           height: 35,
           width: 35,
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(20),
-            child: Image.network(
-              imageUrl,
-              fit: BoxFit.cover,
-            ),
-          ),
+          child: (imageUrl.isNotEmpty)
+              ? ClipRRect(
+                  borderRadius: BorderRadius.circular(20),
+                  child: Image.network(
+                    imageUrl,
+                    fit: BoxFit.cover,
+                  ),
+                )
+              : Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    color: Theme.of(context).colorScheme.surface,
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: SvgPicture.asset(IconsAssets.lockIcon),
+                  ),
+                ),
         ),
         trailing: Icon(
           Icons.arrow_forward_ios_rounded,
@@ -43,7 +57,7 @@ class AccountContainerTile extends StatelessWidget {
           color: Theme.of(context).colorScheme.tertiary,
         ),
         onTap: ontap,
-        
+        splashColor: Theme.of(context).colorScheme.secondaryContainer,
       ),
     );
   }

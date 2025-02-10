@@ -7,6 +7,7 @@ class AuthTabView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Responsive(mobile: AuthScreen(), tablet: AuthScreen(), desktop: AuthScreen());
+    return const Responsive(
+        mobile: AuthScreen(), tablet: AuthScreen(), desktop: AuthScreen());
   }
 }

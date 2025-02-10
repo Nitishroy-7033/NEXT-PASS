@@ -27,7 +27,7 @@ class PrimaryButton extends StatelessWidget {
         padding: const EdgeInsets.all(10),
         decoration: BoxDecoration(
           color: backgroundColor ?? Theme.of(context).colorScheme.primary,
-          borderRadius: BorderRadius.circular(0),
+          borderRadius: BorderRadius.circular(10),
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -35,14 +35,16 @@ class PrimaryButton extends StatelessWidget {
             if (icon != null)
               SvgPicture.asset(
                 icon!,
-                color: color ?? Theme.of(context).colorScheme.onSurface,
+                colorFilter: ColorFilter.mode(
+                  color ?? Theme.of(context).colorScheme.onSurface,
+                  BlendMode.srcIn,
+                ),
               ),
             if (icon != null) const SizedBox(width: 10),
             Text(
               text,
               style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                    color: color ?? Theme.of(context).colorScheme.onSurface,
-                  ),
+                  color: color ?? Theme.of(context).colorScheme.onSurface),
             )
           ],
         ),
