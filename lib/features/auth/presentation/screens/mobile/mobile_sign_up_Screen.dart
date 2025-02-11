@@ -1,6 +1,6 @@
-import 'package:flutter/material.dart';
 
-import '../../../../../core/widgets/primary_button.dart';
+import '../../../../../core/constants/app_linker.dart';
+
 class MobileSignUpScreen extends StatelessWidget {
   const MobileSignUpScreen({super.key});
 

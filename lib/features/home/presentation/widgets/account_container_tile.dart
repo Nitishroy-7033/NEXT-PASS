@@ -1,6 +1,5 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:next_pass/core/constants/app_assets.dart';
+
+import '../../../../core/constants/app_linker.dart';
 
 class AccountContainerTile extends StatelessWidget {
   final String imageUrl;

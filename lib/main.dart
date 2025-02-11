@@ -1,11 +1,5 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:next_pass/core/constants/app_themes.dart';
-import 'package:next_pass/features/not_found/presentation/views/not_found_view.dart';
-import 'core/routes/app_routes.dart';
-import 'core/routes/route_generator.dart';
-import 'dependency_injection.dart';
-import 'features/splash/presentation/getx/bindings/splash_binding.dart';
+
+import 'core/constants/app_linker.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();

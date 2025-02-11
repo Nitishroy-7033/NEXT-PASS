@@ -1,6 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:next_pass/core/utils/responsive.dart';
-import 'package:next_pass/features/auth/presentation/screens/mobile/auth_tab.dart';
+import '../../../../core/constants/app_linker.dart';
 
 class AuthTabView extends StatelessWidget {
   const AuthTabView({super.key});

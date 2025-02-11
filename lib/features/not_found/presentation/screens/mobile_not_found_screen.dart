@@ -1,4 +1,5 @@
-import 'package:flutter/material.dart';
+
+import '../../../../core/constants/app_linker.dart';
 
 class MobileNotFoundScreen extends StatelessWidget {
   const MobileNotFoundScreen({super.key});
