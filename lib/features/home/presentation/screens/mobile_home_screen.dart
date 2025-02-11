@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:next_pass/core/constants/app_assets.dart';
-import 'package:next_pass/core/routes/app_routes.dart';
+import 'package:next_pass/core/constants/app_colors.dart';
+import 'package:next_pass/core/constants/app_strings.dart';
+import 'package:next_pass/features/home/controllers/home_screen_controller.dart';
 import 'package:next_pass/features/home/presentation/widgets/account_container_tile.dart';
 import 'package:next_pass/features/home/presentation/widgets/category_container.dart';
 
@@ -12,6 +14,7 @@ class MobileHomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     TextEditingController homeSearchController = TextEditingController();
+    HomeScreenController homeScreenController = Get.put(HomeScreenController());
     return SafeArea(
       child: Scaffold(
         backgroundColor: Theme.of(context).colorScheme.surface,
@@ -20,39 +23,79 @@ class MobileHomeScreen extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  SizedBox(
-                    height: 35,
-                    width: 35,
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(20),
-                      child: Image.asset(
-                        AppImageAssets.demoProfileImage,
-                        fit: BoxFit.cover,
+                  InkWell(
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: Theme.of(context).colorScheme.primaryContainer,
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 4, horizontal: 4),
+                      child: Row(
+                        children: [
+                          SizedBox(
+                            height: 35,
+                            width: 35,
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(6),
+                              child: Image.asset(
+                                AppImageAssets.demoProfileImage,
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                          ),
+                          const SizedBox(
+                            width: 10,
+                          ),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'Rose Poole',
+                                style:
+                                    Theme.of(context).textTheme.headlineSmall,
+                              ),
+                              Row(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    AppStrings.viewLink,
+                                    style:
+                                        Theme.of(context).textTheme.labelSmall,
+                                  ),
+                                  const SizedBox(
+                                    width: 3,
+                                  ),
+                                  Icon(
+                                    Icons.arrow_forward_ios_rounded,
+                                    size: 10,
+                                    color:
+                                        Theme.of(context).colorScheme.tertiary,
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ],
                       ),
                     ),
                   ),
-                  const SizedBox(
-                    width: 10,
-                  ),
-                  Text('Rose Poole',
-                      style: Theme.of(context).textTheme.headlineLarge),
                   const Spacer(),
                   InkWell(
-                    onTap: () {
-                      Get.toNamed(AppRoutes.authtab);
-                    },
-                    borderRadius: BorderRadius.circular(20),
-                    child: SizedBox(
-                      height: 35,
-                      width: 35,
-                      child: Padding(
-                        padding: const EdgeInsets.all(7.0),
-                        child: SvgPicture.asset(
-                          IconsAssets.notificationIcon,
-                          colorFilter: ColorFilter.mode(
-                            Theme.of(context).colorScheme.onSurface,
-                            BlendMode.srcIn,
-                          ),
+                    onTap: () {},
+                    borderRadius: BorderRadius.circular(10),
+                    child: Container(
+                      padding: const EdgeInsets.all(7.0),
+                      decoration: BoxDecoration(
+                        color: Theme.of(context).colorScheme.primaryContainer,
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: SvgPicture.asset(
+                        IconsAssets.notificationIcon,
+                        colorFilter: ColorFilter.mode(
+                          Theme.of(context).colorScheme.tertiary,
+                          BlendMode.srcIn,
                         ),
                       ),
                     ),
@@ -60,7 +103,7 @@ class MobileHomeScreen extends StatelessWidget {
                 ],
               ),
               const SizedBox(
-                height: 10,
+                height: 12,
               ),
               TextField(
                 autofocus: false,
@@ -70,7 +113,7 @@ class MobileHomeScreen extends StatelessWidget {
                   constraints: const BoxConstraints(
                     maxHeight: 40,
                   ),
-                  hintText: "search your vaults",
+                  hintText: AppStrings.searchText,
                   hintStyle: Theme.of(context).textTheme.labelMedium,
                   prefixIcon: Padding(
                     padding: const EdgeInsets.all(12.0),
@@ -104,7 +147,7 @@ class MobileHomeScreen extends StatelessWidget {
             ],
           ),
           scrolledUnderElevation: 0.0,
-          toolbarHeight: 95,
+          toolbarHeight: 120,
           backgroundColor: Theme.of(context).colorScheme.surface,
         ),
         // Floation Action Button for Add new password
@@ -112,7 +155,7 @@ class MobileHomeScreen extends StatelessWidget {
           onPressed: () {},
           backgroundColor: Theme.of(context).colorScheme.primary,
           heroTag: null,
-          tooltip: "Add Password",
+          tooltip: AppStrings.addPassword,
           child: SvgPicture.asset(
             IconsAssets.addIcon,
             colorFilter: ColorFilter.mode(
@@ -128,79 +171,155 @@ class MobileHomeScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Padding(
-                  padding: const EdgeInsets.only(top: 10, bottom: 15),
-                  child: Text(
-                    'Category',
-                    style: Theme.of(context).textTheme.headlineLarge,
-                  ),
-                ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    CategoryContainer(
-                      icon: IconsAssets.browserIcon,
-                      title: "Browser",
-                      count: "20",
-                      onTap: () {},
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          children: [
+                            CategoryContainer(
+                              icon: IconsAssets.androidIcon,
+                              title: "App",
+                              color: AppColors.blueColor,
+                              onTap: () {},
+                            ),
+                            CategoryContainer(
+                              icon: IconsAssets.browserIcon,
+                              title: "Website",
+                              color: AppColors.yellowColor,
+                              onTap: () {},
+                            ),
+                            CategoryContainer(
+                              icon: IconsAssets.paymentIcon,
+                              title: "Payment",
+                              color: AppColors.greenColor,
+                              onTap: () {},
+                            ),
+                          ],
+                        ),
+                        Obx(
+                          () => (homeScreenController.isMoreTabOpen.value)
+                              ? Row(
+                                  children: [
+                                    CategoryContainer(
+                                      icon: IconsAssets.generateIcon,
+                                      title: "Generate",
+                                      color: AppColors.pinkColor,
+                                      onTap: () {},
+                                    ),
+                                    CategoryContainer(
+                                      icon: IconsAssets.alertIcon,
+                                      title: "Pownd",
+                                      color:
+                                          Theme.of(context).colorScheme.error,
+                                      onTap: () {},
+                                    ),
+                                  ],
+                                )
+                              : const SizedBox.shrink(),
+                        ),
+                      ],
                     ),
-                    CategoryContainer(
-                      icon: IconsAssets.mobileIcon,
-                      title: "Mobile",
-                      count: "13",
-                      onTap: () {},
-                    ),
-                    CategoryContainer(
-                      icon: IconsAssets.paymentCardIcon,
-                      title: "Payment",
-                      count: "05",
-                      onTap: () {},
+                    Obx(
+                      () => CategoryContainer(
+                        icon: (homeScreenController.isMoreTabOpen.value)
+                            ? IconsAssets.dropUpIcon
+                            : IconsAssets.moreDotIcon,
+                        title: (homeScreenController.isMoreTabOpen.value)
+                            ? ""
+                            : "More",
+                        color: Theme.of(context).colorScheme.onSurface,
+                        onTap: () {
+                          homeScreenController.runMoreTab();
+                        },
+                      ),
                     ),
                   ],
                 ),
                 Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 10),
-                  child: Text(
-                    'Latest Account',
-                    style: Theme.of(context).textTheme.headlineLarge,
+                  padding: const EdgeInsets.symmetric(vertical: 15),
+                  child: Row(
+                    children: [
+                      Text(
+                        AppStrings.allCredentials,
+                        style: Theme.of(context).textTheme.labelMedium,
+                      ),
+                      const Spacer(),
+                      Text(
+                        AppStrings.viewAll,
+                        style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                              color: Theme.of(context).colorScheme.primary,
+                            ),
+                      ),
+                    ],
                   ),
                 ),
                 Column(
                   children: [
                     AccountContainerTile(
-                      title: "Spotify",
+                      title: "Facebook",
                       subTitle: "rosepoole@email.com",
-                      imageUrl: IconsAssets.spotifyLogoUrl,
+                      imageUrl: AppImageAssets.facebookLogo,
+                      password: "*********************",
+                      strength: "Strong",
+                      isAlert: true,
                       ontap: () {},
                     ),
                     AccountContainerTile(
-                      title: "Netflix",
+                      title: "Google",
                       subTitle: "rosepoole@email.com",
-                      imageUrl: IconsAssets.netflixLogoUrl,
+                      password: "*********************",
+                      strength: "Weak",
+                      imageUrl: AppImageAssets.googleLogo,
+                      isAlert: false,
                       ontap: () {},
                     ),
                     AccountContainerTile(
-                      title: "Instagram",
+                      title: "Playstore",
                       subTitle: "rosepoole@email.com",
-                      imageUrl: IconsAssets.instagramLogoUrl,
+                      password: "*********************",
+                      strength: "Strong",
+                      imageUrl: AppImageAssets.playstoreLogo,
+                      isAlert: true,
                       ontap: () {},
                     ),
                     AccountContainerTile(
-                      title: "Slack",
+                      title: "Twitter",
                       subTitle: "rosepoole@email.com",
-                      imageUrl: IconsAssets.slackLogoUrl,
+                      password: "*********************",
+                      strength: "Weak",
+                      imageUrl: AppImageAssets.twitterLogo,
+                      isAlert: false,
                       ontap: () {},
                     ),
                     AccountContainerTile(
-                      title: "Discord",
+                      title: "Linkedin",
                       subTitle: "rosepoole@email.com",
-                      imageUrl: IconsAssets.discordLogoUrl,
+                      password: "*********************",
+                      strength: "Strong",
+                      imageUrl: AppImageAssets.linkedinLogo,
+                      isAlert: true,
                       ontap: () {},
                     ),
                     AccountContainerTile(
-                      title: "GitHub",
+                      title: "Twitter",
                       subTitle: "rosepoole@email.com",
-                      imageUrl: IconsAssets.githubLogoUrl,
+                      password: "*********************",
+                      strength: "Weak",
+                      imageUrl: AppImageAssets.twitterLogo,
+                      isAlert: false,
+                      ontap: () {},
+                    ),
+                    AccountContainerTile(
+                      title: "Linkedin",
+                      subTitle: "rosepoole@email.com",
+                      password: "*********************",
+                      strength: "Strong",
+                      imageUrl: AppImageAssets.linkedinLogo,
+                      isAlert: true,
                       ontap: () {},
                     ),
                   ],
