@@ -19,24 +19,24 @@ class WebHomeScreen extends StatelessWidget {
           ),
           Row(
             children: [
-              CategoryContainer(
-                icon: IconsAssets.mobileIcon,
-                title: "Mobile",
-                count: "12",
-                onTap: () {},
-              ),
-              CategoryContainer(
-                icon: IconsAssets.browserIcon,
-                title: "Browser",
-                count: "18",
-                onTap: () {},
-              ),
-              CategoryContainer(
-                icon: IconsAssets.paymentCardIcon,
-                title: "Payment",
-                count: "02",
-                onTap: () {},
-              ),
+              // CategoryContainer(
+              //   icon: IconsAssets.mobileIcon,
+              //   title: "Mobile",
+              //   count: "12",
+              //   onTap: () {},
+              // ),
+              // CategoryContainer(
+              //   icon: IconsAssets.browserIcon,
+              //   title: "Browser",
+              //   count: "18",
+              //   onTap: () {},
+              // ),
+              // CategoryContainer(
+              //   icon: IconsAssets.paymentCardIcon,
+              //   title: "Payment",
+              //   count: "02",
+              //   onTap: () {},
+              // ),
             ],
           ),
           Padding(

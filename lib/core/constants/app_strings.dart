@@ -32,6 +32,13 @@ class AppStrings {
   static const String sidebarAccountTitle = 'Account';
   static const String sidebarSettingsTitle = 'Settings';
 
+  // Home Screen Strings
+  static const String addPassword = "Add Password";
+  static const String searchText = "search your credentials...";
+  static const String viewLink = "view";
+  static const String allCredentials = "All Credentials";
+  static const String viewAll = "view all";
+
 
   // For Master password
 

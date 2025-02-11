@@ -27,8 +27,7 @@ class CustomKeyboard extends StatelessWidget {
           if (index == 9) {
             // ✅ Biometric Icon
             buttonContent = SvgPicture.asset(
-
-
+              color: Theme.of(context).colorScheme.onSurface,
               IconsAssets.biometric_icon,
               width: 20,
               height: 20,
@@ -42,8 +41,8 @@ class CustomKeyboard extends StatelessWidget {
           } else if (index == 11) {
             // ✅ Cross (❌) Backspace Icon
             buttonContent = SvgPicture.asset(
+              color: Theme.of(context).colorScheme.onSurface,
               IconsAssets.crossIcon,
-
               width: 20,
               height: 20,
             );
@@ -60,15 +59,24 @@ class CustomKeyboard extends StatelessWidget {
               if (index == 11) {
                 pinController.removeDigit(); // Cross button action
               } else if (index != 9) {
-                pinController.addDigit(index == 10 ? "0" : (index + 1).toString());
+                pinController
+                    .addDigit(index == 10 ? "0" : (index + 1).toString());
               }
             },
             child: Container(
               decoration: BoxDecoration(
                 color: Theme.of(context).colorScheme.primaryContainer,
                 border: Border(
-                  top: index < 3 ? BorderSide.none :  BorderSide(color: Theme.of(context).colorScheme.tertiary, width: 0),
-                  left: index % 3 == 0 ? BorderSide.none :  BorderSide(color: Theme.of(context).colorScheme.tertiary, width: 0),
+                  top: index < 3
+                      ? BorderSide.none
+                      : BorderSide(
+                          color: Theme.of(context).colorScheme.tertiary,
+                          width: 0),
+                  left: index % 3 == 0
+                      ? BorderSide.none
+                      : BorderSide(
+                          color: Theme.of(context).colorScheme.tertiary,
+                          width: 0),
                 ),
               ),
               child: Center(child: buttonContent),
