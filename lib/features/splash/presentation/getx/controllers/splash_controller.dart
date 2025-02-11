@@ -1,5 +1,7 @@
 import 'dart:async';
 import 'package:get/get.dart';
+
+import '../../../../../core/routes/app_routes.dart';
 // Adjust the path as necessary
 
 class SplashController extends GetxController {
@@ -10,8 +12,8 @@ class SplashController extends GetxController {
   }
 
   void _navigateToGetStarted() {
-    Timer(const Duration(seconds: 3), () {
-      Get.offNamed('/getStarted');
+    Timer(const Duration(seconds: 6), () {
+      Get.offNamed(AppRoutes.dashboard);
     });
   }
 }

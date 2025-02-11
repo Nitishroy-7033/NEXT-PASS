@@ -38,4 +38,16 @@ class AppStrings {
   static const String viewLink = "view";
   static const String allCredentials = "All Credentials";
   static const String viewAll = "view all";
+
+
+  // For Master password
+
+ static const String masterPasswordSubtitle = 'Enter your PIN';
+
+
+ static const String masterPasswordForgot = 'Forgot PIN?';
+static const String masterPasswordPrivacy = 'Privacy Policy';
+static const String masterPasswordTerms = 'Terms & Services';
+
+
 }

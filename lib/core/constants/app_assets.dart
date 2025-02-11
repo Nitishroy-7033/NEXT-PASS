@@ -42,6 +42,13 @@ class IconsAssets {
   static const String moreDotIcon = "${iconBasePath}more_dot_icon.svg";
   static const String dropUpIcon = "${iconBasePath}dropup_icon.svg";
 
+  static const String second_lock_icon = "${iconBasePath}second_lock_icon.svg";
+  static const String crossIcon = "${iconBasePath}cross_icon.svg";
+  static const String biometric_icon = "${iconBasePath}Biometric_icon.svg";
+  static const String polygon_icon = "${iconBasePath}polygon_icon.svg";
+  static const String star_icon = "${iconBasePath}Star.svg";
+  static const String rectangle_icon = "${iconBasePath}rectangle_icon.svg";
+  static const String ellipse_icon = "${iconBasePath}ellipse_icon.svg";
 
   // NETWORK ASSETS
   static const String spotifyLogoUrl =
@@ -56,4 +63,11 @@ class IconsAssets {
       "";
   static const String githubLogoUrl =
       "https://cdn-icons-png.flaticon.com/512/25/25231.png";
+}
+
+
+class AnimationAssets {
+  static const String animationBasePath = "assets/animations/";
+  static const String splashLockAnimation = "${animationBasePath}lock_animation.json";
+
 }

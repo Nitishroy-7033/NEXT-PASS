@@ -10,10 +10,10 @@ class NavController extends GetxController {
 
 
   var pages = [
-    HomeView(),
-    AuthTabView(),
-    HomeView(),
-    HomeView(),
+    const HomeView(),
+    const AuthTabView(),
+    const HomeView(),
+    const HomeView(),
   ];
 
   void updateIndex(int index) {
