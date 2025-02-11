@@ -6,6 +6,11 @@ class AppImageAssets {
       "${imageBasePath}demo_profile_image.jpg";
   static const String getStarted = "${imageBasePath}getstarted.png";
   static const String favouriteImage = "${imageBasePath}faviourite_image.png";
+  static const String facebookLogo = "${imageBasePath}facebook_logo.png";
+  static const String googleLogo = "${imageBasePath}google_logo.png";
+  static const String linkedinLogo = "${imageBasePath}linkedin_logo.png";
+  static const String playstoreLogo = "${imageBasePath}playstore_logo.png";
+  static const String twitterLogo = "${imageBasePath}twitter_logo.png";
 }
 
 // SVG Icons Assets
@@ -28,6 +33,15 @@ class IconsAssets {
   static const String securityIcon = "${iconBasePath}security_icon.svg";
   static const String passwordIcon = "${iconBasePath}password_icon.svg";
   static const String profileIcon = "${iconBasePath}profile_icon.svg";
+  static const String alertIcon = "${iconBasePath}alert_icon.svg";
+  static const String androidIcon = "${iconBasePath}android_icon.svg";
+  static const String generateIcon = "${iconBasePath}generate_icon.svg";
+  static const String paymentIcon = "${iconBasePath}payment_icon.svg";
+  static const String strongPasswordIcon = "${iconBasePath}strong_password_icon.svg";
+  static const String weakPasswordIcon = "${iconBasePath}weak_password_icon.svg";
+  static const String moreDotIcon = "${iconBasePath}more_dot_icon.svg";
+  static const String dropUpIcon = "${iconBasePath}dropup_icon.svg";
+
 
   // NETWORK ASSETS
   static const String spotifyLogoUrl =
