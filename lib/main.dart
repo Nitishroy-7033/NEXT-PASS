@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
       initialBinding: SplashBinding(),
       theme: AppThemes.lightTheme,
       darkTheme: AppThemes.darkTheme,
-      themeMode: ThemeMode.system,
+      themeMode: ThemeMode.dark,
       unknownRoute: GetPage(
         name: AppRoutes.notFound,
         page: () => const NotFoundView(),

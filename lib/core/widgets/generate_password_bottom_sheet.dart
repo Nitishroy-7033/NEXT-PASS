@@ -23,7 +23,7 @@ class GeneratePasswordBottomSheet extends StatelessWidget {
             const SizedBox(
               height: 10,
             ),
-            const Center(child: Text('Generate Password')),
+            const Center(child: Text(AppStrings.generatePassword)),
             const SizedBox(
               height: 20,
             ),
@@ -41,7 +41,7 @@ class GeneratePasswordBottomSheet extends StatelessWidget {
                   color: Colors.grey,
                   fontFamily: "Montserrat",
                 ),
-                hintText: 'HJ_sd763!@%sndf.//!!@22222222',
+                hintText: AppStrings.passwordHintText,
                 suffixIcon: Icon(
                   Icons.autorenew_sharp,
                   color: Theme.of(context).colorScheme.primary,
@@ -62,7 +62,7 @@ class GeneratePasswordBottomSheet extends StatelessWidget {
                       }),
                 ),
                 Text(
-                  'Use Uppercase',
+                  AppStrings.useUpperCase,
                   style: Theme.of(context).textTheme.bodySmall,
                 ),
                 Obx(
@@ -73,7 +73,7 @@ class GeneratePasswordBottomSheet extends StatelessWidget {
                       }),
                 ),
                 Text(
-                  'Use Numbers',
+                   AppStrings.useNumbers,
                   style: Theme.of(context).textTheme.bodySmall,
                 )
               ],
@@ -89,7 +89,7 @@ class GeneratePasswordBottomSheet extends StatelessWidget {
                       }),
                 ),
                 Text(
-                  'Use Lowercase',
+                  AppStrings.useLowerCase,
                   style: Theme.of(context).textTheme.bodySmall,
                 ),
                 Obx(
@@ -100,7 +100,7 @@ class GeneratePasswordBottomSheet extends StatelessWidget {
                       }),
                 ),
                 Text(
-                  'Use Symbols',
+                  AppStrings.useSymbols,
                   style: Theme.of(context).textTheme.bodySmall,
                 )
               ],
@@ -109,10 +109,10 @@ class GeneratePasswordBottomSheet extends StatelessWidget {
               height: 20,
             ),
             Text(
-              'Password Length',
+              AppStrings.passwordLength,
               style: Theme.of(context).textTheme.labelSmall,
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Row(
@@ -143,7 +143,7 @@ class GeneratePasswordBottomSheet extends StatelessWidget {
             const SizedBox(
               height: 30,
             ),
-            PrimaryButton(text: 'CREATE ACCOUNT', onPressed: () {})
+            PrimaryButton(text: AppStrings.createAccount, onPressed: () {})
           ],
         ),
       ),
