@@ -27,9 +27,26 @@ Passwords are the keys to our digital world, but managing them is often a hassle
     * Breach Monitoring
     * Team/Family Accounts
     * Password Usage Analytics.
-
-
-
+test link
+# Commit Pattern 
+* 🚀 : Improved Performance
+* ✨ : Added New Feature
+* 🐛 : Fixed a Bug
+* 🛠️ : Code Refactoring
+* 🎨 : Updated UI/UX
+* 📝 : Updated Documentation
+* ✅ : Added/Updated Tests
+* 🔧 : Updated Configuration
+* 🔥 : Removed Unused Code
+* 🚚 : Moved/Renamed Files
+* 🗃️ : Database Changes
+* ♻️ : Code Cleanup
+* 🛑 : Critical Hotfix
+* 🔖 : Released New Version
+* 🚀 : Deployment Changes
+* 🏗️ : Updated Build Process
+* 📦 : Updated Dependencies
+* 🔥 : Breaking Change
 
 📺 Join Related Channels
 

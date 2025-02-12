@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 class AppColors {
-  
   // LIGHT THEME colors
   static const Color primaryLight = Color(0xff0B4FBE);
   static const Color secondaryLight = Color(0xffF0C029);
@@ -22,4 +21,10 @@ class AppColors {
 
   // Error Colors
   static const Color error = Color(0xFFB00020);
+
+  // Other UI Colors
+  static const Color greenColor = Color(0xff00A606);
+  static const Color yellowColor = Color(0xffECEC00);
+  static const Color blueColor = Color(0xff0B4FBE);
+  static const Color pinkColor = Color(0xffBE0B59);
 }

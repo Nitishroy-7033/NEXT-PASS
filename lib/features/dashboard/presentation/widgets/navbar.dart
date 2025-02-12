@@ -8,7 +8,7 @@ import 'nav_bar_icon_button.dart';
 
 class CustomNavBar extends StatelessWidget {
 
-  CustomNavBar({super.key});
+  const CustomNavBar({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +16,7 @@ class CustomNavBar extends StatelessWidget {
         height: 50,
         margin: const EdgeInsets.only(bottom: 10),
         width: 230,
-        padding: EdgeInsets.all(5),
+        padding: const EdgeInsets.all(5),
         decoration: BoxDecoration(
           color: Theme.of(context).colorScheme.primaryContainer,
           borderRadius: BorderRadius.circular(20),
