@@ -1,9 +1,6 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:next_pass/core/constants/app_assets.dart';
-import 'package:next_pass/core/widgets/primary_button.dart';
 
-import '../../controller/add_new_credential_controller.dart';
+
+import 'package:next_pass/core/constants/app_linker.dart';
 
 class AddNewCredentialForm extends StatelessWidget {
   const AddNewCredentialForm({super.key});

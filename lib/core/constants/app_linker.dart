@@ -32,9 +32,7 @@ export 'package:next_pass/features/getStarted/presentations/screens/mobile_get_s
 export 'package:next_pass/features/getStarted/presentations/screens/web_get_started_screen.dart';
 export 'package:flutter_svg/svg.dart';
 export 'package:next_pass/core/routes/app_routes.dart';
-export 'package:next_pass/features/home/presentation/widgets/account_container_tile.dart';
 export 'package:next_pass/features/home/presentation/widgets/category_container.dart';
-export 'package:next_pass/features/home/presentation/screens/mobile_home_screen.dart';
 export 'package:next_pass/features/home/presentation/screens/web_home_screen.dart';
 export 'dart:math';
 export 'package:next_pass/core/constants/app_dimensions.dart';
@@ -56,9 +54,16 @@ export 'package:next_pass/core/routes/route_generator.dart';
 export 'package:next_pass/dependency_injection.dart';
 export 'package:next_pass/features/not_found/presentation/views/not_found_view.dart';
 export 'package:next_pass/features/splash/presentation/getx/bindings/splash_binding.dart';
-
-
-
-
-
-
+export 'package:next_pass/core/widgets/generate_password_bottom_sheet.dart';
+export 'package:next_pass/features/home/controllers/home_screen_controller.dart';
+export 'package:next_pass/features/home/presentation/widgets/account_container_tile.dart';
+export 'package:next_pass/features/home/presentation/screens/mobile_home_screen.dart';
+export 'package:next_pass/core/widgets/alert_symbol.dart';
+export 'package:next_pass/core/widgets/strength_badge.dart';
+export 'package:next_pass/core/widgets/custom_checkbox.dart';
+export 'package:next_pass/core/widgets/custom_slider_widget.dart';
+export 'package:next_pass/features/auth/presentation/getx/controllers/password_controller.dart';
+export 'package:next_pass/features/add_new_credential/controller/add_new_credential_controller.dart';
+export 'package:next_pass/features/add_new_credential/presentation/widgets/add_new_credential_form.dart';
+export 'package:next_pass/features/add_new_credential/presentation/screens/mobile_add_new_credential.dart';
+export 'package:next_pass/features/add_new_credential/presentation/screens/web_add_new_credential.dart';

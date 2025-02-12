@@ -1,4 +1,3 @@
-
 import 'core/constants/app_linker.dart';
 
 void main() {
@@ -20,7 +19,7 @@ class MyApp extends StatelessWidget {
       initialBinding: SplashBinding(),
       theme: AppThemes.lightTheme,
       darkTheme: AppThemes.darkTheme,
-      themeMode: ThemeMode.dark,
+      themeMode: ThemeMode.system,
       unknownRoute: GetPage(
         name: AppRoutes.notFound,
         page: () => const NotFoundView(),
