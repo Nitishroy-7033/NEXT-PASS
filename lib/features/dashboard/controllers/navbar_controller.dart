@@ -1,9 +1,7 @@
 
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:next_pass/features/auth/presentation/views/auth_tab_view.dart';
 
-import '../../home/presentation/views/home_view.dart';
+import '../../../core/constants/app_linker.dart';
+
 class NavController extends GetxController {
   var selectedIndex = 0.obs;
 

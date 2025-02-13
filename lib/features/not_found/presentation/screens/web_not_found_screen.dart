@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import '../../../../core/constants/app_linker.dart';
 
 class WebNotFoundScreen extends StatelessWidget {
   const WebNotFoundScreen({super.key});

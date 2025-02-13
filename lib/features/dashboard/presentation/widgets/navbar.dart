@@ -1,10 +1,7 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:get/get.dart';
-import 'package:next_pass/features/dashboard/controllers/navbar_controller.dart';
 
-import '../../../../core/constants/app_assets.dart';
-import 'nav_bar_icon_button.dart';
+
+
+import '../../../../core/constants/app_linker.dart';
 
 class CustomNavBar extends StatelessWidget {
 

@@ -1,9 +1,5 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:next_pass/core/constants/app_assets.dart';
-import 'package:next_pass/core/constants/app_colors.dart';
-import 'package:next_pass/features/auth/presentation/screens/mobile/mobile_login_screen.dart';
-import 'package:next_pass/features/auth/presentation/screens/mobile/mobile_sign_up_Screen.dart';
+
+ import 'package:next_pass/core/constants/app_linker.dart';
 
 class AuthScreen extends StatefulWidget {
   const AuthScreen({super.key});

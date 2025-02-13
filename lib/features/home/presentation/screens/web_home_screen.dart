@@ -1,6 +1,5 @@
-import 'package:flutter/material.dart';
-import 'package:next_pass/core/constants/app_assets.dart';
-import 'package:next_pass/features/home/presentation/widgets/category_container.dart';
+
+import '../../../../core/constants/app_linker.dart';
 
 class WebHomeScreen extends StatelessWidget {
   const WebHomeScreen({super.key});

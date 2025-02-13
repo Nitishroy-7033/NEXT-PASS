@@ -45,14 +45,25 @@ class AppStrings {
   static const String allCredentials = "All Credentials";
   static const String viewAll = "view all";
 
-
   // For Master password
 
- static const String masterPasswordSubtitle = 'Enter your PIN';
+  static const String masterPasswordSubtitle = 'Enter your PIN';
+
+  static const String masterPasswordForgot = 'Forgot PIN?';
+  static const String masterPasswordPrivacy = 'Privacy Policy';
+  static const String masterPasswordTerms = 'Terms & Services';
+
+  /// Password Generator Bottom Sheet
+  static const String generatePassword = 'Generate Password';
+  static const String passwordHintText = 'HJ_sd763!@%sndf.//!!@22222222';
+  
 
 
- static const String masterPasswordForgot = 'Forgot PIN?';
-static const String masterPasswordPrivacy = 'Privacy Policy';
-static const String masterPasswordTerms = 'Terms & Services';
+  static const String useSymbols = 'Use Symbols';
+  static const String useUpperCase = 'Use Uppercase';
+  static const String useLowerCase = 'Use Lowercase';
+  static const String useNumbers = 'Use Numbers';
 
+  static const String passwordLength = 'Password Length';
+  static const String createAccount = 'CREATE ACCOUNT';
 }

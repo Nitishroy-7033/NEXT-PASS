@@ -1,24 +1,26 @@
-import 'package:get/get.dart';
+
+import '../../../core/constants/app_linker.dart';
+
 class MasterPasswordController extends GetxController {
   var enteredPin = ''.obs;
-  var enteredDigits = <String>[].obs; // ✅ List to store entered digits
-  final int pinLength = 4; // Adjust as needed
+  var enteredDigits = <String>[].obs; 
+  final int pinLength = 4; 
 
   void addDigit(String digit) {
-    if (enteredDigits.length < pinLength) { // ✅ Check list length
+    if (enteredDigits.length < pinLength) { 
       enteredDigits.add(digit);
       enteredPin.value += digit;
     }
   }
 
   void removeDigit() {
-    if (enteredDigits.isNotEmpty) { // ✅ Remove last element safely
+    if (enteredDigits.isNotEmpty) { 
       enteredDigits.removeLast();
       enteredPin.value = enteredPin.value.substring(0, enteredPin.value.length - 1);
     }
   }
 
   bool isPinComplete() {
-    return enteredDigits.length == pinLength; // ✅ Check list length
+    return enteredDigits.length == pinLength; 
   }
 }

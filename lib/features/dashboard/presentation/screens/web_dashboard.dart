@@ -1,11 +1,6 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:get/get.dart';
-import 'package:next_pass/core/constants/app_assets.dart';
-import 'package:next_pass/core/constants/app_strings.dart';
-import 'package:next_pass/core/widgets/primary_button.dart';
-import 'package:next_pass/features/dashboard/presentation/widgets/sidebar_tab.dart';
-import 'package:next_pass/features/dashboard/controllers/web_sidebar_controller.dart';
+
+
+import '../../../../core/constants/app_linker.dart';
 
 class WebDashboard extends StatelessWidget {
   const WebDashboard({super.key});

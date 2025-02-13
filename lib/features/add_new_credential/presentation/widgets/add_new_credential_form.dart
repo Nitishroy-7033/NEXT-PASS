@@ -1,16 +1,12 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:next_pass/core/constants/app_assets.dart';
-import 'package:next_pass/core/widgets/primary_button.dart';
-
-import '../../controller/add_new_credential_controller.dart';
+import 'package:next_pass/core/constants/app_linker.dart';
 
 class AddNewCredentialForm extends StatelessWidget {
   const AddNewCredentialForm({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final AddNewCredentialController controller = Get.find<AddNewCredentialController>();
+    final AddNewCredentialController controller =
+        Get.find<AddNewCredentialController>();
     return Container(
       padding: const EdgeInsets.all(10),
       decoration: BoxDecoration(
@@ -37,7 +33,7 @@ class AddNewCredentialForm extends StatelessWidget {
           const SizedBox(height: 10),
           TextFormField(
             textInputAction: TextInputAction.next,
-            controller:controller. siteUrl,
+            controller: controller.siteUrl,
             decoration: const InputDecoration(
               prefixIcon: Icon(Icons.language),
               hintText: "www.example.com",
@@ -63,7 +59,9 @@ class AddNewCredentialForm extends StatelessWidget {
               hintText: "User Name",
             ),
           ),
-         
+          const SizedBox(
+            height: 20,
+          ),
           Row(
             children: [
               Text(
@@ -124,13 +122,26 @@ class AddNewCredentialForm extends StatelessWidget {
               hintText: "+91000000000",
             ),
           ),
-          const SizedBox(height:  30),
-          PrimaryButton(text: "SAVE", onPressed: (){
-            controller.saveCredential();
-          },icon: IconsAssets.lockIcon,),
-          const SizedBox(height:  10),
+          const SizedBox(height: 30),
+          PrimaryButton(
+            text: "SAVE",
+            onPressed: () {
+              controller.saveCredential();
+            },
+            icon: IconsAssets.lockIcon,
+          ),
+          const SizedBox(height: 10),
+          PrimaryButton(
+            text: "GET NEW PASSWORD",
+            onPressed: () {
+              BottomSheetPasswordGenerator(context);
+            },
+            icon: IconsAssets.lockIcon,
+          ),
+          const SizedBox(height: 10),
         ],
       ),
     );
   }
+
 }

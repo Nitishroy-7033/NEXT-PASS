@@ -1,5 +1,6 @@
-import 'package:flutter/material.dart';
-import 'package:next_pass/core/widgets/primary_button.dart';
+
+
+import '../../../../../core/constants/app_linker.dart';
 
 class MobileLoginScreen extends StatelessWidget {
   const MobileLoginScreen({super.key});
@@ -68,7 +69,9 @@ class MobileLoginScreen extends StatelessWidget {
             ),
           ],),
            
-          PrimaryButton(text: "LOGIN", onPressed: (){})
+          PrimaryButton(text: "LOGIN", onPressed: (){
+            Get.toNamed(AppRoutes.masterPassword);
+          })
         ],
       ),
     );
