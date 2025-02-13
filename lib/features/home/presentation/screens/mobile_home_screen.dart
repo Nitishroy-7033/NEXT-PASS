@@ -1,4 +1,15 @@
+
 import 'package:next_pass/core/constants/app_linker.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
+import 'package:next_pass/core/constants/app_assets.dart';
+import 'package:next_pass/core/constants/app_colors.dart';
+import 'package:next_pass/core/constants/app_strings.dart';
+import 'package:next_pass/features/home/controllers/home_screen_controller.dart';
+import 'package:next_pass/features/home/presentation/widgets/account_container_tile.dart';
+import 'package:next_pass/features/home/presentation/widgets/category_container.dart';
+
 
 class MobileHomeScreen extends StatelessWidget {
   const MobileHomeScreen({super.key});
