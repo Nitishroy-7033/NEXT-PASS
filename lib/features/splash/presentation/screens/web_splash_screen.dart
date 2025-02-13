@@ -9,13 +9,12 @@ class WebSplaceScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor:Color.fromARGB(255, 12, 15, 39),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Image.asset(
-              AppImageAssets.appLogo, // Replace with your animated image
+              AppImageAssets.appLogo, 
               width: 200,
               height: 200,
             ),
