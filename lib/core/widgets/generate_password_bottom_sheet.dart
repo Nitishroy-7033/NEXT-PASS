@@ -1,12 +1,9 @@
 import 'package:next_pass/core/constants/app_linker.dart';
 
-class GeneratePasswordBottomSheet extends StatelessWidget {
+Future<dynamic> BottomSheetPasswordGenerator(BuildContext context) {
   final PasswordController passwordController = Get.put(PasswordController());
-  GeneratePasswordBottomSheet({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
+  return Get.bottomSheet(
+    Container(
       height: 425,
       width: 396,
       decoration: BoxDecoration(
@@ -54,55 +51,79 @@ class GeneratePasswordBottomSheet extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Obx(
-                  () => CustomCheckbox(
-                      value: passwordController.useUpperCase.value,
-                      onChanged: (value) {
-                        passwordController.useUpperCase.value = value!;
-                      }),
+                Row(children: [
+                  Obx(
+                  () => SizedBox(
+                    width: 20,
+                    child: CustomCheckbox(
+                        value: passwordController.useUpperCase.value,
+                        onChanged: (value) {
+                          passwordController.useUpperCase.value = value!;
+                        }),
+                  ),
                 ),
+                SizedBox(width: 10),
                 Text(
                   AppStrings.useUpperCase,
                   style: Theme.of(context).textTheme.bodySmall,
                 ),
-                Obx(
-                  () => CustomCheckbox(
-                      value: passwordController.useNumbers.value,
-                      onChanged: (value) {
-                        passwordController.useNumbers.value = value!;
-                      }),
+                ],),
+                Row(children: [
+                  Obx(
+                  () => SizedBox(
+                    width: 20,
+                    child: CustomCheckbox(
+                        value: passwordController.useNumbers.value,
+                        onChanged: (value) {
+                          passwordController.useNumbers.value = value!;
+                        }),
+                  ),
                 ),
+                SizedBox(width: 10),
                 Text(
-                   AppStrings.useNumbers,
+                  AppStrings.useNumbers,
                   style: Theme.of(context).textTheme.bodySmall,
                 )
+                ],)
               ],
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Obx(
-                  () => CustomCheckbox(
-                      value: passwordController.useLowerCase.value,
-                      onChanged: (value) {
-                        passwordController.useLowerCase.value = value!;
-                      }),
+               Row(children: [
+                 Obx(
+                  () => SizedBox(
+                    width: 20,
+                    child: CustomCheckbox(
+                        value: passwordController.useLowerCase.value,
+                        onChanged: (value) {
+                          passwordController.useLowerCase.value = value!;
+                        }),
+                  ),
                 ),
+                   SizedBox(width: 10),
                 Text(
                   AppStrings.useLowerCase,
                   style: Theme.of(context).textTheme.bodySmall,
                 ),
-                Obx(
-                  () => CustomCheckbox(
-                      value: passwordController.useSymbol.value,
-                      onChanged: (value) {
-                        passwordController.useSymbol.value = value!;
-                      }),
+               ],),
+               Row(children: [
+                 Obx(
+                  () => SizedBox(
+                    width: 20,
+                    child: CustomCheckbox(
+                        value: passwordController.useSymbol.value,
+                        onChanged: (value) {
+                          passwordController.useSymbol.value = value!;
+                        }),
+                  ),
                 ),
+                   SizedBox(width: 10),
                 Text(
                   AppStrings.useSymbols,
                   style: Theme.of(context).textTheme.bodySmall,
                 )
+               ],)
               ],
             ),
             const SizedBox(
@@ -147,6 +168,8 @@ class GeneratePasswordBottomSheet extends StatelessWidget {
           ],
         ),
       ),
-    );
-  }
+    ),
+    isScrollControlled: true,
+    backgroundColor: Colors.transparent,
+  );
 }

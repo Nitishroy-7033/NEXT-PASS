@@ -15,14 +15,6 @@ import 'package:next_pass/features/home/presentation/widgets/category_container.
 class MobileHomeScreen extends StatelessWidget {
   const MobileHomeScreen({super.key});
 
-  /// Method for BottomSheet
-  void showPasswordBottomSheet() {
-    Get.bottomSheet(
-      GeneratePasswordBottomSheet(),
-      isScrollControlled: true,
-      backgroundColor: Colors.transparent,
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -165,7 +157,9 @@ class MobileHomeScreen extends StatelessWidget {
         ),
         // Floation Action Button for Add new password
         floatingActionButton: FloatingActionButton(
-          onPressed: showPasswordBottomSheet,
+          onPressed: (){
+            Get.toNamed(AppRoutes.newCredential);
+          },
           backgroundColor: Theme.of(context).colorScheme.primary,
           heroTag: null,
           tooltip: AppStrings.addPassword,
@@ -345,8 +339,7 @@ class MobileHomeScreen extends StatelessWidget {
                       isAlert: true,
                       ontap: () {},
                     ),
-                    ElevatedButton(
-                        onPressed: () {}, child: Text('Generate Password'))
+                  
                   ],
                 ),
               ],

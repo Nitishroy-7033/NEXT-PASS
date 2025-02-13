@@ -1,5 +1,3 @@
-
-
 import 'package:next_pass/core/constants/app_linker.dart';
 
 class AddNewCredentialForm extends StatelessWidget {
@@ -7,7 +5,8 @@ class AddNewCredentialForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final AddNewCredentialController controller = Get.find<AddNewCredentialController>();
+    final AddNewCredentialController controller =
+        Get.find<AddNewCredentialController>();
     return Container(
       padding: const EdgeInsets.all(10),
       decoration: BoxDecoration(
@@ -34,7 +33,7 @@ class AddNewCredentialForm extends StatelessWidget {
           const SizedBox(height: 10),
           TextFormField(
             textInputAction: TextInputAction.next,
-            controller:controller. siteUrl,
+            controller: controller.siteUrl,
             decoration: const InputDecoration(
               prefixIcon: Icon(Icons.language),
               hintText: "www.example.com",
@@ -60,7 +59,7 @@ class AddNewCredentialForm extends StatelessWidget {
               hintText: "User Name",
             ),
           ),
-         const SizedBox(
+          const SizedBox(
             height: 20,
           ),
           Row(
@@ -123,17 +122,26 @@ class AddNewCredentialForm extends StatelessWidget {
               hintText: "+91000000000",
             ),
           ),
-          const SizedBox(height:  30),
-          PrimaryButton(text: "SAVE", onPressed: (){
-            controller.saveCredential();
-          },icon: IconsAssets.lockIcon,),
-          const SizedBox(height:  10),
-          PrimaryButton(text: "GET NEW PASSWORD", onPressed: (){
-            
-          },icon: IconsAssets.lockIcon,),
-          const SizedBox(height:  10),
+          const SizedBox(height: 30),
+          PrimaryButton(
+            text: "SAVE",
+            onPressed: () {
+              controller.saveCredential();
+            },
+            icon: IconsAssets.lockIcon,
+          ),
+          const SizedBox(height: 10),
+          PrimaryButton(
+            text: "GET NEW PASSWORD",
+            onPressed: () {
+              BottomSheetPasswordGenerator(context);
+            },
+            icon: IconsAssets.lockIcon,
+          ),
+          const SizedBox(height: 10),
         ],
       ),
     );
   }
+
 }
