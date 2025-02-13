@@ -11,6 +11,8 @@ class AppImageAssets {
   static const String linkedinLogo = "${imageBasePath}linkedin_logo.png";
   static const String playstoreLogo = "${imageBasePath}playstore_logo.png";
   static const String twitterLogo = "${imageBasePath}twitter_logo.png";
+  static const String getStartedLogo1 = "${imageBasePath}getStarted_1.png";
+  static const String getStartedLogo2 = "${imageBasePath}getStarted_2.png";
 }
 
 // SVG Icons Assets
