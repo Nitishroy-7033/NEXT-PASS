@@ -4,13 +4,15 @@ class AppImageAssets {
   static const String appLogo = "${imageBasePath}app_logo.png";
   static const String demoProfileImage =
       "${imageBasePath}demo_profile_image.jpg";
-  static const String getStarted = "${imageBasePath}getstarted.png";
+  static const String getStarted = "${imageBasePath}get_started_image.jpg";
   static const String favouriteImage = "${imageBasePath}faviourite_image.png";
   static const String facebookLogo = "${imageBasePath}facebook_logo.png";
   static const String googleLogo = "${imageBasePath}google_logo.png";
   static const String linkedinLogo = "${imageBasePath}linkedin_logo.png";
   static const String playstoreLogo = "${imageBasePath}playstore_logo.png";
   static const String twitterLogo = "${imageBasePath}twitter_logo.png";
+  static const String getStartedLogo1 = "${imageBasePath}getStarted_1.png";
+  static const String getStartedLogo2 = "${imageBasePath}getStarted_2.png";
 }
 
 // SVG Icons Assets

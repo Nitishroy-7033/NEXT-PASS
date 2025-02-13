@@ -5,8 +5,7 @@ import '../../../../../core/constants/app_linker.dart';
 
 class MobileMasterPasswordScreen extends StatelessWidget {
   final MasterPasswordController pinController =
-  Get.put(MasterPasswordController());
-
+      Get.put(MasterPasswordController());
 
   // 🔹 Custom SVG Icons List
   static const List<String> customIcons = [
@@ -22,108 +21,87 @@ class MobileMasterPasswordScreen extends StatelessWidget {
     return customIcons[random.nextInt(customIcons.length)];
   }
 
-
   @override
   Widget build(BuildContext context) {
+      final double w = MediaQuery.of(context).size.width;
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.primaryContainer,
-      body: SingleChildScrollView(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const SizedBox(height: 45,),
-            Container(
-              width: 50,
-              height: 50,
-              decoration: BoxDecoration(
-                color: Theme.of(context).colorScheme.primaryFixed,
-                shape: BoxShape.rectangle,
-                borderRadius: BorderRadius.circular(10),
-              ),
-              child: Center(
-                child: SvgPicture.asset(
-                  IconsAssets.second_lock_icon,
-                  width: 24,
-                  height: 24,
-
-                // Monochrome color support
-                ),
-              ),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          const SizedBox(
+            height: 45,
+          ),
+          Container(
+            width: w/4,
+            height: w/4,
+            decoration: BoxDecoration(
+              color: Theme.of(context).colorScheme.primaryFixed,
+              shape: BoxShape.rectangle,
+              borderRadius: BorderRadius.circular(20),
             ),
-
-            const SizedBox(
-              height: 23,
+            child: Center(
+              child: SvgPicture.asset(IconsAssets.second_lock_icon,
+                  width: w/6, height: w/6),
             ),
-            Text(
-              AppStrings.masterPasswordSubtitle,
+          ),
+          const SizedBox(height: 20),
+          Text(
+            AppStrings.masterPasswordSubtitle,
+            style: Theme.of(context).textTheme.labelMedium
+          ),
+          const SizedBox(height: 40),
+          Obx(() {
+            return Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: List.generate(pinController.pinLength, (index) {
+                bool isFilled = index < pinController.enteredPin.value.length;
+                return Container(
+                  width: w/8,
+                  height: w/8,
+                  margin: const EdgeInsets.symmetric(horizontal: 5),
+                  alignment: Alignment.center,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(14),
+                    border: Border.all(
+                      color: Theme.of(context).colorScheme.tertiary,
+                      width: 0,
+                    ),
+                  ),
+                  child: isFilled
+                      ? SvgPicture.asset(
+                          getRandomIcon(), // ✅ Random icon
+                          width: 12,
+                          height: 12,
+                        )
+                      : Container(), // Empty state
+                );
+              }),
+            );
+          }),
+          /// Custom Keyboard
+          CustomKeyboard(pinController: pinController),
+          const SizedBox(height: 30 ),
+
+          Text(AppStrings.masterPasswordForgot,
               style: TextStyle(
                   fontSize: AppDimensions.fontSmall,
-
-                  color: Theme.of(context).colorScheme.tertiary),
-            ),
-            const SizedBox(height: 23),
-
-
-            Obx(() {
-              return Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: List.generate(pinController.pinLength, (index) {
-                  bool isFilled = index < pinController.enteredPin.value.length;
-
-                  return Container(
-                    width: 40,
-                    height: 40,
-                    margin: const EdgeInsets.symmetric(horizontal: 5),
-                    alignment: Alignment.center,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(14),
-                      border: Border.all(
-                        color: Theme.of(context).colorScheme.tertiary,
-                        width: 0,
-                      ),
-                    ),
-                    child: isFilled
-                        ? SvgPicture.asset(
-                      getRandomIcon(), // ✅ Random icon
-                      width: 12,
-                      height: 12,
-                    )
-                        : Container(), // Empty state
-                  );
-                }),
-              );
-            }),
-
-            const SizedBox(height: 40),
-
-            /// Custom Keyboard
-            CustomKeyboard(pinController: pinController),
-            const SizedBox(
-              height: 43,
-            ),
-
-            Text(AppStrings.masterPasswordForgot,
-                style: TextStyle(
-                    fontSize: AppDimensions.fontSmall,
-                    color: Theme.of(context).colorScheme.primaryFixed)),
-            const SizedBox(
-              height: 23,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                Text(AppStrings.masterPasswordPrivacy,
-                    style: TextStyle(
-                        fontSize: AppDimensions.fontSmall,
-                        color: Theme.of(context).colorScheme.tertiary)),
-                Text(AppStrings.masterPasswordTerms,
-                    style: TextStyle(
-                        fontSize: AppDimensions.fontSmall,
-                        color: Theme.of(context).colorScheme.tertiary)),
-              ],
-            ),
-          ],
-        ),
+                  color: Theme.of(context).colorScheme.primaryFixed)),
+          const SizedBox(height: 20),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Text(AppStrings.masterPasswordPrivacy,
+                  style: TextStyle(
+                      fontSize: AppDimensions.fontSmall,
+                      color: Theme.of(context).colorScheme.tertiary)),
+              Text(AppStrings.masterPasswordTerms,
+                  style: TextStyle(
+                      fontSize: AppDimensions.fontSmall,
+                      color: Theme.of(context).colorScheme.tertiary)),
+            ],
+          ),
+        ],
       ),
     );
   }

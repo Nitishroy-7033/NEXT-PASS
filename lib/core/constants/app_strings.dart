@@ -17,7 +17,11 @@ class AppStrings {
 
   String welcome = "Welcome";
 
-  static const String privacy = "Protect your privacy from Hacker";
+  //GetStarted 
+  static const String heading1 = "Best place to store your credential";
+  static const String content1 = "Best place you can store your credential with 100% encrypted and secure.";
+  static const String heading2 = "Use your own database and store";
+  static const String content2 = "You can add you own mongo database to store you own credential ";
 
   // Bottom NavBar Title
   static const String navHomeTitle = 'Home';
@@ -31,6 +35,8 @@ class AppStrings {
   static const String sidebarBookmarkTitle = 'Bookmarks';
   static const String sidebarAccountTitle = 'Account';
   static const String sidebarSettingsTitle = 'Settings';
+  static const String privacy = "Your Digital Security Starts Here ";
+
 
   // Home Screen Strings
   static const String addPassword = "Add Password";
@@ -51,6 +57,7 @@ class AppStrings {
   static const String generatePassword = 'Generate Password';
   static const String passwordHintText = 'HJ_sd763!@%sndf.//!!@22222222';
   
+
 
   static const String useSymbols = 'Use Symbols';
   static const String useUpperCase = 'Use Uppercase';

@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:next_pass/core/constants/app_assets.dart';
 import 'package:next_pass/core/constants/app_colors.dart';
 import 'package:next_pass/core/constants/app_strings.dart';
+import 'package:next_pass/core/routes/app_routes.dart';
 import 'package:next_pass/features/home/controllers/home_screen_controller.dart';
 import 'package:next_pass/features/home/presentation/widgets/account_container_tile.dart';
 import 'package:next_pass/features/home/presentation/widgets/category_container.dart';
@@ -14,14 +15,6 @@ import 'package:next_pass/features/home/presentation/widgets/category_container.
 class MobileHomeScreen extends StatelessWidget {
   const MobileHomeScreen({super.key});
 
-  /// Method for BottomSheet
-  void showPasswordBottomSheet() {
-    Get.bottomSheet(
-      GeneratePasswordBottomSheet(),
-      isScrollControlled: true,
-      backgroundColor: Colors.transparent,
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -164,14 +157,16 @@ class MobileHomeScreen extends StatelessWidget {
         ),
         // Floation Action Button for Add new password
         floatingActionButton: FloatingActionButton(
-          onPressed: showPasswordBottomSheet,
+          onPressed: (){
+            Get.toNamed(AppRoutes.newCredential);
+          },
           backgroundColor: Theme.of(context).colorScheme.primary,
           heroTag: null,
           tooltip: AppStrings.addPassword,
           child: SvgPicture.asset(
             IconsAssets.addIcon,
             colorFilter: ColorFilter.mode(
-              Theme.of(context).colorScheme.surface,
+              Theme.of(context).colorScheme.onPrimaryContainer,
               BlendMode.srcIn,
             ),
           ),
@@ -183,71 +178,81 @@ class MobileHomeScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Row(
-                          children: [
-                            CategoryContainer(
-                              icon: IconsAssets.androidIcon,
-                              title: "App",
-                              color: AppColors.blueColor,
-                              onTap: () {},
-                            ),
-                            CategoryContainer(
-                              icon: IconsAssets.browserIcon,
-                              title: "Website",
-                              color: AppColors.yellowColor,
-                              onTap: () {},
-                            ),
-                            CategoryContainer(
-                              icon: IconsAssets.paymentIcon,
-                              title: "Payment",
-                              color: AppColors.greenColor,
-                              onTap: () {},
-                            ),
-                          ],
+                        CategoryContainer(
+                          icon: IconsAssets.androidIcon,
+                          title: "App",
+                          color: AppColors.blueColor,
+                          onTap: () {},
+                        ),
+                        CategoryContainer(
+                          icon: IconsAssets.browserIcon,
+                          title: "Website",
+                          color: AppColors.yellowColor,
+                          onTap: () {},
+                        ),
+                        CategoryContainer(
+                          icon: IconsAssets.paymentIcon,
+                          title: "Payment",
+                          color: AppColors.greenColor,
+                          onTap: () {},
                         ),
                         Obx(
-                          () => (homeScreenController.isMoreTabOpen.value)
-                              ? Row(
-                                  children: [
-                                    CategoryContainer(
-                                      icon: IconsAssets.generateIcon,
-                                      title: "Generate",
-                                      color: AppColors.pinkColor,
-                                      onTap: () {},
-                                    ),
-                                    CategoryContainer(
-                                      icon: IconsAssets.alertIcon,
-                                      title: "Pownd",
-                                      color:
-                                          Theme.of(context).colorScheme.error,
-                                      onTap: () {},
-                                    ),
-                                  ],
-                                )
-                              : const SizedBox.shrink(),
+                          () => CategoryContainer(
+                            icon: (homeScreenController.isMoreTabOpen.value)
+                                ? IconsAssets.dropUpIcon
+                                : IconsAssets.moreDotIcon,
+                            title:
+                                (homeScreenController.isMoreTabOpen.value)
+                                    ? "Hide"
+                                    : "More",
+                            color: Theme.of(context).colorScheme.onSurface,
+                            onTap: () {
+                              homeScreenController.runMoreTab();
+                            },
+                          ),
                         ),
                       ],
                     ),
                     Obx(
-                      () => CategoryContainer(
-                        icon: (homeScreenController.isMoreTabOpen.value)
-                            ? IconsAssets.dropUpIcon
-                            : IconsAssets.moreDotIcon,
-                        title: (homeScreenController.isMoreTabOpen.value)
-                            ? ""
-                            : "More",
-                        color: Theme.of(context).colorScheme.onSurface,
-                        onTap: () {
-                          homeScreenController.runMoreTab();
-                        },
-                      ),
+                      () => (homeScreenController.isMoreTabOpen.value)
+                          ? Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                CategoryContainer(
+                                  icon: IconsAssets.generateIcon,
+                                  title: "Generate",
+                                  color: AppColors.pinkColor,
+                                  onTap: () {},
+                                ),
+                                CategoryContainer(
+                                  icon: IconsAssets.alertIcon,
+                                  title: "Pownd",
+                                  color:
+                                      Theme.of(context).colorScheme.error,
+                                  onTap: () {},
+                                ),
+                                CategoryContainer(
+                                  icon: IconsAssets.generateIcon,
+                                  title: "Generate",
+                                  color: AppColors.pinkColor,
+                                  onTap: () {},
+                                ),
+                                CategoryContainer(
+                                  icon: IconsAssets.alertIcon,
+                                  title: "Pownd",
+                                  color:
+                                      Theme.of(context).colorScheme.error,
+                                  onTap: () {},
+                                ),
+                              ],
+                            )
+                          : const SizedBox.shrink(),
                     ),
                   ],
                 ),
@@ -273,7 +278,7 @@ class MobileHomeScreen extends StatelessWidget {
                   children: [
                     AccountContainerTile(
                       title: "Facebook",
-                      subTitle: "rosepoole@email.com",
+                      emailId: "rosepoole@email.com",
                       imageUrl: AppImageAssets.facebookLogo,
                       password: "*********************",
                       strength: "Strong",
@@ -282,7 +287,7 @@ class MobileHomeScreen extends StatelessWidget {
                     ),
                     AccountContainerTile(
                       title: "Google",
-                      subTitle: "rosepoole@email.com",
+                      emailId: "rosepoole@email.com",
                       password: "*********************",
                       strength: "Weak",
                       imageUrl: AppImageAssets.googleLogo,
@@ -291,7 +296,7 @@ class MobileHomeScreen extends StatelessWidget {
                     ),
                     AccountContainerTile(
                       title: "Playstore",
-                      subTitle: "rosepoole@email.com",
+                      emailId: "rosepoole@email.com",
                       password: "*********************",
                       strength: "Strong",
                       imageUrl: AppImageAssets.playstoreLogo,
@@ -300,7 +305,7 @@ class MobileHomeScreen extends StatelessWidget {
                     ),
                     AccountContainerTile(
                       title: "Twitter",
-                      subTitle: "rosepoole@email.com",
+                      emailId: "rosepoole@email.com",
                       password: "*********************",
                       strength: "Weak",
                       imageUrl: AppImageAssets.twitterLogo,
@@ -309,16 +314,16 @@ class MobileHomeScreen extends StatelessWidget {
                     ),
                     AccountContainerTile(
                       title: "Linkedin",
-                      subTitle: "rosepoole@email.com",
+                      emailId: "rosepoole@email.com",
                       password: "*********************",
                       strength: "Strong",
                       imageUrl: AppImageAssets.linkedinLogo,
-                      isAlert: true,
+                      isAlert: false,
                       ontap: () {},
                     ),
                     AccountContainerTile(
                       title: "Twitter",
-                      subTitle: "rosepoole@email.com",
+                      emailId: "rosepoole@email.com",
                       password: "*********************",
                       strength: "Weak",
                       imageUrl: AppImageAssets.twitterLogo,
@@ -327,15 +332,14 @@ class MobileHomeScreen extends StatelessWidget {
                     ),
                     AccountContainerTile(
                       title: "Linkedin",
-                      subTitle: "rosepoole@email.com",
+                      emailId: "rosepoole@email.com",
                       password: "*********************",
                       strength: "Strong",
                       imageUrl: AppImageAssets.linkedinLogo,
                       isAlert: true,
                       ontap: () {},
                     ),
-                    ElevatedButton(
-                        onPressed: () {}, child: Text('Generate Password'))
+                  
                   ],
                 ),
               ],

@@ -36,7 +36,7 @@ export 'package:next_pass/features/home/presentation/widgets/category_container.
 export 'package:next_pass/features/home/presentation/screens/web_home_screen.dart';
 export 'dart:math';
 export 'package:next_pass/core/constants/app_dimensions.dart';
-export 'package:next_pass/features/master_password/presentation/getx/controller/master_password_controller.dart';
+export 'package:next_pass/features/master_password/controller/master_password_controller.dart';
 export 'package:next_pass/features/master_password/presentation/widgets/custom_keyboard.dart';
 export 'package:next_pass/features/master_password/presentation/screens/mobile/mobile_master_password_screen.dart';
 export 'package:next_pass/features/not_found/presentation/screens/mobile_not_found_screen.dart';

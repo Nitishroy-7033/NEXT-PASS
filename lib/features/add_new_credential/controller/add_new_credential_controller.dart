@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../data/credential_repository.dart';
 import '../data/interface.dart';
 import '../models/new_credenatial.dart';
 
 class AddNewCredentialController extends GetxController {
   final CredentialInterface credentialRepository =
-      Get.find<CredentialInterface>();
+      Get.put(CredentialRepository());
 
   // Controllers for the form fields
   TextEditingController siteUrl = TextEditingController();

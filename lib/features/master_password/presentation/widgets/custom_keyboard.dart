@@ -9,7 +9,7 @@ class CustomKeyboard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(16),
+      padding: const EdgeInsets.all(15),
       decoration: BoxDecoration(
         color: Theme.of(context).colorScheme.primaryContainer,
       ),
@@ -20,17 +20,22 @@ class CustomKeyboard extends StatelessWidget {
           crossAxisCount: 3,
           childAspectRatio: 2,
         ),
-        itemCount: 12, // 0-9 + biometric + backspace button
+        itemCount: 12, 
         itemBuilder: (context, index) {
           Widget buttonContent;
 
           if (index == 9) {
             // ✅ Biometric Icon
-            buttonContent = SvgPicture.asset(
-              color: Theme.of(context).colorScheme.onSurface,
-              IconsAssets.biometric_icon,
-              width: 20,
-              height: 20,
+            buttonContent = InkWell(
+              onTap: () {
+                Get.offAllNamed(AppRoutes.home);
+              },
+              child: SvgPicture.asset(
+                color: Theme.of(context).colorScheme.onSurface,
+                IconsAssets.biometric_icon,
+                width: 20,
+                height: 20,
+              ),
             );
           } else if (index == 10) {
             // ✅ Zero button

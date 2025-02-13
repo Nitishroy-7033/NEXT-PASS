@@ -7,7 +7,7 @@ import 'package:next_pass/core/widgets/strength_badge.dart';
 class AccountContainerTile extends StatelessWidget {
   final String imageUrl;
   final String title;
-  final String subTitle;
+  final String emailId;
   final String password;
   final String strength;
   final bool isAlert;
@@ -16,10 +16,11 @@ class AccountContainerTile extends StatelessWidget {
       {super.key,
       required this.imageUrl,
       required this.title,
-      required this.subTitle,
+      required this.emailId,
       required this.ontap,
       required this.password,
-      required this.strength, required this.isAlert});
+      required this.strength,
+      required this.isAlert});
 
   @override
   Widget build(BuildContext context) {
@@ -28,14 +29,14 @@ class AccountContainerTile extends StatelessWidget {
         color: Theme.of(context).colorScheme.primaryContainer,
         borderRadius: BorderRadius.circular(15),
       ),
-      padding: const EdgeInsets.all(5),
+      padding: const EdgeInsets.all(10),
       margin: const EdgeInsets.only(bottom: 15),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
           Container(
-            height: 50,
-            width: 50,
+            height: 60,
+            width: 60,
             decoration: BoxDecoration(
               color: Theme.of(context).colorScheme.surface,
               borderRadius: BorderRadius.circular(10),
@@ -53,24 +54,22 @@ class AccountContainerTile extends StatelessWidget {
                 title,
                 style: Theme.of(context).textTheme.bodyMedium,
               ),
+              const SizedBox(height: 5),
               Text(
-                subTitle,
+                emailId,
                 style: Theme.of(context).textTheme.labelSmall,
               ),
+              const SizedBox(height: 5),
               Text(
                 password,
                 style: Theme.of(context).textTheme.labelSmall,
               ),
             ],
           ),
-          const SizedBox(
-            width: 10,
-          ),
+          const SizedBox(width: 10),
           StrengthBadge(strength: strength),
-          const SizedBox(
-            width: 5,
-          ),
-          (isAlert)?const AlertSymbol():const SizedBox.shrink(),
+          const SizedBox(width: 5),
+          (isAlert) ? const AlertSymbol() : const SizedBox.shrink(),
         ],
       ),
     );

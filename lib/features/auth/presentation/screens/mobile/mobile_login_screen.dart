@@ -69,7 +69,9 @@ class MobileLoginScreen extends StatelessWidget {
             ),
           ],),
            
-          PrimaryButton(text: "LOGIN", onPressed: (){})
+          PrimaryButton(text: "LOGIN", onPressed: (){
+            Get.toNamed(AppRoutes.masterPassword);
+          })
         ],
       ),
     );
