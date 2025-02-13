@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:next_pass/core/routes/app_routes.dart';
 import 'package:next_pass/core/widgets/primary_button.dart';
 
 class MobileLoginScreen extends StatelessWidget {
@@ -68,7 +70,9 @@ class MobileLoginScreen extends StatelessWidget {
             ),
           ],),
            
-          PrimaryButton(text: "LOGIN", onPressed: (){})
+          PrimaryButton(text: "LOGIN", onPressed: (){
+            Get.toNamed(AppRoutes.masterPassword);
+          })
         ],
       ),
     );

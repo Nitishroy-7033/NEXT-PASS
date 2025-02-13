@@ -21,7 +21,6 @@ class StrengthBadge extends StatelessWidget {
           )),
       padding: const EdgeInsets.all(3),
       child: Row(
-        spacing: 2,
         children: [
           SizedBox(
             height: 13,
