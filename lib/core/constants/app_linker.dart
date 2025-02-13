@@ -75,3 +75,5 @@ export 'package:next_pass/features/dashboard/presentation/views/dashboard_view.d
 export 'package:next_pass/features/getStarted/presentations/view/get_started_view.dart';
 export 'package:next_pass/features/master_password/presentation/views/master_password_view.dart';
 export 'package:next_pass/features/splash/presentation/views/splace_view.dart';
+export 'package:next_pass/features/getStarted/presentations/screens/mobile_welcome_screen1.dart';
+export 'package:next_pass/features/getStarted/presentations/screens/mobile_welcome_screen2.dart';
