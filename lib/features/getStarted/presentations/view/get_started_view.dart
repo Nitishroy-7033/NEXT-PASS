@@ -7,7 +7,7 @@ class GetStartedView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-     return const Responsive(
+     return Responsive(
         mobile: MobileGetStartedScreen(),
         tablet: MobileGetStartedScreen(),
         desktop: WebGetStartedScreen());

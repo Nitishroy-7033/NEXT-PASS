@@ -11,7 +11,7 @@ class AppThemes {
     brightness: Brightness.light,
     useMaterial3: true,
     colorScheme: const ColorScheme.light(
-        surface: AppColors.backgroundLight,
+        surface: AppColors.backgroundLight, 
         onSurface: AppColors.fontLight,
         primary: AppColors.primaryLight,
         secondary: AppColors.secondaryLight,

@@ -9,7 +9,7 @@ class SplashController extends GetxController {
 
   void _navigateToGetStarted() {
     Timer(const Duration(seconds: 6), () {
-      Get.offNamed(AppRoutes.authtab);
+      Get.offNamed(AppRoutes.getStarted);
     });
   }
 }
