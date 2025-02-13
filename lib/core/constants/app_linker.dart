@@ -67,3 +67,6 @@ export 'package:next_pass/features/add_new_credential/controller/add_new_credent
 export 'package:next_pass/features/add_new_credential/presentation/widgets/add_new_credential_form.dart';
 export 'package:next_pass/features/add_new_credential/presentation/screens/mobile_add_new_credential.dart';
 export 'package:next_pass/features/add_new_credential/presentation/screens/web_add_new_credential.dart';
+
+export 'package:next_pass/features/getStarted/presentations/screens/mobile_welcome_screen1.dart';
+export 'package:next_pass/features/getStarted/presentations/screens/mobile_welcome_screen2.dart';
