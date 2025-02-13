@@ -1,7 +1,4 @@
-import 'package:flutter/widgets.dart';
-import 'package:next_pass/core/utils/responsive.dart';
-import 'package:next_pass/features/dashboard/presentation/screens/mobile_dashboard.dart';
-import 'package:next_pass/features/dashboard/presentation/screens/web_dashboard.dart';
+import '../../../../core/constants/app_linker.dart';
 
 class DashboardView extends StatelessWidget {
   const DashboardView({super.key});

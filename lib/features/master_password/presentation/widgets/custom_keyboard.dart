@@ -1,9 +1,5 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:get/get.dart';
-import 'package:next_pass/core/constants/app_assets.dart';
-import 'package:next_pass/core/routes/app_routes.dart';
-import 'package:next_pass/features/master_password/presentation/getx/controller/master_password_controller.dart';
+
+import '../../../../core/constants/app_linker.dart';
 
 class CustomKeyboard extends StatelessWidget {
   final MasterPasswordController pinController;

@@ -1,8 +1,6 @@
 
-import 'package:flutter/material.dart';
-import 'package:next_pass/features/splash/presentation/screens/mobile_splash_screen.dart';
-import 'package:next_pass/features/splash/presentation/screens/web_splash_screen.dart';
-import '../../../../core/utils/responsive.dart';
+
+import '../../../../core/constants/app_linker.dart';
 
 class SplaceView extends StatelessWidget {
   const SplaceView({super.key});

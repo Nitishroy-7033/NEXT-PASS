@@ -1,6 +1,4 @@
-import 'package:get/get.dart';
-
-import '../../../domain/entities/user.dart';
+import '../../../../../core/constants/app_linker.dart';
 
 class AuthController extends GetxController {
   var email = ''.obs;

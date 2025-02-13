@@ -1,8 +1,4 @@
-import 'dart:async';
-import 'package:get/get.dart';
-
-import '../../../../../core/routes/app_routes.dart';
-// Adjust the path as necessary
+import '../../../../../core/constants/app_linker.dart';
 
 class SplashController extends GetxController {
   @override

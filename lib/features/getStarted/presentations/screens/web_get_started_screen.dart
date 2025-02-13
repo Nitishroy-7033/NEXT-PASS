@@ -1,8 +1,6 @@
-import 'package:flutter/material.dart';
-import 'package:next_pass/core/constants/app_assets.dart';
-//import 'package:flutter/widgets.dart';
-import 'package:next_pass/core/constants/app_colors.dart';
-import 'package:next_pass/core/utils/size_config.dart';
+
+
+import '../../../../core/constants/app_linker.dart';
 
 class WebGetStartedScreen extends StatelessWidget {
   const WebGetStartedScreen({super.key});

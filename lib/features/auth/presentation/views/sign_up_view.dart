@@ -1,7 +1,4 @@
-import 'package:flutter/cupertino.dart';
-import 'package:next_pass/core/utils/responsive.dart';
-import 'package:next_pass/features/auth/presentation/screens/mobile/mobile_sign_up_Screen.dart';
-import 'package:next_pass/features/auth/presentation/screens/web/web_sign_up_screen.dart';
+import '../../../../core/constants/app_linker.dart';
 
 class SignUpView extends StatelessWidget {
   const SignUpView({super.key});

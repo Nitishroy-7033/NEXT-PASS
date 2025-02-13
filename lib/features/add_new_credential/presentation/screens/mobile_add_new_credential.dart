@@ -1,7 +1,5 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:next_pass/features/add_new_credential/controller/add_new_credential_controller.dart';
-import 'package:next_pass/features/add_new_credential/presentation/widgets/add_new_credential_form.dart';
+
+import 'package:next_pass/core/constants/app_linker.dart';
 
 class MobileAddNewCredential extends StatelessWidget {
   const MobileAddNewCredential({super.key});

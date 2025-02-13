@@ -1,11 +1,5 @@
-import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
-
-import '../../../data/repository/auth_repository_impl.dart';
-import '../../../domain/repository/auth_repository.dart';
-import '../../../domain/usecases/user_login.dart';
-import '../../../domain/usecases/user_signup.dart';
-import '../controllers/auth_controller.dart';
+import '../../../../../core/constants/app_linker.dart';
 
 class AuthBinding extends Bindings {
   @override

@@ -1,6 +1,5 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:next_pass/features/home/presentation/views/home_view.dart';
+
+import '../../../core/constants/app_linker.dart';
 
 class WebSidebarController extends GetxController {
   RxInt selectedIndex = 0.obs;
