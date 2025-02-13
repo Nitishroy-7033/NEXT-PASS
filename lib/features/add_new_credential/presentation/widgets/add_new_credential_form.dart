@@ -63,7 +63,9 @@ class AddNewCredentialForm extends StatelessWidget {
               hintText: "User Name",
             ),
           ),
-         
+         const SizedBox(
+            height: 20,
+          ),
           Row(
             children: [
               Text(
@@ -127,6 +129,10 @@ class AddNewCredentialForm extends StatelessWidget {
           const SizedBox(height:  30),
           PrimaryButton(text: "SAVE", onPressed: (){
             controller.saveCredential();
+          },icon: IconsAssets.lockIcon,),
+          const SizedBox(height:  10),
+          PrimaryButton(text: "GET NEW PASSWORD", onPressed: (){
+            
           },icon: IconsAssets.lockIcon,),
           const SizedBox(height:  10),
         ],

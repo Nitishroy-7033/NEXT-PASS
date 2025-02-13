@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 import 'package:next_pass/core/constants/app_assets.dart';
+import 'package:next_pass/core/routes/app_routes.dart';
 import 'package:next_pass/features/master_password/presentation/getx/controller/master_password_controller.dart';
 
 class CustomKeyboard extends StatelessWidget {
@@ -28,11 +30,16 @@ class CustomKeyboard extends StatelessWidget {
 
           if (index == 9) {
             // ✅ Biometric Icon
-            buttonContent = SvgPicture.asset(
-              color: Theme.of(context).colorScheme.onSurface,
-              IconsAssets.biometric_icon,
-              width: 20,
-              height: 20,
+            buttonContent = InkWell(
+              onTap: () {
+                Get.offAllNamed(AppRoutes.home);
+              },
+              child: SvgPicture.asset(
+                color: Theme.of(context).colorScheme.onSurface,
+                IconsAssets.biometric_icon,
+                width: 20,
+                height: 20,
+              ),
             );
           } else if (index == 10) {
             // ✅ Zero button
