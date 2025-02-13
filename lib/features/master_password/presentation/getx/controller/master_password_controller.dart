@@ -1,4 +1,6 @@
-import 'package:get/get.dart';
+
+import '../../../../../core/constants/app_linker.dart';
+
 class MasterPasswordController extends GetxController {
   var enteredPin = ''.obs;
   var enteredDigits = <String>[].obs; // ✅ List to store entered digits

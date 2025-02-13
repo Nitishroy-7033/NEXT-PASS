@@ -1,7 +1,6 @@
-import 'package:flutter/cupertino.dart';
-import 'package:next_pass/core/utils/responsive.dart';
-import 'package:next_pass/features/home/presentation/screens/mobile_home_screen.dart';
-import 'package:next_pass/features/home/presentation/screens/web_home_screen.dart';
+
+
+import '../../../../core/constants/app_linker.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});

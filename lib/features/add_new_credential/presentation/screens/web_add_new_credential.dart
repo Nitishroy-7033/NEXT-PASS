@@ -1,4 +1,5 @@
-import 'package:flutter/widgets.dart';
+
+import 'package:next_pass/core/constants/app_linker.dart';
 
 class WebAddNewCredential extends StatelessWidget {
   const WebAddNewCredential({super.key});
