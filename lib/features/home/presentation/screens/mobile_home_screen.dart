@@ -1,8 +1,4 @@
 import 'package:next_pass/core/constants/app_linker.dart';
-import 'package:next_pass/features/home/presentation/widgets/all_credentials_section.dart';
-import 'package:next_pass/features/home/presentation/widgets/password_category_section.dart';
-import 'package:next_pass/features/home/presentation/widgets/search_bar_section.dart';
-import 'package:next_pass/features/home/presentation/widgets/view_profile_section.dart';
 
 class MobileHomeScreen extends StatelessWidget {
   const MobileHomeScreen({super.key});
@@ -54,6 +50,7 @@ class MobileHomeScreen extends StatelessWidget {
           scrolledUnderElevation: 0.0,
           toolbarHeight: 120,
           backgroundColor: Theme.of(context).colorScheme.surface,
+          automaticallyImplyLeading: false,
         ),
         // Floation Action Button for Add new password
         floatingActionButton: FloatingActionButton(
@@ -89,11 +86,20 @@ class MobileHomeScreen extends StatelessWidget {
                         style: Theme.of(context).textTheme.labelMedium,
                       ),
                       const Spacer(),
-                      Text(
-                        AppStrings.viewAll,
-                        style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                              color: Theme.of(context).colorScheme.primary,
-                            ),
+                      InkWell(
+                        onTap: () {
+                          print('View All button Clickedddd');
+                        },
+                        splashColor: Colors.transparent,
+                        child: Text(
+                          AppStrings.viewAll,
+                          style: Theme.of(context)
+                              .textTheme
+                              .labelSmall
+                              ?.copyWith(
+                                color: Theme.of(context).colorScheme.primary,
+                              ),
+                        ),
                       ),
                     ],
                   ),

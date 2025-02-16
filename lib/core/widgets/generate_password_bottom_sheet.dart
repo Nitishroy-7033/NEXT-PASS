@@ -9,7 +9,7 @@ Future<dynamic> BottomSheetPasswordGenerator(BuildContext context) {
       decoration: BoxDecoration(
         borderRadius: const BorderRadius.only(
             topLeft: Radius.circular(20), topRight: Radius.circular(20)),
-        color: Theme.of(context).colorScheme.surface,
+        color: Theme.of(context).colorScheme.primaryContainer,
       ),
       child: Padding(
         padding: const EdgeInsets.all(12),
@@ -51,79 +51,87 @@ Future<dynamic> BottomSheetPasswordGenerator(BuildContext context) {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Row(children: [
-                  Obx(
-                  () => SizedBox(
-                    width: 20,
-                    child: CustomCheckbox(
-                        value: passwordController.useUpperCase.value,
-                        onChanged: (value) {
-                          passwordController.useUpperCase.value = value!;
-                        }),
-                  ),
+                Row(
+                  children: [
+                    Obx(
+                      () => SizedBox(
+                        width: 20,
+                        child: CustomCheckbox(
+                            value: passwordController.useUpperCase.value,
+                            onChanged: (value) {
+                              passwordController.useUpperCase.value = value!;
+                            }),
+                      ),
+                    ),
+                    SizedBox(width: 10),
+                    Text(
+                      AppStrings.useUpperCase,
+                      style: Theme.of(context).textTheme.bodySmall,
+                    ),
+                  ],
                 ),
-                SizedBox(width: 10),
-                Text(
-                  AppStrings.useUpperCase,
-                  style: Theme.of(context).textTheme.bodySmall,
-                ),
-                ],),
-                Row(children: [
-                  Obx(
-                  () => SizedBox(
-                    width: 20,
-                    child: CustomCheckbox(
-                        value: passwordController.useNumbers.value,
-                        onChanged: (value) {
-                          passwordController.useNumbers.value = value!;
-                        }),
-                  ),
-                ),
-                SizedBox(width: 10),
-                Text(
-                  AppStrings.useNumbers,
-                  style: Theme.of(context).textTheme.bodySmall,
+                Row(
+                  children: [
+                    Obx(
+                      () => SizedBox(
+                        width: 20,
+                        child: CustomCheckbox(
+                            value: passwordController.useNumbers.value,
+                            onChanged: (value) {
+                              passwordController.useNumbers.value = value!;
+                            }),
+                      ),
+                    ),
+                    SizedBox(width: 10),
+                    Text(
+                      AppStrings.useNumbers,
+                      style: Theme.of(context).textTheme.bodySmall,
+                    )
+                  ],
                 )
-                ],)
               ],
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-               Row(children: [
-                 Obx(
-                  () => SizedBox(
-                    width: 20,
-                    child: CustomCheckbox(
-                        value: passwordController.useLowerCase.value,
-                        onChanged: (value) {
-                          passwordController.useLowerCase.value = value!;
-                        }),
-                  ),
+                Row(
+                  children: [
+                    Obx(
+                      () => SizedBox(
+                        width: 20,
+                        child: CustomCheckbox(
+                            value: passwordController.useLowerCase.value,
+                            onChanged: (value) {
+                              passwordController.useLowerCase.value = value!;
+                            }),
+                      ),
+                    ),
+                    SizedBox(width: 10),
+                    Text(
+                      AppStrings.useLowerCase,
+                      style: Theme.of(context).textTheme.bodySmall,
+                    ),
+                  ],
                 ),
-                   SizedBox(width: 10),
-                Text(
-                  AppStrings.useLowerCase,
-                  style: Theme.of(context).textTheme.bodySmall,
-                ),
-               ],),
-               Row(children: [
-                 Obx(
-                  () => SizedBox(
-                    width: 20,
-                    child: CustomCheckbox(
-                        value: passwordController.useSymbol.value,
-                        onChanged: (value) {
-                          passwordController.useSymbol.value = value!;
-                        }),
-                  ),
-                ),
-                   SizedBox(width: 10),
-                Text(
-                  AppStrings.useSymbols,
-                  style: Theme.of(context).textTheme.bodySmall,
+                Row(
+                  children: [
+                    Obx(
+                      () => SizedBox(
+                        width: 20,
+                        child: CustomCheckbox(
+                            value: passwordController.useSymbol.value,
+                            onChanged: (value) {
+                              passwordController.useSymbol.value = value!;
+                            }),
+                      ),
+                    ),
+                    SizedBox(width: 10),
+                    Text(
+                      AppStrings.useSymbols,
+                      style: Theme.of(context).textTheme.bodySmall,
+                    )
+                  ],
                 )
-               ],)
               ],
             ),
             const SizedBox(

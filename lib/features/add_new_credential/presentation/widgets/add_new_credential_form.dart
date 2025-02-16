@@ -1,4 +1,8 @@
 import 'package:next_pass/core/constants/app_linker.dart';
+import 'package:next_pass/core/widgets/custom_dropdown.dart';
+import 'package:next_pass/core/widgets/generate_password_button.dart';
+import 'package:next_pass/features/add_new_credential/controller/category_list_controller.dart';
+import 'package:next_pass/features/add_new_credential/controller/reminder_list_controller.dart';
 
 class AddNewCredentialForm extends StatelessWidget {
   const AddNewCredentialForm({super.key});
@@ -7,141 +11,164 @@ class AddNewCredentialForm extends StatelessWidget {
   Widget build(BuildContext context) {
     final AddNewCredentialController controller =
         Get.find<AddNewCredentialController>();
+
     return Container(
-      padding: const EdgeInsets.all(10),
+      padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
           color: Theme.of(context).colorScheme.primaryContainer,
           borderRadius: BorderRadius.circular(20)),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Row(
-            children: [
-              Text("Credential"),
-            ],
+          Text(
+            AppStrings.credentialNC,
+            style: Theme.of(context).textTheme.bodyMedium,
           ),
-          const SizedBox(
-            height: 20,
-          ),
-          Row(
-            children: [
-              Text(
-                "Site Address",
-                style: Theme.of(context).textTheme.labelMedium,
-              ),
-            ],
+          const SizedBox(height: 15),
+          Text(
+            AppStrings.siteAddressLabelNC,
+            style: Theme.of(context).textTheme.labelMedium,
           ),
           const SizedBox(height: 10),
           TextFormField(
             textInputAction: TextInputAction.next,
             controller: controller.siteUrl,
-            decoration: const InputDecoration(
-              prefixIcon: Icon(Icons.language),
-              hintText: "www.example.com",
+            decoration: InputDecoration(
+              prefixIcon: Icon(
+                Icons.language,
+                color: Theme.of(context).colorScheme.tertiary,
+              ),
+              hintText: AppStrings.siteHintTextNC,
             ),
           ),
-          const SizedBox(
-            height: 20,
-          ),
-          Row(
-            children: [
-              Text(
-                "User Name",
-                style: Theme.of(context).textTheme.labelMedium,
-              ),
-            ],
+          const SizedBox(height: 20),
+          Text(
+            AppStrings.userNameLabelNC,
+            style: Theme.of(context).textTheme.labelMedium,
           ),
           const SizedBox(height: 10),
           TextFormField(
             textInputAction: TextInputAction.next,
             controller: controller.userName,
-            decoration: const InputDecoration(
-              prefixIcon: Icon(Icons.person),
-              hintText: "User Name",
+            decoration: InputDecoration(
+              prefixIcon: Icon(
+                Icons.person,
+                color: Theme.of(context).colorScheme.tertiary,
+              ),
+              hintText: AppStrings.userNameHintTextNC,
             ),
           ),
-          const SizedBox(
-            height: 20,
-          ),
-          Row(
-            children: [
-              Text(
-                "Password",
-                style: Theme.of(context).textTheme.labelMedium,
-              ),
-            ],
-          ),
-          const SizedBox(height: 10),
-          TextFormField(
-            textInputAction: TextInputAction.next,
-            controller: controller.password,
-            obscureText: true,
-            decoration: const InputDecoration(
-              prefixIcon: Icon(Icons.password),
-              hintText: "**********",
-            ),
-          ),
-          const SizedBox(
-            height: 20,
-          ),
-          Row(
-            children: [
-              Text(
-                "Email",
-                style: Theme.of(context).textTheme.labelMedium,
-              ),
-            ],
+          const SizedBox(height: 20),
+          Text(
+            AppStrings.emailLabelNC,
+            style: Theme.of(context).textTheme.labelMedium,
           ),
           const SizedBox(height: 10),
           TextFormField(
             textInputAction: TextInputAction.next,
             controller: controller.emailId,
             obscureText: true,
-            decoration: const InputDecoration(
-              prefixIcon: Icon(Icons.alternate_email),
-              hintText: "user@gmail.com",
+            decoration: InputDecoration(
+              prefixIcon: Icon(
+                Icons.alternate_email,
+                color: Theme.of(context).colorScheme.tertiary,
+              ),
+              hintText: AppStrings.emailHintTextNC,
             ),
           ),
-          const SizedBox(
-            height: 20,
+          const SizedBox(height: 20),
+          Text(
+            AppStrings.phoneNumberLabelNC,
+            style: Theme.of(context).textTheme.labelMedium,
           ),
-          Row(
-            children: [
-              Text(
-                "Phone Number",
-                style: Theme.of(context).textTheme.labelMedium,
+          const SizedBox(height: 10),
+          TextFormField(
+            textInputAction: TextInputAction.next,
+            controller: controller.mobileNumber,
+            obscureText: true,
+            decoration: InputDecoration(
+              prefixIcon: Icon(
+                Icons.call,
+                color: Theme.of(context).colorScheme.tertiary,
               ),
-            ],
+              hintText: AppStrings.phoneNumberHintTextNC,
+            ),
+          ),
+          const SizedBox(height: 20),
+          Text(
+            AppStrings.passwordAddressLabelNC,
+            style: Theme.of(context).textTheme.labelMedium,
           ),
           const SizedBox(height: 10),
           TextFormField(
             textInputAction: TextInputAction.done,
-            controller: controller.mobileNumber,
+            controller: controller.password,
             obscureText: true,
-            decoration: const InputDecoration(
-              prefixIcon: Icon(Icons.numbers),
-              hintText: "+91000000000",
+            decoration: InputDecoration(
+              prefixIcon: Icon(
+                Icons.lock_rounded,
+                color: Theme.of(context).colorScheme.tertiary,
+              ),
+              hintText: AppStrings.passwordHintTextNC,
             ),
+          ),
+          const SizedBox(height: 20),
+          const Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              GeneratePasswordButton(),
+              StrengthBadge(strength: 'Strong'),
+            ],
+          ),
+          const SizedBox(height: 10),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    AppStrings.reminderNC,
+                    style: Theme.of(context).textTheme.labelMedium,
+                  ),
+                  const SizedBox(height: 5),
+                  CustomDropdown(
+                    itemList: const ['7 Days', '15 Days', '30 Days', '60 Days'],
+                    controller: ReminderListController(),
+                    popupWidth: 90,
+                    maxWidth: 120,
+                    maxHeight: 40,
+                  ),
+                ],
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    AppStrings.categoryNC,
+                    style: Theme.of(context).textTheme.labelMedium,
+                  ),
+                  const SizedBox(height: 5),
+                  CustomDropdown(
+                    itemList:const  ['Website', 'App', 'Payment', 'Other'],
+                    controller: CategoryListController(),
+                    popupWidth: 120,
+                    maxWidth: 130,
+                    maxHeight: 40,
+                  ),
+                ],
+              )
+            ],
           ),
           const SizedBox(height: 30),
           PrimaryButton(
-            text: "SAVE",
+            text: AppStrings.buttonSave,
             onPressed: () {
-              controller.saveCredential();
+              // controller.saveCredential();
             },
-            icon: IconsAssets.lockIcon,
           ),
-          const SizedBox(height: 10),
-          PrimaryButton(
-            text: "GET NEW PASSWORD",
-            onPressed: () {
-              BottomSheetPasswordGenerator(context);
-            },
-            icon: IconsAssets.lockIcon,
-          ),
-          const SizedBox(height: 10),
         ],
       ),
     );
   }
-
 }
