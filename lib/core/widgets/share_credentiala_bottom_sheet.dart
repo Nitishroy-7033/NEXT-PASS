@@ -20,12 +20,12 @@ Future<dynamic> ShareCredentialBottomSheet(BuildContext context) {
         padding: EdgeInsets.all(12.0),
         child: Column(
           children: [
-            // header Widget
+            // Share credential header Widget
             ShareCredentialHeaderWidget(),
             SizedBox(
               height: 20,
             ),
-            // footer widget
+            // Share credential footer widget
             ShareCredentialFooterWidget(),
           ],
         ),
