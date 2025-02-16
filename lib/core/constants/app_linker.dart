@@ -69,8 +69,6 @@ export 'package:next_pass/features/add_new_credential/presentation/screens/mobil
 export 'package:next_pass/features/add_new_credential/presentation/screens/web_add_new_credential.dart';
 export 'package:next_pass/core/widgets/all_widgets_screen.dart';
 export 'package:next_pass/features/add_new_credential/presentation/views/view_add_new_credential.dart';
-export 'package:next_pass/features/getStarted/presentations/screens/mobile_welcome_screen1.dart';
-export 'package:next_pass/features/getStarted/presentations/screens/mobile_welcome_screen2.dart';
 export 'package:next_pass/core/widgets/custom_appbar.dart';
 export 'package:next_pass/core/widgets/all_widgets_screen.dart';
 export 'package:next_pass/features/add_new_credential/presentation/views/view_add_new_credential.dart';
@@ -81,8 +79,6 @@ export 'package:next_pass/features/dashboard/presentation/views/dashboard_view.d
 export 'package:next_pass/features/getStarted/presentations/view/get_started_view.dart';
 export 'package:next_pass/features/master_password/presentation/views/master_password_view.dart';
 export 'package:next_pass/features/splash/presentation/views/splace_view.dart';
-export 'package:next_pass/features/getStarted/presentations/screens/mobile_welcome_screen1.dart';
-export 'package:next_pass/features/getStarted/presentations/screens/mobile_welcome_screen2.dart';
 export 'package:next_pass/core/widgets/custom_text_form_field.dart';
 export 'package:flutter/gestures.dart';
 export 'package:next_pass/core/widgets/generate_password_footer_widget.dart';
@@ -102,3 +98,8 @@ export 'package:next_pass/features/app_credentials/presentation/widgets/header_p
 export 'package:next_pass/features/app_credentials/presentation/widgets/middle_part/password_field_widget.dart';
 export 'package:next_pass/features/app_credentials/presentation/widgets/widget_helpers.dart';
 export 'package:next_pass/features/app_credentials/presentation/widgets/middle_part/weak_password_alert.dart';
+export 'package:next_pass/features/search_credential/presentations/screens/mobile_search_credential_screen.dart';
+export 'package:next_pass/features/search_credential/presentations/screens/web_search_credential_screen.dart';
+export 'package:next_pass/features/search_credential/views/search_credential_view.dart';
+export 'package:next_pass/features/getStarted/presentations/screens/mobile_welcome_screen1.dart';
+ export 'package:next_pass/features/getStarted/presentations/screens/mobile_welcome_screen2.dart';
