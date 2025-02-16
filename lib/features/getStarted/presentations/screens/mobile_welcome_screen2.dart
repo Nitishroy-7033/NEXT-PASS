@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:next_pass/core/constants/app_assets.dart';
 import 'package:next_pass/core/constants/app_colors.dart';
+import 'package:next_pass/core/constants/app_linker.dart';
 import 'package:next_pass/core/constants/app_strings.dart';
 import 'package:next_pass/core/constants/app_themes.dart';
 import 'package:next_pass/core/utils/size_config.dart';
@@ -50,7 +53,9 @@ class MobileWelcomeScreen2 extends StatelessWidget {
                           color: Colors.black
                         )),
                          SizedBox(height: SizeConfig.screenHeight*(36/852),),
-                        PrimaryButton(text: "Start", onPressed: (){}),
+                        PrimaryButton(text: "Start", onPressed: (){
+                          Get.offAllNamed(AppRoutes.authtab);
+                        }),
                          SizedBox(height: SizeConfig.screenHeight*(30/852),),
                          TextButton(onPressed: (){}, child: Text("Skip",style: AppThemes.lightTheme.textTheme.headlineSmall,)),
                     ],

@@ -1,5 +1,4 @@
-
-import '../constants/app_linker.dart';
+import 'package:next_pass/core/constants/app_linker.dart';
 
 class RouteGenerator {
   static List<GetPage> getRoutes() {
@@ -57,6 +56,11 @@ class RouteGenerator {
       GetPage(
         name: AppRoutes.newCredential,
         page: () => const ViewAddNewCredential(),
+        transition: Transition.fadeIn,
+      ),
+       GetPage(
+        name: AppRoutes.appCredentials,
+        page: () => const AppCredentials(),
         transition: Transition.fadeIn,
       ),
     ];
