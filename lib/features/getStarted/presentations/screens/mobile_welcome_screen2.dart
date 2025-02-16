@@ -21,7 +21,7 @@ class MobileWelcomeScreen2 extends StatelessWidget {
       body: SingleChildScrollView(
           scrollDirection: Axis.vertical,
           child: Padding(
-            padding: EdgeInsets.fromLTRB(
+            padding: const EdgeInsets.fromLTRB(
                 51,//width*0.12977099236,
                 67,//height*0.10211267605,
                 49,//width*0.12468193384,

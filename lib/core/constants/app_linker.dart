@@ -67,6 +67,8 @@ export 'package:next_pass/features/add_new_credential/controller/add_new_credent
 export 'package:next_pass/features/add_new_credential/presentation/widgets/add_new_credential_form.dart';
 export 'package:next_pass/features/add_new_credential/presentation/screens/mobile_add_new_credential.dart';
 export 'package:next_pass/features/add_new_credential/presentation/screens/web_add_new_credential.dart';
+export 'package:next_pass/core/widgets/all_widgets_screen.dart';
+export 'package:next_pass/features/add_new_credential/presentation/views/view_add_new_credential.dart';
 export 'package:next_pass/features/getStarted/presentations/screens/mobile_welcome_screen1.dart';
 export 'package:next_pass/features/getStarted/presentations/screens/mobile_welcome_screen2.dart';
 export 'package:next_pass/core/widgets/custom_appbar.dart';
@@ -77,6 +79,16 @@ export 'package:next_pass/features/auth/presentation/views/login_view.dart';
 export 'package:next_pass/features/auth/presentation/views/sign_up_view.dart';
 export 'package:next_pass/features/dashboard/presentation/views/dashboard_view.dart';
 export 'package:next_pass/features/getStarted/presentations/view/get_started_view.dart';
+export 'package:next_pass/features/master_password/presentation/views/master_password_view.dart';
+export 'package:next_pass/features/splash/presentation/views/splace_view.dart';
+export 'package:next_pass/features/getStarted/presentations/screens/mobile_welcome_screen1.dart';
+export 'package:next_pass/features/getStarted/presentations/screens/mobile_welcome_screen2.dart';
+export 'package:next_pass/core/widgets/custom_text_form_field.dart';
+export 'package:flutter/gestures.dart';
+export 'package:next_pass/core/widgets/generate_password_footer_widget.dart';
+export 'package:next_pass/core/widgets/generate_password_header_widget.dart';
+export 'package:next_pass/core/widgets/share_credential_footer_widget.dart';
+export 'package:next_pass/core/widgets/share_credential_header_widget.dart';
 export '../../features/master_password/presentation/views/master_password_view.dart';
 export '../../features/splash/presentation/views/splace_view.dart';
 export 'package:next_pass/features/app_credentials/presentation/getx/controllers/credential_controller.dart';
@@ -90,4 +102,3 @@ export 'package:next_pass/features/app_credentials/presentation/widgets/header_p
 export 'package:next_pass/features/app_credentials/presentation/widgets/middle_part/password_field_widget.dart';
 export 'package:next_pass/features/app_credentials/presentation/widgets/widget_helpers.dart';
 export 'package:next_pass/features/app_credentials/presentation/widgets/middle_part/weak_password_alert.dart';
-

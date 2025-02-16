@@ -15,8 +15,9 @@ class AppImageAssets {
   static const String twitterLogo = "${imageBasePath}twitter_logo.png";
   static const String getStartedLogo1 = "${imageBasePath}getStarted_1.png";
   static const String getStartedLogo2 = "${imageBasePath}getStarted_2.png";
-}
+    static const String deleteIcon = "${imageBasePath}delete_icon.png";
 
+}
 // SVG Icons Assets
 class IconsAssets {
   static const String iconBasePath = "assets/icons/";

@@ -58,12 +58,22 @@ class AppStrings {
   static const String generatePassword = 'Generate Password';
   static const String passwordHintText = 'HJ_sd763!@%sndf.//!!@22222222';
 
+  /// For Generate Password Bottom Sheet
   static const String useSymbols = 'Use Symbols';
   static const String useUpperCase = 'Use Uppercase';
   static const String useLowerCase = 'Use Lowercase';
   static const String useNumbers = 'Use Numbers';
 
   static const String passwordLength = 'Password Length';
+  static const String btnCopyPassword = 'COPY PASSWORD';
+
+
+
+  /// For Share Crediantial Bottom Sheet
+  static const String crediantialShare = 'Credential Shared with';  
+  static const String shareEmail = 'These all member will be able to see only this credential on all.';  
+  static const String readMore= ' read more.';
+  static const String btnSave= ' SAVE';
   static const String createAccount = 'CREATE ACCOUNT';
 
   //For App Credentials Page Text
@@ -88,5 +98,4 @@ class AppStrings {
   static const String mediumText="Medium";
   static const String weakDescription =
       "This is a Weak Password,please make it stronger";
-
 }

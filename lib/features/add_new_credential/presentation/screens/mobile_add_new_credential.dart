@@ -2,11 +2,11 @@
 import 'package:next_pass/core/constants/app_linker.dart';
 
 class MobileAddNewCredential extends StatelessWidget {
-  const MobileAddNewCredential({super.key});
+  final controller = Get.put(AddNewCredentialController());
+   MobileAddNewCredential({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(AddNewCredentialController());
     return Scaffold(
       appBar: AppBar(
         title: const Text("New credential"),
