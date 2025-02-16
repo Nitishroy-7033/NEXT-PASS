@@ -17,11 +17,13 @@ class AppStrings {
 
   String welcome = "Welcome";
 
-  //GetStarted 
+  //GetStarted
   static const String heading1 = "Best place to store your credential";
-  static const String content1 = "Best place you can store your credential with 100% encrypted and secure.";
+  static const String content1 =
+      "Best place you can store your credential with 100% encrypted and secure.";
   static const String heading2 = "Use your own database and store";
-  static const String content2 = "You can add you own mongo database to store you own credential ";
+  static const String content2 =
+      "You can add you own mongo database to store you own credential ";
 
   // Bottom NavBar Title
   static const String navHomeTitle = 'Home';
@@ -36,7 +38,6 @@ class AppStrings {
   static const String sidebarAccountTitle = 'Account';
   static const String sidebarSettingsTitle = 'Settings';
   static const String privacy = "Your Digital Security Starts Here ";
-
 
   // Home Screen Strings
   static const String addPassword = "Add Password";
@@ -56,8 +57,6 @@ class AppStrings {
   /// Password Generator Bottom Sheet
   static const String generatePassword = 'Generate Password';
   static const String passwordHintText = 'HJ_sd763!@%sndf.//!!@22222222';
-  
-
 
   static const String useSymbols = 'Use Symbols';
   static const String useUpperCase = 'Use Uppercase';
@@ -66,4 +65,28 @@ class AppStrings {
 
   static const String passwordLength = 'Password Length';
   static const String createAccount = 'CREATE ACCOUNT';
+
+  //For App Credentials Page Text
+  static const String youareSafeText = "You are Safe";
+  static const String safeDescription = "This Password is Strong and Safe";
+  static const String credentialText = "Credential";
+  static const String appTitle = "Title";
+  static const String siteUrl = "Site Url";
+  static const String username = "Username";
+  static const String email = "Email";
+  static const String password = "Password";
+  static const String view = "View";
+  static const String changeReminder = "Change Reminder";
+  static const String category = "Category";
+  static const String sharedWith = "Shared With";
+  static const String edit = "Edit";
+  static const String save="Save";
+  static const String vulnerabilityalert = "Vulnerability Alert";
+  static const String vulnerabilityDescription = "This password is leaked";
+  static const String weakText = "Weak";
+  static const String strongText = "Strong";
+  static const String mediumText="Medium";
+  static const String weakDescription =
+      "This is a Weak Password,please make it stronger";
+
 }
