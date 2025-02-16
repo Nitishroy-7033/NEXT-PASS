@@ -6,7 +6,6 @@ class MobileAddNewCredential extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(AddNewCredentialController());
     return Scaffold(
       appBar: AppBar(
         title: const Text("New credential"),

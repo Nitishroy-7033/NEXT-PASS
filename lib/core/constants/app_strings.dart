@@ -59,11 +59,21 @@ class AppStrings {
   
 
 
+  /// For Generate Password Bottom Sheet
   static const String useSymbols = 'Use Symbols';
   static const String useUpperCase = 'Use Uppercase';
   static const String useLowerCase = 'Use Lowercase';
   static const String useNumbers = 'Use Numbers';
 
   static const String passwordLength = 'Password Length';
-  static const String createAccount = 'CREATE ACCOUNT';
+  static const String btnCopyPassword = 'COPY PASSWORD';
+
+
+
+  /// For Share Crediantial Bottom Sheet
+  static const String crediantialShare = 'Credential Shared with';  
+  static const String shareEmail = 'These all member will be able to see only this credential on all.';  
+  static const String readMore= ' read more.';
+  static const String btnSave= ' SAVE';
+
 }

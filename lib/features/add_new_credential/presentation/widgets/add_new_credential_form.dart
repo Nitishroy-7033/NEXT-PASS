@@ -143,5 +143,4 @@ class AddNewCredentialForm extends StatelessWidget {
       ),
     );
   }
-
 }

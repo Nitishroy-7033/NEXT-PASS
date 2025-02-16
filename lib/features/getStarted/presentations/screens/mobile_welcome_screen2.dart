@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:next_pass/core/constants/app_assets.dart';
 import 'package:next_pass/core/constants/app_colors.dart';
 import 'package:next_pass/core/constants/app_strings.dart';
@@ -19,7 +18,7 @@ class MobileWelcomeScreen2 extends StatelessWidget {
       body: SingleChildScrollView(
           scrollDirection: Axis.vertical,
           child: Padding(
-            padding: EdgeInsets.fromLTRB(
+            padding: const EdgeInsets.fromLTRB(
                 51,//width*0.12977099236,
                 67,//height*0.10211267605,
                 49,//width*0.12468193384,
