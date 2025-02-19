@@ -11,4 +11,5 @@ class AppRoutes {
   static const String allWidgetsScreen = '/allWidgetsScreen';
   static const String newCredential = '/newCredential';
   static const String appCredentials='/AppCredentials';
+  static const String searchCredential = '/searchCredential';
 }

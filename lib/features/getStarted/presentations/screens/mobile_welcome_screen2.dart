@@ -1,13 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:next_pass/core/constants/app_assets.dart';
-import 'package:next_pass/core/constants/app_colors.dart';
-import 'package:next_pass/core/constants/app_linker.dart';
-import 'package:next_pass/core/constants/app_strings.dart';
-import 'package:next_pass/core/constants/app_themes.dart';
-import 'package:next_pass/core/utils/size_config.dart';
-import 'package:next_pass/core/widgets/primary_button.dart';
+import '../../../../core/constants/app_linker.dart';
 
 class MobileWelcomeScreen2 extends StatelessWidget {
   const MobileWelcomeScreen2({super.key});
