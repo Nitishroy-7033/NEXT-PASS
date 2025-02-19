@@ -59,14 +59,23 @@ class AppStrings {
   static const String generatePassword = 'Generate Password';
   static const String passwordHintText = 'HJ_sd763!@%sndf.//!!@22222222';
 
+  /// For Generate Password Bottom Sheet
   static const String useSymbols = 'Use Symbols';
   static const String useUpperCase = 'Use Uppercase';
   static const String useLowerCase = 'Use Lowercase';
   static const String useNumbers = 'Use Numbers';
 
   static const String passwordLength = 'Password Length';
-  static const String createAccount = 'CREATE ACCOUNT';
+  static const String btnCopyPassword = 'COPY PASSWORD';
 
+
+
+  /// For Share Crediantial Bottom Sheet
+  static const String crediantialShare = 'Credential Shared with';  
+  static const String shareEmail = 'These all member will be able to see only this credential on all.';  
+  static const String readMore= ' read more.';
+  static const String btnSave= ' SAVE';
+  static const String createAccount = 'CREATE ACCOUNT';
   // Add New Password Screen Strings (New Credential Form)
   static const String newCredentialTitle = 'New Credential';
   static const String changeIconNC = 'Change Icon';
@@ -83,4 +92,26 @@ class AppStrings {
   static const String phoneNumberHintTextNC = '+91 0123456789';
   static const String reminderNC = 'Reminder';
   static const String categoryNC = 'Category';
+  //For App Credentials Page Text
+  static const String youareSafeText = "You are Safe";
+  static const String safeDescription = "This Password is Strong and Safe";
+  static const String credentialText = "Credential";
+  static const String appTitle = "Title";
+  static const String siteUrl = "Site Url";
+  static const String username = "Username";
+  static const String email = "Email";
+  static const String password = "Password";
+  static const String view = "View";
+  static const String changeReminder = "Change Reminder";
+  static const String category = "Category";
+  static const String sharedWith = "Shared With";
+  static const String edit = "Edit";
+  static const String save="Save";
+  static const String vulnerabilityalert = "Vulnerability Alert";
+  static const String vulnerabilityDescription = "This password is leaked";
+  static const String weakText = "Weak";
+  static const String strongText = "Strong";
+  static const String mediumText="Medium";
+  static const String weakDescription =
+      "This is a Weak Password,please make it stronger";
 }

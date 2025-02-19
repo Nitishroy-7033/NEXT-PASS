@@ -5,6 +5,7 @@ import 'package:next_pass/core/constants/app_strings.dart';
 import 'package:next_pass/core/constants/app_themes.dart';
 import 'package:next_pass/core/utils/size_config.dart';
 import 'package:next_pass/core/widgets/primary_button.dart';
+import '../../../../core/constants/app_linker.dart';
 
 class MobileWelcomeScreen1 extends StatelessWidget {
   const MobileWelcomeScreen1({super.key});

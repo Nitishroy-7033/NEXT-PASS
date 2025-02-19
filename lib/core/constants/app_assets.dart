@@ -1,4 +1,6 @@
 // App Images Assets
+// ignore_for_file: constant_identifier_names
+
 class AppImageAssets {
   static const String imageBasePath = "assets/images/";
   static const String appLogo = "${imageBasePath}app_logo.png";
@@ -12,8 +14,9 @@ class AppImageAssets {
   static const String twitterLogo = "${imageBasePath}twitter_logo.png";
   static const String getStartedLogo1 = "${imageBasePath}getStarted_1.png";
   static const String getStartedLogo2 = "${imageBasePath}getStarted_2.png";
-}
+    static const String deleteIcon = "${imageBasePath}delete_icon.png";
 
+}
 // SVG Icons Assets
 class IconsAssets {
   static const String iconBasePath = "assets/icons/";
@@ -50,7 +53,13 @@ class IconsAssets {
   static const String star_icon = "${iconBasePath}Star.svg";
   static const String rectangle_icon = "${iconBasePath}rectangle_icon.svg";
   static const String ellipse_icon = "${iconBasePath}ellipse_icon.svg";
-
+  static const String back_icon="${iconBasePath}back_icon.svg";
+  static const String edit_icon="${iconBasePath}edit_icon.svg";
+  static const String eye_icon="${iconBasePath}eye_icon.svg";
+  static const String eye_block_icon="${iconBasePath}eye_block.svg";
+  static const String delete_icon="${iconBasePath}delete_icon.svg";
+  static const String warning_icon="${iconBasePath}warning_icon.svg";
+  static const String check_icon="${iconBasePath}check_icon.svg";
   // NETWORK ASSETS
   static const String spotifyLogoUrl =
       "https://storage.googleapis.com/pr-newsroom-wp/1/2023/05/Spotify_Primary_Logo_RGB_Green.png";
