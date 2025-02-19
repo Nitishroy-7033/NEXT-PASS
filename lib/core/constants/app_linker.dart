@@ -67,6 +67,12 @@ export 'package:next_pass/features/add_new_credential/controller/add_new_credent
 export 'package:next_pass/features/add_new_credential/presentation/widgets/add_new_credential_form.dart';
 export 'package:next_pass/features/add_new_credential/presentation/screens/mobile_add_new_credential.dart';
 export 'package:next_pass/features/add_new_credential/presentation/screens/web_add_new_credential.dart';
+export 'package:next_pass/features/getStarted/presentations/screens/mobile_welcome_screen1.dart';
+export 'package:next_pass/features/getStarted/presentations/screens/mobile_welcome_screen2.dart';
+export 'package:next_pass/features/home/presentation/widgets/all_credentials_section.dart';
+export 'package:next_pass/features/home/presentation/widgets/password_category_section.dart';
+export 'package:next_pass/features/home/presentation/widgets/search_bar_section.dart';
+export 'package:next_pass/features/home/presentation/widgets/view_profile_section.dart';
 export 'package:next_pass/core/widgets/all_widgets_screen.dart';
 export 'package:next_pass/features/add_new_credential/presentation/views/view_add_new_credential.dart';
 export 'package:next_pass/core/widgets/custom_appbar.dart';

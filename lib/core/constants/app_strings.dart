@@ -14,6 +14,7 @@ class AppStrings {
   // Buttons
   static const String buttonRetry = "Retry";
   static const String buttonSubmit = "Submit";
+  static const String buttonSave = "SAVE";
 
   String welcome = "Welcome";
 
@@ -75,7 +76,22 @@ class AppStrings {
   static const String readMore= ' read more.';
   static const String btnSave= ' SAVE';
   static const String createAccount = 'CREATE ACCOUNT';
-
+  // Add New Password Screen Strings (New Credential Form)
+  static const String newCredentialTitle = 'New Credential';
+  static const String changeIconNC = 'Change Icon';
+  static const String credentialNC = 'Credential';
+  static const String siteAddressLabelNC = 'Site Address';
+  static const String userNameLabelNC = 'User Name';
+  static const String emailLabelNC = 'Email';
+  static const String passwordAddressLabelNC = 'Password';
+  static const String phoneNumberLabelNC = 'Phone Number';
+  static const String siteHintTextNC = 'www.example.com';
+  static const String userNameHintTextNC = 'example@123';
+  static const String emailHintTextNC = 'example@youremail.com';
+  static const String passwordHintTextNC = '*****************';
+  static const String phoneNumberHintTextNC = '+91 0123456789';
+  static const String reminderNC = 'Reminder';
+  static const String categoryNC = 'Category';
   //For App Credentials Page Text
   static const String youareSafeText = "You are Safe";
   static const String safeDescription = "This Password is Strong and Safe";
