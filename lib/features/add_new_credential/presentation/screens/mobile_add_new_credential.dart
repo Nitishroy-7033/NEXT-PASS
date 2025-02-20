@@ -1,38 +1,44 @@
-
 import 'package:next_pass/core/constants/app_linker.dart';
 
 class MobileAddNewCredential extends StatelessWidget {
-  const MobileAddNewCredential({super.key});
+  final controller = Get.put(AddNewCredentialController());
+   MobileAddNewCredential({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(AddNewCredentialController());
     return Scaffold(
       appBar: AppBar(
-        title: const Text("New credential"),
+        title: const Text(
+          AppStrings.newCredentialTitle,
+        ),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(10),
+        padding: const EdgeInsets.symmetric(horizontal: 16),
         child: ListView(
           children: [
-            const SizedBox(height: 20),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Container(
-                  width: 80,
-                  height: 80,
-                  decoration: BoxDecoration(
-                    color: Theme.of(context).colorScheme.secondary,
-                    borderRadius: BorderRadius.circular(30),
-                  ),
+            const SizedBox(height: 35),
+            Center(
+              child: Container(
+                width: 80,
+                height: 80,
+                decoration: BoxDecoration(
+                  color: Theme.of(context).colorScheme.primaryContainer,
+                  borderRadius: BorderRadius.circular(20),
                 ),
-              ],
+              ),
+            ),
+            const SizedBox(height: 15),
+            Center(
+              child: Text(
+                AppStrings.changeIconNC,
+                style: Theme.of(context).textTheme.labelMedium,
+              ),
             ),
             const SizedBox(
-              height: 20,
+              height: 30,
             ),
-            const AddNewCredentialForm()
+            const AddNewCredentialForm(),
+            const SizedBox(height: 50),
           ],
         ),
       ),

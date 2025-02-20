@@ -11,7 +11,7 @@ class AppThemes {
     brightness: Brightness.light,
     useMaterial3: true,
     colorScheme: const ColorScheme.light(
-        surface: AppColors.backgroundLight,
+        surface: AppColors.backgroundLight, 
         onSurface: AppColors.fontLight,
         primary: AppColors.primaryLight,
         secondary: AppColors.secondaryLight,
@@ -78,33 +78,33 @@ class AppThemes {
       ),
     ),
     appBarTheme: const AppBarTheme(
-      backgroundColor: AppColors.primaryLight,
+      backgroundColor: AppColors.primaryContainerLight,
       centerTitle: true,
       titleTextStyle: TextStyle(
         fontSize: 18,
         fontWeight: FontWeight.w600,
-        color: AppColors.backgroundLight,
+        color: AppColors.fontLight,
         fontFamily: "Montserrat",
       ),
     ),
-    inputDecorationTheme: InputDecorationTheme(
-      hintStyle: const TextStyle(
+    inputDecorationTheme:const InputDecorationTheme(
+      hintStyle: TextStyle(
         fontSize: 15,
         fontWeight: FontWeight.w500,
         color: AppColors.labelLight,
         fontFamily: "Montserrat",
       ),
-      labelStyle: const TextStyle(
+      labelStyle: TextStyle(
         fontSize: 15,
         fontWeight: FontWeight.w600,
         color: AppColors.labelLight,
         fontFamily: "Montserrat",
       ),
-      fillColor: AppColors.primaryLight.withOpacity(0.1),
+      fillColor: AppColors.backgroundLight,
       filled: true,
-      border: const UnderlineInputBorder(
+      border: UnderlineInputBorder(
           borderSide: BorderSide(color: AppColors.primaryLight, width: 2)),
-      focusedBorder: const UnderlineInputBorder(
+      focusedBorder:  UnderlineInputBorder(
           borderSide: BorderSide(color: AppColors.primaryLight, width: 2)),
     ),
     buttonTheme: const ButtonThemeData(
@@ -129,7 +129,7 @@ class AppThemes {
         onPrimaryContainer: AppColors.fontDark,
         onSecondaryContainer: AppColors.labelDark),
     appBarTheme: const AppBarTheme(
-      backgroundColor: AppColors.primaryDark,
+      backgroundColor: AppColors.primaryContainerDark,
       centerTitle: true,
       titleTextStyle: TextStyle(
         fontSize: 18,
@@ -138,24 +138,24 @@ class AppThemes {
         fontFamily: "Montserrat",
       ),
     ),
-    inputDecorationTheme: InputDecorationTheme(
-      hintStyle: const TextStyle(
+    inputDecorationTheme:const InputDecorationTheme(
+      hintStyle: TextStyle(
         fontSize: 15,
         fontWeight: FontWeight.w500,
         color: AppColors.labelDark,
         fontFamily: "Montserrat",
       ),
-      labelStyle: const TextStyle(
+      labelStyle:  TextStyle(
         fontSize: 15,
         fontWeight: FontWeight.w600,
         color: AppColors.labelDark,
         fontFamily: "Montserrat",
       ),
-      fillColor: AppColors.primaryDark.withOpacity(0.1),
+      fillColor: AppColors.backgroundDark,
       filled: true,
-      border: const UnderlineInputBorder(
+      border:  UnderlineInputBorder(
           borderSide: BorderSide(color: AppColors.primaryDark, width: 2)),
-      focusedBorder: const UnderlineInputBorder(
+      focusedBorder: UnderlineInputBorder(
           borderSide: BorderSide(color: AppColors.primaryDark, width: 2)),
     ),
     textTheme: const TextTheme(

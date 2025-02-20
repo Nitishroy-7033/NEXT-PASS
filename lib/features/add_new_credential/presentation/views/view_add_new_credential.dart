@@ -6,9 +6,9 @@ class ViewAddNewCredential extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Responsive(
+    return Responsive(
         mobile: MobileAddNewCredential(),
-        tablet: MobileAddNewCredential(),
-        desktop: WebAddNewCredential());
+        tablet:  MobileAddNewCredential(),
+        desktop: const WebAddNewCredential());
   }
 }

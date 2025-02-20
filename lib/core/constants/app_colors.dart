@@ -24,7 +24,11 @@ class AppColors {
 
   // Other UI Colors
   static const Color greenColor = Color(0xff00A606);
+  static const Color lightGreen = Color.fromARGB(255, 108, 245, 67);
+  static const Color lightred = Color.fromARGB(251, 250, 6, 6);
   static const Color yellowColor = Color(0xffECEC00);
   static const Color blueColor = Color(0xff0B4FBE);
   static const Color pinkColor = Color(0xffBE0B59);
+  static const Color orangeColor = Color.fromARGB(255, 236, 173, 0);
+
 }
