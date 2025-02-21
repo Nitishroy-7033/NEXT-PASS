@@ -11,11 +11,14 @@ const connectDB = async () => {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
-    logger.info("✅ MongoDB connected successfully ");
-    console.log("✅ MongoDB connected successfully");
+
+    const dbName = mongoose.connection.db.databaseName; // Get DB Name
+    logger.info(`✅ MongoDB connected successfully to database: ${dbName}`);
+    console.log(`✅ MongoDB connected successfully to database: ${dbName}`);
   } catch (error) {
     console.error("❌ Error connecting to MongoDB", error);
     logger.error("❌ Error connecting to MongoDB", error);
+    process.exit(1); // Exit process if connection fails
   }
 };
 
