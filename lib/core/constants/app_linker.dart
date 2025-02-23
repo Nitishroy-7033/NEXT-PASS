@@ -74,8 +74,6 @@ export 'package:next_pass/features/home/presentation/widgets/all_credentials_sec
 export 'package:next_pass/features/home/presentation/widgets/password_category_section.dart';
 export 'package:next_pass/features/home/presentation/widgets/search_bar_section.dart';
 export 'package:next_pass/features/home/presentation/widgets/view_profile_section.dart';
-export 'package:next_pass/core/widgets/all_widgets_screen.dart';
-export 'package:next_pass/features/add_new_credential/presentation/views/view_add_new_credential.dart';
 export 'package:next_pass/core/widgets/custom_appbar.dart';
 export 'package:next_pass/features/app_credentials/presentation/screens/mobile/app_credential_for_mobile.dart';
 export 'package:next_pass/features/auth/presentation/views/login_view.dart';
@@ -104,16 +102,9 @@ export 'package:next_pass/features/app_credentials/presentation/widgets/middle_p
 export 'package:next_pass/features/search_credential/presentations/screens/mobile_search_credential_screen.dart';
 export 'package:next_pass/features/search_credential/presentations/screens/web_search_credential_screen.dart';
 export 'package:next_pass/features/search_credential/views/search_credential_view.dart';
-export 'package:next_pass/features/getStarted/presentations/screens/mobile_welcome_screen1.dart';
- export 'package:next_pass/features/getStarted/presentations/screens/mobile_welcome_screen2.dart';
-
-export 'package:next_pass/features/home/presentation/widgets/all_credentials_section.dart';
-export 'package:next_pass/features/home/presentation/widgets/password_category_section.dart';
-export 'package:next_pass/features/home/presentation/widgets/search_bar_section.dart';
-export 'package:next_pass/features/home/presentation/widgets/view_profile_section.dart';
-export 'package:next_pass/features/database%20setup/presentation/screens/mobile_database_setup.dart';
-export 'package:next_pass/features/database%20setup/presentation/screens/web_database_setup.dart';
 export 'package:next_pass/features/database%20setup/presentation/widgets/database_url_section.dart';
 export 'package:next_pass/features/database%20setup/presentation/widgets/select_database_section.dart';
 export 'package:next_pass/features/database%20setup/controllers/select_database_controller.dart';
 export 'package:next_pass/features/database%20setup/presentation/widgets/plan_card_database.dart';
+export 'package:next_pass/features/database%20setup/presentation/screens/mobile_database_setup.dart';
+export 'package:next_pass/features/database%20setup/presentation/screens/web_database_setup.dart';

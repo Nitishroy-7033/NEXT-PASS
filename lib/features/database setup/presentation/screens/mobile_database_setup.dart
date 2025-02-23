@@ -1,5 +1,6 @@
 import 'package:next_pass/core/constants/app_linker.dart';
 
+
 class MobileDatabaseSetup extends StatelessWidget {
   const MobileDatabaseSetup({super.key});
 
