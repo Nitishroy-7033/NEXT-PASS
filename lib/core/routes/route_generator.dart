@@ -1,20 +1,5 @@
-import 'package:get/get.dart';
-import 'package:next_pass/core/widgets/all_widgets_screen.dart';
-import 'package:next_pass/features/add_new_credential/presentation/views/view_add_new_credential.dart';
-
-import 'package:next_pass/features/auth/presentation/views/auth_tab_view.dart';
-import 'package:next_pass/features/auth/presentation/views/login_view.dart';
-import 'package:next_pass/features/auth/presentation/views/sign_up_view.dart';
-import 'package:next_pass/features/dashboard/presentation/views/dashboard_view.dart';
-import 'package:next_pass/features/getStarted/presentations/view/get_started_view.dart';
-import 'package:next_pass/features/not_found/presentation/views/not_found_view.dart';
-
-// Import your screens here
-
-import '../../features/home/presentation/views/home_view.dart';
-import '../../features/master_password/presentation/views/master_password_view.dart';
-import '../../features/splash/presentation/views/splace_view.dart';
-import 'app_routes.dart';
+import 'package:next_pass/core/constants/app_linker.dart';
+import 'package:next_pass/features/database%20setup/presentation/views/database_setup_view.dart';
 
 class RouteGenerator {
   static List<GetPage> getRoutes() {
@@ -72,6 +57,16 @@ class RouteGenerator {
       GetPage(
         name: AppRoutes.newCredential,
         page: () => const ViewAddNewCredential(),
+        transition: Transition.fadeIn,
+      ),
+       GetPage(
+        name: AppRoutes.appCredentials,
+        page: () => const AppCredentials(),
+        transition: Transition.fadeIn,
+      ),
+       GetPage(
+        name: AppRoutes.databaseSetup,
+        page: () => const DatabaseSetupView(),
         transition: Transition.fadeIn,
       ),
     ];

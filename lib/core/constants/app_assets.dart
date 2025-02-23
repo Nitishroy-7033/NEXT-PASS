@@ -1,4 +1,6 @@
 // App Images Assets
+// ignore_for_file: constant_identifier_names
+
 class AppImageAssets {
   static const String imageBasePath = "assets/images/";
   static const String appLogo = "${imageBasePath}app_logo.png";
@@ -12,8 +14,10 @@ class AppImageAssets {
   static const String twitterLogo = "${imageBasePath}twitter_logo.png";
   static const String getStartedLogo1 = "${imageBasePath}getStarted_1.png";
   static const String getStartedLogo2 = "${imageBasePath}getStarted_2.png";
-}
+  static const String deleteIcon = "${imageBasePath}delete_icon.png";
+  static const String mongoDBLogo = "${imageBasePath}mongoDB_logo.png";
 
+}
 // SVG Icons Assets
 class IconsAssets {
   static const String iconBasePath = "assets/icons/";
@@ -42,6 +46,9 @@ class IconsAssets {
   static const String weakPasswordIcon = "${iconBasePath}weak_password_icon.svg";
   static const String moreDotIcon = "${iconBasePath}more_dot_icon.svg";
   static const String dropUpIcon = "${iconBasePath}dropup_icon.svg";
+  static const String mongoDBIcon = "${iconBasePath}mongoDB_icon.svg";
+  static const String myOwnDBIcon = "${iconBasePath}myOwnDB_icon.svg";
+  static const String nextPassDBIcon = "${iconBasePath}nextPassDB_icon.svg";
 
   static const String second_lock_icon = "${iconBasePath}second_lock_icon.svg";
   static const String crossIcon = "${iconBasePath}cross_icon.svg";
@@ -50,7 +57,13 @@ class IconsAssets {
   static const String star_icon = "${iconBasePath}Star.svg";
   static const String rectangle_icon = "${iconBasePath}rectangle_icon.svg";
   static const String ellipse_icon = "${iconBasePath}ellipse_icon.svg";
-
+  static const String back_icon="${iconBasePath}back_icon.svg";
+  static const String edit_icon="${iconBasePath}edit_icon.svg";
+  static const String eye_icon="${iconBasePath}eye_icon.svg";
+  static const String eye_block_icon="${iconBasePath}eye_block.svg";
+  static const String delete_icon="${iconBasePath}delete_icon.svg";
+  static const String warning_icon="${iconBasePath}warning_icon.svg";
+  static const String check_icon="${iconBasePath}check_icon.svg";
   // NETWORK ASSETS
   static const String spotifyLogoUrl =
       "https://storage.googleapis.com/pr-newsroom-wp/1/2023/05/Spotify_Primary_Logo_RGB_Green.png";
