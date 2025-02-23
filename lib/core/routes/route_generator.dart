@@ -64,6 +64,10 @@ class RouteGenerator {
         page: () => const AppCredentials(),
         transition: Transition.fadeIn,
       ),
+      GetPage(
+        name: AppRoutes.searchCredential,
+        page: () => const SearchCredentialView(),
+        transition: Transition.fadeIn),
        GetPage(
         name: AppRoutes.databaseSetup,
         page: () => const DatabaseSetupView(),
