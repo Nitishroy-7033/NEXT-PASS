@@ -1,0 +1,27 @@
+{
+  "name": "next_pass_server",
+  "version": "1.0.0",
+  "description": "This is backend server for next pass project",
+  "main": "./src/app.js",
+  "scripts": {
+    "start": "node ./src/app.js",
+    "dev": "nodemon ./src/app.js",
+    "test": "npm run test "
+  },
+  "keywords": [
+    "Nextpass"
+  ],
+  "author": "devhq.in",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^3.0.2",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "joi": "^17.13.3",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.10.1",
+    "morgan": "^1.10.0",
+    "nodemon": "^3.1.9",
+    "winston": "^3.17.0"
+  }
+}

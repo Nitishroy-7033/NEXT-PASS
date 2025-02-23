@@ -77,3 +77,4 @@ NextPassAPI/NextPassAPI.Data/bin/Debug/net8.0/NextPassAPI.Data.pdb
 
 # FVM Version Cache
 .fvm/
+Server/node_modules/
