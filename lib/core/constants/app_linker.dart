@@ -61,7 +61,7 @@ export 'package:next_pass/core/widgets/alert_symbol.dart';
 export 'package:next_pass/core/widgets/strength_badge.dart';
 export 'package:next_pass/core/widgets/custom_checkbox.dart';
 export 'package:next_pass/core/widgets/custom_slider_widget.dart';
-export 'package:next_pass/features/auth/presentation/getx/controllers/password_controller.dart';
+export 'package:next_pass/core/controllers/password_controller.dart';
 export 'package:next_pass/features/add_new_credential/controller/add_new_credential_controller.dart';
 export 'package:next_pass/features/add_new_credential/presentation/widgets/add_new_credential_form.dart';
 export 'package:next_pass/features/add_new_credential/presentation/screens/mobile_add_new_credential.dart';
