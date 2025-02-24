@@ -1,3 +1,5 @@
+import 'package:next_pass/core/routes/route_generator.dart';
+
 import 'core/constants/app_linker.dart';
 
 void main() {
