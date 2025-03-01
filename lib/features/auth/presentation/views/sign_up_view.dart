@@ -5,7 +5,7 @@ class SignUpView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Responsive(
+    return  Responsive(
         mobile: MobileSignUpScreen(),
         tablet: WebSignUpScreen(),
         desktop: WebSignUpScreen());

@@ -1,3 +1,5 @@
+import 'package:next_pass/features/auth/controllers/auth_controller.dart';
+
 import '../../../../core/constants/app_linker.dart';
 
 class MobileWelcomeScreen2 extends StatelessWidget {
@@ -5,6 +7,7 @@ class MobileWelcomeScreen2 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    AuthController authController =  Get.find<AuthController>();
       final double height = SizeConfig.screenHeight;
     final double width = SizeConfig.screenWidth;
     return Scaffold(
