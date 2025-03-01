@@ -1,5 +1,8 @@
 import 'package:dio/dio.dart';
+import 'package:next_pass/features/auth/models/auth_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import '../constants/app_const.dart';
 
 class ApiClient {
   final Dio dio;
@@ -20,18 +23,45 @@ class ApiClient {
   /// Load token from SharedPreferences
   Future<void> _loadAuthToken() async {
     final prefs = await SharedPreferences.getInstance();
-    _authToken = prefs.getString('auth_token');
+    _authToken = prefs.getString(AUTH_TOKEN);
     print("🔒 Auth Token Loaded from Local :${_authToken}");
     if (_authToken != null) {
       dio.options.headers["Authorization"] = "Bearer $_authToken";
     }
   }
 
+  Future<void> setUserDetails(AuthModel authData) async {
+    setAuthToken(authData.token!);
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString(REFRESH_TOKEN, authData.refreshToken!);
+    await prefs.setString(ISSUED_AT, authData.issuedAt!);
+    await prefs.setString(EXPIRE_AT, authData.expires!);
+    await prefs.setString(ROLE, authData.role!);
+  }
+
+  Future<AuthModel> getUserData() async {
+    final prefs = await SharedPreferences.getInstance();
+    String role = prefs.getString(ROLE)!;
+    String refreshToken = prefs.getString(REFRESH_TOKEN)!;
+    String issuedAt = prefs.getString(ISSUED_AT)!;
+    String expireAt = prefs.getString(EXPIRE_AT)!;
+    String authToken = prefs.getString(AUTH_TOKEN)!;
+
+    AuthModel authDetails = new AuthModel(
+      role: role,
+      refreshToken: refreshToken,
+      expires: expireAt,
+      issuedAt: issuedAt,
+      token: authToken,
+    );
+    return authDetails;
+  }
+
   /// Set Token after login
   Future<void> setAuthToken(String token) async {
     _authToken = token;
     final prefs = await SharedPreferences.getInstance();
-    await prefs.setString('auth_token', token);
+    await prefs.setString(AUTH_TOKEN, token);
     dio.options.headers["Authorization"] = "Bearer $_authToken";
     _loadAuthToken();
   }
@@ -40,7 +70,7 @@ class ApiClient {
   Future<void> removeAuthToken() async {
     _authToken = null;
     final prefs = await SharedPreferences.getInstance();
-    await prefs.remove('auth_token');
+    await prefs.remove(AUTH_TOKEN);
     dio.options.headers.remove("Authorization");
   }
 

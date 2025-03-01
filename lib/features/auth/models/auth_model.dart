@@ -1,4 +1,4 @@
-class AuthModel {
+  class AuthModel {
   String? token;
   String? refreshToken;
   String? role;

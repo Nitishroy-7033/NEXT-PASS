@@ -1,15 +1,24 @@
+import 'package:next_pass/features/auth/models/auth_model.dart';
+
 import '../../../../../core/constants/app_linker.dart';
 
 class SplashController extends GetxController {
+  final ApiClient apiClient = Get.find<ApiClient>();
+
   @override
   void onInit() {
     super.onInit();
     _navigateToGetStarted();
   }
 
-  void _navigateToGetStarted() {
+  Future<void> _navigateToGetStarted() async {
+    AuthModel userDetails = await apiClient.getUserData();
     Timer(const Duration(seconds: 5), () {
-      Get.offNamed(AppRoutes.getStarted);
+      if (userDetails.token != null && userDetails.role != null) {
+        Get.offAllNamed(AppRoutes.home);
+      } else {
+        Get.offAllNamed(AppRoutes.getStarted);
+      }
     });
   }
 }

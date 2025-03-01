@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:next_pass/core/routes/app_routes.dart';
 import 'package:next_pass/core/utils/messages.dart';
 import 'package:next_pass/features/auth/data/auth_repository.dart';
 import 'package:next_pass/features/auth/models/auth_model.dart';
@@ -24,8 +25,9 @@ class AuthController extends GetxController {
 
       if (response.success == true && response.data != null) {
         authModel.value = response.data;
-        apiClient.setAuthToken(response.data!.token!);
+        apiClient.setUserDetails(response.data!);
         SuccessMessage(response.message ?? "Logged in successfully");
+        Get.offAllNamed(AppRoutes.home);
       } else {
         _handleError(response.message);
       }
