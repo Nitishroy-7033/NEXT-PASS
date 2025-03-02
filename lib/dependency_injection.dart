@@ -1,27 +1,24 @@
-import 'package:get/get.dart';
-import 'package:http/http.dart' as http;
-import 'package:next_pass/core/network/api_client.dart';
-import 'package:next_pass/core/network/network_service.dart';
-import 'package:next_pass/features/auth/controllers/auth_controller.dart';
-import 'package:next_pass/features/auth/data/auth_repository.dart';
-import 'package:next_pass/features/auth/data/auth_interface.dart';
+import 'core/constants/app_linker.dart';
+import 'core/network/network_service.dart';
+import 'features/auth/controllers/auth_controller.dart';
+import 'features/auth/data/auth_interface.dart';
+import 'features/auth/data/auth_repository.dart';
 
 class DependencyInjection {
   static void init() {
-    // Register Http Client
-    Get.lazyPut<http.Client>(() => http.Client());
-
-    // Register Network Service
+    print("Initializing dependencies..."); // Debugging
     Get.lazyPut<NetworkService>(() => NetworkService());
 
-    // Register API Client globally, so no need to pass baseUrl manually
-    Get.lazyPut<ApiClient>(() => ApiClient(baseUrl: "https://nextpassserverapi.onrender.com"));
+    // Debug log
+    print("Registering ApiClient...");
+    Get.put<ApiClient>(
+        ApiClient(baseUrl: "https://nextpassserverapi.onrender.com"),
+        permanent: true);
 
-    // Register Auth Repository with Interface
     Get.lazyPut<AuthInterface>(() => AuthRepository());
     Get.lazyPut<AuthRepository>(() => AuthRepository());
-
-    // Register Auth Controller
     Get.lazyPut<AuthController>(() => AuthController());
+
+    print("Dependency Injection completed."); // Debugging
   }
 }

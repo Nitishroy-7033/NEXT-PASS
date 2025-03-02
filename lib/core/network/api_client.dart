@@ -41,20 +41,31 @@ class ApiClient {
 
   Future<AuthModel> getUserData() async {
     final prefs = await SharedPreferences.getInstance();
-    String role = prefs.getString(ROLE)!;
-    String refreshToken = prefs.getString(REFRESH_TOKEN)!;
-    String issuedAt = prefs.getString(ISSUED_AT)!;
-    String expireAt = prefs.getString(EXPIRE_AT)!;
-    String authToken = prefs.getString(AUTH_TOKEN)!;
+    try {
+      String role = prefs.getString(ROLE)!;
+      String refreshToken = prefs.getString(REFRESH_TOKEN)!;
+      String issuedAt = prefs.getString(ISSUED_AT)!;
+      String expireAt = prefs.getString(EXPIRE_AT)!;
+      String authToken = prefs.getString(AUTH_TOKEN)!;
 
-    AuthModel authDetails = new AuthModel(
-      role: role,
-      refreshToken: refreshToken,
-      expires: expireAt,
-      issuedAt: issuedAt,
-      token: authToken,
-    );
-    return authDetails;
+      AuthModel authDetails = AuthModel(
+        role: role,
+        refreshToken: refreshToken,
+        expires: expireAt,
+        issuedAt: issuedAt,
+        token: authToken,
+      );
+      return authDetails;
+    } catch (ex) {
+      AuthModel authDetails = AuthModel(
+        role: null,
+        refreshToken: null,
+        expires: null,
+        issuedAt: null,
+        token: null,
+      );
+      return authDetails;
+    }
   }
 
   /// Set Token after login

@@ -22,7 +22,6 @@ class AuthController extends GetxController {
 
     try {
       final response = await authRepository.login(email, password);
-
       if (response.success == true && response.data != null) {
         authModel.value = response.data;
         apiClient.setUserDetails(response.data!);
@@ -46,6 +45,7 @@ class AuthController extends GetxController {
     errorMessage.value = "";
 
     try {
+
       final response =
           await authRepository.signup(firstName, lastName, email, password);
 
@@ -53,8 +53,10 @@ class AuthController extends GetxController {
         authModel.value = response.data;
         apiClient.setAuthToken(response.data!.token!);
         SuccessMessage(response.message ?? "Account created successfully");
+
       } else {
         _handleError(response.message);
+        
       }
     } catch (e) {
       _handleError(e.toString());
