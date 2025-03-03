@@ -9,23 +9,29 @@ class CredentialRepository implements CredentialInterface {
   @override
   Future<bool> createNewCredeantial(CredentialModel newCredenatil) async {
     try {
-      await apiClient.post("newCredenatil", newCredenatil.toJson());
+      // await apiClient.post("newCredenatil", newCredenatil.toJson());
       return true;
     } catch (e) {
       return false;
     }
   }
 
-  @override
-  Future<List<CredentialModel>> getAllCredentail() async {
-    final response = await apiClient.get("credenatial");
-    return (response as List)
-        .map((item) => CredentialModel.fromJson(item))
-        .toList();
-  }
+  // @override
+  // Future<List<CredentialModel>> getAllCredentail() async {
+  //   final response = await apiClient.get("credenatial");
+  //   return (response as List)
+  //       .map((item) => CredentialModel.fromJson(item))
+  //       .toList();
+  // }
 
   @override
   Future<List<CredentialModel>> searchCredential() {
+    throw UnimplementedError();
+  }
+  
+  @override
+  Future<List<CredentialModel>> getAllCredentail() {
+    // TODO: implement getAllCredentail
     throw UnimplementedError();
   }
 
