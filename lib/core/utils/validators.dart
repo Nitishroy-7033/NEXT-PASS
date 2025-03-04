@@ -1,4 +1,4 @@
-class Validators {
+class TextFieldValidators {
   static String? validateEmail(String? email) {
     if (email == null || email.isEmpty) {
       return "Email cannot be empty.";
@@ -11,6 +11,14 @@ class Validators {
   static String? validatePassword(String? password) {
     if (password == null || password.length < 6) {
       return "Password must be at least 6 characters long.";
+    }
+    return null;
+  }
+
+  static String? requiredField(String? text){
+    if(text==null || text.isEmpty)
+    {
+      return "This field is reqired";
     }
     return null;
   }

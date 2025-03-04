@@ -1,98 +1,109 @@
-// core/network/api_client.dart
-import 'dart:convert';
-import 'package:get/get.dart';
-import 'package:http/http.dart' as http;
+import 'package:dio/dio.dart';
+import 'package:next_pass/features/auth/models/auth_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class ApiClient extends GetxService {
-  final String baseUrl;
-  late http.Client client;
+import '../constants/app_const.dart';
+
+class ApiClient {
+  final Dio dio;
   String? _authToken;
 
-  ApiClient({required this.baseUrl}) {
-    client = http.Client();
+  ApiClient({required String baseUrl})
+      : dio = Dio(BaseOptions(
+          baseUrl: baseUrl,
+          connectTimeout: const Duration(seconds: 10), // Connection timeout
+          receiveTimeout: const Duration(seconds: 10), // Response timeout
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        )) {
+    _loadAuthToken();
   }
 
   /// Load token from SharedPreferences
-  Future<void> init() async {
+  Future<void> _loadAuthToken() async {
     final prefs = await SharedPreferences.getInstance();
-    _authToken = prefs.getString('auth_token'); // Load token from storage
-  }
-
-  /// Set Token after login
-  void setAuthToken(String token) async {
-    _authToken = token;
-    final prefs = await SharedPreferences.getInstance();
-    await prefs.setString('auth_token', token);
-  }
-
-  /// Remove token (logout)
-  void removeAuthToken() async {
-    _authToken = null;
-    final prefs = await SharedPreferences.getInstance();
-    await prefs.remove('auth_token');
-  }
-
-  /// Custom **GET** request
-  Future<dynamic> get(String endpoint) async {
-    return _request('GET', endpoint);
-  }
-
-  /// Custom **POST** request
-  Future<dynamic> post(String endpoint, Map<String, dynamic> body) async {
-    return _request('POST', endpoint, body: body);
-  }
-
-  /// Custom **PUT** request
-  Future<dynamic> put(String endpoint, Map<String, dynamic> body) async {
-    return _request('PUT', endpoint, body: body);
-  }
-
-  /// Custom **DELETE** request
-  Future<dynamic> delete(String endpoint) async {
-    return _request('DELETE', endpoint);
-  }
-
-  /// Core request handler
-  Future<dynamic> _request(String method, String endpoint, {Map<String, dynamic>? body}) async {
-    Uri url = Uri.parse('$baseUrl$endpoint');
-
-    Map<String, String> headers = {
-      'Content-Type': 'application/json',
-      if (_authToken != null) 'Authorization': 'Bearer $_authToken',
-    };
-
-    http.Response response;
-
-    try {
-      if (method == 'GET') {
-        response = await client.get(url, headers: headers);
-      } else if (method == 'POST') {
-        response = await client.post(url, headers: headers, body: jsonEncode(body));
-      } else if (method == 'PUT') {
-        response = await client.put(url, headers: headers, body: jsonEncode(body));
-      } else if (method == 'DELETE') {
-        response = await client.delete(url, headers: headers);
-      } else {
-        throw Exception('Unsupported HTTP method: $method');
-      }
-
-      return _handleResponse(response);
-
-    } catch (e) {
-      Get.snackbar("Network Error", e.toString());
-      return null;
+    _authToken = prefs.getString(AUTH_TOKEN);
+    print("🔒 Auth Token Loaded from Local :${_authToken}");
+    if (_authToken != null) {
+      dio.options.headers["Authorization"] = "Bearer $_authToken";
     }
   }
 
-  dynamic _handleResponse(http.Response response) {
-    if (response.statusCode == 200 || response.statusCode == 201) {
-      return jsonDecode(response.body);
-    } else if (response.statusCode == 401) {
-      Get.snackbar("Unauthorized", "Please login again.");
-      removeAuthToken(); // Clear token on unauthorized
-    } else {
-      throw Exception("Error ${response.statusCode}: ${response.body}");
+  Future<void> setUserDetails(AuthModel authData) async {
+    setAuthToken(authData.token!);
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString(REFRESH_TOKEN, authData.refreshToken!);
+    await prefs.setString(ISSUED_AT, authData.issuedAt!);
+    await prefs.setString(EXPIRE_AT, authData.expires!);
+    await prefs.setString(ROLE, authData.role!);
+  }
+
+  Future<AuthModel> getUserData() async {
+    final prefs = await SharedPreferences.getInstance();
+    try {
+      String role = prefs.getString(ROLE)!;
+      String refreshToken = prefs.getString(REFRESH_TOKEN)!;
+      String issuedAt = prefs.getString(ISSUED_AT)!;
+      String expireAt = prefs.getString(EXPIRE_AT)!;
+      String authToken = prefs.getString(AUTH_TOKEN)!;
+
+      AuthModel authDetails = AuthModel(
+        role: role,
+        refreshToken: refreshToken,
+        expires: expireAt,
+        issuedAt: issuedAt,
+        token: authToken,
+      );
+      return authDetails;
+    } catch (ex) {
+      AuthModel authDetails = AuthModel(
+        role: null,
+        refreshToken: null,
+        expires: null,
+        issuedAt: null,
+        token: null,
+      );
+      return authDetails;
+    }
+  }
+
+  /// Set Token after login
+  Future<void> setAuthToken(String token) async {
+    _authToken = token;
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString(AUTH_TOKEN, token);
+    dio.options.headers["Authorization"] = "Bearer $_authToken";
+    _loadAuthToken();
+  }
+
+  /// Remove token (logout)
+  Future<void> removeAuthToken() async {
+    _authToken = null;
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.remove(AUTH_TOKEN);
+    dio.options.headers.remove("Authorization");
+  }
+
+  /// Generic request method
+  Future<Response> request(String endpoint,
+      {String method = "GET", Map<String, dynamic>? data}) async {
+    try {
+      Response response;
+      if (method == "GET") {
+        response = await dio.get(endpoint);
+      } else if (method == "POST") {
+        response = await dio.post(endpoint, data: data);
+      } else if (method == "PUT") {
+        response = await dio.put(endpoint, data: data);
+      } else if (method == "DELETE") {
+        response = await dio.delete(endpoint);
+      } else {
+        throw Exception("Unsupported HTTP method: $method");
+      }
+      return response;
+    } on DioException catch (e) {
+      throw e.response?.data ?? {"message": "Network error"};
     }
   }
 }

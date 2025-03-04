@@ -3,6 +3,7 @@ import 'package:next_pass/core/constants/app_linker.dart';
 
 // ignore: non_constant_identifier_names
 Future<dynamic> BottomSheetPasswordGenerator(BuildContext context) {
+  PasswordController passwordController = Get.put(PasswordController());
   return Get.bottomSheet(
     Container(
       height: 425,
@@ -173,7 +174,7 @@ Future<dynamic> BottomSheetPasswordGenerator(BuildContext context) {
             const SizedBox(
               height: 30,
             ),
-            PrimaryButton(text: AppStrings.createAccount, onPressed: () {})
+            PrimaryButton(text: AppStrings.createAccount, onPressed: () {}),
             // header widget
            GeneratePasswordHeaderWidget(),
             // footer widget

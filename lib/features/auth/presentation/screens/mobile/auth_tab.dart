@@ -69,8 +69,8 @@ class _AuthScreenState extends State<AuthScreen> {
                 borderRadius: BorderRadius.circular(20),
               ),
               child: selectedIndex == 0
-                  ? const MobileLoginScreen()
-                  : const MobileSignUpScreen(),
+                  ?  MobileLoginScreen()
+                  :  MobileSignUpScreen(),
             ),
 
             const SizedBox(height: 40),
@@ -95,15 +95,20 @@ class _AuthScreenState extends State<AuthScreen> {
             const SizedBox(height: 20),
 
             // Footer
-            Text(
-              "@NextPass",
-              style: Theme.of(context).textTheme.labelLarge,
+            InkWell(
+              onTap: (){
+              },
+              child: Text(
+                "@NextPass",
+                style: Theme.of(context).textTheme.labelLarge,
+              ),
             ),
           ],
         ),
       ),
     );
   }
+
 
   Widget _buildToggleButton(String title, int index) {
     return Expanded(

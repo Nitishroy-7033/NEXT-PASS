@@ -14,7 +14,8 @@ class AppImageAssets {
   static const String twitterLogo = "${imageBasePath}twitter_logo.png";
   static const String getStartedLogo1 = "${imageBasePath}getStarted_1.png";
   static const String getStartedLogo2 = "${imageBasePath}getStarted_2.png";
-    static const String deleteIcon = "${imageBasePath}delete_icon.png";
+  static const String deleteIcon = "${imageBasePath}delete_icon.png";
+  static const String mongoDBLogo = "${imageBasePath}mongoDB_logo.png";
 
 }
 // SVG Icons Assets
@@ -45,6 +46,9 @@ class IconsAssets {
   static const String weakPasswordIcon = "${iconBasePath}weak_password_icon.svg";
   static const String moreDotIcon = "${iconBasePath}more_dot_icon.svg";
   static const String dropUpIcon = "${iconBasePath}dropup_icon.svg";
+  static const String mongoDBIcon = "${iconBasePath}mongoDB_icon.svg";
+  static const String myOwnDBIcon = "${iconBasePath}myOwnDB_icon.svg";
+  static const String nextPassDBIcon = "${iconBasePath}nextPassDB_icon.svg";
 
   static const String second_lock_icon = "${iconBasePath}second_lock_icon.svg";
   static const String crossIcon = "${iconBasePath}cross_icon.svg";

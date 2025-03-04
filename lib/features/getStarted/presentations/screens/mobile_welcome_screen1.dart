@@ -53,7 +53,10 @@ class MobileWelcomeScreen1 extends StatelessWidget {
               SizedBox(
                 height: SizeConfig.screenHeight * (36 / 852),
               ),
-              PrimaryButton(text: "Start", onPressed: () {}),
+              // Spacer(),
+              PrimaryButton(text: "Start", onPressed: () {
+                Get.toNamed(AppRoutes.authtab);
+              }),
               SizedBox(
                 height: SizeConfig.screenHeight * (30 / 852),
               ),
@@ -61,7 +64,7 @@ class MobileWelcomeScreen1 extends StatelessWidget {
                   onPressed: () {},
                   child: Text(
                     "Skip",
-                    style: AppThemes.lightTheme.textTheme.headlineSmall,
+                    style: AppThemes.lightTheme.textTheme.bodyMedium,
                   )),
             ],
           ),
