@@ -11,7 +11,7 @@ class AuthRepository implements AuthInterface {
   Future<ApiResponse<AuthModel>> login(String email, String password) async {
     try {
       var response = await apiClient.request(
-        "/api/Auth/login",
+        "/Auth/login",
         method: "POST",
         data: {
           "email": email,
@@ -27,7 +27,7 @@ class AuthRepository implements AuthInterface {
     } catch (e) {
       return ApiResponse<AuthModel>(
         data: null,
-        message: "Login failed: ${e.toString()}",
+        message: e.toString(),
         success: false,
       );
     }
@@ -38,7 +38,7 @@ class AuthRepository implements AuthInterface {
       String firstName, String lastName, String email, String password) async {
     try {
       var response = await apiClient.request(
-        "/api/Auth/register",
+        "/Auth/register",
         method: "POST",
         data: {
           "firstName": firstName,
