@@ -1,10 +1,12 @@
 import 'package:next_pass/core/constants/app_linker.dart';
+import 'package:next_pass/features/auth/controllers/auth_controller.dart';
 
 class MobileHomeScreen extends StatelessWidget {
   const MobileHomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    AuthController authController = Get.put(AuthController());
     return SafeArea(
       child: Scaffold(
         backgroundColor: Theme.of(context).colorScheme.surface,
@@ -17,10 +19,9 @@ class MobileHomeScreen extends StatelessWidget {
                   // VIEW PROFILE SECTION
                   const ViewProfileSection(),
                   const Spacer(),
-                  // NOTIFICATION SECTION
                   InkWell(
                     onTap: () {
-                      print('Notification button pressed');
+                      authController.logOut() ;
                     },
                     borderRadius: BorderRadius.circular(10),
                     child: Container(

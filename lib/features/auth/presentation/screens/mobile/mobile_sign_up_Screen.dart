@@ -131,14 +131,13 @@ class MobileSignUpScreen extends StatelessWidget {
             () => authController.isLoading.value
                 ? const CircularProgressIndicator()
                 : PrimaryButton(text: "SIGNUP", onPressed: (){
-                      if (_formKey.currentState!.validate()) {
-                        authController.signup(
-                          firstNameController.text,
-                          lastNameController.text,
-                          emailController.text,
-                          passwordController.text,
-                        );
-                      }
+                      // if (_formKey.currentState!.validate()) {
+                       
+                      // }
+
+                authController.createAnAccount(emailController.text,
+                    passwordController.text, firstNameController.text, lastNameController.text);
+
                     }, ),
           ),
         ],
