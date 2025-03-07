@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:get/get.dart';
 import 'package:next_pass/core/routes/app_routes.dart';
 import 'package:next_pass/core/utils/messages.dart';
@@ -19,7 +17,6 @@ class AuthController extends GetxController {
     isLoading.value = true;
     isError.value = false;
     errorMessage.value = "";
-
     try {
       final response = await authRepository.login(email, password);
       if (response.success == true && response.data != null) {
@@ -38,36 +35,18 @@ class AuthController extends GetxController {
     }
   }
 
-  Future<void> signup(
-      String firstName, String lastName, String email, String password) async {
-    isLoading.value = true;
-    isError.value = false;
-    errorMessage.value = "";
+  Future<void> createAnAccount(
+      String email, String pwd, String firstName, String lastName) async {
+    var response =
+        authRepository.createAnAccount(email, pwd, firstName, lastName);
 
-    try {
-      final response =
-          await authRepository.signup(firstName, lastName, email, password);
-
-      if (response.success == true && response.data != null) {
-        authModel.value = response.data;
-        apiClient.setAuthToken(response.data!.token!);
-        SuccessMessage(response.message ?? "Account created successfully");
-      } else {
-        _handleError(response.message);
-      }
-    } catch (e) {
-      _handleError(e.toString());
-    } finally {
-      isLoading.value = false;
-    }
+    print(response);
   }
 
   void _handleError(dynamic response) {
     isError.value = true;
-    print("Error ${response}");
-    var res = jsonDecode(response);
-    print("Error ${res['message']}");
     errorMessage.value = "ERROR come";
+    print(response);
     ErrorMessage(errorMessage.value);
   }
 
@@ -75,4 +54,7 @@ class AuthController extends GetxController {
     await apiClient.removeAuthToken();
     Get.offAllNamed(AppRoutes.authtab);
   }
+
+
+  
 }
