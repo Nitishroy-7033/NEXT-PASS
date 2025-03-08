@@ -35,12 +35,34 @@ class AuthController extends GetxController {
     }
   }
 
+  // Future<void> createAnAccount(
+  //     String email, String pwd, String firstName, String lastName) async {
+  //   var response =
+  //       authRepository.createAnAccount(email, pwd, firstName, lastName);
+
+  //   print(response);
+  // }
   Future<void> createAnAccount(
       String email, String pwd, String firstName, String lastName) async {
-    var response =
-        authRepository.createAnAccount(email, pwd, firstName, lastName);
+    isLoading.value = true;
+    isError.value = false;
+    errorMessage.value = "";
 
-    print(response);
+    try {
+      final response =
+          await authRepository.createAnAccount(email, pwd, firstName, lastName);
+
+      if (response.success == true && response.data != null) {
+        SuccessMessage(response.message ?? "Account created successfully");
+        // Get.offAllNamed(AppRoutes.login);
+      } else {
+        _handleError(response.message);
+      }
+    } catch (e) {
+      _handleError(e.toString());
+    } finally {
+      isLoading.value = false;
+    }
   }
 
   void _handleError(dynamic response) {
@@ -54,7 +76,4 @@ class AuthController extends GetxController {
     await apiClient.removeAuthToken();
     Get.offAllNamed(AppRoutes.authtab);
   }
-
-
-  
 }

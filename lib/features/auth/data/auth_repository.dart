@@ -32,18 +32,46 @@ class AuthRepository implements AuthInterface {
     }
   }
 
+  // @override
+  // Future<dynamic> createAnAccount(
+  //     String email, String pwd, String firstName, String lastName) async {
+  //   var response = await apiClient.request("/Auth/register",
+  //       method: "GET",
+  //       data: {
+  //         "email": email,
+  //         "password": pwd,
+  //         "firstName": firstName,
+  //         "lastName": lastName
+  //       });
+  //   return response;
+  // }
 
   @override
-  Future<dynamic> createAnAccount(
+  Future<ApiResponse<AuthModel>> createAnAccount(
       String email, String pwd, String firstName, String lastName) async {
-    var response = await apiClient.request("/Auth/register",
-        method: "GET",
+    try {
+      var response = await apiClient.request(
+        "/Auth/register",
+        method: "POST", // ✅ Use POST instead of GET
         data: {
           "email": email,
           "password": pwd,
           "firstName": firstName,
           "lastName": lastName
-        });
-    return response;
+        },
+      );
+
+      return ApiResponse<AuthModel>(
+        data: AuthModel.fromJson(response.data["data"]),
+        message: response.data["message"] ?? "Account created successfully",
+        success: response.data["success"] ?? false,
+      );
+    } catch (e) {
+      return ApiResponse<AuthModel>(
+        data: null,
+        message: e.toString(),
+        success: false,
+      );
+    }
   }
 }
