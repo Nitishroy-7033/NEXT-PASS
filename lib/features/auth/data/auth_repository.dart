@@ -46,6 +46,7 @@ class AuthRepository implements AuthInterface {
   //   return response;
   // }
 
+  // signup method
   @override
   Future<ApiResponse<AuthModel>> createAnAccount(
       String email, String pwd, String firstName, String lastName) async {
