@@ -9,8 +9,10 @@ import '../../../../../core/utils/validators.dart';
 
     final _formKey = GlobalKey<FormState>();
     final AuthController authController = Get.put(AuthController());
-    final TextEditingController emailController = TextEditingController();
-    final TextEditingController passwordController = TextEditingController();
+    final TextEditingController emailController = TextEditingController(
+      text: "User@gmail.com"
+    );
+    final TextEditingController passwordController = TextEditingController(text: "Nitishkumar@123");
 
     final RxBool isSecure = true.obs;
     final RxBool rememberMe = true.obs;

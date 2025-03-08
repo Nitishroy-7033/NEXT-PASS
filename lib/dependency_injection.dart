@@ -12,7 +12,7 @@ class DependencyInjection {
     // Debug log
     print("Registering ApiClient...");
     Get.put<ApiClient>(
-        ApiClient(baseUrl: "https://nextpassserverapi.onrender.com"),
+        ApiClient(baseUrl: "https://next-pass-server-api.onrender.com"),
         permanent: true);
 
     Get.lazyPut<AuthInterface>(() => AuthRepository());

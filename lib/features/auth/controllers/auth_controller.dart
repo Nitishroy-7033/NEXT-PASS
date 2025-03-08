@@ -6,20 +6,17 @@ import 'package:next_pass/features/auth/models/auth_model.dart';
 import 'package:next_pass/core/network/api_client.dart';
 
 class AuthController extends GetxController {
-  final AuthRepository authRepository = Get.find<AuthRepository>(); // ✅ Injected
+  final AuthRepository authRepository = Get.put(AuthRepository()); // ✅ Injected
   final ApiClient apiClient = Get.find<ApiClient>(); // ✅ Injected
 
   var isLoading = false.obs;
   var authModel = Rx<AuthModel?>(null);
   var isError = false.obs;
   var errorMessage = "".obs;
-
-  /// Handles login process with improved error handling
   Future<void> login(String email, String password) async {
     isLoading.value = true;
     isError.value = false;
     errorMessage.value = "";
-
     try {
       final response = await authRepository.login(email, password);
       if (response.success == true && response.data != null) {
@@ -31,44 +28,33 @@ class AuthController extends GetxController {
         _handleError(response.message);
       }
     } catch (e) {
-      _handleError(e.toString());
+      print("Error ${e}");
+      _handleError(e);
     } finally {
       isLoading.value = false;
     }
   }
 
-  /// Handles signup process with improved error handling
-  Future<void> signup(
-      String firstName, String lastName, String email, String password) async {
-    isLoading.value = true;
-    isError.value = false;
-    errorMessage.value = "";
+  Future<void> createAnAccount(
+      String email, String pwd, String firstName, String lastName) async {
+    var response =
+        authRepository.createAnAccount(email, pwd, firstName, lastName);
 
-    try {
-
-      final response =
-          await authRepository.signup(firstName, lastName, email, password);
-
-      if (response.success == true && response.data != null) {
-        authModel.value = response.data;
-        apiClient.setAuthToken(response.data!.token!);
-        SuccessMessage(response.message ?? "Account created successfully");
-
-      } else {
-        _handleError(response.message);
-        
-      }
-    } catch (e) {
-      _handleError(e.toString());
-    } finally {
-      isLoading.value = false;
-    }
+    print(response);
   }
 
-  /// Handles error messages and updates the error state
-  void _handleError(String? message) {
+  void _handleError(dynamic response) {
     isError.value = true;
-    errorMessage.value = message ?? "An unexpected error occurred";
+    errorMessage.value = "ERROR come";
+    print(response);
     ErrorMessage(errorMessage.value);
   }
+
+  Future<void> logOut() async {
+    await apiClient.removeAuthToken();
+    Get.offAllNamed(AppRoutes.authtab);
+  }
+
+
+  
 }
