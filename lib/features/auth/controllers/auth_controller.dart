@@ -43,7 +43,7 @@ class AuthController extends GetxController {
   //   print(response);
   // }
 
-  //signup Controller
+  //signup method
   Future<void> createAnAccount(
       String email, String pwd, String firstName, String lastName) async {
     isLoading.value = true;
@@ -55,13 +55,21 @@ class AuthController extends GetxController {
           await authRepository.createAnAccount(email, pwd, firstName, lastName);
 
       if (response.success == true && response.data != null) {
-        SuccessMessage(response.message ?? "Account created successfully");
+        SuccessMessage("Account created successfully");
         // Get.offAllNamed(AppRoutes.login);
       } else {
-        _handleError(response.message);
+        // Show a clean message instead of full JSON response
+        if (response.message != null &&
+            response.message!.contains("User with this email already exists")) {
+          errorMessage.value = "Account is Existed";
+        } else {
+          errorMessage.value = "Something went wrong";
+        }
+        ErrorMessage(errorMessage.value);
       }
     } catch (e) {
-      _handleError(e.toString());
+      errorMessage.value = "An error occurred";
+      ErrorMessage(errorMessage.value);
     } finally {
       isLoading.value = false;
     }

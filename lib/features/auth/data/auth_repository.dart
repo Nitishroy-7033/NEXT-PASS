@@ -53,7 +53,7 @@ class AuthRepository implements AuthInterface {
     try {
       var response = await apiClient.request(
         "/Auth/register",
-        method: "POST", // ✅ Use POST instead of GET
+        method: "POST",
         data: {
           "email": email,
           "password": pwd,
@@ -61,6 +61,15 @@ class AuthRepository implements AuthInterface {
           "lastName": lastName
         },
       );
+
+      // Check if API returns a message indicating the account already exists
+      if (response.data["message"] == "Account already exists") {
+        return ApiResponse<AuthModel>(
+          data: null,
+          message: "Account already exists",
+          success: false,
+        );
+      }
 
       return ApiResponse<AuthModel>(
         data: AuthModel.fromJson(response.data["data"]),
