@@ -13,6 +13,8 @@ class AuthController extends GetxController {
   var authModel = Rx<AuthModel?>(null);
   var isError = false.obs;
   var errorMessage = "".obs;
+
+  // login
   Future<void> login(String email, String password) async {
     isLoading.value = true;
     isError.value = false;
@@ -35,13 +37,39 @@ class AuthController extends GetxController {
     }
   }
 
-  Future<void> createAnAccount(
-      String email, String pwd, String firstName, String lastName) async {
-    var response =
-        authRepository.createAnAccount(email, pwd, firstName, lastName);
+  // Future<void> createAnAccount(
+  //     String email, String pwd, String firstName, String lastName) async {
+  //   var response =
+  //       authRepository.createAnAccount(email, pwd, firstName, lastName);
 
-    print(response);
+  //   print(response);
+  // }
+
+  Future<void> createAnAccount(
+      String email, String password, String firstName, String lastName) async {
+    isLoading.value = true;
+    isError.value = false;
+    errorMessage.value = "";
+    try {
+      final response = await authRepository.createAnAccount(
+          email, password, firstName, lastName);
+      
+      if (response.success == true && response.data != null) {
+        authModel.value = response.data;
+        apiClient.setUserDetails(response.data!);
+        SuccessMessage(response.message ?? "Account created successfully");
+        Get.offAllNamed(AppRoutes.home);
+      } else {
+        _handleError(response.message);
+      }
+    } catch (e) {
+      print("Error ${e}");
+      _handleError(e);
+    } finally {
+      isLoading.value = false;
+    }
   }
+
 
   void _handleError(dynamic response) {
     isError.value = true;

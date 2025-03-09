@@ -2,7 +2,7 @@ import '../../../core/constants/api_response.dart';
 import '../models/auth_model.dart';
 
 abstract interface class AuthInterface {
-  Future<dynamic> createAnAccount(
-      String email, String pwd, String firstName, String lastName);
-  Future<ApiResponse<AuthModel>> login(String email, String password) ;
+  Future<ApiResponse<AuthModel>> createAnAccount(
+      String email, String password, String firstName, String lastName);
+  Future<ApiResponse<AuthModel>> login(String email, String password);
 }
