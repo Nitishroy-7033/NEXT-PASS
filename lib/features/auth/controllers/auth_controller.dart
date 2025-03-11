@@ -42,6 +42,7 @@ class AuthController extends GetxController {
   //   var response =
   //       authRepository.createAnAccount(email, pwd, firstName, lastName);
 
+
   //   print(response);
   // }
 
@@ -65,6 +66,39 @@ class AuthController extends GetxController {
     } catch (e) {
       print("Error ${e}");
       _handleError(e);
+
+
+  //   print(response);
+  // }
+
+  //signup method
+  Future<void> createAnAccount(
+      String email, String pwd, String firstName, String lastName) async {
+    isLoading.value = true;
+    isError.value = false;
+    errorMessage.value = "";
+
+    try {
+      final response =
+          await authRepository.createAnAccount(email, pwd, firstName, lastName);
+
+      if (response.success == true && response.data != null) {
+        SuccessMessage("Account created successfully");
+        // Get.offAllNamed(AppRoutes.login);
+      } else {
+        // Show a clean message instead of full JSON response
+        if (response.message != null &&
+            response.message!.contains("User with this email already exists")) {
+          errorMessage.value = "Account is Existed";
+        } else {
+          errorMessage.value = "Something went wrong";
+        }
+        ErrorMessage(errorMessage.value);
+      }
+    } catch (e) {
+      errorMessage.value = "An error occurred";
+      ErrorMessage(errorMessage.value);
+
     } finally {
       isLoading.value = false;
     }
@@ -82,7 +116,4 @@ class AuthController extends GetxController {
     await apiClient.removeAuthToken();
     Get.offAllNamed(AppRoutes.authtab);
   }
-
-
-  
 }

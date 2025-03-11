@@ -51,6 +51,26 @@ class AuthRepository implements AuthInterface {
   @override
   Future<ApiResponse<AuthModel>> createAnAccount(
       String email, String password, String firstName, String lastName) async {
+
+  // @override
+  // Future<dynamic> createAnAccount(
+  //     String email, String pwd, String firstName, String lastName) async {
+  //   var response = await apiClient.request("/Auth/register",
+  //       method: "GET",
+  //       data: {
+  //         "email": email,
+  //         "password": pwd,
+  //         "firstName": firstName,
+  //         "lastName": lastName
+  //       });
+  //   return response;
+  // }
+
+  // signup method
+  @override
+  Future<ApiResponse<AuthModel>> createAnAccount(
+      String email, String pwd, String firstName, String lastName) async {
+
     try {
       var response = await apiClient.request(
         "/Auth/register",
@@ -59,9 +79,25 @@ class AuthRepository implements AuthInterface {
           "email": email,
           "password": password,
           "firstName": firstName,
+
           "lastName": lastName,
         },
       );
+
+          "lastName": lastName
+        },
+      );
+
+      // Check if API returns a message indicating the account already exists
+      if (response.data["message"] == "Account already exists") {
+        return ApiResponse<AuthModel>(
+          data: null,
+          message: "Account already exists",
+          success: false,
+        );
+      }
+
+
       return ApiResponse<AuthModel>(
         data: AuthModel.fromJson(response.data["data"]),
         message: response.data["message"] ?? "Account created successfully",

@@ -140,7 +140,6 @@ class MobileSignUpScreen extends StatelessWidget {
                           firstNameController.text,
                           lastNameController.text,
                         );
-                  
                       }
                     },
                   ),
