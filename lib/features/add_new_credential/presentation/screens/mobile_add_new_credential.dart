@@ -2,7 +2,7 @@ import 'package:next_pass/core/constants/app_linker.dart';
 
 class MobileAddNewCredential extends StatelessWidget {
   final controller = Get.put(AddNewCredentialController());
-   MobileAddNewCredential({super.key});
+  MobileAddNewCredential({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +37,7 @@ class MobileAddNewCredential extends StatelessWidget {
             const SizedBox(
               height: 30,
             ),
-            const AddNewCredentialForm(),
+            AddNewCredentialForm(),
             const SizedBox(height: 50),
           ],
         ),

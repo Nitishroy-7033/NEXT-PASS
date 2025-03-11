@@ -1,39 +1,41 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
-import '../data/credential_repository.dart';
-import '../data/interface.dart';
-import '../models/new_credenatial.dart';
+import 'package:next_pass/features/add_new_credential/data/credential_repository.dart';
 
 class AddNewCredentialController extends GetxController {
-  final CredentialInterface credentialRepository =
+  final CredentialRepository credentialRepository =
       Get.put(CredentialRepository());
 
-  // Controllers for the form fields
-  TextEditingController siteUrl = TextEditingController();
-  TextEditingController userName = TextEditingController();
-  TextEditingController emailId = TextEditingController();
-  TextEditingController password = TextEditingController();
-  TextEditingController mobileNumber = TextEditingController();
-  TextEditingController title = TextEditingController();
+  final siteUrl = TextEditingController();
+  final userName = TextEditingController();
+  final email = TextEditingController();
+  final mobileNumber = TextEditingController();
+  final password = TextEditingController();
 
-  Future<void> saveCredential() async {
-    final newCredential = CredentialModel(
-      siteUrl: siteUrl.text,
-      userName: userName.text,
-      emailId: emailId.text,
-      password: password.text,
-      phoneNumber: mobileNumber.text,
+  Future<void> addCredential() async {
+    bool success = await credentialRepository.createNewCredential(
+      siteUrl.text.trim(),
+      userName.text.trim(),
+      email.text.trim(),
+      mobileNumber.text.trim(),
+      password.text.trim(),
     );
 
-    final success =
-        await credentialRepository.createNewCredeantial(newCredential);
     if (success) {
-      // Handle success (e.g., show a success message or navigate to another screen)
-      Get.snackbar("Success", "Credential added successfully");
+      Get.snackbar("Success", "Credential saved successfully!",
+          snackPosition: SnackPosition.BOTTOM);
+      clearForm();
     } else {
-      // Handle failure (e.g., show an error message)
-      Get.snackbar("Error", "Failed to add credential");
+      Get.snackbar("Error", "Failed to save credential.",
+          snackPosition: SnackPosition.BOTTOM);
     }
+  }
+
+  void clearForm() {
+    siteUrl.clear();
+    userName.clear();
+    email.clear();
+    mobileNumber.clear();
+    password.clear();
   }
 }
