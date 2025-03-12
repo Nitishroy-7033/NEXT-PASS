@@ -13,6 +13,7 @@ class AuthController extends GetxController {
   var authModel = Rx<AuthModel?>(null);
   var isError = false.obs;
   var errorMessage = "".obs;
+  
   Future<void> login(String email, String password) async {
     isLoading.value = true;
     isError.value = false;
@@ -43,34 +44,22 @@ class AuthController extends GetxController {
   //   print(response);
   // }
 
-  //signup method
-  Future<void> createAnAccount(
-      String email, String pwd, String firstName, String lastName) async {
-    isLoading.value = true;
+  Future<void> createAnAccount(String email, String pwd, String firstName, String lastName) async {
+  isLoading.value = true;
     isError.value = false;
     errorMessage.value = "";
-
     try {
-      final response =
-          await authRepository.createAnAccount(email, pwd, firstName, lastName);
-
-      if (response.success == true && response.data != null) {
-        SuccessMessage("Account created successfully");
-        // Get.offAllNamed(AppRoutes.login);
-      } else {
-        // Show a clean message instead of full JSON response
-        if (response.message != null &&
-            response.message!.contains("User with this email already exists")) {
-          errorMessage.value = "Account is Existed";
-        } else {
-          errorMessage.value = "Something went wrong";
-        }
-        ErrorMessage(errorMessage.value);
+      final response = await authRepository.createAnAccount(email, pwd, firstName, lastName);
+      if(response.success==true && response.data != null){
+        SuccessMessage(response.message ?? "Account created successfully");
+      }
+      else{
+        _handleError(response.message);
       }
     } catch (e) {
-      errorMessage.value = "An error occurred";
-      ErrorMessage(errorMessage.value);
-    } finally {
+      _handleError(e.toString());
+    }
+    finally{
       isLoading.value = false;
     }
   }
