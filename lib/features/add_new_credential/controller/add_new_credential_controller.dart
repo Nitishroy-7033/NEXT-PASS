@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 
 import '../data/credential_repository.dart';
 import '../data/interface.dart';
-import '../models/new_credenatial.dart';
+
 
 class AddNewCredentialController extends GetxController {
   final CredentialInterface credentialRepository =
@@ -17,17 +17,9 @@ class AddNewCredentialController extends GetxController {
   TextEditingController mobileNumber = TextEditingController();
   TextEditingController title = TextEditingController();
 
-  Future<void> saveCredential() async {
-    final newCredential = CredentialModel(
-      siteUrl: siteUrl.text,
-      userName: userName.text,
-      emailId: emailId.text,
-      password: password.text,
-      phoneNumber: mobileNumber.text,
-    );
-
-    final success =
-        await credentialRepository.createNewCredeantial(newCredential);
+  Future<void> saveCredential(String siteUrl,userName,emailId,password,mobileNumber) async {
+    var success =
+        await credentialRepository.createNewCredential(siteUrl, userName, emailId, mobileNumber, password);
     if (success) {
       // Handle success (e.g., show a success message or navigate to another screen)
       Get.snackbar("Success", "Credential added successfully");
