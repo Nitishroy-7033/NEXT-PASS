@@ -32,6 +32,26 @@ class AuthRepository implements AuthInterface {
     }
   }
 
+//   @override
+//   Future<dynamic> createAnAccount(
+//       String email, String pwd, String firstName, String lastName) async {
+//     var response = await apiClient.request("/Auth/register",
+//         method: "GET",
+//         data: {
+//           "email": email,
+//           "password": pwd,
+//           "firstName": firstName,
+//           "lastName": lastName
+//         });
+//     return response;
+//   }
+
+
+// SignUp 
+  @override
+  Future<ApiResponse<AuthModel>> createAnAccount(
+      String email, String password, String firstName, String lastName) async {
+
   // @override
   // Future<dynamic> createAnAccount(
   //     String email, String pwd, String firstName, String lastName) async {
@@ -50,14 +70,20 @@ class AuthRepository implements AuthInterface {
   @override
   Future<ApiResponse<AuthModel>> createAnAccount(
       String email, String pwd, String firstName, String lastName) async {
+
     try {
       var response = await apiClient.request(
         "/Auth/register",
         method: "POST",
         data: {
           "email": email,
-          "password": pwd,
+          "password": password,
           "firstName": firstName,
+
+          "lastName": lastName,
+        },
+      );
+
           "lastName": lastName
         },
       );
@@ -70,6 +96,7 @@ class AuthRepository implements AuthInterface {
           success: false,
         );
       }
+
 
       return ApiResponse<AuthModel>(
         data: AuthModel.fromJson(response.data["data"]),
