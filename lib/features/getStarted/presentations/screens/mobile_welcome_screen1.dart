@@ -1,10 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:next_pass/core/constants/app_assets.dart';
-import 'package:next_pass/core/constants/app_colors.dart';
-import 'package:next_pass/core/constants/app_strings.dart';
-import 'package:next_pass/core/constants/app_themes.dart';
-import 'package:next_pass/core/utils/size_config.dart';
-import 'package:next_pass/core/widgets/primary_button.dart';
+
 import '../../../../core/constants/app_linker.dart';
 
 class MobileWelcomeScreen1 extends StatelessWidget {
@@ -16,60 +10,54 @@ class MobileWelcomeScreen1 extends StatelessWidget {
     final double width = SizeConfig.screenWidth;
     return Scaffold(
       backgroundColor: AppColors.backgroundDark,
-      body: SingleChildScrollView(
-        scrollDirection: Axis.vertical,
-        child: Padding(
-          padding: EdgeInsets.fromLTRB(
-            51, //width*0.12977099236,
-            67, //height*0.10211267605,
-            49, //width*0.12468193384,
-            67, //height*0.07863849765
-          ),
-          child: Column(
-            children: [
-              Padding(
-                padding: EdgeInsets.fromLTRB(
-                    width * (24 / 393), 0, width * (21 / 393), 0),
-                child: Text(
-                  AppStrings.heading1,
-                  textAlign: TextAlign.center,
-                  style: Theme.of(context).textTheme.headlineLarge,
-                ),
-              ),
-              SizedBox(
-                height: height * (41 / 852),
-              ),
-              Padding(
-                padding: EdgeInsets.fromLTRB(
-                    width * (17 / 393), 0, width * (18 / 393), 0),
-                child: Image.asset(AppImageAssets.getStartedLogo1),
-              ),
-              SizedBox(
-                height: height * (51 / 852),
-              ),
-              Text(AppStrings.content1,
-                  textAlign: TextAlign.center,
-                  style: Theme.of(context).textTheme.headlineSmall),
-              SizedBox(
-                height: SizeConfig.screenHeight * (36 / 852),
-              ),
-              // Spacer(),
-              PrimaryButton(text: "Start", onPressed: () {
-                Get.toNamed(AppRoutes.authtab);
-              }),
-              SizedBox(
-                height: SizeConfig.screenHeight * (30 / 852),
-              ),
-              TextButton(
-                  onPressed: () {},
+      body:  Padding(
+          padding: const EdgeInsets.fromLTRB(51, 67, 49, 67),
+          child: SingleChildScrollView(
+            scrollDirection: Axis.vertical,
+            child: Column(
+              children: [
+                Padding(
+                  padding: EdgeInsets.fromLTRB(
+                      width * (24 / 393), 0, width * (21 / 393), 0),
                   child: Text(
-                    "Skip",
-                    style: AppThemes.lightTheme.textTheme.bodyMedium,
-                  )),
-            ],
+                    AppStrings.heading1,
+                    textAlign: TextAlign.center,
+                    style: Theme.of(context).textTheme.headlineLarge,
+                  ),
+                ),
+                const SizedBox(
+                  height: 60,
+                ),
+                Padding(
+                  padding: EdgeInsets.fromLTRB(
+                      width * (17 / 393), 0, width * (18 / 393), 0),
+                  child: Image.asset(AppImageAssets.getStartedLogo1),
+                ),
+                const SizedBox(
+                  height: 60,
+                ),
+                Text(AppStrings.content1,
+                    textAlign: TextAlign.center,
+                    style: Theme.of(context).textTheme.headlineMedium),
+               const SizedBox(
+                  height: 250,
+                ),
+                PrimaryButton(text: "Start", onPressed: () {
+                  Get.toNamed(AppRoutes.authtab);
+                }),
+                const SizedBox(
+                  height: 10,
+                ),
+                TextButton(
+                    onPressed: () {},
+                    child: Text(
+                      "Skip",
+                      style: AppThemes.lightTheme.textTheme.bodyMedium,
+                    )),
+              ],
+            ),
           ),
         ),
-      ),
     );
   }
 }

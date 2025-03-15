@@ -34,8 +34,7 @@ class AuthRepository implements AuthInterface {
 
   @override
   Future<ApiResponse<AuthModel>> createAnAccount(
-      String email, String pwd, String firstName, String lastName,) async {
-
+      String email, String pwd, String firstName, String lastName) async {
     try {
       var response = await apiClient.request(
         "/Auth/register",
@@ -44,28 +43,19 @@ class AuthRepository implements AuthInterface {
           "email": email,
           "password": pwd,
           "firstName": firstName,
-          "lastName": lastName,
-        },
-      );
-
-      if (response.data["message"] == "Account already exists") {
-        return ApiResponse<AuthModel>(
-          data: null,
-          message: "Account already exists",
-          success: false,
-        );
-      }
-      return ApiResponse<AuthModel>(
-        data: AuthModel.fromJson(response.data["data"]),
-        message: response.data["message"] ?? "Account created successfully",
-        success: response.data["success"] ?? false,
-      );
-    } catch (e) {
-      return ApiResponse<AuthModel>(
+          "lastName": lastName
+        });
+    return ApiResponse<AuthModel>(
+      data: AuthModel.fromJson(response.data["data"]),
+      message: response.data["message"] ?? "Account created successfully",
+      success: response.data["success"] ?? false,
+    );
+    } catch(e) {
+       return ApiResponse<AuthModel>(
         data: null,
         message: e.toString(),
         success: false,
       );
     }
-  }
+  } 
 }

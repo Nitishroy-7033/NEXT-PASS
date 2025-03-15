@@ -13,7 +13,6 @@ class AuthController extends GetxController {
   var authModel = Rx<AuthModel?>(null);
   var isError = false.obs;
   var errorMessage = "".obs;
-
   
   Future<void> login(String email, String password) async {
     isLoading.value = true;
