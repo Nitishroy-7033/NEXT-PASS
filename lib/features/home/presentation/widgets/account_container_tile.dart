@@ -12,7 +12,7 @@ class AccountContainerTile extends StatelessWidget {
   final String strength;
   final bool isAlert;
   final VoidCallback ontap;
-  const AccountContainerTile(
+  const AccountContainerTile( 
       {super.key,
       required this.imageUrl,
       required this.title,

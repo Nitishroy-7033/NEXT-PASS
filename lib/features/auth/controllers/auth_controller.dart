@@ -37,6 +37,9 @@ class AuthController extends GetxController {
     }
   }
 
+
+  //signup method
+
   Future<void> createAnAccount(
       String email, String password, String firstName, String lastName) async {
     isLoading.value = true;
