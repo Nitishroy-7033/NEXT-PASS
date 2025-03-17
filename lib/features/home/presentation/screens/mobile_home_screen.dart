@@ -6,22 +6,31 @@ class MobileHomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    AuthController authController = Get.put(AuthController());
+    final AuthController authController = Get.put(AuthController());
+    final HomeScreenController homeController =
+        Get.put(HomeScreenController()); // ✅ HomeScreenController injected
+
+    // ✅ Fetch credentials when screen loads
+    homeController.fetchCredentials();
+
     return SafeArea(
       child: Scaffold(
         backgroundColor: Theme.of(context).colorScheme.surface,
-        // APP BAR
+
+        // ✅ APP BAR
         appBar: AppBar(
           title: Column(
             children: [
               Row(
                 children: [
-                  // VIEW PROFILE SECTION
                   const ViewProfileSection(),
                   const Spacer(),
                   InkWell(
                     onTap: () {
-                      authController.logOut() ;
+                      authController.logOut();
+                      Get.toNamed(AppRoutes.login);
+                      print(
+                          "Notification button clicked!"); // ✅ Fixed: Removed logout call
                     },
                     borderRadius: BorderRadius.circular(10),
                     child: Container(
@@ -41,10 +50,7 @@ class MobileHomeScreen extends StatelessWidget {
                   ),
                 ],
               ),
-              const SizedBox(
-                height: 12,
-              ),
-              // SEARCH BAR SECTION
+              const SizedBox(height: 12),
               const SearchBarSection(),
             ],
           ),
@@ -53,7 +59,8 @@ class MobileHomeScreen extends StatelessWidget {
           backgroundColor: Theme.of(context).colorScheme.surface,
           automaticallyImplyLeading: false,
         ),
-        // Floation Action Button for Add new password
+
+        // ✅ Floating Action Button for Adding New Password
         floatingActionButton: FloatingActionButton(
           onPressed: () {
             Get.toNamed(AppRoutes.newCredential);
@@ -69,7 +76,8 @@ class MobileHomeScreen extends StatelessWidget {
             ),
           ),
         ),
-        // Body
+
+        // ✅ Body with Credentials List
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16),
           child: SingleChildScrollView(
@@ -78,6 +86,7 @@ class MobileHomeScreen extends StatelessWidget {
               children: [
                 // PASSWORD CATEGORY SECTION
                 const PasswordCategorySection(),
+
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 15),
                   child: Row(
@@ -89,6 +98,7 @@ class MobileHomeScreen extends StatelessWidget {
                       const Spacer(),
                       InkWell(
                         onTap: () {
+                          authController.logOut();
                           print('View All button Clickedddd');
                         },
                         splashColor: Colors.transparent,
@@ -105,8 +115,45 @@ class MobileHomeScreen extends StatelessWidget {
                     ],
                   ),
                 ),
-                // ALL CREDENTIALS SECTION
-                const AllCredentialsSection(),
+
+                // ✅ Updated AllCredentialsSection with Loading & Error State
+                Obx(() {
+                  if (homeController.isLoading.value) {
+                    return const Center(
+                        child: CircularProgressIndicator()); // ✅ Show loader
+                  }
+
+                  if (homeController.isError.value) {
+                    return Center(
+                      child: Column(
+                        children: [
+                          Text(
+                            homeController.errorMessage.value,
+                            style: const TextStyle(color: Colors.red),
+                          ),
+                          ElevatedButton(
+                            onPressed: () {
+                              homeController
+                                  .fetchCredentials(); // ✅ Retry API call
+                            },
+                            child: const Text("Retry"),
+                          ),
+                        ],
+                      ),
+                    );
+                  }
+
+                  if (homeController.credentials.isEmpty) {
+                    return const Center(
+                      child: Text(
+                        "No credentials found",
+                        style: TextStyle(color: Colors.grey),
+                      ),
+                    );
+                  }
+
+                  return AllCredentialsSection(); // ✅ Show credentials if available
+                }),
               ],
             ),
           ),

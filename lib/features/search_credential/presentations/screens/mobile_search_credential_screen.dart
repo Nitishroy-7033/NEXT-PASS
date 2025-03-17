@@ -157,6 +157,7 @@ class MobileSearchCredentialScreen extends StatelessWidget {
                 itemBuilder: (context, index) {
                   final account = accounts[index];
                   return AccountContainerTile(
+          
                     title: account["title"],
                     emailId: account["emailId"],
                     imageUrl: account["imageUrl"],

@@ -1,76 +1,81 @@
-import '../../../../core/constants/app_linker.dart';
+import 'package:next_pass/core/constants/app_linker.dart';
 
 class AllCredentialsSection extends StatelessWidget {
-  const AllCredentialsSection({super.key});
+  final HomeScreenController controller = Get.find();
+
+  AllCredentialsSection({super.key}); // ✅ Controller injected
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        AccountContainerTile(
-          title: "Facebook",
-          emailId: "rosepoole@email.com",
-          imageUrl: AppImageAssets.facebookLogo,
-          password: "*********************",
-          strength: "Strong",
-          isAlert: true,
-          ontap: () {},
-        ),
-        AccountContainerTile(
-          title: "Google",
-          emailId: "rosepoole@email.com",
-          password: "*********************",
-          strength: "Weak",
-          imageUrl: AppImageAssets.googleLogo,
-          isAlert: false,
-          ontap: () {},
-        ),
-        AccountContainerTile(
-          title: "Playstore",
-          emailId: "rosepoole@email.com",
-          password: "*********************",
-          strength: "Strong",
-          imageUrl: AppImageAssets.playstoreLogo,
-          isAlert: true,
-          ontap: () {},
-        ),
-        AccountContainerTile(
-          title: "Twitter",
-          emailId: "rosepoole@email.com",
-          password: "*********************",
-          strength: "Weak",
-          imageUrl: AppImageAssets.twitterLogo,
-          isAlert: false,
-          ontap: () {},
-        ),
-        AccountContainerTile(
-          title: "Linkedin",
-          emailId: "rosepoole@email.com",
-          password: "*********************",
-          strength: "Strong",
-          imageUrl: AppImageAssets.linkedinLogo,
-          isAlert: false,
-          ontap: () {},
-        ),
-        AccountContainerTile(
-          title: "Twitter",
-          emailId: "rosepoole@email.com",
-          password: "*********************",
-          strength: "Weak",
-          imageUrl: AppImageAssets.twitterLogo,
-          isAlert: false,
-          ontap: () {},
-        ),
-        AccountContainerTile(
-          title: "Linkedin",
-          emailId: "rosepoole@email.com",
-          password: "*********************",
-          strength: "Strong",
-          imageUrl: AppImageAssets.linkedinLogo,
-          isAlert: true,
-          ontap: () {},
-        ),
-      ],
-    );
+    return Obx(() {
+      if (controller.isLoading.value) {
+        return const Center(
+            child: CircularProgressIndicator()); // ✅ Loading State
+      }
+
+      if (controller.isError.value) {
+        return Center(
+            child: Text(controller.errorMessage.value)); // ✅ Error State
+      }
+
+      return ListView.builder(
+        shrinkWrap: true,
+        physics: const NeverScrollableScrollPhysics(),
+        itemCount: controller.credentials.length,
+        itemBuilder: (context, index) {
+          final credential = controller.credentials[index];
+    print("Password Strength for ${credential.title}: ${credential.passwordStrength}");
+    print("Raw Strength Value: '${credential.passwordStrength}'");
+
+
+          return AccountContainerTile(
+            title: credential.title,
+            emailId: credential.emailId, // ✅ Backend se aaya actual email
+            password: '********',
+            strength: _getPasswordStrengthLabel(credential.passwordStrength),
+            imageUrl: _getImageUrl(credential.siteUrl),
+          isAlert: int.tryParse(credential.passwordStrength) != null 
+    ? int.parse(credential.passwordStrength) < 3 
+    : false,
+
+            ontap: () {},
+          );
+        },
+      );
+    });
+  }
+
+
+
+  /// **Convert Password Strength to Label**
+String _getPasswordStrengthLabel(String strength) {
+  switch (strength.toLowerCase().trim()) {  // ✅ Ensure case-insensitivity & remove extra spaces
+    case "strong":
+      return "Strong";
+    case "medium":
+      return "Medium";
+    case "weak":
+      return "Weak";
+    default:
+      return "Unknown";  // ✅ For debugging
+  }
+}
+
+
+  /// **Get Image Based on URL**
+  String _getImageUrl(String siteUrl) {
+    if (siteUrl.contains("facebook")) {
+      return AppImageAssets.facebookLogo;
+    } else if (siteUrl.contains("google")) {
+      return AppImageAssets.googleLogo;
+    } else if (siteUrl.contains("twitter")) {
+      return AppImageAssets.twitterLogo;
+    } else if (siteUrl.contains("linkedin")) {
+      return AppImageAssets.linkedinLogo;
+    } else if (siteUrl.contains("playstore")) {
+      return AppImageAssets.playstoreLogo;
+    } else {
+      return AppImageAssets.appLogo; // ✅ Default image if no match
+    }
   }
 }
