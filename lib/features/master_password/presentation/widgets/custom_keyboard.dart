@@ -1,6 +1,4 @@
-
 import '../../../../core/constants/app_linker.dart';
-
 class CustomKeyboard extends StatelessWidget {
   final MasterPasswordController pinController;
 
@@ -92,3 +90,4 @@ class CustomKeyboard extends StatelessWidget {
     );
   }
 }
+

@@ -103,6 +103,5 @@ export 'package:next_pass/features/database%20setup/presentation/widgets/plan_ca
 export 'package:next_pass/features/database%20setup/presentation/screens/mobile_database_setup.dart';
 export 'package:next_pass/features/database%20setup/presentation/screens/web_database_setup.dart';
 export 'package:next_pass/features/add_new_credential/models/new_credenatial.dart';
-
-
+export 'package:shared_preferences/shared_preferences.dart';
 
