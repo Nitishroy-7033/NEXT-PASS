@@ -15,15 +15,23 @@ class AddNewCredentialForm extends StatelessWidget {
   Widget build(BuildContext context) {
     final AddNewCredentialController controller =
         Get.find<AddNewCredentialController>();
+    final _formKey = GlobalKey<FormState>();
 
     return Container(
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
+<<<<<<< HEAD
         color: Theme.of(context).colorScheme.primaryContainer,
         borderRadius: BorderRadius.circular(20),
       ),
       child: Form(
         key: _formKey, // Apply the form key
+=======
+          color: Theme.of(context).colorScheme.primaryContainer,
+          borderRadius: BorderRadius.circular(20)),
+      child: Form(
+        key: _formKey,
+>>>>>>> 11329ca341e15bcebc644df914a1d8a6caffdbd3
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -32,8 +40,11 @@ class AddNewCredentialForm extends StatelessWidget {
               style: Theme.of(context).textTheme.bodyMedium,
             ),
             const SizedBox(height: 15),
+<<<<<<< HEAD
 
             // 🔹 Site Address
+=======
+>>>>>>> 11329ca341e15bcebc644df914a1d8a6caffdbd3
             Text(
               AppStrings.siteAddressLabelNC,
               style: Theme.of(context).textTheme.labelMedium,
@@ -49,12 +60,17 @@ class AddNewCredentialForm extends StatelessWidget {
                 ),
                 hintText: AppStrings.siteHintTextNC,
               ),
+<<<<<<< HEAD
               validator: (value) =>
                   value!.isEmpty ? 'Site address is required' : null,
             ),
             const SizedBox(height: 20),
 
             // 🔹 Username
+=======
+            ),
+            const SizedBox(height: 20),
+>>>>>>> 11329ca341e15bcebc644df914a1d8a6caffdbd3
             Text(
               AppStrings.userNameLabelNC,
               style: Theme.of(context).textTheme.labelMedium,
@@ -70,12 +86,17 @@ class AddNewCredentialForm extends StatelessWidget {
                 ),
                 hintText: AppStrings.userNameHintTextNC,
               ),
+<<<<<<< HEAD
               validator: (value) =>
                   value!.isEmpty ? 'Username is required' : null,
             ),
             const SizedBox(height: 20),
 
             // 🔹 Email
+=======
+            ),
+            const SizedBox(height: 20),
+>>>>>>> 11329ca341e15bcebc644df914a1d8a6caffdbd3
             Text(
               AppStrings.emailLabelNC,
               style: Theme.of(context).textTheme.labelMedium,
@@ -83,7 +104,12 @@ class AddNewCredentialForm extends StatelessWidget {
             const SizedBox(height: 10),
             TextFormField(
               textInputAction: TextInputAction.next,
+<<<<<<< HEAD
               controller: controller.email,
+=======
+              controller: controller.emailId,
+              obscureText: false,
+>>>>>>> 11329ca341e15bcebc644df914a1d8a6caffdbd3
               decoration: InputDecoration(
                 prefixIcon: Icon(
                   Icons.alternate_email,
@@ -91,11 +117,16 @@ class AddNewCredentialForm extends StatelessWidget {
                 ),
                 hintText: AppStrings.emailHintTextNC,
               ),
+<<<<<<< HEAD
               validator: (value) => value!.isEmpty ? 'Email is required' : null,
             ),
             const SizedBox(height: 20),
 
             // 🔹 Phone Number
+=======
+            ),
+            const SizedBox(height: 20),
+>>>>>>> 11329ca341e15bcebc644df914a1d8a6caffdbd3
             Text(
               AppStrings.phoneNumberLabelNC,
               style: Theme.of(context).textTheme.labelMedium,
@@ -104,6 +135,10 @@ class AddNewCredentialForm extends StatelessWidget {
             TextFormField(
               textInputAction: TextInputAction.next,
               controller: controller.mobileNumber,
+<<<<<<< HEAD
+=======
+              obscureText: false,
+>>>>>>> 11329ca341e15bcebc644df914a1d8a6caffdbd3
               decoration: InputDecoration(
                 prefixIcon: Icon(
                   Icons.call,
@@ -111,12 +146,17 @@ class AddNewCredentialForm extends StatelessWidget {
                 ),
                 hintText: AppStrings.phoneNumberHintTextNC,
               ),
+<<<<<<< HEAD
               validator: (value) =>
                   value!.isEmpty ? 'Phone number is required' : null,
             ),
             const SizedBox(height: 20),
 
             // 🔹 Password
+=======
+            ),
+            const SizedBox(height: 20),
+>>>>>>> 11329ca341e15bcebc644df914a1d8a6caffdbd3
             Text(
               AppStrings.passwordAddressLabelNC,
               style: Theme.of(context).textTheme.labelMedium,
@@ -133,12 +173,17 @@ class AddNewCredentialForm extends StatelessWidget {
                 ),
                 hintText: AppStrings.passwordHintTextNC,
               ),
+<<<<<<< HEAD
               validator: (value) =>
                   value!.isEmpty ? 'Password is required' : null,
             ),
             const SizedBox(height: 20),
 
             // 🔹 Password Strength & Generate Button
+=======
+            ),
+            const SizedBox(height: 20),
+>>>>>>> 11329ca341e15bcebc644df914a1d8a6caffdbd3
             const Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -147,8 +192,11 @@ class AddNewCredentialForm extends StatelessWidget {
               ],
             ),
             const SizedBox(height: 10),
+<<<<<<< HEAD
 
             // 🔹 Reminder & Category Dropdowns
+=======
+>>>>>>> 11329ca341e15bcebc644df914a1d8a6caffdbd3
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -194,6 +242,7 @@ class AddNewCredentialForm extends StatelessWidget {
               ],
             ),
             const SizedBox(height: 30),
+<<<<<<< HEAD
 
             // 🔹 Save Button with Validation
             PrimaryButton(
@@ -201,6 +250,21 @@ class AddNewCredentialForm extends StatelessWidget {
               onPressed: () {
                 if (_formKey.currentState!.validate()) {
                   controller.addCredential(); // Only save if the form is valid
+=======
+            PrimaryButton(
+              text: AppStrings.buttonSave,
+              onPressed: () {
+                try {
+                  controller.saveCredential(
+                    controller.siteUrl.text,
+                    controller.userName.text,
+                    controller.emailId.text,
+                    controller.password.text,
+                    controller.mobileNumber.text,
+                  );
+                } catch (e) {
+                  print(e.toString());
+>>>>>>> 11329ca341e15bcebc644df914a1d8a6caffdbd3
                 }
               },
             ),
