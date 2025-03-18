@@ -15,7 +15,7 @@ class SplashController extends GetxController {
     AuthModel userDetails = await apiClient.getUserData();
     Timer(const Duration(seconds: 5), () {
       if (userDetails.token != null && userDetails.role != null) {
-        Get.offAllNamed(AppRoutes.home);
+        Get.offAllNamed(AppRoutes.masterPassword);
       } else {
         Get.offAllNamed(AppRoutes.getStarted);
       }
