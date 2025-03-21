@@ -21,7 +21,7 @@ class MobileHomeScreen extends StatelessWidget {
                   const Spacer(),
                   InkWell(
                     onTap: () {
-                      authController.logOut() ;
+                      authController.logOut();
                     },
                     borderRadius: BorderRadius.circular(10),
                     child: Container(

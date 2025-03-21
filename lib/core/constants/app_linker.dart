@@ -62,8 +62,8 @@ export 'package:next_pass/features/add_new_credential/presentation/screens/mobil
 export 'package:next_pass/features/add_new_credential/presentation/screens/web_add_new_credential.dart';
 export 'package:next_pass/core/widgets/all_widgets_screen.dart';
 export 'package:next_pass/features/add_new_credential/presentation/views/view_add_new_credential.dart';
-export 'package:next_pass/features/getStarted/presentations/screens/mobile_welcome_screen1.dart';
-export 'package:next_pass/features/getStarted/presentations/screens/mobile_welcome_screen2.dart';
+export 'package:next_pass/features/getStarted/presentations/widgets/mobile_welcome_screen1.dart';
+export 'package:next_pass/features/getStarted/presentations/widgets/mobile_welcome_screen2.dart';
 export 'package:next_pass/features/home/presentation/widgets/all_credentials_section.dart';
 export 'package:next_pass/features/home/presentation/widgets/password_category_section.dart';
 export 'package:next_pass/features/home/presentation/widgets/search_bar_section.dart';
@@ -102,3 +102,4 @@ export 'package:next_pass/features/database%20setup/controllers/select_database_
 export 'package:next_pass/features/database%20setup/presentation/widgets/plan_card_database.dart';
 export 'package:next_pass/features/database%20setup/presentation/screens/mobile_database_setup.dart';
 export 'package:next_pass/features/database%20setup/presentation/screens/web_database_setup.dart';
+export 'package:next_pass/features/getStarted/controller/get_started_controller.dart';

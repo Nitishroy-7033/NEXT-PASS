@@ -1,4 +1,3 @@
-
 import '../../../../core/constants/app_linker.dart';
 
 class DatabaseUrlSection extends StatelessWidget {
@@ -8,7 +7,7 @@ class DatabaseUrlSection extends StatelessWidget {
   Widget build(BuildContext context) {
     final SelectDatabaseController selectDatabaseController =
         Get.put(SelectDatabaseController());
-    TextEditingController databaseURLController = TextEditingController();
+
     return Obx(
       () => (selectDatabaseController.selectedIndex.value == 0)
           ? Column(
@@ -31,7 +30,7 @@ class DatabaseUrlSection extends StatelessWidget {
                 ),
                 const SizedBox(height: 20),
                 TextFormField(
-                  controller: databaseURLController,
+                  controller: selectDatabaseController.databaseURLController,
                   decoration: InputDecoration(
                     fillColor: Theme.of(context).colorScheme.primaryContainer,
                     prefixIcon: Padding(

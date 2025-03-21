@@ -1,38 +1,25 @@
-import 'package:get/get.dart';
-import 'package:next_pass/core/network/api_client.dart';
-import 'package:next_pass/features/add_new_credential/data/interface.dart';
+import 'package:next_pass/core/constants/app_linker.dart';
 import 'package:next_pass/features/add_new_credential/models/new_credenatial.dart';
 
 class CredentialRepository implements CredentialInterface {
+  final ApiClient apiClient = Get.find<ApiClient>();
 
-  final apiClient = Get.find<ApiClient>();
   @override
-  Future<bool> createNewCredeantial(CredentialModel newCredenatil) async {
+  Future<List<CredentialModel>> getAllCredentials() async {
     try {
-      // await apiClient.post("newCredenatil", newCredenatil.toJson());
-      return true;
-    } catch (e) {
-      return false;
+      final response = await apiClient.request("/Credential", method: "GET");
+
+      if (response.data["success"] == true) {
+        List<dynamic> credentialsData = response.data["data"]["credentials"];
+        return credentialsData
+            .map((json) => CredentialModel.fromJson(json))
+            .toList();
+      } else {
+        throw Exception(
+            response.data["message"] ?? "Failed to fetch credentials");
+      }
+    } catch (error) {
+      throw Exception("Error fetching credentials: $error");
     }
   }
-
-  // @override
-  // Future<List<CredentialModel>> getAllCredentail() async {
-  //   final response = await apiClient.get("credenatial");
-  //   return (response as List)
-  //       .map((item) => CredentialModel.fromJson(item))
-  //       .toList();
-  // }
-
-  @override
-  Future<List<CredentialModel>> searchCredential() {
-    throw UnimplementedError();
-  }
-  
-  @override
-  Future<List<CredentialModel>> getAllCredentail() {
-    // TODO: implement getAllCredentail
-    throw UnimplementedError();
-  }
-
 }

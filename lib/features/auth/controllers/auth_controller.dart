@@ -13,6 +13,7 @@ class AuthController extends GetxController {
   var authModel = Rx<AuthModel?>(null);
   var isError = false.obs;
   var errorMessage = "".obs;
+
   Future<void> login(String email, String password) async {
     isLoading.value = true;
     isError.value = false;
@@ -23,7 +24,8 @@ class AuthController extends GetxController {
         authModel.value = response.data;
         apiClient.setUserDetails(response.data!);
         SuccessMessage(response.message ?? "Logged in successfully");
-        Get.offAllNamed(AppRoutes.home);
+        // Get.offAllNamed(AppRoutes.home);
+        Get.offAllNamed(AppRoutes.databaseSetup);
       } else {
         _handleError(response.message);
       }
@@ -56,7 +58,7 @@ class AuthController extends GetxController {
 
       if (response.success == true && response.data != null) {
         SuccessMessage("Account created successfully");
-        // Get.offAllNamed(AppRoutes.login);
+        // Get.offAllNamed(AppRoutes.databaseSetup);
       } else {
         // Show a clean message instead of full JSON response
         if (response.message != null &&
