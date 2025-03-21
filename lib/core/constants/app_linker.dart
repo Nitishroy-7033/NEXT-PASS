@@ -102,4 +102,6 @@ export 'package:next_pass/features/database%20setup/controllers/select_database_
 export 'package:next_pass/features/database%20setup/presentation/widgets/plan_card_database.dart';
 export 'package:next_pass/features/database%20setup/presentation/screens/mobile_database_setup.dart';
 export 'package:next_pass/features/database%20setup/presentation/screens/web_database_setup.dart';
+export 'package:next_pass/features/add_new_credential/models/new_credenatial.dart';
+export 'package:shared_preferences/shared_preferences.dart';
 export 'package:next_pass/features/getStarted/controller/get_started_controller.dart';
