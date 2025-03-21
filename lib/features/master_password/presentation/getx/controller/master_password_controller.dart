@@ -108,19 +108,6 @@ Future<void> loadSavedPin() async {
   }
 }
 
-
-  // ✅ Reset PIN
-  Future<void> resetPin() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    await prefs.remove('saved_pin');
-    enteredDigits.value = '';
-    isCreatingPin.value = true; // Switch to PIN creation mode
-        print("⚠️ PIN has been reset!"); // 🔥 Console pe print
-
-  }
-
-
-
  void addDigit(String digit) {
     updatePin(digit); //
   }

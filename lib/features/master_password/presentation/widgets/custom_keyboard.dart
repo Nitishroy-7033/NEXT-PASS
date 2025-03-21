@@ -1,3 +1,5 @@
+import 'package:next_pass/core/constants/biomatric_service.dart';
+
 import '../../../../core/constants/app_linker.dart';
 class CustomKeyboard extends StatelessWidget {
   final MasterPasswordController pinController;
@@ -25,8 +27,12 @@ class CustomKeyboard extends StatelessWidget {
           if (index == 9) {
             // ✅ Biometric Icon
             buttonContent = InkWell(
-              onTap: () {
-                Get.offAllNamed(AppRoutes.home);
+              onTap: () async{
+           bool check=   await  BiomatricService().authenticateLocally();
+           if(check){
+              Get.offAllNamed(AppRoutes.home);
+           }
+               
               },
               child: SvgPicture.asset(
                 color: Theme.of(context).colorScheme.onSurface,
