@@ -16,6 +16,10 @@ class AppStrings {
   static const String buttonSubmit = "Submit";
   static const String buttonSave = "SAVE";
   static const String startButton = "START";
+  static const String nextButton = "NEXT";
+  static const String skipButton = "Skip";
+  static const String backButton = "Back";
+
 
   String welcome = "Welcome";
 

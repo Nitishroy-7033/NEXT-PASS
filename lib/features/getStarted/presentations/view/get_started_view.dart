@@ -1,5 +1,3 @@
-
-
 import '../../../../core/constants/app_linker.dart';
 
 class GetStartedView extends StatelessWidget {
@@ -7,9 +5,9 @@ class GetStartedView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-     return Responsive(
-        mobile: MobileWelcomeScreen1(),
-        tablet: MobileWelcomeScreen1(),
+    return const Responsive(
+        mobile: MobileGetStartedScreen(),
+        tablet: MobileGetStartedScreen(),
         desktop: WebGetStartedScreen());
   }
 }

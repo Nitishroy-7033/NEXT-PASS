@@ -9,6 +9,8 @@ class AddNewCredentialController extends GetxController {
   final CredentialInterface credentialRepository =
       Get.put(CredentialRepository());
 
+  
+
   // Controllers for the form fields
   TextEditingController siteUrl = TextEditingController();
   TextEditingController userName = TextEditingController();

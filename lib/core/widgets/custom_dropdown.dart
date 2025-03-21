@@ -18,7 +18,7 @@ class CustomDropdown extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final customDropdownController = Get.put(controller);
+    final customDropdownController = Get.put(controller, tag: controller.hashCode.toString());
     return Container(
       constraints: BoxConstraints(
         maxHeight: maxHeight,
@@ -34,8 +34,6 @@ class CustomDropdown extends StatelessWidget {
           onChanged: (value) {
             customDropdownController.setDropdownValue(value.toString());
           },
-          // value: customDropdownController.selectedValue.value,
-      
           hint: Text(
             customDropdownController.selectedValue.value,
             style: Theme.of(context).textTheme.labelMedium,
