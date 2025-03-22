@@ -1,3 +1,6 @@
+import 'package:next_pass/features/database%20setup/data/database_setup_interface.dart';
+import 'package:next_pass/features/database%20setup/data/database_setup_repository.dart';
+
 import 'core/constants/app_linker.dart';
 import 'core/network/network_service.dart';
 import 'features/auth/controllers/auth_controller.dart';
@@ -18,6 +21,10 @@ class DependencyInjection {
     Get.lazyPut<AuthInterface>(() => AuthRepository());
     Get.lazyPut<AuthRepository>(() => AuthRepository());
     Get.lazyPut<AuthController>(() => AuthController());
+    
+    Get.lazyPut<DatabaseSetupInterface>(() => DatabaseSetupRepository());
+    Get.lazyPut<DatabaseSetupRepository>(() => DatabaseSetupRepository());
+    Get.lazyPut<SelectDatabaseController>(() => SelectDatabaseController());
 
     print("Dependency Injection completed."); // Debugging
   }

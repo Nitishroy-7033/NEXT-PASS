@@ -30,6 +30,10 @@ class AuthController extends GetxController {
         apiClient.setUserDetails(response.data!);
         SuccessMessage(response.message ?? "Logged in successfully");
 
+        // Get.offAllNamed(AppRoutes.home);
+        Get.offAllNamed(AppRoutes.databaseSetup);
+
+
         // ✅ Check if MPIN exists after login
         await pinController.loadSavedPin();
 
@@ -38,6 +42,7 @@ class AuthController extends GetxController {
         } else {
           Get.offAllNamed(AppRoutes.home);  // ✅ Navigate to Home if MPIN exists
         }
+
       } else {
         handleError(response.message);
       }

@@ -2,9 +2,7 @@
 import 'package:next_pass/core/constants/app_linker.dart';
 
 class CredentialRepository implements CredentialInterface {
-
-  final apiClient = Get.find<ApiClient>();
-
+  final ApiClient apiClient = Get.find<ApiClient>();
   @override
    Future<bool> createNewCredential(
       String siteUrl, String userName, String emailId, String mobileNumber, String password) async {
@@ -44,6 +42,10 @@ class CredentialRepository implements CredentialInterface {
     // TODO: implement getAllCredentail
     throw UnimplementedError();
   }
+  
+  
+  
+
 
 
 // Nitish bro code
