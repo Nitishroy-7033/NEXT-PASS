@@ -38,9 +38,9 @@ class GeneratePasswordFooterWidget extends StatelessWidget {
                   () => SizedBox(
                     width: 20,
                     child: CustomCheckbox(
-                        value: passwordController.useSymbol.value,
+                        value: passwordController.useSymbols.value,
                         onChanged: (value) {
-                          passwordController.useSymbol.value = value!;
+                          passwordController.useSymbols.value = value!;
                         }),
                   ),
                 ),
