@@ -37,7 +37,7 @@ class AddNewCredentialForm extends StatelessWidget {
             const SizedBox(height: 10),
             TextFormField(
               textInputAction: TextInputAction.next,
-              controller: controller.siteUrl,
+              controller: controller.siteUrlController,
               decoration: InputDecoration(
                 prefixIcon: Icon(
                   Icons.language,
@@ -179,7 +179,6 @@ class AddNewCredentialForm extends StatelessWidget {
               onPressed: () {
                 try {
                   controller.saveCredential(
-                    controller.siteUrl.text,
                     controller.userName.text,
                     controller.emailId.text,
                     controller.password.text,

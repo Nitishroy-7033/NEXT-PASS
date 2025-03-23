@@ -83,7 +83,7 @@ class AppStrings {
 
   // Add New Password Screen Strings (New Credential Form)
   static const String newCredentialTitle = 'New Credential';
-  static const String changeIconNC = 'Change Icon';
+  static const String changeIconNC = 'Site Icon';
   static const String credentialNC = 'Credential';
   static const String siteAddressLabelNC = 'Site Address';
   static const String userNameLabelNC = 'User Name';

@@ -1,30 +1,34 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-
-import '../data/credential_repository.dart';
-import '../data/interface.dart';
-
+import '../../../core/constants/app_linker.dart';
 
 class AddNewCredentialController extends GetxController {
   final CredentialInterface credentialRepository =
       Get.put(CredentialRepository());
 
-  
-  TextEditingController siteUrl = TextEditingController();
+  TextEditingController siteUrlController = TextEditingController();
+  RxString siteUrl = ''.obs; // Observable URL
+
   TextEditingController userName = TextEditingController();
   TextEditingController emailId = TextEditingController();
   TextEditingController password = TextEditingController();
   TextEditingController mobileNumber = TextEditingController();
   TextEditingController title = TextEditingController();
 
-  Future<void> saveCredential(String siteUrl,userName,emailId,password,mobileNumber) async {
-    var success =
-        await credentialRepository.createNewCredential(siteUrl, userName, emailId, mobileNumber, password);
+  @override
+  void onInit() {
+    super.onInit();
+
+    // Update siteUrl whenever the user types in the TextField
+    siteUrlController.addListener(() {
+      siteUrl.value = siteUrlController.text.trim();
+    });
+  }
+
+  Future<void> saveCredential( userName, emailId, password, mobileNumber) async {
+    var success = await credentialRepository.createNewCredential(
+        siteUrl.value, userName, emailId, mobileNumber, password);
     if (success) {
-      // Handle success (e.g., show a success message or navigate to another screen)
       Get.snackbar("Success", "Credential added successfully");
     } else {
-      // Handle failure (e.g., show an error message)
       Get.snackbar("Error", "Failed to add credential");
     }
   }
