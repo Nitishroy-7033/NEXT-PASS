@@ -6,7 +6,7 @@ class MobileWelcomeScreen1 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      spacing: 30,
+      
       children: [
         const SizedBox(height: 5),
         

@@ -14,7 +14,6 @@ class MobileSignUpScreen extends StatelessWidget {
   final TextEditingController lastNameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
-
   final RxBool isSecure = true.obs;
 
   @override
