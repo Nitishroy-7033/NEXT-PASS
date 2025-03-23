@@ -5,80 +5,89 @@ class MobileGetStartedScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final PageController pageController = PageController();
     final GetStartedController getStartedController =
         Get.put(GetStartedController());
 
     return SafeArea(
       child: Scaffold(
-        body: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 30),
-          child: Obx(
-            () => Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                getStartedController
-                    .viewList[getStartedController.selectedView.value],
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    AnimatedContainer(
-                      width: (getStartedController.selectedView.value == 0)
-                          ? 10
-                          : 8,
-                      height: (getStartedController.selectedView.value == 0)
-                          ? 10
-                          : 8,
-                      duration: const Duration(milliseconds: 50),
-                      decoration: BoxDecoration(
-                        color: (getStartedController.selectedView.value == 0)
-                            ? Theme.of(context).colorScheme.primary
-                            : Theme.of(context).colorScheme.tertiary,
-                        borderRadius: BorderRadius.circular(5),
-                      ),
-                    ),
-                    const SizedBox(width: 10),
-                    AnimatedContainer(
-                      width: (getStartedController.selectedView.value == 1)
-                          ? 10
-                          : 8,
-                      height: (getStartedController.selectedView.value == 1)
-                          ? 10
-                          : 8,
-                      duration: const Duration(milliseconds: 50),
-                      decoration: BoxDecoration(
-                        color: (getStartedController.selectedView.value == 1)
-                            ? Theme.of(context).colorScheme.primary
-                            : Theme.of(context).colorScheme.tertiary,
-                        borderRadius: BorderRadius.circular(5),
-                      ),
-                    ),
-                  ],
+        body: Obx(
+          () => Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              SizedBox(
+                height: 455,
+                child: PageView(
+                  controller: pageController,
+                  physics: const NeverScrollableScrollPhysics(),
+                  onPageChanged: (index) {
+                    getStartedController.selectedView.value = index;
+                  },
+                  children: getStartedController.viewList,
                 ),
-                PrimaryButton(
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: List.generate(
+                  getStartedController.viewList.length,
+                  (index) => Obx(
+                    () => AnimatedContainer(
+                      width: (getStartedController.selectedView.value == index)
+                          ? 10
+                          : 8,
+                      height: (getStartedController.selectedView.value == index)
+                          ? 10
+                          : 8,
+                      duration: const Duration(milliseconds: 100),
+                      decoration: BoxDecoration(
+                        color:
+                            (getStartedController.selectedView.value == index)
+                                ? Theme.of(context).colorScheme.primary
+                                : Theme.of(context).colorScheme.tertiary,
+                        borderRadius: BorderRadius.circular(5),
+                      ),
+                      margin: const EdgeInsets.symmetric(horizontal: 5),
+                    ),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 30),
+                child: PrimaryButton(
                   text: (getStartedController.selectedView.value == 0)
                       ? AppStrings.nextButton
                       : AppStrings.startButton,
                   onPressed: () {
-                    (getStartedController.selectedView.value == 0)
-                        ? getStartedController.selectedView.value = 1
-                        : Get.toNamed(AppRoutes.authtab);
+                    if (getStartedController.selectedView.value == 0) {
+                      pageController.animateToPage(1,
+                          duration: const Duration(milliseconds: 200),
+                          curve: Curves.easeInOut);
+                    } else {
+                      Get.toNamed(AppRoutes.authtab);
+                    }
                   },
                 ),
-                TextButton(
-                  onPressed: () {
-                    (getStartedController.selectedView.value == 0)
-                        ? getStartedController.selectedView.value = 1
-                        : getStartedController.selectedView.value = 0;
-                  },
-                  child: Text(
-                    (getStartedController.selectedView.value == 0)
-                        ? AppStrings.skipButton
-                        : AppStrings.backButton,
-                    style: Theme.of(context).textTheme.labelLarge,
-                  ),
-                ),
-              ],
-            ),
+              ),
+              TextButton(
+                onPressed: () {
+                  if (getStartedController.selectedView.value == 0) {
+                    pageController.animateToPage(1,
+                        duration: const Duration(milliseconds: 200),
+                        curve: Curves.easeInOut);
+                  } else {
+                    pageController.animateToPage(0,
+                        duration: const Duration(milliseconds: 200),
+                        curve: Curves.easeInOut);
+                  }
+                },
+                child: Obx(() => Text(
+                      (getStartedController.selectedView.value == 0)
+                          ? AppStrings.skipButton
+                          : AppStrings.backButton,
+                      style: Theme.of(context).textTheme.labelLarge,
+                    )),
+              ),
+            ],
           ),
         ),
       ),
