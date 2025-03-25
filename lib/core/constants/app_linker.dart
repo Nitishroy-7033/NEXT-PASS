@@ -78,8 +78,6 @@ export 'package:next_pass/features/master_password/presentation/views/master_pas
 export 'package:next_pass/features/splash/presentation/views/splace_view.dart';
 export 'package:next_pass/core/widgets/custom_text_form_field.dart';
 export 'package:flutter/gestures.dart';
-export 'package:next_pass/core/widgets/generate_password_footer_widget.dart';
-export 'package:next_pass/core/widgets/generate_password_header_widget.dart';
 export 'package:next_pass/core/widgets/share_credential_footer_widget.dart';
 export 'package:next_pass/core/widgets/share_credential_header_widget.dart';
 export 'package:next_pass/features/app_credentials/presentation/getx/controllers/credential_controller.dart';

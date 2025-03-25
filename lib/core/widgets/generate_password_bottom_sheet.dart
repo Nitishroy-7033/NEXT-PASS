@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:next_pass/core/constants/app_linker.dart';
 
 Future<dynamic> BottomSheetPasswordGenerator(BuildContext context) {
@@ -8,21 +6,25 @@ Future<dynamic> BottomSheetPasswordGenerator(BuildContext context) {
       Get.put(AddNewCredentialController());
   return Get.bottomSheet(
     Container(
-      height: 450,
       decoration: BoxDecoration(
         borderRadius: const BorderRadius.only(
             topLeft: Radius.circular(20), topRight: Radius.circular(20)),
         color: Theme.of(context).colorScheme.primaryContainer,
       ),
       child: Padding(
-        padding: const EdgeInsets.all(12),
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
           children: [
-            const SizedBox(height: 10),
-            const Center(child: Text(AppStrings.generatePassword)),
+            // const SizedBox(height: 10),
+            Center(
+              child: Text(
+                AppStrings.generatePassword,
+                style: Theme.of(context).textTheme.bodyLarge,
+              ),
+            ),
             const SizedBox(height: 20),
-
             // Password Display Field
             Obx(
               () => TextFormField(
@@ -41,34 +43,52 @@ Future<dynamic> BottomSheetPasswordGenerator(BuildContext context) {
                 ),
               ),
             ),
-
             const SizedBox(height: 20),
+            // All Check boxes section
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                _buildCheckbox(
-                    passwordController.useUpperCase, AppStrings.useUpperCase),
-                _buildCheckbox(
-                    passwordController.useNumbers, AppStrings.useNumbers),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    // Use Uppercase
+                    _buildCheckbox(
+                      context,
+                      passwordController.useUpperCase,
+                      AppStrings.useUpperCase,
+                    ),
+                    // Use Lowercase
+                    _buildCheckbox(
+                      context,
+                      passwordController.useLowerCase,
+                      AppStrings.useLowerCase,
+                    ),
+                  ],
+                ),
+                const SizedBox(width: 20),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    // Use Numbers
+                    _buildCheckbox(
+                      context,
+                      passwordController.useNumbers,
+                      AppStrings.useNumbers,
+                    ),
+                    // Use Synbols
+                    _buildCheckbox(
+                      context,
+                      passwordController.useSymbols,
+                      AppStrings.useSymbols,
+                    ),
+                  ],
+                ),
               ],
             ),
-
-            // Lowercase & Symbols Toggle
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                _buildCheckbox(
-                    passwordController.useLowerCase, AppStrings.useLowerCase),
-                _buildCheckbox(
-                    passwordController.useSymbols, AppStrings.useSymbols),
-              ],
-            ),
-
             const SizedBox(height: 20),
-
             // Password Length Slider
             Text(AppStrings.passwordLength,
-                style: Theme.of(context).textTheme.labelSmall),
+                style: Theme.of(context).textTheme.labelMedium),
             const SizedBox(height: 10),
             Row(
               children: [
@@ -83,6 +103,8 @@ Future<dynamic> BottomSheetPasswordGenerator(BuildContext context) {
                       min: 4,
                       max: 100,
                       value: passwordController.sliderValue.value,
+                      activeColor: Theme.of(context).colorScheme.primary,
+                      inactiveColor: Theme.of(context).colorScheme.tertiary,
                       onChanged: (value) =>
                           passwordController.sliderValue.value = value,
                     ),
@@ -91,16 +113,16 @@ Future<dynamic> BottomSheetPasswordGenerator(BuildContext context) {
                 const Text("100"),
               ],
             ),
-
-            const SizedBox(height: 30),
-
+            const SizedBox(height: 20),
             PrimaryButton(
-                text: "COPY & INSERT",
-                onPressed: () {
-                  addNewCredentialController.password.text =
-                      passwordController.generatedPassword.value;
-                  Get.back();
-                }),
+              text: "COPY & INSERT",
+              onPressed: () {
+                addNewCredentialController.password.text =
+                    passwordController.generatedPassword.value;
+                Get.back();
+              },
+            ),
+            const SizedBox(height: 20),
           ],
         ),
       ),
@@ -111,7 +133,7 @@ Future<dynamic> BottomSheetPasswordGenerator(BuildContext context) {
 }
 
 // Helper function for checkboxes
-Widget _buildCheckbox(RxBool value, String text) {
+Widget _buildCheckbox(BuildContext context, RxBool value, String text) {
   return Row(
     children: [
       Obx(
@@ -120,8 +142,7 @@ Widget _buildCheckbox(RxBool value, String text) {
           onChanged: (newValue) => value.value = newValue!,
         ),
       ),
-      SizedBox(width: 10),
-      Text(text, style: TextStyle(fontSize: 16)),
+      Text(text, style: Theme.of(context).textTheme.bodySmall),
     ],
   );
 }

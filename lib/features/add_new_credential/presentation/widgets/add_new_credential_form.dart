@@ -109,6 +109,9 @@ class AddNewCredentialForm extends StatelessWidget {
               textInputAction: TextInputAction.done,
               controller: controller.password,
               obscureText: false,
+              onChanged: (value) {
+                passwordController.checkPasswordStrength(value);
+              },
               decoration: InputDecoration(
                 prefixIcon: Icon(
                   Icons.lock_rounded,
@@ -121,10 +124,14 @@ class AddNewCredentialForm extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                GeneratePasswordButton(),
-                StrengthBadge(
-                    strength: passwordController.checkPasswordStrength(
-                        passwordController.generatedPassword.value))
+                const GeneratePasswordButton(),
+                Obx(
+                  () => (passwordController.passwordStrength.value.isNotEmpty)
+                      ? StrengthBadge(
+                          strength: passwordController.passwordStrength.value,
+                        )
+                      : const SizedBox.shrink(),
+                ),
               ],
             ),
             const SizedBox(height: 10),
