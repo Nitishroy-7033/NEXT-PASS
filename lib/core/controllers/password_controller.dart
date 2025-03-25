@@ -9,6 +9,7 @@ class PasswordController extends GetxController {
   var useSymbols = true.obs;
   var sliderValue = 8.0.obs;
   var generatedPassword = ''.obs;
+  var passwordStrength = ''.obs;
 
   @override
   void onInit() {
@@ -49,9 +50,7 @@ class PasswordController extends GetxController {
     print("GENERATE" + generatedPassword.value);
   }
 
-  String checkPasswordStrength(String password) {
-    if (password.length < 6) return 'Weak';
-
+  void checkPasswordStrength(String password) {
     bool hasUpper = password.contains(RegExp(r'[A-Z]'));
     bool hasLower = password.contains(RegExp(r'[a-z]'));
     bool hasNumber = password.contains(RegExp(r'[0-9]'));
@@ -63,11 +62,17 @@ class PasswordController extends GetxController {
     if (hasNumber) strengthPoints++;
     if (hasSymbol) strengthPoints++;
 
-    if (password.length > 12 && strengthPoints == 4) return 'Very Strong';
-    if (password.length >= 9 && strengthPoints >= 3) return 'Strong';
-    if (password.length >= 6 && strengthPoints >= 2) return 'Normal';
-
-    return 'Weak';
+    if (password.length > 12 && strengthPoints == 4) {
+      passwordStrength.value = 'Very Strong';
+    } else if (password.length >= 9 && strengthPoints >= 3) {
+      passwordStrength.value = 'Strong';
+    } else if (password.length >= 6 && strengthPoints >= 2) {
+      passwordStrength.value = 'Normal';
+    } else if (password.trim().isEmpty) {
+      passwordStrength.value = '';
+    } else {
+      passwordStrength.value = "Weak";
+    }
   }
 
   void copyToClipboard() {

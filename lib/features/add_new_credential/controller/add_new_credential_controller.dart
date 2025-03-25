@@ -4,6 +4,8 @@ class AddNewCredentialController extends GetxController {
   final CredentialInterface credentialRepository =
       Get.put(CredentialRepository());
 
+  final PasswordController passwordController = Get.put(PasswordController());
+
   TextEditingController siteUrlController = TextEditingController();
   RxString siteUrl = ''.obs; // Observable URL
 
@@ -21,9 +23,12 @@ class AddNewCredentialController extends GetxController {
     siteUrlController.addListener(() {
       siteUrl.value = siteUrlController.text.trim();
     });
+    password.addListener(() {
+      passwordController.checkPasswordStrength(password.text.trim());
+    });
   }
 
-  Future<void> saveCredential( userName, emailId, password, mobileNumber) async {
+  Future<void> saveCredential(userName, emailId, password, mobileNumber) async {
     var success = await credentialRepository.createNewCredential(
         siteUrl.value, userName, emailId, mobileNumber, password);
     if (success) {
