@@ -46,7 +46,7 @@ class AddNewCredentialForm extends StatelessWidget {
                 hintText: AppStrings.siteHintTextNC,
               ),
               validator: (value) =>
-                  value!.isEmpty ? "Enter Site URL" : null, // Validation added
+                  value!.isEmpty ? "Enter Site URL*" : null, // Validation added
             ),
             const SizedBox(height: 20),
             Text(
@@ -64,7 +64,6 @@ class AddNewCredentialForm extends StatelessWidget {
                 ),
                 hintText: AppStrings.userNameHintTextNC,
               ),
-              validator: (value) => value!.isEmpty ? "Enter Username" : null,
             ),
             const SizedBox(height: 20),
             Text(
@@ -84,7 +83,7 @@ class AddNewCredentialForm extends StatelessWidget {
                 hintText: AppStrings.emailHintTextNC,
               ),
               validator: (value) =>
-                  value!.isEmpty ? "Enter Email Address" : null,
+                  value!.isEmpty ? "Enter Email Address*" : null,
             ),
             const SizedBox(height: 20),
             Text(
@@ -103,8 +102,6 @@ class AddNewCredentialForm extends StatelessWidget {
                 ),
                 hintText: AppStrings.phoneNumberHintTextNC,
               ),
-              validator: (value) =>
-                  value!.isEmpty ? "Enter Phone Number" : null,
             ),
             const SizedBox(height: 20),
             Text(
@@ -126,7 +123,7 @@ class AddNewCredentialForm extends StatelessWidget {
                 ),
                 hintText: AppStrings.passwordHintTextNC,
               ),
-              validator: (value) => value!.isEmpty ? "Enter Password" : null,
+              validator: (value) => value!.isEmpty ? "Enter Password*" : null,
             ),
             const SizedBox(height: 20),
             Row(
