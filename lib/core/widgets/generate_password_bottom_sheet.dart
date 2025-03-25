@@ -1,13 +1,14 @@
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:next_pass/core/constants/app_linker.dart';
 
-
-// ignore: non_constant_identifier_names
 Future<dynamic> BottomSheetPasswordGenerator(BuildContext context) {
   PasswordController passwordController = Get.put(PasswordController());
+  AddNewCredentialController addNewCredentialController =
+      Get.put(AddNewCredentialController());
   return Get.bottomSheet(
     Container(
-      height: 425,
-      width: 396,
+      height: 450,
       decoration: BoxDecoration(
         borderRadius: const BorderRadius.only(
             topLeft: Radius.circular(20), topRight: Radius.circular(20)),
@@ -16,174 +17,111 @@ Future<dynamic> BottomSheetPasswordGenerator(BuildContext context) {
       child: Padding(
         padding: const EdgeInsets.all(12),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const SizedBox(
-              height: 10,
-            ),
+            const SizedBox(height: 10),
             const Center(child: Text(AppStrings.generatePassword)),
-            const SizedBox(
-              height: 20,
-            ),
-            TextFormField(
-              style: const TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.w600,
-                color: Colors.black,
-                fontFamily: "Montserrat",
-              ),
-              decoration: InputDecoration(
-                hintStyle: const TextStyle(
-                  fontSize: 15,
-                  fontWeight: FontWeight.w500,
-                  color: Colors.grey,
-                  fontFamily: "Montserrat",
-                ),
-                hintText: AppStrings.passwordHintText,
-                suffixIcon: Icon(
-                  Icons.autorenew_sharp,
-                  color: Theme.of(context).colorScheme.primary,
+            const SizedBox(height: 20),
+
+            // Password Display Field
+            Obx(
+              () => TextFormField(
+                controller: TextEditingController(
+                    text: passwordController.generatedPassword.value),
+                readOnly: true,
+                decoration: InputDecoration(
+                  hintText: AppStrings.passwordHintText,
+                  suffixIcon: IconButton(
+                    icon: Icon(Icons.refresh,
+                        color: Theme.of(context).colorScheme.primary),
+                    onPressed: () {
+                      passwordController.generatePassword();
+                    },
+                  ),
                 ),
               ),
             ),
-            const SizedBox(
-              height: 20,
-            ),
+
+            const SizedBox(height: 20),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Row(
-                  children: [
-                    Obx(
-                      () => SizedBox(
-                        width: 20,
-                        child: CustomCheckbox(
-                            value: passwordController.useUpperCase.value,
-                            onChanged: (value) {
-                              passwordController.useUpperCase.value = value!;
-                            }),
-                      ),
-                    ),
-                    SizedBox(width: 10),
-                    Text(
-                      AppStrings.useUpperCase,
-                      style: Theme.of(context).textTheme.bodySmall,
-                    ),
-                  ],
-                ),
-                Row(
-                  children: [
-                    Obx(
-                      () => SizedBox(
-                        width: 20,
-                        child: CustomCheckbox(
-                            value: passwordController.useNumbers.value,
-                            onChanged: (value) {
-                              passwordController.useNumbers.value = value!;
-                            }),
-                      ),
-                    ),
-                    SizedBox(width: 10),
-                    Text(
-                      AppStrings.useNumbers,
-                      style: Theme.of(context).textTheme.bodySmall,
-                    )
-                  ],
-                )
+                _buildCheckbox(
+                    passwordController.useUpperCase, AppStrings.useUpperCase),
+                _buildCheckbox(
+                    passwordController.useNumbers, AppStrings.useNumbers),
               ],
             ),
+
+            // Lowercase & Symbols Toggle
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Row(
-                  children: [
-                    Obx(
-                      () => SizedBox(
-                        width: 20,
-                        child: CustomCheckbox(
-                            value: passwordController.useLowerCase.value,
-                            onChanged: (value) {
-                              passwordController.useLowerCase.value = value!;
-                            }),
-                      ),
-                    ),
-                    SizedBox(width: 10),
-                    Text(
-                      AppStrings.useLowerCase,
-                      style: Theme.of(context).textTheme.bodySmall,
-                    ),
-                  ],
-                ),
-                Row(
-                  children: [
-                    Obx(
-                      () => SizedBox(
-                        width: 20,
-                        child: CustomCheckbox(
-                            value: passwordController.useSymbol.value,
-                            onChanged: (value) {
-                              passwordController.useSymbol.value = value!;
-                            }),
-                      ),
-                    ),
-                    SizedBox(width: 10),
-                    Text(
-                      AppStrings.useSymbols,
-                      style: Theme.of(context).textTheme.bodySmall,
-                    )
-                  ],
-                )
+                _buildCheckbox(
+                    passwordController.useLowerCase, AppStrings.useLowerCase),
+                _buildCheckbox(
+                    passwordController.useSymbols, AppStrings.useSymbols),
               ],
             ),
-            const SizedBox(
-              height: 20,
-            ),
-            Text(
-              AppStrings.passwordLength,
-              style: Theme.of(context).textTheme.labelSmall,
-            ),
-            const SizedBox(
-              height: 10,
-            ),
+
+            const SizedBox(height: 20),
+
+            // Password Length Slider
+            Text(AppStrings.passwordLength,
+                style: Theme.of(context).textTheme.labelSmall),
+            const SizedBox(height: 10),
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Obx(
-                  () => Expanded(
-                    flex: 2,
-                    child: CustomSliderWidget(
-                      maximumValue: 20,
-                      minimumValue: 0,
-                      activeColor: Theme.of(context).colorScheme.primary,
-                      inActiveColor:
-                          Theme.of(context).colorScheme.onSecondaryContainer,
+                const Text("4"),
+                Expanded(
+                  child: Obx(
+                    () => Slider(
+                      label: passwordController.sliderValue.value
+                          .toInt()
+                          .toString(),
+                      divisions: 100,
+                      min: 4,
+                      max: 100,
                       value: passwordController.sliderValue.value,
-                      onChanged: (value) {
-                        passwordController.sliderValue.value = value;
-                      },
+                      onChanged: (value) =>
+                          passwordController.sliderValue.value = value,
                     ),
                   ),
                 ),
-                Obx(() => Text(
-                      passwordController.sliderValue.value.toStringAsFixed(0),
-                      style: Theme.of(context).textTheme.headlineMedium,
-                    )),
+                const Text("100"),
               ],
             ),
-            const SizedBox(
-              height: 30,
-            ),
-            PrimaryButton(text: AppStrings.createAccount, onPressed: () {}),
-            // header widget
-           GeneratePasswordHeaderWidget(),
-            // footer widget
-            GeneratePasswordFooterWidget(),
+
+            const SizedBox(height: 30),
+
+            PrimaryButton(
+                text: "COPY & INSERT",
+                onPressed: () {
+                  addNewCredentialController.password.text =
+                      passwordController.generatedPassword.value;
+                  Get.back();
+                }),
           ],
         ),
       ),
     ),
     isScrollControlled: true,
     backgroundColor: Colors.transparent,
+  );
+}
+
+// Helper function for checkboxes
+Widget _buildCheckbox(RxBool value, String text) {
+  return Row(
+    children: [
+      Obx(
+        () => Checkbox(
+          value: value.value,
+          onChanged: (newValue) => value.value = newValue!,
+        ),
+      ),
+      SizedBox(width: 10),
+      Text(text, style: TextStyle(fontSize: 16)),
+    ],
   );
 }

@@ -15,13 +15,10 @@ class AuthController extends GetxController {
   var isError = false.obs;
   var errorMessage = "".obs;
 
-
-
-  Future<void> login(String email, String password) async {
+  Future<void> login(String email, String password, isRemeber) async {
     isLoading.value = true;
     isError.value = false;
     errorMessage.value = "";
-
     try {
       final response = await authRepository.login(email, password);
 
@@ -29,20 +26,14 @@ class AuthController extends GetxController {
         authModel.value = response.data;
         apiClient.setUserDetails(response.data!);
         SuccessMessage(response.message ?? "Logged in successfully");
-
-        // Get.offAllNamed(AppRoutes.home);
         Get.offAllNamed(AppRoutes.databaseSetup);
-
-
-        // ✅ Check if MPIN exists after login
         await pinController.loadSavedPin();
 
         if (pinController.isCreatingPin.value) {
-          Get.offAllNamed(AppRoutes.masterPassword);  // 🔥 Navigate to Create MPIN screen
+          Get.offAllNamed(AppRoutes.masterPassword);
         } else {
-          Get.offAllNamed(AppRoutes.home);  // ✅ Navigate to Home if MPIN exists
+          Get.offAllNamed(AppRoutes.home);
         }
-
       } else {
         handleError(response.message);
       }
@@ -54,7 +45,6 @@ class AuthController extends GetxController {
     }
   }
 
-
   Future<void> createAnAccount(
       String email, String password, String firstName, String lastName) async {
     isLoading.value = true;
@@ -63,18 +53,18 @@ class AuthController extends GetxController {
     try {
       final response = await authRepository.createAnAccount(
           email, password, firstName, lastName);
-
       if (response.success == true && response.data != null) {
         authModel.value = response.data;
         apiClient.setUserDetails(response.data!);
         SuccessMessage(response.message ?? "Account created successfully");
-        Get.offAllNamed(AppRoutes.home);
       } else {
         handleError(response.message);
       }
     } catch (e) {
       print("Error ${e}");
       handleError(e);
+    } finally {
+      isLoading.value = false;
     }
   }
 
@@ -84,6 +74,8 @@ class AuthController extends GetxController {
     print(response);
     ErrorMessage(errorMessage.value);
   }
+
+  void saveCredentialToLocal(email, password) {}
 
   Future<void> logOut() async {
     await apiClient.removeAuthToken();

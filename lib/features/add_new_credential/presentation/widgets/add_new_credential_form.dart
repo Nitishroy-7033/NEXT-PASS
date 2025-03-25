@@ -11,6 +11,8 @@ class AddNewCredentialForm extends StatelessWidget {
   Widget build(BuildContext context) {
     final AddNewCredentialController controller =
         Get.find<AddNewCredentialController>();
+    PasswordController passwordController = Get.put(PasswordController());
+
     final _formKey = GlobalKey<FormState>();
 
     return Container(
@@ -35,7 +37,7 @@ class AddNewCredentialForm extends StatelessWidget {
             const SizedBox(height: 10),
             TextFormField(
               textInputAction: TextInputAction.next,
-              controller: controller.siteUrl,
+              controller: controller.siteUrlController,
               decoration: InputDecoration(
                 prefixIcon: Icon(
                   Icons.language,
@@ -106,7 +108,7 @@ class AddNewCredentialForm extends StatelessWidget {
             TextFormField(
               textInputAction: TextInputAction.done,
               controller: controller.password,
-              obscureText: true,
+              obscureText: false,
               decoration: InputDecoration(
                 prefixIcon: Icon(
                   Icons.lock_rounded,
@@ -116,11 +118,13 @@ class AddNewCredentialForm extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 20),
-            const Row(
+            Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 GeneratePasswordButton(),
-                StrengthBadge(strength: 'Strong'),
+                StrengthBadge(
+                    strength: passwordController.checkPasswordStrength(
+                        passwordController.generatedPassword.value))
               ],
             ),
             const SizedBox(height: 10),
@@ -140,7 +144,8 @@ class AddNewCredentialForm extends StatelessWidget {
                         '7 Days',
                         '15 Days',
                         '30 Days',
-                        '60 Days'
+                        '60 Days',
+                        '90 Days'
                       ],
                       controller: ReminderListController(),
                       popupWidth: 90,
@@ -174,7 +179,6 @@ class AddNewCredentialForm extends StatelessWidget {
               onPressed: () {
                 try {
                   controller.saveCredential(
-                    controller.siteUrl.text,
                     controller.userName.text,
                     controller.emailId.text,
                     controller.password.text,

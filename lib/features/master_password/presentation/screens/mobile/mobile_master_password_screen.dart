@@ -1,20 +1,49 @@
-import '../../../../../core/constants/app_linker.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:get/get.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:next_pass/core/constants/app_linker.dart';
+import 'package:next_pass/features/master_password/presentation/widgets/custom_keyboard.dart';
 
-class MobileMasterPasswordScreen extends StatelessWidget {
+class MobileMasterPasswordScreen extends StatefulWidget {
+  @override
+  _MobileMasterPasswordScreenState createState() => _MobileMasterPasswordScreenState();
+}
+
+class _MobileMasterPasswordScreenState extends State<MobileMasterPasswordScreen> with SingleTickerProviderStateMixin {
   final MasterPasswordController pinController = Get.put(MasterPasswordController());
+  late AnimationController _animationController;
+  late Animation<double> _opacityAnimation;
 
   static const List<String> customIcons = [
-    IconsAssets.rectangle_icon,
-    IconsAssets.polygon_icon,
-    IconsAssets.star_icon,
-    IconsAssets.ellipse_icon,
+    IconsAssets.rectangle_icon, // Square for index 0
+    IconsAssets.polygon_icon,  // Triangle for index 1
+    IconsAssets.star_icon,      // Star for index 2
+    IconsAssets.ellipse_icon,   // Circle for index 3
   ];
 
-  MobileMasterPasswordScreen({super.key});
+  @override
+  void initState() {
+    super.initState();
+    _animationController = AnimationController(
+      duration: const Duration(milliseconds: 500),
+      vsync: this,
+    );
+    _opacityAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(_animationController);
+  }
 
-  String getRandomIcon() {
-    final random = Random();
-    return customIcons[random.nextInt(customIcons.length)];
+  @override
+  void dispose() {
+    _animationController.dispose();
+    super.dispose();
+  }
+
+  String getIconForIndex(int index) {
+    return customIcons[index % customIcons.length];
+  }
+
+  void startAnimation() {
+    _animationController.forward(from: 0.0);
   }
 
   @override
@@ -24,11 +53,8 @@ class MobileMasterPasswordScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.primaryContainer,
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.end,
         children: [
-          // const Spacer(), // 🔥 Top space to push UI down
-
-          // 🔹 Lock Icon
           Container(
             width: w / 4,
             height: w / 4,
@@ -38,65 +64,68 @@ class MobileMasterPasswordScreen extends StatelessWidget {
               borderRadius: BorderRadius.circular(20),
             ),
             child: Center(
-              child: SvgPicture.asset(IconsAssets.second_lock_icon, width: w / 6, height: w / 6),
+              child: SvgPicture.asset(IconsAssets.second_lock_icon, width: w / 5, height: w / 5),
             ),
           ),
           const SizedBox(height: 20),
 
-          // 🔹 Dynamic Heading (Create PIN / Re-enter / Enter M-PIN)
           Obx(() {
             String screenText;
-
-            // ✅ Agar error message hai to wahi dikhayenge
             if (pinController.errorMessage.value.isNotEmpty) {
               screenText = pinController.errorMessage.value;
             } else if (pinController.isCreatingPin.value) {
-              // ✅ PIN create kar rahe hain
               screenText = (pinController.tempPin.value == null)
                   ? "Create Master PIN"
                   : "Re-enter Master PIN";
             } else {
-              // ✅ Login Mode (Enter Your M-PIN)
               screenText = "Enter Your M-PIN";
             }
-
             return Text(
               screenText,
               style: Theme.of(context).textTheme.labelMedium!.copyWith(
                 color: pinController.errorMessage.value.isNotEmpty
-                    ? Colors.red // ✅ Error hai to red color
+                    ? Colors.red 
                     : Theme.of(context).colorScheme.tertiary,
               ),
             );
           }),
 
-
           const SizedBox(height: 30),
 
-          // 🔹 PIN Indicator Row
           Obx(() {
             return Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: List.generate(pinController.pinLength, (index) {
                 bool isFilled = index < pinController.enteredDigits.value.length;
+                if (isFilled) {
+                  startAnimation();
+                }
                 return Container(
                   width: w / 8,
                   height: w / 8,
-                  margin: const EdgeInsets.symmetric(horizontal: 5),
+                  margin: const EdgeInsets.symmetric(horizontal: 10),
                   alignment: Alignment.center,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(14),
                     border: Border.all(
                       color: Theme.of(context).colorScheme.tertiary,
-                      width: 0,
+                      width: 1,
                     ),
                   ),
                   child: isFilled
-                      ? SvgPicture.asset(
-                    getRandomIcon(),
-                    width: 12,
-                    height: 12,
-                  )
+                      ? AnimatedBuilder(
+                          animation: _opacityAnimation,
+                          builder: (context, child) {
+                            return Opacity(
+                              opacity: _opacityAnimation.value,
+                              child: SvgPicture.asset(
+                                getIconForIndex(index),
+                                width: 12,
+                                height: 12,
+                              ),
+                            );
+                          },
+                        )
                       : Container(),
                 );
               }),
@@ -105,13 +134,10 @@ class MobileMasterPasswordScreen extends StatelessWidget {
 
           const SizedBox(height: 20),
 
-
-          // 🔹 Custom Keyboard (Takes remaining space)
           CustomKeyboard(pinController: pinController),
 
           const SizedBox(height: 15),
 
-          // 🔹 Forget PIN (Always Below Keyboard)
           Text(AppStrings.masterPasswordForgot,
               style: TextStyle(
                   fontSize: AppDimensions.fontSmall,
@@ -119,7 +145,6 @@ class MobileMasterPasswordScreen extends StatelessWidget {
 
           const SizedBox(height: 50),
 
-          // 🔹 Privacy & Terms (Always Visible)
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
