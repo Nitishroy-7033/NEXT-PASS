@@ -13,7 +13,7 @@ class AddNewCredentialForm extends StatelessWidget {
         Get.find<AddNewCredentialController>();
     PasswordController passwordController = Get.put(PasswordController());
 
-    final _formKey = GlobalKey<FormState>();
+    final _formKey = GlobalKey<FormState>(); // Added form key
 
     return Container(
       padding: const EdgeInsets.all(20),
@@ -21,7 +21,7 @@ class AddNewCredentialForm extends StatelessWidget {
           color: Theme.of(context).colorScheme.primaryContainer,
           borderRadius: BorderRadius.circular(20)),
       child: Form(
-        key: _formKey,
+        key: _formKey, // Wrapped the form with validation
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -45,6 +45,8 @@ class AddNewCredentialForm extends StatelessWidget {
                 ),
                 hintText: AppStrings.siteHintTextNC,
               ),
+              validator: (value) =>
+                  value!.isEmpty ? "Enter Site URL" : null, // Validation added
             ),
             const SizedBox(height: 20),
             Text(
@@ -62,6 +64,7 @@ class AddNewCredentialForm extends StatelessWidget {
                 ),
                 hintText: AppStrings.userNameHintTextNC,
               ),
+              validator: (value) => value!.isEmpty ? "Enter Username" : null,
             ),
             const SizedBox(height: 20),
             Text(
@@ -80,6 +83,8 @@ class AddNewCredentialForm extends StatelessWidget {
                 ),
                 hintText: AppStrings.emailHintTextNC,
               ),
+              validator: (value) =>
+                  value!.isEmpty ? "Enter Email Address" : null,
             ),
             const SizedBox(height: 20),
             Text(
@@ -98,6 +103,8 @@ class AddNewCredentialForm extends StatelessWidget {
                 ),
                 hintText: AppStrings.phoneNumberHintTextNC,
               ),
+              validator: (value) =>
+                  value!.isEmpty ? "Enter Phone Number" : null,
             ),
             const SizedBox(height: 20),
             Text(
@@ -108,7 +115,7 @@ class AddNewCredentialForm extends StatelessWidget {
             TextFormField(
               textInputAction: TextInputAction.done,
               controller: controller.password,
-              obscureText: false,
+              obscureText: true,
               onChanged: (value) {
                 passwordController.checkPasswordStrength(value);
               },
@@ -119,6 +126,7 @@ class AddNewCredentialForm extends StatelessWidget {
                 ),
                 hintText: AppStrings.passwordHintTextNC,
               ),
+              validator: (value) => value!.isEmpty ? "Enter Password" : null,
             ),
             const SizedBox(height: 20),
             Row(
@@ -184,15 +192,17 @@ class AddNewCredentialForm extends StatelessWidget {
             PrimaryButton(
               text: AppStrings.buttonSave,
               onPressed: () {
-                try {
-                  controller.saveCredential(
-                    controller.userName.text,
-                    controller.emailId.text,
-                    controller.password.text,
-                    controller.mobileNumber.text,
-                  );
-                } catch (e) {
-                  print(e.toString());
+                if (_formKey.currentState!.validate()) {
+                  try {
+                    controller.saveCredential(
+                      controller.userName.text,
+                      controller.emailId.text,
+                      controller.password.text,
+                      controller.mobileNumber.text,
+                    );
+                  } catch (e) {
+                    print(e.toString());
+                  }
                 }
               },
             ),
