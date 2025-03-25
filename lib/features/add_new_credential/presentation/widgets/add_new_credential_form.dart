@@ -121,7 +121,7 @@ class AddNewCredentialForm extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                GeneratePasswordButton(),
+                const GeneratePasswordButton(),
                 StrengthBadge(
                     strength: passwordController.checkPasswordStrength(
                         passwordController.generatedPassword.value))

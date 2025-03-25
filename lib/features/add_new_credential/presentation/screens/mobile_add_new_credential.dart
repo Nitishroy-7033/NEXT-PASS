@@ -22,7 +22,7 @@ class MobileAddNewCredential extends StatelessWidget {
                 Container(
                   width: 100, 
                   height: 100, 
-                  padding: EdgeInsets.all(5),
+                  padding:const  EdgeInsets.all(5),
                   decoration: BoxDecoration(
                     color: Theme.of(context).colorScheme.primaryContainer,
                     borderRadius: BorderRadius.circular(20),
