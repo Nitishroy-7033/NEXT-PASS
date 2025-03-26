@@ -1,5 +1,6 @@
 import 'package:next_pass/core/constants/app_linker.dart';
-import 'package:next_pass/features/database%20setup/presentation/views/database_setup_view.dart';
+
+import '../../features/database setup/presentation/views/database_setup_view.dart';
 
 class RouteGenerator {
   static List<GetPage> getRoutes() {
@@ -8,70 +9,85 @@ class RouteGenerator {
         name: AppRoutes.splash,
         page: () => const SplaceView(),
         transition: Transition.fadeIn,
+        transitionDuration: const Duration(milliseconds: 500),
       ),
       GetPage(
         name: AppRoutes.getStarted,
         page: () => const GetStartedView(),
-        transition: Transition.fadeIn,
+        transition: Transition.downToUp,
+        transitionDuration: const Duration(milliseconds: 600),
       ),
       GetPage(
         name: AppRoutes.signUp,
         page: () => const SignUpView(),
-        transition: Transition.fadeIn,
+        transition: Transition.cupertino,
+        transitionDuration: const Duration(milliseconds: 500),
       ),
       GetPage(
         name: AppRoutes.authtab,
         page: () => const AuthTabView(),
-        transition: Transition.fadeIn,
+        transition: Transition.rightToLeftWithFade,
+        transitionDuration: const Duration(milliseconds: 500),
       ),
       GetPage(
         name: AppRoutes.login,
         page: () => const LoginView(),
-        transition: Transition.fadeIn,
+        transition: Transition.cupertino,
+        transitionDuration: const Duration(milliseconds: 500),
       ),
       GetPage(
         name: AppRoutes.masterPassword,
         page: () => const MasterPasswordView(),
-        transition: Transition.fadeIn,
+        transition: Transition.zoom,
+        transitionDuration: const Duration(milliseconds: 500),
       ),
       GetPage(
         name: AppRoutes.home,
         page: () => const HomeView(),
-        transition: Transition.fadeIn,
+        transition: Transition.circularReveal,
+        transitionDuration: const Duration(milliseconds: 600),
       ),
       GetPage(
         name: AppRoutes.notFound,
         page: () => const NotFoundView(),
         transition: Transition.fadeIn,
+        transitionDuration: const Duration(milliseconds: 500),
       ),
       GetPage(
         name: AppRoutes.dashboard,
         page: () => const DashboardView(),
-        transition: Transition.leftToRightWithFade,
+        transition: Transition.size,
+        transitionDuration: const Duration(milliseconds: 500),
       ),
       GetPage(
         name: AppRoutes.allWidgetsScreen,
         page: () => const AllWidgetsScreen(),
         transition: Transition.fadeIn,
+        transitionDuration: const Duration(milliseconds: 500),
       ),
       GetPage(
         name: AppRoutes.newCredential,
         page: () => const ViewAddNewCredential(),
-        transition: Transition.fadeIn,
+        transition: Transition.downToUp,
+        transitionDuration: const Duration(milliseconds: 600),
       ),
-       GetPage(
+      GetPage(
         name: AppRoutes.appCredentials,
         page: () => const AppCredentials(),
-        transition: Transition.fadeIn,
+        transition: Transition.cupertino,
+        transitionDuration: const Duration(milliseconds: 500),
       ),
       GetPage(
         name: AppRoutes.searchCredential,
         page: () => const SearchCredentialView(),
-        transition: Transition.fadeIn),
-       GetPage(
+        transition: Transition.rightToLeftWithFade,
+        transitionDuration: const Duration(milliseconds: 500),
+      ),
+      GetPage(
         name: AppRoutes.databaseSetup,
         page: () => const DatabaseSetupView(),
-        transition: Transition.fadeIn,
+        transition: Transition.zoom,
+        transitionDuration: const Duration(milliseconds: 500),
       ),
     ];
   }

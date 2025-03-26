@@ -117,6 +117,7 @@ class MobileLoginScreen extends StatelessWidget {
                       authController.login(
                         emailController.text,
                         passwordController.text,
+                        true,
                       );
                     }
                   },

@@ -73,25 +73,6 @@ class _AuthScreenState extends State<AuthScreen> {
                   :  MobileSignUpScreen(),
             ),
 
-            const SizedBox(height: 40),
-
-            // Signup Prompt
-            Text.rich(
-              TextSpan(
-                text: "Don't have an account? ",
-                style:const  TextStyle(fontSize: 13),
-                children: [
-                  TextSpan(
-                    text: "Create Now",
-                    style: TextStyle(
-                      fontSize: 13,
-                      color: Theme.of(context).colorScheme.primary,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-
             const SizedBox(height: 20),
 
             // Footer

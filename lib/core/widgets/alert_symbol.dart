@@ -1,6 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:next_pass/core/constants/app_assets.dart';
+import '../constants/app_linker.dart';
 
 class AlertSymbol extends StatelessWidget {
   const AlertSymbol({super.key});
