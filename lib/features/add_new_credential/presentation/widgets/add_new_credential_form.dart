@@ -14,6 +14,7 @@ class AddNewCredentialForm extends StatelessWidget {
     PasswordController passwordController = Get.put(PasswordController());
 
     final _formKey = GlobalKey<FormState>();
+    final RxBool isSecure = true.obs; // Added form key
 
     return Container(
       padding: const EdgeInsets.all(20),
@@ -21,7 +22,7 @@ class AddNewCredentialForm extends StatelessWidget {
           color: Theme.of(context).colorScheme.primaryContainer,
           borderRadius: BorderRadius.circular(20)),
       child: Form(
-        key: _formKey,
+        key: _formKey, // Wrapped the form with validation
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -45,6 +46,8 @@ class AddNewCredentialForm extends StatelessWidget {
                 ),
                 hintText: AppStrings.siteHintTextNC,
               ),
+              validator: (value) =>
+                  value!.isEmpty ? "Enter Site URL*" : null, // Validation added
             ),
             const SizedBox(height: 20),
             Text(
@@ -80,6 +83,8 @@ class AddNewCredentialForm extends StatelessWidget {
                 ),
                 hintText: AppStrings.emailHintTextNC,
               ),
+              validator: (value) =>
+                  value!.isEmpty ? "Enter Email Address*" : null,
             ),
             const SizedBox(height: 20),
             Text(
@@ -105,19 +110,32 @@ class AddNewCredentialForm extends StatelessWidget {
               style: Theme.of(context).textTheme.labelMedium,
             ),
             const SizedBox(height: 10),
-            TextFormField(
-              textInputAction: TextInputAction.done,
-              controller: controller.password,
-              obscureText: false,
-              onChanged: (value) {
-                passwordController.checkPasswordStrength(value);
-              },
-              decoration: InputDecoration(
-                prefixIcon: Icon(
-                  Icons.lock_rounded,
-                  color: Theme.of(context).colorScheme.tertiary,
+            Obx(
+              () => TextFormField(
+                textInputAction: TextInputAction.done,
+                controller: controller.password,
+                obscureText: isSecure.value,
+                onChanged: (value) {
+                  passwordController.checkPasswordStrength(value);
+                },
+                decoration: InputDecoration(
+                  suffixIcon: InkWell(
+                    onTap: () {
+                      isSecure.value = !isSecure.value;
+                    },
+                    child: Icon(
+                      isSecure.value
+                          ? Icons.remove_red_eye_outlined
+                          : Icons.remove_red_eye,
+                    ),
+                  ),
+                  prefixIcon: Icon(
+                    Icons.lock_rounded,
+                    color: Theme.of(context).colorScheme.tertiary,
+                  ),
+                  hintText: AppStrings.passwordHintTextNC,
                 ),
-                hintText: AppStrings.passwordHintTextNC,
+                validator: (value) => value!.isEmpty ? "Enter Password*" : null,
               ),
             ),
             const SizedBox(height: 20),
@@ -184,15 +202,17 @@ class AddNewCredentialForm extends StatelessWidget {
             PrimaryButton(
               text: AppStrings.buttonSave,
               onPressed: () {
-                try {
-                  controller.saveCredential(
-                    controller.userName.text,
-                    controller.emailId.text,
-                    controller.password.text,
-                    controller.mobileNumber.text,
-                  );
-                } catch (e) {
-                  print(e.toString());
+                if (_formKey.currentState!.validate()) {
+                  try {
+                    controller.saveCredential(
+                      controller.userName.text,
+                      controller.emailId.text,
+                      controller.password.text,
+                      controller.mobileNumber.text,
+                    );
+                  } catch (e) {
+                    print(e.toString());
+                  }
                 }
               },
             ),
