@@ -1,8 +1,10 @@
 import 'package:next_pass/core/constants/app_linker.dart';
 
+// ignore: must_be_immutable
 class MobileDatabaseSetup extends StatelessWidget {
-  const MobileDatabaseSetup({super.key});
-
+   MobileDatabaseSetup({super.key});
+MasterPasswordController pinController =
+      Get.put(MasterPasswordController());
   @override
   Widget build(BuildContext context) {
     final SelectDatabaseController selectDatabaseController =
@@ -69,9 +71,16 @@ class MobileDatabaseSetup extends StatelessWidget {
                       ? const CircularProgressIndicator()
                       : PrimaryButton(
                           text: AppStrings.startButton,
-                          onPressed: () {
-                            selectDatabaseController.chooseDataBase();
-                          },
+                        onPressed: () async {
+            await pinController.loadSavedPin(); // Pehle PIN load karein
+
+             if (pinController.isCreatingPin.value == false) {  
+             Get.offAllNamed(AppRoutes.masterPassword); // PIN hai toh agla screen dikhayein
+            }
+
+        selectDatabaseController.chooseDataBase();
+},
+
                         ),
                 ),
                 const SizedBox(height: 25),

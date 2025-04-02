@@ -92,6 +92,7 @@ class MasterPasswordController extends GetxController {
         print("✅ PIN Stored in SharedPreferences: $pin"); // 🔥 Console pe print
 
   }
+  
 // ✅ Load saved PIN (if exists)
 Future<void> loadSavedPin() async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -117,5 +118,30 @@ void removeDigit() {
     enteredDigits.value = enteredDigits.value.substring(0, enteredDigits.value.length - 1);
   }
 }
+// 
+  void onPinEntered() {
+  if (enteredDigits.value.length == pinLength) {
+    if (isCreatingPin.value) {
+      handlePinCreation();
+    } else {
+      validatePin();
+    }
+  }
+}
+ Future<void> resetMasterPin() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.remove('saved_pin'); // ❌ Delete stored PIN
+
+    enteredDigits.value = '';  // Reset PIN entry
+    tempPin.value = null;
+    isCreatingPin.value = true; // Switch to PIN creation mode
+
+    isCreatingPin.refresh();
+    tempPin.refresh();
+
+    print("🔄 Master PIN has been reset. User needs to create a new PIN.");
+    Get.offAllNamed(AppRoutes.masterPassword); // Redirect to Set New PIN Screen
+  }
 
 }
+

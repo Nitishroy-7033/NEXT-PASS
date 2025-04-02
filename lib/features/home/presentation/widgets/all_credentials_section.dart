@@ -1,7 +1,9 @@
 import 'package:next_pass/core/constants/app_linker.dart';
+import 'package:next_pass/features/database%20setup/data/database_setup_repository.dart';
 
 class AllCredentialsSection extends StatelessWidget {
   final HomeScreenController controller = Get.find();
+
 
   AllCredentialsSection({super.key}); // ✅ Controller injected
 
@@ -28,7 +30,6 @@ class AllCredentialsSection extends StatelessWidget {
           print(
               "Password Strength for ${credential.title}: ${credential.passwordStrength}");
           print("Raw Strength Value: '${credential.passwordStrength}'");
-
           return GestureDetector(
             onTap: () {
               // print("hi this is testing");
@@ -55,9 +56,11 @@ class AllCredentialsSection extends StatelessWidget {
           );
         },
       );
-    });
-  }
 
+    });
+  
+
+  }
   /// **Convert Password Strength to Label**
   String _getPasswordStrengthLabel(String strength) {
     switch (strength.toLowerCase().trim()) {

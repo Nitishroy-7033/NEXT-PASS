@@ -6,7 +6,7 @@ class DatabaseSetupView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Responsive(
+    return  Responsive(
       mobile: MobileDatabaseSetup(),
       tablet: WebDatabaseSetup(),
       desktop: WebDatabaseSetup(),

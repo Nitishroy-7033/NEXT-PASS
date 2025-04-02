@@ -1,25 +1,31 @@
-import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
-import 'package:get/get.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:next_pass/core/constants/app_linker.dart';
-import 'package:next_pass/features/master_password/presentation/widgets/custom_keyboard.dart';
+import 'package:next_pass/features/master_password/presentation/widgets/create_master_pin.dart';
+import 'package:next_pass/features/master_password/presentation/widgets/reenter_masterpassword.dart';
+
+import '../../widgets/enter_master_pin.dart';
 
 class MobileMasterPasswordScreen extends StatefulWidget {
+  const MobileMasterPasswordScreen({super.key});
+
   @override
-  _MobileMasterPasswordScreenState createState() => _MobileMasterPasswordScreenState();
+  // ignore: library_private_types_in_public_api
+  _MobileMasterPasswordScreenState createState() =>
+      _MobileMasterPasswordScreenState();
 }
 
-class _MobileMasterPasswordScreenState extends State<MobileMasterPasswordScreen> with SingleTickerProviderStateMixin {
-  final MasterPasswordController pinController = Get.put(MasterPasswordController());
+class _MobileMasterPasswordScreenState extends State<MobileMasterPasswordScreen>
+    with SingleTickerProviderStateMixin {
+  final MasterPasswordController pinController =
+      Get.put(MasterPasswordController());
   late AnimationController _animationController;
   late Animation<double> _opacityAnimation;
+  RxBool showTransition = false.obs; // **Transition effect ke liye RxBool**
 
   static const List<String> customIcons = [
     IconsAssets.rectangle_icon, // Square for index 0
-    IconsAssets.polygon_icon,  // Triangle for index 1
-    IconsAssets.star_icon,      // Star for index 2
-    IconsAssets.ellipse_icon,   // Circle for index 3
+    IconsAssets.polygon_icon, // Triangle for index 1
+    IconsAssets.star_icon, // Star for index 2
+    IconsAssets.ellipse_icon, // Circle for index 3
   ];
 
   @override
@@ -29,7 +35,8 @@ class _MobileMasterPasswordScreenState extends State<MobileMasterPasswordScreen>
       duration: const Duration(milliseconds: 500),
       vsync: this,
     );
-    _opacityAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(_animationController);
+    _opacityAnimation =
+        Tween<double>(begin: 0.0, end: 1.0).animate(_animationController);
   }
 
   @override
@@ -64,39 +71,45 @@ class _MobileMasterPasswordScreenState extends State<MobileMasterPasswordScreen>
               borderRadius: BorderRadius.circular(20),
             ),
             child: Center(
-              child: SvgPicture.asset(IconsAssets.second_lock_icon, width: w / 5, height: w / 5),
+              child: SvgPicture.asset(IconsAssets.second_lock_icon,
+                  width: w / 5, height: w / 5),
             ),
           ),
-          const SizedBox(height: 20),
-
+          const SizedBox(height: 80),
           Obx(() {
-            String screenText;
-            if (pinController.errorMessage.value.isNotEmpty) {
-              screenText = pinController.errorMessage.value;
-            } else if (pinController.isCreatingPin.value) {
-              screenText = (pinController.tempPin.value == null)
-                  ? "Create Master PIN"
-                  : "Re-enter Master PIN";
-            } else {
-              screenText = "Enter Your M-PIN";
-            }
-            return Text(
-              screenText,
-              style: Theme.of(context).textTheme.labelMedium!.copyWith(
-                color: pinController.errorMessage.value.isNotEmpty
-                    ? Colors.red 
-                    : Theme.of(context).colorScheme.tertiary,
-              ),
+            return AnimatedSwitcher(
+              duration:
+                  const Duration(milliseconds: 400), // Transition duration
+              transitionBuilder: (widget, animation) {
+                return FadeTransition(
+                  opacity: animation,
+                  child: widget,
+                );
+              },
+              child: pinController.errorMessage.value.isNotEmpty
+                  ? Text(
+                      pinController.errorMessage.value,
+                      key: ValueKey('errorMessage'), // Unique Key
+                      style: Theme.of(context).textTheme.labelMedium!.copyWith(
+                            color: Colors.red,
+                          ),
+                    )
+                  : pinController.isCreatingPin.value
+                      ? (pinController.tempPin.value == null)
+                          ? CreateMasterPinWidget(
+                              key: ValueKey('createMasterPin'))
+                          : ReenterMasterPinWidget(
+                              key: ValueKey('reenterMasterPin'))
+                      : EnterMasterPinWidget(key: ValueKey('enterMasterPin')),
             );
           }),
-
           const SizedBox(height: 30),
-
           Obx(() {
             return Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: List.generate(pinController.pinLength, (index) {
-                bool isFilled = index < pinController.enteredDigits.value.length;
+                bool isFilled =
+                    index < pinController.enteredDigits.value.length;
                 if (isFilled) {
                   startAnimation();
                 }
@@ -131,20 +144,24 @@ class _MobileMasterPasswordScreenState extends State<MobileMasterPasswordScreen>
               }),
             );
           }),
-
-          const SizedBox(height: 20),
-
-          CustomKeyboard(pinController: pinController),
-
+          const SizedBox(height: 100),
+          CustomKeyboard(
+            pinController: pinController,
+            onPinEntered: () {
+              pinController.onPinEntered();
+            },
+          ),
           const SizedBox(height: 15),
-
-          Text(AppStrings.masterPasswordForgot,
-              style: TextStyle(
-                  fontSize: AppDimensions.fontSmall,
-                  color: Theme.of(context).colorScheme.primaryFixed)),
-
+          GestureDetector(
+            onTap: () {
+             pinController.resetMasterPin();
+            },
+            child: Text(AppStrings.masterPasswordForgot,
+                style: TextStyle(
+                    fontSize: AppDimensions.fontSmall,
+                    color: Theme.of(context).colorScheme.primaryFixed)),
+          ),
           const SizedBox(height: 50),
-
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
@@ -158,7 +175,6 @@ class _MobileMasterPasswordScreenState extends State<MobileMasterPasswordScreen>
                       color: Theme.of(context).colorScheme.tertiary)),
             ],
           ),
-
           const SizedBox(height: 20),
         ],
       ),
