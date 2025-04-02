@@ -20,7 +20,6 @@ class AppStrings {
   static const String skipButton = "Skip";
   static const String backButton = "Back";
 
-
   String welcome = "Welcome";
 
   //GetStarted
@@ -135,4 +134,15 @@ class AppStrings {
   static const String howToGetConnectionDS =
       "How to get mongodb connection string";
   static const String clickHereDS = " click here!";
+  static const String inviteUser = 'Invite User with Read Access';
+  static const String emailt = 'Email Address';
+  static const String invite = 'Send Invite';
+  static const String cancel = 'Cancel';
+  static const String pleaseEnterEmail = 'Please enter email address';
+  static const String enterValidEmail = 'Please enter a valid email address';
+  static const String userInvitedSuccessfully =
+      'User invited with read-only access';
+  static const String invitationFailed = 'Invitation failed. Please try again.';
+  static const String inviteError = 'Invitation could not be sent';
+  static const String inviteSuccess = 'Invitation sent successfully';
 }

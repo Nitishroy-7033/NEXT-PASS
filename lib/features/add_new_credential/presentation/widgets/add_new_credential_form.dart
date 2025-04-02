@@ -13,8 +13,8 @@ class AddNewCredentialForm extends StatelessWidget {
         Get.find<AddNewCredentialController>();
     PasswordController passwordController = Get.put(PasswordController());
 
-    final _formKey = GlobalKey<FormState>();
-    final RxBool isSecure = true.obs; // Added form key
+    final _formKey = GlobalKey<FormState>(); // Added form key
+    final RxBool isSecure = true.obs;
 
     return Container(
       padding: const EdgeInsets.all(20),
@@ -47,7 +47,7 @@ class AddNewCredentialForm extends StatelessWidget {
                 hintText: AppStrings.siteHintTextNC,
               ),
               validator: (value) =>
-                  value!.isEmpty ? "Enter Site URL*" : null, // Validation added
+                  value!.isEmpty ? "Enter Site URL" : null, // Validation added
             ),
             const SizedBox(height: 20),
             Text(
@@ -84,7 +84,7 @@ class AddNewCredentialForm extends StatelessWidget {
                 hintText: AppStrings.emailHintTextNC,
               ),
               validator: (value) =>
-                  value!.isEmpty ? "Enter Email Address*" : null,
+                  value!.isEmpty ? "Enter Email Address" : null,
             ),
             const SizedBox(height: 20),
             Text(
@@ -110,34 +110,33 @@ class AddNewCredentialForm extends StatelessWidget {
               style: Theme.of(context).textTheme.labelMedium,
             ),
             const SizedBox(height: 10),
-            Obx(
-              () => TextFormField(
-                textInputAction: TextInputAction.done,
-                controller: controller.password,
-                obscureText: isSecure.value,
-                onChanged: (value) {
-                  passwordController.checkPasswordStrength(value);
-                },
-                decoration: InputDecoration(
-                  suffixIcon: InkWell(
-                    onTap: () {
-                      isSecure.value = !isSecure.value;
-                    },
-                    child: Icon(
-                      isSecure.value
-                          ? Icons.remove_red_eye_outlined
-                          : Icons.remove_red_eye,
+            Obx(() => TextFormField(
+                  textInputAction: TextInputAction.done,
+                  controller: controller.password,
+                  obscureText: isSecure.value, // Toggle password visibility
+                  onChanged: (value) {
+                    passwordController.checkPasswordStrength(value);
+                  },
+                  decoration: InputDecoration(
+                    suffixIcon: InkWell(
+                      onTap: () {
+                        isSecure.value = !isSecure.value; // Toggle value
+                      },
+                      child: Icon(
+                        isSecure.value
+                            ? Icons.visibility_off
+                            : Icons.visibility, // Eye icon toggle
+                      ),
                     ),
+                    prefixIcon: Icon(
+                      Icons.lock_rounded,
+                      color: Theme.of(context).colorScheme.tertiary,
+                    ),
+                    hintText: AppStrings.passwordHintTextNC,
                   ),
-                  prefixIcon: Icon(
-                    Icons.lock_rounded,
-                    color: Theme.of(context).colorScheme.tertiary,
-                  ),
-                  hintText: AppStrings.passwordHintTextNC,
-                ),
-                validator: (value) => value!.isEmpty ? "Enter Password*" : null,
-              ),
-            ),
+                  validator: (value) =>
+                      value!.isEmpty ? "Enter Password*" : null,
+                )),
             const SizedBox(height: 20),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
