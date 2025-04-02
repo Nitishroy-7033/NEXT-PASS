@@ -1,3 +1,4 @@
+// footer_part.dart
 import 'package:next_pass/core/constants/app_linker.dart';
 
 class FooterWidget extends StatelessWidget {
@@ -30,9 +31,7 @@ class FooterWidget extends StatelessWidget {
               style: Theme.of(context).textTheme.labelMedium,
             ),
           ]),
-          const SizedBox(
-            height: 15,
-          ),
+          const SizedBox(height: 15),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -50,62 +49,68 @@ class FooterWidget extends StatelessWidget {
                 AppStrings.sharedWith,
                 style: Theme.of(context).textTheme.labelMedium,
               ),
-           GestureDetector(
-  onTap: () {
-    if (credentialController.isEditing.value) {
-      credentialController.saveEditedCredentials(); // Save and update UI
-    }
-    credentialController.toggleEditing(); // Toggle edit mode
-  },
-  child: Obx(() => Row(
-        children: [
-          Text(
-            credentialController.isEditing.value
-                ? AppStrings.save // Show "Save" text when editing
-                : AppStrings.edit, // Show "Edit" text otherwise
-            style: Theme.of(context).textTheme.labelMedium,
-          ),
-          const SizedBox(width: 5),
-          Icon(
-            credentialController.isEditing.value ? Icons.check : Icons.edit,
-            color: Theme.of(context).colorScheme.onPrimaryContainer,
-            size: 16,
-          ),
-        ],
-      )),
-)
-
+              GestureDetector(
+                onTap: () {
+                  if (credentialController.isEditing.value) {
+                    credentialController.saveEditedCredentials();
+                  }
+                  credentialController.toggleEditing();
+                },
+                child: Obx(() => Row(
+                      children: [
+                        Text(
+                          credentialController.isEditing.value
+                              ? AppStrings.save
+                              : AppStrings.edit,
+                          style: Theme.of(context).textTheme.labelMedium,
+                        ),
+                        const SizedBox(width: 5),
+                        Icon(
+                          credentialController.isEditing.value
+                              ? Icons.check
+                              : Icons.edit,
+                          color:
+                              Theme.of(context).colorScheme.onPrimaryContainer,
+                          size: 16,
+                        ),
+                      ],
+                    )),
+              )
             ],
           ),
 
-          const SizedBox(height: 10), // User Icons Placeholder (Square Avatars)
+          const SizedBox(height: 10),
+          // User Icons with Invite Button
           Row(
             children: List.generate(
               4,
               (index) => Padding(
                 padding: const EdgeInsets.only(right: 8.0),
                 child: Container(
-                  width: 32, // Square size (same as radius * 2)
+                  width: 32,
                   height: 32,
                   decoration: BoxDecoration(
                     color: Theme.of(context).colorScheme.tertiary,
-                    borderRadius:
-                        BorderRadius.circular(6), // Rounded square look
+                    borderRadius: BorderRadius.circular(6),
                   ),
                 ),
               ),
             )..add(
-                // Add User Icon (Square)
-                Container(
-                  width: 32,
-                  height: 32,
-                  decoration: BoxDecoration(
-                    color: AppColors.blueColor,
-                    borderRadius:
-                        BorderRadius.circular(6), // Adjust for square shape
+                GestureDetector(
+                  onTap: controller.onInviteUser,
+                  child: Tooltip(
+                    message: AppStrings.inviteUser,
+                    child: Container(
+                      width: 32,
+                      height: 32,
+                      decoration: BoxDecoration(
+                        color: AppColors.blueColor,
+                        borderRadius: BorderRadius.circular(6),
+                      ),
+                      child: const Icon(Icons.person_add,
+                          color: Colors.white, size: 20),
+                    ),
                   ),
-                  child:
-                      const Icon(Icons.person, color: Colors.white, size: 20),
                 ),
               ),
           ),

@@ -5,6 +5,7 @@ class AppCredentials extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // final CredentialController controller = Get.put(CredentialController());
     final CredentialController controller = Get.put(CredentialController());
 
     return Scaffold(
