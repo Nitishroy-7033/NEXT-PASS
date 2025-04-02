@@ -43,7 +43,6 @@ class _AuthScreenState extends State<AuthScreen> {
             ),
 
             const SizedBox(height: 30),
-            // Toggle Buttons (Login / Signup)
             Container(
               height: 60,
               decoration: BoxDecoration(

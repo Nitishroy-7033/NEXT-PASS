@@ -51,7 +51,8 @@ class MobileGetStartedScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              Padding(
+            Column(children:[
+                Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 30),
                 child: PrimaryButton(
                   text: (getStartedController.selectedView.value == 0)
@@ -68,6 +69,7 @@ class MobileGetStartedScreen extends StatelessWidget {
                   },
                 ),
               ),
+              SizedBox(height: 10),
               TextButton(
                 onPressed: () {
                   if (getStartedController.selectedView.value == 0) {
@@ -87,6 +89,7 @@ class MobileGetStartedScreen extends StatelessWidget {
                       style: Theme.of(context).textTheme.labelLarge,
                     )),
               ),
+            ]),
             ],
           ),
         ),

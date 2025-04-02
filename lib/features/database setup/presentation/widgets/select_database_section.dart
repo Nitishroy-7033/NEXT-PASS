@@ -9,7 +9,7 @@ class SelectDatabaseSection extends StatelessWidget {
         Get.put(SelectDatabaseController());
     return Obx(
       () => Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           PlanCardDatabase(
             imagePath: IconsAssets.nextPassDBIcon,
