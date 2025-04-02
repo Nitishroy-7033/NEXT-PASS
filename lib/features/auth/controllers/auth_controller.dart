@@ -15,35 +15,77 @@ class AuthController extends GetxController {
   var isError = false.obs;
   var errorMessage = "".obs;
 
-  Future<void> login(String email, String password, isRemeber) async {
-    isLoading.value = true;
-    isError.value = false;
-    errorMessage.value = "";
-    try {
-      final response = await authRepository.login(email, password);
+  // Future<void> login(String email, String password, isRemeber) async {
+  //   isLoading.value = true;
+  //   isError.value = false;
+  //   errorMessage.value = "";
+  //   try {
+  //     final response = await authRepository.login(email, password);
 
-      if (response.success == true && response.data != null) {
-        authModel.value = response.data;
-        apiClient.setUserDetails(response.data!);
-        SuccessMessage(response.message ?? "Logged in successfully");
-        Get.offAllNamed(AppRoutes.databaseSetup);
-        await pinController.loadSavedPin();
+  //     if (response.success == true && response.data != null) {
+  //       authModel.value = response.data;
+  //       apiClient.setUserDetails(response.data!);
+  //       SuccessMessage(response.message ?? "Logged in successfully");
+  //       Get.offAllNamed(AppRoutes.databaseSetup);
+  //       await pinController.loadSavedPin();
 
-        if (pinController.isCreatingPin.value) {
-          Get.offAllNamed(AppRoutes.masterPassword);
-        } else {
-          Get.offAllNamed(AppRoutes.home);
-        }
+  //       if (pinController.isCreatingPin.value) {
+  //         Get.offAllNamed(AppRoutes.masterPassword);
+  //       } else {
+  //         Get.offAllNamed(AppRoutes.home);
+  //       }
+  //     } else {
+  //       handleError(response.message);
+  //     }
+  //   } catch (e) {
+  //     print("Error $e");
+  //     handleError(e);
+  //   } finally {
+  //     isLoading.value = false;
+  //   }
+  // }
+
+
+
+Future<void> login(String email, String password, isRemeber) async {
+  isLoading.value = true;
+  isError.value = false;
+  errorMessage.value = "";
+
+  try {
+    final response = await authRepository.login(email, password);
+
+    if (response.success == true && response.data != null) {
+      authModel.value = response.data;
+      apiClient.setUserDetails(response.data!);
+      SuccessMessage(response.message ?? "Logged in successfully");
+
+      // Check if database type is already stored
+      String? storedDatabaseType = await _getStoredDatabaseType();
+
+      if (storedDatabaseType != null && storedDatabaseType.isNotEmpty) {
+        Get.offAllNamed(AppRoutes.home); // Database type found, go to Home
       } else {
-        handleError(response.message);
+        Get.offAllNamed(AppRoutes.databaseSetup); // No database type, go to Setup
       }
-    } catch (e) {
-      print("Error $e");
-      handleError(e);
-    } finally {
-      isLoading.value = false;
+    } else {
+      handleError(response.message);
     }
+  } catch (e) {
+    print("Error $e");
+    handleError(e);
+  } finally {
+    isLoading.value = false;
   }
+}
+
+// Method to get stored database type from SharedPreferences
+Future<String?> _getStoredDatabaseType() async {
+  final prefs = await SharedPreferences.getInstance();
+  return prefs.getString("databaseType");
+}
+
+
 
   Future<void> createAnAccount(
       String email, String password, String firstName, String lastName) async {
@@ -57,6 +99,7 @@ class AuthController extends GetxController {
         authModel.value = response.data;
         apiClient.setUserDetails(response.data!);
         SuccessMessage(response.message ?? "Account created successfully");
+        
       } else {
         handleError(response.message);
       }

@@ -1,7 +1,9 @@
 import 'package:next_pass/core/constants/app_linker.dart';
+import 'package:next_pass/features/database%20setup/data/database_setup_repository.dart';
 
 class AllCredentialsSection extends StatelessWidget {
   final HomeScreenController controller = Get.find();
+
 
   AllCredentialsSection({super.key}); // ✅ Controller injected
 
@@ -28,25 +30,35 @@ class AllCredentialsSection extends StatelessWidget {
     print("Raw Strength Value: '${credential.passwordStrength}'");
 
 
-          return AccountContainerTile(
-            title: credential.title,
-            emailId: credential.emailId, // ✅ Backend se aaya actual email
-            password: '********',
-            strength: _getPasswordStrengthLabel(credential.passwordStrength),
-            imageUrl: _getImageUrl(credential.siteUrl),
-          isAlert: int.tryParse(credential.passwordStrength) != null 
-    ? int.parse(credential.passwordStrength) < 3 
-    : false,
-
-            ontap: () {},
+          return GestureDetector(
+            onTap: () { // 👈 Yeh onTap GestureDetector ka hai
+    print("Tile tapped! Navigating to new screen...");
+    Get.toNamed(AppRoutes.appCredentials);
+  
+  },
+            child: AccountContainerTile(
+              title: credential.title,
+              emailId: credential.emailId, // ✅ Backend se aaya actual email
+              password: '********',
+              strength: _getPasswordStrengthLabel(credential.passwordStrength),
+              imageUrl: _getImageUrl(credential.siteUrl),
+            isAlert: int.tryParse(credential.passwordStrength) != null 
+                ? int.parse(credential.passwordStrength) < 3 
+                : false,
+            
+           ontap: (){},
+            ),
           );
         },
       );
+
+
+
     });
+  
+
   }
-
-
-
+    
   /// **Convert Password Strength to Label**
 String _getPasswordStrengthLabel(String strength) {
   switch (strength.toLowerCase().trim()) {  // ✅ Ensure case-insensitivity & remove extra spaces

@@ -22,7 +22,7 @@ class AppCredentials extends StatelessWidget {
                   Theme.of(context).colorScheme.onPrimaryContainer,
                   BlendMode.srcIn,
                 ),
-              ),
+              ), 
               onPressed: () {
                 if (controller.isEditing.value) {
                   controller.saveEditedCredentials(); // Save and update UI
