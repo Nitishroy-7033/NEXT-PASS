@@ -22,7 +22,7 @@ class CustomKeyboard extends StatelessWidget {
         physics: const NeverScrollableScrollPhysics(),
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 3,
-          childAspectRatio: 2,
+          childAspectRatio: 1.4,
         ),
         itemCount: 12,
         itemBuilder: (context, index) {
@@ -76,18 +76,19 @@ class CustomKeyboard extends StatelessWidget {
               }
             },
             child: Container(
+              height: 100,
               decoration: BoxDecoration(
                 color: Theme.of(context).colorScheme.primaryContainer,
                 border: Border(
                   top: index < 3
                       ? BorderSide.none
                       : BorderSide(
-                          color: Theme.of(context).colorScheme.tertiary,
+                          color: Theme.of(context).colorScheme.tertiary.withValues(alpha: 0.4),
                           width: 1),
                   left: index % 3 == 0
                       ? BorderSide.none
                       : BorderSide(
-                          color: Theme.of(context).colorScheme.tertiary,
+                          color: Theme.of(context).colorScheme.tertiary.withValues(alpha: 0.4),
                           width: 1),
                 ),
               ),
