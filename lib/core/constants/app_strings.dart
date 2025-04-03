@@ -90,6 +90,7 @@ class AppStrings {
   static const String passwordAddressLabelNC = 'Password';
   static const String phoneNumberLabelNC = 'Phone Number';
   static const String siteHintTextNC = 'www.example.com';
+  static const String sitTitle = "Website Tile";
   static const String userNameHintTextNC = 'example@123';
   static const String emailHintTextNC = 'example@youremail.com';
   static const String passwordHintTextNC = '*****************';

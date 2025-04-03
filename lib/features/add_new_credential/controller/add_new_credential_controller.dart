@@ -1,3 +1,5 @@
+import 'package:next_pass/core/utils/messages.dart';
+
 import '../../../core/constants/app_linker.dart';
 
 class AddNewCredentialController extends GetxController {
@@ -11,9 +13,9 @@ class AddNewCredentialController extends GetxController {
 
   TextEditingController userName = TextEditingController();
   TextEditingController emailId = TextEditingController();
+  TextEditingController titleController = TextEditingController();
   TextEditingController password = TextEditingController();
   TextEditingController mobileNumber = TextEditingController();
-  TextEditingController title = TextEditingController();
 
   @override
   void onInit() {
@@ -28,13 +30,14 @@ class AddNewCredentialController extends GetxController {
     });
   }
 
-  Future<void> saveCredential(userName, emailId, password, mobileNumber) async {
-    var success = await credentialRepository.createNewCredential(
-        siteUrl.value, userName, emailId, mobileNumber, password);
+  Future<void> saveCredential(
+      userName, emailId, titleController, password, mobileNumber) async {
+    var success = await credentialRepository.createNewCredential(siteUrl.value,
+        userName, emailId, titleController, mobileNumber, password);
     if (success) {
-      Get.snackbar("Success", "Credential added successfully");
+      SuccessMessage("Credential saved successfully!");
     } else {
-      Get.snackbar("Error", "Failed to add credential");
+      ErrorMessage("Failed to add credential");
     }
   }
 }

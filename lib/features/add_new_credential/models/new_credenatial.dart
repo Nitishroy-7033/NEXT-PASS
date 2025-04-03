@@ -1,6 +1,7 @@
 class CredentialModel {
   String? id;
   String? siteUrl;
+  String? title;
   String? emailId;
   String? password;
   String? userName;
@@ -24,6 +25,7 @@ class CredentialModel {
   CredentialModel(
       {this.id,
       this.siteUrl,
+      this.title,
       this.emailId,
       this.password,
       this.userName,
@@ -50,6 +52,9 @@ class CredentialModel {
     }
     if (json["siteUrl"] is String) {
       siteUrl = json["siteUrl"];
+    }
+    if (json["Title"] is String) {
+      title = json["Title"];
     }
     if (json["emailId"] is String) {
       emailId = json["emailId"];
@@ -136,6 +141,7 @@ class CredentialModel {
     final Map<String, dynamic> data = <String, dynamic>{};
     data["id"] = id;
     data["siteUrl"] = siteUrl;
+    data["Title"] = title;
     data["emailId"] = emailId;
     data["password"] = password;
     data["userName"] = userName;
