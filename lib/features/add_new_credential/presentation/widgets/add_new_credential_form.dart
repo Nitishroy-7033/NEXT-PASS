@@ -57,6 +57,25 @@ class AddNewCredentialForm extends StatelessWidget {
             const SizedBox(height: 10),
             TextFormField(
               textInputAction: TextInputAction.next,
+              controller: controller.titleController,
+              decoration: InputDecoration(
+                prefixIcon: Icon(
+                  Icons.language,
+                  color: Theme.of(context).colorScheme.tertiary,
+                ),
+                hintText: AppStrings.sitTitle,
+              ),
+              validator: (value) =>
+                  value!.isEmpty ? "Enter Title" : null, // Validation added
+            ),
+            const SizedBox(height: 20),
+            Text(
+              AppStrings.userNameLabelNC,
+              style: Theme.of(context).textTheme.labelMedium,
+            ),
+            const SizedBox(height: 10),
+            TextFormField(
+              textInputAction: TextInputAction.next,
               controller: controller.userName,
               decoration: InputDecoration(
                 prefixIcon: Icon(
@@ -206,6 +225,7 @@ class AddNewCredentialForm extends StatelessWidget {
                     controller.saveCredential(
                       controller.userName.text,
                       controller.emailId.text,
+                      controller.titleController.text,
                       controller.password.text,
                       controller.mobileNumber.text,
                     );
