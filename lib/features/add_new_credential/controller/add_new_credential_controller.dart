@@ -5,7 +5,8 @@ import '../../../core/constants/app_linker.dart';
 class AddNewCredentialController extends GetxController {
   final CredentialInterface credentialRepository =
       Get.put(CredentialRepository());
-
+  final HomeScreenController homeScreenController =
+      Get.put(HomeScreenController()); // Injected automatically
   final PasswordController passwordController = Get.put(PasswordController());
 
   TextEditingController siteUrlController = TextEditingController();
@@ -35,6 +36,7 @@ class AddNewCredentialController extends GetxController {
     var success = await credentialRepository.createNewCredential(siteUrl.value,
         userName, emailId, titleController, mobileNumber, password);
     if (success) {
+     await homeScreenController.fetchCredentials(); // Fetch updated credentials
       clearFormFields();
       SuccessMessage("Credential saved successfully!");
     } else {
