@@ -83,87 +83,109 @@ class MobileHomeScreen extends StatelessWidget {
           ),
         ),
 
-        // ✅ Body with Credentials List
-        body: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16.w),
-          child: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                // PASSWORD CATEGORY SECTION
-                const PasswordCategorySection(),
+        
 
-                Padding(
-                  padding: EdgeInsets.symmetric(vertical: 15.h),
-                  child: Row(
-                    children: [
-                      Text(
-                        AppStrings.allCredentials,
-                        style: Theme.of(context).textTheme.labelMedium,
-                      ),
-                      const Spacer(),
-                      InkWell(
-                        onTap: () {
-                          print('View All button Clickedddd');
-                        },
-                        splashColor: Colors.transparent,
-                        child: Text(
-                          AppStrings.viewAll,
-                          style: Theme.of(context)
-                              .textTheme
-                              .labelMedium
-                              ?.copyWith(
-                                color: Theme.of(context).colorScheme.primary,
-                              ),
+// ✅ Body with Credentials List
+body: Padding(
+  padding: EdgeInsets.symmetric(horizontal: 16.w),
+  child: Obx(() {
+    if (homeController.isLoading.value) {
+      return SizedBox(
+        height: MediaQuery.of(context).size.height * 0.6,
+        child: const Center(
+          child: CircularProgressIndicator(), // ✅ Fully centered loader
+        ),
+      );
+    }
+
+    if (homeController.isError.value) {
+      return SizedBox(
+        height: MediaQuery.of(context).size.height * 0.6,
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                homeController.errorMessage.value,
+                style: const TextStyle(color: Colors.red),
+              ),
+              const SizedBox(height: 12),
+              ElevatedButton(
+                onPressed: () {
+                  homeController.fetchCredentials(); // ✅ Retry
+                },
+                child: const Text("Retry"),
+              ),
+            ],
+          ),
+        ),
+      );
+    }
+
+    if (homeController.credentials.isEmpty) {
+      return SizedBox(
+        height: MediaQuery.of(context).size.height * 0.6,
+        child: const Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(Icons.lock_outline, size: 60, color: Colors.grey),
+              SizedBox(height: 10),
+              Text(
+                "No credentials found",
+                style: TextStyle(color: Colors.grey),
+              ),
+            ],
+          ),
+        ),
+      );
+    }
+
+    // ✅ Main UI when data is available
+    return SingleChildScrollView(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const PasswordCategorySection(),
+          Padding(
+            padding: EdgeInsets.symmetric(vertical: 15.h),
+            child: Row(
+              children: [
+                Text(
+                  AppStrings.allCredentials,
+                  style: Theme.of(context).textTheme.labelMedium,
+                ),
+                const Spacer(),
+                InkWell(
+                  onTap: () {
+                    print('View All button Clickedddd');
+                  },
+                  splashColor: Colors.transparent,
+                  child: Text(
+                    AppStrings.viewAll,
+                    style: Theme.of(context)
+                        .textTheme
+                        .labelMedium
+                        ?.copyWith(
+                          color: Theme.of(context).colorScheme.primary,
                         ),
-                      ),
-                    ],
                   ),
                 ),
-
-                // ✅ Updated AllCredentialsSection with Loading & Error State
-                Obx(() {
-                  if (homeController.isLoading.value) {
-                    return const Center(
-                        child: CircularProgressIndicator()); // ✅ Show loader
-                  }
-
-                  if (homeController.isError.value) {
-                    return Center(
-                      child: Column(
-                        children: [
-                          Text(
-                            homeController.errorMessage.value,
-                            style: const TextStyle(color: Colors.red),
-                          ),
-                          ElevatedButton(
-                            onPressed: () {
-                              homeController
-                                  .fetchCredentials(); // ✅ Retry API call
-                            },
-                            child: const Text("Retry"),
-                          ),
-                        ],
-                      ),
-                    );
-                  }
-
-                  if (homeController.credentials.isEmpty) {
-                    return const Center(
-                      child: Text(
-                        "No credentials found",
-                        style: TextStyle(color: Colors.grey),
-                      ),
-                    );
-                  }
-
-                  return AllCredentialsSection(); // ✅ Show credentials if available
-                }),
               ],
             ),
           ),
-        ),
+          AllCredentialsSection(), // ✅ Show actual credentials
+        ],
       ),
     );
-  }
+  }),
+),
+
+
+       
+      
+    
+      ),
+    );
+  } 
 }
