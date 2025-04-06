@@ -8,7 +8,7 @@ class MobileWelcomeScreen2 extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 30.w),
       child: Column(
-        spacing: 30.h,
+        spacing: 26.h,
         children: [
           SizedBox(height: 5.h),
           Text(
