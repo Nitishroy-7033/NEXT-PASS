@@ -1,5 +1,4 @@
 import 'package:next_pass/core/constants/app_linker.dart';
-import 'package:next_pass/features/auth/controllers/auth_controller.dart';
 
 class MobileHomeScreen extends StatelessWidget {
   const MobileHomeScreen({super.key});
@@ -23,21 +22,28 @@ class MobileHomeScreen extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  const ViewProfileSection(),
-                  const Spacer(),
-                  InkWell(
+                  ViewProfileSection(
+                    profileImageURL:
+                        "https://writestylesonline.com/wp-content/uploads/2018/11/Three-Statistics-That-Will-Make-You-Rethink-Your-Professional-Profile-Picture.jpg",
+                    userName: "Harsh Kumar Gupta",
                     onTap: () {
                       authController.logOut();
                       Get.toNamed(AppRoutes.login);
+                      print("VIEW PROFILE CLICKED . ✅✅");
+                    },
+                  ),
+                  const Spacer(),
+                  InkWell(
+                    onTap: () {
                       print(
                           "Notification button clicked!"); // ✅ Fixed: Removed logout call
                     },
-                    borderRadius: BorderRadius.circular(10),
+                    borderRadius: BorderRadius.circular(10.r),
                     child: Container(
-                      padding: const EdgeInsets.all(7.0),
+                      padding: EdgeInsets.all(7.w),
                       decoration: BoxDecoration(
                         color: Theme.of(context).colorScheme.primaryContainer,
-                        borderRadius: BorderRadius.circular(10),
+                        borderRadius: BorderRadius.circular(10.r),
                       ),
                       child: SvgPicture.asset(
                         IconsAssets.notificationIcon,
@@ -50,12 +56,12 @@ class MobileHomeScreen extends StatelessWidget {
                   ),
                 ],
               ),
-              const SizedBox(height: 12),
+              SizedBox(height: 12.h),
               const SearchBarSection(),
             ],
           ),
           scrolledUnderElevation: 0.0,
-          toolbarHeight: 120,
+          toolbarHeight: 120.h,
           backgroundColor: Theme.of(context).colorScheme.surface,
           automaticallyImplyLeading: false,
         ),
@@ -79,7 +85,7 @@ class MobileHomeScreen extends StatelessWidget {
 
         // ✅ Body with Credentials List
         body: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16),
+          padding: EdgeInsets.symmetric(horizontal: 16.w),
           child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -88,7 +94,7 @@ class MobileHomeScreen extends StatelessWidget {
                 const PasswordCategorySection(),
 
                 Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 15),
+                  padding: EdgeInsets.symmetric(vertical: 15.h),
                   child: Row(
                     children: [
                       Text(
@@ -98,7 +104,6 @@ class MobileHomeScreen extends StatelessWidget {
                       const Spacer(),
                       InkWell(
                         onTap: () {
-                          authController.logOut();
                           print('View All button Clickedddd');
                         },
                         splashColor: Colors.transparent,
@@ -106,7 +111,7 @@ class MobileHomeScreen extends StatelessWidget {
                           AppStrings.viewAll,
                           style: Theme.of(context)
                               .textTheme
-                              .labelSmall
+                              .labelMedium
                               ?.copyWith(
                                 color: Theme.of(context).colorScheme.primary,
                               ),

@@ -1,5 +1,4 @@
-import 'package:flutter/material.dart';
-import 'app_colors.dart';
+import 'package:next_pass/core/constants/app_linker.dart';
 
 class AppThemes {
   bool isLightTheme = true;
@@ -21,81 +20,81 @@ class AppThemes {
         error: AppColors.error,
         onPrimaryContainer: AppColors.fontLight,
         onSecondaryContainer: AppColors.labelLight),
-    textTheme: const TextTheme(
+    textTheme: TextTheme(
       headlineLarge: TextStyle(
-        fontSize: 18,
+        fontSize: 20.sp,
         fontWeight: FontWeight.w600,
         color: AppColors.fontLight,
         fontFamily: "Montserrat",
       ),
       headlineMedium: TextStyle(
-        fontSize: 15,
+        fontSize: 15.sp,
         fontWeight: FontWeight.w600,
         color: AppColors.fontLight,
         fontFamily: "Montserrat",
       ),
       headlineSmall: TextStyle(
-        fontSize: 13,
+        fontSize: 13.sp,
         fontWeight: FontWeight.w600,
         color: AppColors.fontLight,
         fontFamily: "Montserrat",
       ),
       bodyLarge: TextStyle(
-        fontSize: 18,
+        fontSize: 18.sp,
         fontWeight: FontWeight.w500,
         color: AppColors.fontLight,
         fontFamily: "Montserrat",
       ),
       bodyMedium: TextStyle(
-        fontSize: 15,
+        fontSize: 15.sp,
         fontWeight: FontWeight.w500,
         color: AppColors.fontLight,
         fontFamily: "Montserrat",
       ),
       bodySmall: TextStyle(
-        fontSize: 13,
+        fontSize: 13.sp,
         fontWeight: FontWeight.w500,
         color: AppColors.fontLight,
         fontFamily: "Montserrat",
       ),
       labelLarge: TextStyle(
-        fontSize: 15,
+        fontSize: 15.sp,
         fontWeight: FontWeight.w600,
         color: AppColors.labelLight,
         fontFamily: "Montserrat",
       ),
       labelMedium: TextStyle(
-        fontSize: 13,
+        fontSize: 13.sp,
         fontWeight: FontWeight.w500,
         color: AppColors.labelLight,
         fontFamily: "Montserrat",
       ),
       labelSmall: TextStyle(
-        fontSize: 10,
+        fontSize: 10.sp,
         fontWeight: FontWeight.w500,
         color: AppColors.labelLight,
         fontFamily: "Montserrat",
       ),
     ),
-    appBarTheme: const AppBarTheme(
+    appBarTheme: AppBarTheme(
       backgroundColor: AppColors.primaryContainerLight,
       centerTitle: true,
       titleTextStyle: TextStyle(
-        fontSize: 18,
+        fontSize: 18.sp,
         fontWeight: FontWeight.w600,
         color: AppColors.fontLight,
         fontFamily: "Montserrat",
       ),
     ),
-    inputDecorationTheme:const InputDecorationTheme(
+    inputDecorationTheme: InputDecorationTheme(
       hintStyle: TextStyle(
-        fontSize: 15,
+        fontSize: 15.sp,
         fontWeight: FontWeight.w500,
         color: AppColors.labelLight,
         fontFamily: "Montserrat",
       ),
       labelStyle: TextStyle(
-        fontSize: 15,
+        fontSize: 15.sp,
         fontWeight: FontWeight.w600,
         color: AppColors.labelLight,
         fontFamily: "Montserrat",
@@ -103,9 +102,9 @@ class AppThemes {
       fillColor: AppColors.backgroundLight,
       filled: true,
       border: UnderlineInputBorder(
-          borderSide: BorderSide(color: AppColors.primaryLight, width: 2)),
+          borderSide: BorderSide(color: AppColors.primaryLight, width: 2.w)),
       focusedBorder:  UnderlineInputBorder(
-          borderSide: BorderSide(color: AppColors.primaryLight, width: 2)),
+          borderSide: BorderSide(color: AppColors.primaryLight, width: 2.w)),
     ),
     buttonTheme: const ButtonThemeData(
       buttonColor: AppColors.primaryLight,
@@ -128,25 +127,25 @@ class AppThemes {
         error: AppColors.error,
         onPrimaryContainer: AppColors.fontDark,
         onSecondaryContainer: AppColors.labelDark),
-    appBarTheme: const AppBarTheme(
+    appBarTheme:  AppBarTheme(
       backgroundColor: AppColors.primaryContainerDark,
       centerTitle: true,
       titleTextStyle: TextStyle(
-        fontSize: 18,
+        fontSize: 18.sp,
         fontWeight: FontWeight.w600,
         color: AppColors.fontDark,
         fontFamily: "Montserrat",
       ),
     ),
-    inputDecorationTheme:const InputDecorationTheme(
+    inputDecorationTheme: InputDecorationTheme(
       hintStyle: TextStyle(
-        fontSize: 15,
+        fontSize: 15.sp,
         fontWeight: FontWeight.w500,
         color: AppColors.labelDark,
         fontFamily: "Montserrat",
       ),
       labelStyle:  TextStyle(
-        fontSize: 15,
+        fontSize: 15.sp,
         fontWeight: FontWeight.w600,
         color: AppColors.labelDark,
         fontFamily: "Montserrat",
@@ -154,61 +153,61 @@ class AppThemes {
       fillColor: AppColors.backgroundDark,
       filled: true,
       border:  UnderlineInputBorder(
-          borderSide: BorderSide(color: AppColors.primaryDark, width: 2)),
+          borderSide: BorderSide(color: AppColors.primaryDark, width: 2.w)),
       focusedBorder: UnderlineInputBorder(
-          borderSide: BorderSide(color: AppColors.primaryDark, width: 2)),
+          borderSide: BorderSide(color: AppColors.primaryDark, width: 2.w)),
     ),
-    textTheme: const TextTheme(
+    textTheme:  TextTheme(
       headlineLarge: TextStyle(
-        fontSize: 18,
+        fontSize: 20.sp,
         fontWeight: FontWeight.w600,
         color: AppColors.fontDark,
         fontFamily: "Montserrat",
       ),
       headlineMedium: TextStyle(
-        fontSize: 15,
+        fontSize: 15.sp, 
         fontWeight: FontWeight.w600,
         color: AppColors.fontDark,
         fontFamily: "Montserrat",
       ),
       headlineSmall: TextStyle(
-        fontSize: 13,
+        fontSize: 13.sp,
         fontWeight: FontWeight.w600,
         color: AppColors.fontDark,
         fontFamily: "Montserrat",
       ),
       bodyLarge: TextStyle(
-        fontSize: 18,
+        fontSize: 18.sp,
         fontWeight: FontWeight.w500,
         color: AppColors.fontDark,
         fontFamily: "Montserrat",
       ),
       bodyMedium: TextStyle(
-        fontSize: 15,
+        fontSize: 15.sp,
         fontWeight: FontWeight.w500,
         color: AppColors.fontDark,
         fontFamily: "Montserrat",
       ),
       bodySmall: TextStyle(
-        fontSize: 13,
+        fontSize: 13.sp,
         fontWeight: FontWeight.w500,
         color: AppColors.fontDark,
         fontFamily: "Montserrat",
       ),
       labelLarge: TextStyle(
-        fontSize: 15,
+        fontSize: 15.sp,
         fontWeight: FontWeight.w600,
         color: AppColors.labelDark,
         fontFamily: "Montserrat",
       ),
       labelMedium: TextStyle(
-        fontSize: 13,
+        fontSize: 13.sp,
         fontWeight: FontWeight.w500,
         color: AppColors.labelDark,
         fontFamily: "Montserrat",
       ),
       labelSmall: TextStyle(
-        fontSize: 10,
+        fontSize: 10.sp,
         fontWeight: FontWeight.w500,
         color: AppColors.labelDark,
         fontFamily: "Montserrat",

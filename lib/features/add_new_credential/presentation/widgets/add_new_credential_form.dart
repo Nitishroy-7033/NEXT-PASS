@@ -17,10 +17,10 @@ class AddNewCredentialForm extends StatelessWidget {
     final RxBool isSecure = true.obs;
 
     return Container(
-      padding: const EdgeInsets.all(20),
+      padding: EdgeInsets.all(20.w),
       decoration: BoxDecoration(
           color: Theme.of(context).colorScheme.primaryContainer,
-          borderRadius: BorderRadius.circular(20)),
+          borderRadius: BorderRadius.circular(20.r)),
       child: Form(
         key: _formKey, // Wrapped the form with validation
         child: Column(
@@ -30,12 +30,12 @@ class AddNewCredentialForm extends StatelessWidget {
               AppStrings.credentialNC,
               style: Theme.of(context).textTheme.bodyMedium,
             ),
-            const SizedBox(height: 15),
+            SizedBox(height: 15.h),
             Text(
               AppStrings.siteAddressLabelNC,
               style: Theme.of(context).textTheme.labelMedium,
             ),
-            const SizedBox(height: 10),
+            SizedBox(height: 10.h),
             TextFormField(
               textInputAction: TextInputAction.next,
               controller: controller.siteUrlController,
@@ -49,31 +49,31 @@ class AddNewCredentialForm extends StatelessWidget {
               validator: (value) =>
                   value!.isEmpty ? "Enter Site URL" : null, // Validation added
             ),
-            const SizedBox(height: 20),
+            SizedBox(height: 20.h),
             Text(
-              AppStrings.userNameLabelNC,
+              AppStrings.siteTitle,
               style: Theme.of(context).textTheme.labelMedium,
             ),
-            const SizedBox(height: 10),
+            SizedBox(height: 10.h),
             TextFormField(
               textInputAction: TextInputAction.next,
               controller: controller.titleController,
               decoration: InputDecoration(
                 prefixIcon: Icon(
-                  Icons.language,
+                  Icons.label,
                   color: Theme.of(context).colorScheme.tertiary,
                 ),
-                hintText: AppStrings.sitTitle,
+                hintText: AppStrings.siteTitle,
               ),
               validator: (value) =>
                   value!.isEmpty ? "Enter Title" : null, // Validation added
             ),
-            const SizedBox(height: 20),
+            SizedBox(height: 20.h),
             Text(
               AppStrings.userNameLabelNC,
               style: Theme.of(context).textTheme.labelMedium,
             ),
-            const SizedBox(height: 10),
+            SizedBox(height: 10.h),
             TextFormField(
               textInputAction: TextInputAction.next,
               controller: controller.userName,
@@ -85,16 +85,17 @@ class AddNewCredentialForm extends StatelessWidget {
                 hintText: AppStrings.userNameHintTextNC,
               ),
             ),
-            const SizedBox(height: 20),
+            SizedBox(height: 20.h),
             Text(
               AppStrings.emailLabelNC,
               style: Theme.of(context).textTheme.labelMedium,
             ),
-            const SizedBox(height: 10),
+            SizedBox(height: 10.h),
             TextFormField(
               textInputAction: TextInputAction.next,
               controller: controller.emailId,
               obscureText: false,
+              keyboardType: TextInputType.emailAddress,
               decoration: InputDecoration(
                 prefixIcon: Icon(
                   Icons.alternate_email,
@@ -105,16 +106,17 @@ class AddNewCredentialForm extends StatelessWidget {
               validator: (value) =>
                   value!.isEmpty ? "Enter Email Address" : null,
             ),
-            const SizedBox(height: 20),
+            SizedBox(height: 20.h),
             Text(
               AppStrings.phoneNumberLabelNC,
               style: Theme.of(context).textTheme.labelMedium,
             ),
-            const SizedBox(height: 10),
+            SizedBox(height: 10.h),
             TextFormField(
               textInputAction: TextInputAction.next,
               controller: controller.mobileNumber,
               obscureText: false,
+              keyboardType: TextInputType.phone,
               decoration: InputDecoration(
                 prefixIcon: Icon(
                   Icons.call,
@@ -123,12 +125,12 @@ class AddNewCredentialForm extends StatelessWidget {
                 hintText: AppStrings.phoneNumberHintTextNC,
               ),
             ),
-            const SizedBox(height: 20),
+            SizedBox(height: 20.h),
             Text(
               AppStrings.passwordAddressLabelNC,
               style: Theme.of(context).textTheme.labelMedium,
             ),
-            const SizedBox(height: 10),
+            SizedBox(height: 10.h),
             Obx(() => TextFormField(
                   textInputAction: TextInputAction.done,
                   controller: controller.password,
@@ -156,7 +158,7 @@ class AddNewCredentialForm extends StatelessWidget {
                   validator: (value) =>
                       value!.isEmpty ? "Enter Password*" : null,
                 )),
-            const SizedBox(height: 20),
+            SizedBox(height: 20.h),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -170,7 +172,7 @@ class AddNewCredentialForm extends StatelessWidget {
                 ),
               ],
             ),
-            const SizedBox(height: 10),
+            SizedBox(height: 10.h),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -181,7 +183,7 @@ class AddNewCredentialForm extends StatelessWidget {
                       AppStrings.reminderNC,
                       style: Theme.of(context).textTheme.labelMedium,
                     ),
-                    const SizedBox(height: 5),
+                    SizedBox(height: 5.h),
                     CustomDropdown(
                       itemList: const [
                         '7 Days',
@@ -191,9 +193,9 @@ class AddNewCredentialForm extends StatelessWidget {
                         '90 Days'
                       ],
                       controller: ReminderListController(),
-                      popupWidth: 90,
-                      maxWidth: 120,
-                      maxHeight: 40,
+                      popupWidth: 100.w,
+                      maxWidth: 130.w,
+                      maxHeight: 40.h,
                     ),
                   ],
                 ),
@@ -204,19 +206,19 @@ class AddNewCredentialForm extends StatelessWidget {
                       AppStrings.categoryNC,
                       style: Theme.of(context).textTheme.labelMedium,
                     ),
-                    const SizedBox(height: 5),
+                    SizedBox(height: 5.h),
                     CustomDropdown(
                       itemList: const ['Website', 'App', 'Payment', 'Other'],
                       controller: CategoryListController(),
-                      popupWidth: 120,
-                      maxWidth: 130,
-                      maxHeight: 40,
+                      popupWidth: 100.w,
+                      maxWidth: 130.w,
+                      maxHeight: 40.h,
                     ),
                   ],
                 )
               ],
             ),
-            const SizedBox(height: 30),
+            SizedBox(height: 30.h),
             PrimaryButton(
               text: AppStrings.buttonSave,
               onPressed: () {

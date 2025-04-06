@@ -1,5 +1,4 @@
 import 'package:next_pass/core/routes/route_generator.dart';
-
 import 'core/constants/app_linker.dart';
 
 void main() {
@@ -13,20 +12,26 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'NEXT PASS',
-      initialRoute: AppRoutes.splash,
-      getPages: RouteGenerator.getRoutes(),
-      initialBinding: SplashBinding(),
-      theme: AppThemes.lightTheme,
-      darkTheme: AppThemes.darkTheme,
-      themeMode: ThemeMode.dark,
-      unknownRoute: GetPage(
-        name: AppRoutes.notFound,
-        page: () => const NotFoundView(),
-      ),
-    );
+    return ScreenUtilInit(
+        designSize: const Size(393, 852),
+        minTextAdapt: true,
+        splitScreenMode: true,
+        builder: (context, child) {
+          return GetMaterialApp(
+            debugShowCheckedModeBanner: false,
+            title: 'NEXT PASS',
+            initialRoute: AppRoutes.splash,
+            getPages: RouteGenerator.getRoutes(),
+            initialBinding: SplashBinding(),
+            theme: AppThemes.lightTheme,
+            darkTheme: AppThemes.darkTheme,
+            themeMode: ThemeMode.dark,
+            unknownRoute: GetPage(
+              name: AppRoutes.notFound,
+              page: () => const NotFoundView(),
+            ),
+          );
+        });
   }
 }
 

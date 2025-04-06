@@ -23,19 +23,19 @@ class StrengthBadge extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         color: Theme.of(context).colorScheme.surface,
-        borderRadius: BorderRadius.circular(5),
+        borderRadius: BorderRadius.circular(5.r),
         border: Border.all(
           color: checkColor(strength),
-          width: 0.5,
+          width: 0.7.w,
         ),
       ),
-      padding: const EdgeInsets.all(3),
+      padding: EdgeInsets.all(3.w),
       child: Row(
-        spacing: 1,
+        spacing: 1.w,
         children: [
           SizedBox(
-            height: 13,
-            width: 13,
+            height: 13.w,
+            width: 13.w,
             child: SvgPicture.asset(
               (strength == "Strong" || strength == "Very Strong")
                   ? IconsAssets.strongPasswordIcon

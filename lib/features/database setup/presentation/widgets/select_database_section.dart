@@ -9,7 +9,6 @@ class SelectDatabaseSection extends StatelessWidget {
         Get.put(SelectDatabaseController());
     return Obx(
       () => Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           PlanCardDatabase(
             imagePath: IconsAssets.nextPassDBIcon,
@@ -18,6 +17,7 @@ class SelectDatabaseSection extends StatelessWidget {
               selectDatabaseController.selectedIndex.value = 0;
             },
           ),
+          SizedBox(width: 26.w),
           PlanCardDatabase(
             imagePath: IconsAssets.myOwnDBIcon,
             isSelected: selectDatabaseController.selectedIndex.value == 1,

@@ -1,43 +1,54 @@
 import '../../../../core/constants/app_linker.dart';
 
 class ViewProfileSection extends StatelessWidget {
-  const ViewProfileSection({super.key});
+  final String profileImageURL;
+  final String userName;
+  final VoidCallback onTap;
+  const ViewProfileSection(
+      {super.key,
+      required this.profileImageURL,
+      required this.userName,
+      required this.onTap});
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {
-        print('View Profile Button Pressed');
-      },
-      borderRadius: BorderRadius.circular(10),
+      onTap: onTap,
+      borderRadius: BorderRadius.circular(10.r),
       child: Container(
         decoration: BoxDecoration(
           color: Theme.of(context).colorScheme.primaryContainer,
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(10.r),
         ),
-        padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 4),
+        padding: EdgeInsets.all(4.w),
         child: Row(
           children: [
             SizedBox(
-              height: 35,
-              width: 35,
+              height: 35.w,
+              width: 35.w,
               child: ClipRRect(
-                borderRadius: BorderRadius.circular(6),
-                child: Image.asset(
-                  AppImageAssets.demoProfileImage,
-                  fit: BoxFit.cover,
-                ),
+                borderRadius: BorderRadius.circular(6.r),
+                child: (profileImageURL.isNotEmpty)
+                    ? Image.network(
+                        profileImageURL,
+                        fit: BoxFit.cover,
+                        errorBuilder: (context, error, stackTrace) {
+                          return const Icon(Icons.person);
+                        },
+                      )
+                    : const Icon(Icons.person),
               ),
             ),
-            const SizedBox(
-              width: 10,
-            ),
+            SizedBox(width: 5.w),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  'Rose Poole',
-                  style: Theme.of(context).textTheme.headlineSmall,
+                Container(
+                  constraints: BoxConstraints(maxWidth: 100.w),
+                  child: Text(
+                    userName,
+                    style: Theme.of(context).textTheme.headlineSmall,
+                  ),
                 ),
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -47,12 +58,10 @@ class ViewProfileSection extends StatelessWidget {
                       AppStrings.viewLink,
                       style: Theme.of(context).textTheme.labelSmall,
                     ),
-                    const SizedBox(
-                      width: 3,
-                    ),
+                    SizedBox(width: 3.w),
                     Icon(
                       Icons.arrow_forward_ios_rounded,
-                      size: 10,
+                      size: 10.h,
                       color: Theme.of(context).colorScheme.tertiary,
                     ),
                   ],

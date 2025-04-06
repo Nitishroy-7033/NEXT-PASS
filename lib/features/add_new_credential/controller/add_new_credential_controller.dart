@@ -35,9 +35,19 @@ class AddNewCredentialController extends GetxController {
     var success = await credentialRepository.createNewCredential(siteUrl.value,
         userName, emailId, titleController, mobileNumber, password);
     if (success) {
+      clearFormFields();
       SuccessMessage("Credential saved successfully!");
     } else {
       ErrorMessage("Failed to add credential");
     }
+  }
+
+  void clearFormFields() {
+    siteUrlController.clear();
+    userName.clear();
+    emailId.clear();
+    titleController.clear();
+    password.clear();
+    mobileNumber.clear();
   }
 }

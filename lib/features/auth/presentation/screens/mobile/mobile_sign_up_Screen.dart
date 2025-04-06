@@ -1,8 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:next_pass/core/utils/validators.dart';
 import '../../../../../core/constants/app_linker.dart';
-import '../../../controllers/auth_controller.dart';
 
 class MobileSignUpScreen extends StatelessWidget {
   MobileSignUpScreen({super.key});
@@ -22,7 +18,7 @@ class MobileSignUpScreen extends StatelessWidget {
       key: _formKey,
       child: Column(
         children: [
-          const SizedBox(height: 10),
+          SizedBox(height: 10.h),
 
           /// **Full Name**
           Row(
@@ -30,7 +26,7 @@ class MobileSignUpScreen extends StatelessWidget {
               Text("Full Name", style: Theme.of(context).textTheme.labelMedium),
             ],
           ),
-          const SizedBox(height: 10),
+          SizedBox(height: 10.h),
           Row(
             children: [
               Expanded(
@@ -41,7 +37,7 @@ class MobileSignUpScreen extends StatelessWidget {
                   validator: TextFieldValidators.requiredField,
                 ),
               ),
-              const SizedBox(width: 10),
+              SizedBox(width: 10.w),
               Expanded(
                 child: TextFormField(
                   controller: lastNameController,
@@ -52,8 +48,7 @@ class MobileSignUpScreen extends StatelessWidget {
               ),
             ],
           ),
-
-          const SizedBox(height: 20),
+          SizedBox(height: 20.h),
 
           /// **Email**
           Row(
@@ -61,7 +56,7 @@ class MobileSignUpScreen extends StatelessWidget {
               Text("Email", style: Theme.of(context).textTheme.labelMedium),
             ],
           ),
-          const SizedBox(height: 10),
+          SizedBox(height: 10.h),
           TextFormField(
             controller: emailController,
             textInputAction: TextInputAction.next,
@@ -71,8 +66,7 @@ class MobileSignUpScreen extends StatelessWidget {
             ),
             validator: TextFieldValidators.validateEmail,
           ),
-
-          const SizedBox(height: 20),
+          SizedBox(height: 20.h),
 
           /// **Password**
           Row(
@@ -80,7 +74,7 @@ class MobileSignUpScreen extends StatelessWidget {
               Text("Password", style: Theme.of(context).textTheme.labelMedium),
             ],
           ),
-          const SizedBox(height: 10),
+          SizedBox(height: 10.h),
           Obx(
             () => TextFormField(
               controller: passwordController,
@@ -88,7 +82,7 @@ class MobileSignUpScreen extends StatelessWidget {
               obscureText: isSecure.value,
               decoration: InputDecoration(
                 prefixIcon: const Icon(Icons.password),
-                hintText: "**********",
+                hintText: "⁎⁎⁎⁎⁎⁎⁎⁎⁎⁎",
                 suffixIcon: InkWell(
                   onTap: () {
                     isSecure.value = !isSecure.value;
@@ -103,15 +97,14 @@ class MobileSignUpScreen extends StatelessWidget {
               validator: TextFieldValidators.validatePassword,
             ),
           ),
-
-          const SizedBox(height: 20),
+          SizedBox(height: 20.h),
 
           /// **Error Message Display**
           Obx(() => authController.isError.value
               ? Row(
                   children: [
                     const Icon(Icons.error, color: Colors.red),
-                    const SizedBox(width: 10),
+                    SizedBox(width: 10.w),
                     Text(
                       authController.errorMessage.value,
                       style: Theme.of(context)
@@ -122,22 +115,24 @@ class MobileSignUpScreen extends StatelessWidget {
                   ],
                 )
               : const SizedBox()),
-
-          const SizedBox(height: 10),
+          SizedBox(height: 10.h),
 
           /// **Signup Button**
           Obx(
             () => authController.isLoading.value
                 ? const CircularProgressIndicator()
-                : PrimaryButton(text: "SIGNUP", onPressed: (){
-                       if (_formKey.currentState!.validate()) {
-                       authController.createAnAccount(
-                        emailController.text,
-                    passwordController.text, 
-                    firstNameController.text, 
-                    lastNameController.text);
-                       }
-}, ),
+                : PrimaryButton(
+                    text: "SIGNUP",
+                    onPressed: () {
+                      if (_formKey.currentState!.validate()) {
+                        authController.createAnAccount(
+                            emailController.text,
+                            passwordController.text,
+                            firstNameController.text,
+                            lastNameController.text);
+                      }
+                    },
+                  ),
           ),
         ],
       ),

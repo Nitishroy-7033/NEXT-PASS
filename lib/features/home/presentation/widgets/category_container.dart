@@ -1,5 +1,3 @@
-
-
 import '../../../../core/constants/app_linker.dart';
 
 class CategoryContainer extends StatelessWidget {
@@ -17,21 +15,21 @@ class CategoryContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 90,
-      width: 82,
+      height: 90.h,
+      width: 82.w,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           InkWell(
             onTap: onTap,
-            borderRadius: BorderRadius.circular(15),
+            borderRadius: BorderRadius.circular(15.r),
             child: Container(
-              height: 50,
-              width: 50,
-              padding: const EdgeInsets.all(14),
+              height: 50.w,
+              width: 50.w,
+              padding: EdgeInsets.all(14.w),
               decoration: BoxDecoration(
                 color: color.withOpacity(0.3),
-                borderRadius: BorderRadius.circular(15),
+                borderRadius: BorderRadius.circular(15.r),
               ),
               child: SvgPicture.asset(
                 icon,
@@ -42,8 +40,8 @@ class CategoryContainer extends StatelessWidget {
               ),
             ),
           ),
-          const SizedBox(
-            height: 7,
+          SizedBox(
+            height: 7.h,
           ),
           Text(
             title,

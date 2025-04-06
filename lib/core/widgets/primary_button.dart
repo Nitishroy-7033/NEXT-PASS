@@ -1,11 +1,9 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:next_pass/core/constants/app_linker.dart';
 
 class PrimaryButton extends StatelessWidget {
   final String text;
   final VoidCallback onPressed;
   final String? icon;
-
   final Color? color;
   final Color? backgroundColor;
   const PrimaryButton(
@@ -23,11 +21,11 @@ class PrimaryButton extends StatelessWidget {
       highlightColor: Colors.transparent,
       onTap: onPressed,
       child: Container(
-        height: 50,
-        padding: const EdgeInsets.all(10),
+        height: 50.h,
+        padding: EdgeInsets.all(10.w),
         decoration: BoxDecoration(
           color: backgroundColor ?? Theme.of(context).colorScheme.primary,
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(10.r),
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -40,7 +38,7 @@ class PrimaryButton extends StatelessWidget {
                   BlendMode.srcIn,
                 ),
               ),
-            if (icon != null) const SizedBox(width: 10),
+            if (icon != null) SizedBox(width: 10.w),
             Text(
               text,
               style: Theme.of(context).textTheme.bodyMedium?.copyWith(
