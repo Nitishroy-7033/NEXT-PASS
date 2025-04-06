@@ -7,13 +7,13 @@ class GeneratePasswordButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        BottomSheetPasswordGenerator(context);
+        bottomSheetPasswordGenerator(context);
       },
       child: Container(
-        padding: const EdgeInsets.symmetric(vertical: 3, horizontal: 4),
+        padding: EdgeInsets.all(5.w),
         decoration: BoxDecoration(
           color: Theme.of(context).colorScheme.surface,
-          borderRadius: BorderRadius.circular(5),
+          borderRadius: BorderRadius.circular(5.r),
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -21,9 +21,9 @@ class GeneratePasswordButton extends StatelessWidget {
             Icon(
               Icons.autorenew_rounded,
               color: Theme.of(context).colorScheme.onSurface,
-              size: 16,
+              size: 16.h,
             ),
-            const SizedBox(width: 3),
+            SizedBox(width: 3.w),
             Text(
               AppStrings.generatePassword,
               style: Theme.of(context).textTheme.labelSmall?.copyWith(

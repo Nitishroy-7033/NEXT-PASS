@@ -1,15 +1,13 @@
 import 'package:next_pass/core/constants/app_linker.dart';
-import 'package:next_pass/features/database%20setup/data/database_setup_repository.dart';
 
 class AllCredentialsSection extends StatelessWidget {
   final HomeScreenController controller = Get.find();
-
 
   AllCredentialsSection({super.key}); // ✅ Controller injected
 
   @override
   Widget build(BuildContext context) {
-    // Get.put(CredentialController());
+    final PasswordController passwordController = Get.put(PasswordController());
     return Obx(() {
       if (controller.isLoading.value) {
         return const Center(
@@ -32,9 +30,7 @@ class AllCredentialsSection extends StatelessWidget {
           print("Raw Strength Value: '${credential.passwordStrength}'");
           return GestureDetector(
             onTap: () {
-              // print("hi this is testing");
-              // Get.toNamed(AppRoutes.appCredentials);
-              Get.to(() => AppCredentials(), arguments: {
+              Get.to(() => const AppCredentials(), arguments: {
                 "title": credential.title,
                 "siteUrl": credential.siteUrl,
                 "userName": credential.username,
@@ -45,9 +41,10 @@ class AllCredentialsSection extends StatelessWidget {
             child: AccountContainerTile(
               title: credential.title,
               emailId: credential.emailId,
-              password: '********',
-              strength: _getPasswordStrengthLabel(credential.passwordStrength),
-              imageUrl: _getImageUrl(credential.siteUrl),
+              password: credential.password, // '********',
+              strength: passwordController
+                  .checkandReturnPasswordStrength(credential.password),
+              imageUrl: credential.siteUrl,
               isAlert: int.tryParse(credential.passwordStrength) != null
                   ? int.parse(credential.passwordStrength) < 3
                   : false,
@@ -56,40 +53,6 @@ class AllCredentialsSection extends StatelessWidget {
           );
         },
       );
-
     });
-  
-
-  }
-  /// **Convert Password Strength to Label**
-  String _getPasswordStrengthLabel(String strength) {
-    switch (strength.toLowerCase().trim()) {
-      // ✅ Ensure case-insensitivity & remove extra spaces
-      case "strong":
-        return "Strong";
-      case "medium":
-        return "Medium";
-      case "weak":
-        return "Weak";
-      default:
-        return "Unknown"; // ✅ For debugging
-    }
-  }
-
-  /// **Get Image Based on URL**
-  String _getImageUrl(String siteUrl) {
-    if (siteUrl.contains("facebook")) {
-      return AppImageAssets.facebookLogo;
-    } else if (siteUrl.contains("google")) {
-      return AppImageAssets.googleLogo;
-    } else if (siteUrl.contains("twitter")) {
-      return AppImageAssets.twitterLogo;
-    } else if (siteUrl.contains("linkedin")) {
-      return AppImageAssets.linkedinLogo;
-    } else if (siteUrl.contains("playstore")) {
-      return AppImageAssets.playstoreLogo;
-    } else {
-      return AppImageAssets.appLogo; // ✅ Default image if no match
-    }
   }
 }

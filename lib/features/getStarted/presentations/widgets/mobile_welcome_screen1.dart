@@ -6,19 +6,19 @@ class MobileWelcomeScreen1 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 30),
+      padding: EdgeInsets.symmetric(horizontal: 30.w),
       child: Column(
-        spacing: 30,
+        spacing: 30.h,
         children: [
-          const SizedBox(height: 5),
+          SizedBox(height: 5.h),
           Text(
             AppStrings.heading1,
             textAlign: TextAlign.center,
             style: Theme.of(context).textTheme.headlineLarge,
           ),
-          Image.asset(
+          Image.asset( 
             AppImageAssets.getStartedLogo1,
-            height: 280,
+            height: 280.h,
           ),
           Text(
             AppStrings.content1,

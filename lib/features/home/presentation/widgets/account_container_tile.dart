@@ -1,8 +1,4 @@
 import 'package:next_pass/core/constants/app_linker.dart';
-import 'package:flutter/material.dart';
-import 'package:next_pass/core/widgets/alert_symbol.dart';
-import 'package:next_pass/core/widgets/strength_badge.dart';
-
 
 class AccountContainerTile extends StatelessWidget {
   final String imageUrl;
@@ -12,7 +8,7 @@ class AccountContainerTile extends StatelessWidget {
   final String strength;
   final bool isAlert;
   final VoidCallback ontap;
-  const AccountContainerTile( 
+  const AccountContainerTile(
       {super.key,
       required this.imageUrl,
       required this.title,
@@ -27,48 +23,61 @@ class AccountContainerTile extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         color: Theme.of(context).colorScheme.primaryContainer,
-        borderRadius: BorderRadius.circular(15),
+        borderRadius: BorderRadius.circular(15.r),
       ),
-      padding: const EdgeInsets.all(10),
-      margin: const EdgeInsets.only(bottom: 15),
+      padding: EdgeInsets.all(10.w),
+      margin: EdgeInsets.only(bottom: 15.h),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
           Container(
-            height: 60,
-            width: 60,
+            height: 60.w,
+            width: 60.w,
             decoration: BoxDecoration(
               color: Theme.of(context).colorScheme.surface,
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: BorderRadius.circular(10.r),
             ),
-            padding: const EdgeInsets.all(15),
-            child: Image.asset(imageUrl),
+            padding: EdgeInsets.all(12.w),
+            child: (imageUrl.isNotEmpty)
+                ? Image.network(
+                    "https://www.google.com/s2/favicons?sz=128&domain=$imageUrl",
+                    errorBuilder: (context, error, stackTrace) {
+                      return Image.asset(AppImageAssets.appLogo);
+                    },
+                  )
+                : Image.asset(AppImageAssets.appLogo),
           ),
-          const SizedBox(
-            width: 10,
+          SizedBox(width: 10.w),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  title,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: Theme.of(context).textTheme.bodyMedium,
+                ),
+                SizedBox(height: 5.h),
+                Text(
+                  emailId,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: Theme.of(context).textTheme.labelSmall,
+                ),
+                SizedBox(height: 5.h),
+                Text(
+                  password,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: Theme.of(context).textTheme.labelSmall,
+                ),
+              ],
+            ),
           ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                title,
-                style: Theme.of(context).textTheme.bodyMedium,
-              ),
-              const SizedBox(height: 5),
-              Text(
-                emailId,
-                style: Theme.of(context).textTheme.labelSmall,
-              ),
-              const SizedBox(height: 5),
-              Text(
-                password,
-                style: Theme.of(context).textTheme.labelSmall,
-              ),
-            ],
-          ),
-          const SizedBox(width: 10),
+          SizedBox(width: 10.w),
           StrengthBadge(strength: strength),
-          const SizedBox(width: 5),
+          SizedBox(width: 5.w),
           (isAlert) ? const AlertSymbol() : const SizedBox.shrink(),
         ],
       ),

@@ -13,12 +13,13 @@ class CustomDropdown extends StatelessWidget {
     required this.popupWidth,
     required this.maxWidth,
     required this.maxHeight,
-    required this.controller, 
+    required this.controller,
   });
 
   @override
   Widget build(BuildContext context) {
-    final customDropdownController = Get.put(controller, tag: controller.hashCode.toString());
+    final customDropdownController =
+        Get.put(controller, tag: controller.hashCode.toString());
     return Container(
       constraints: BoxConstraints(
         maxHeight: maxHeight,
@@ -26,11 +27,11 @@ class CustomDropdown extends StatelessWidget {
       ),
       decoration: BoxDecoration(
         color: Theme.of(context).colorScheme.surface,
-        borderRadius: BorderRadius.circular(5),
+        borderRadius: BorderRadius.circular(5.r),
       ),
       child: Obx(
         () => DropdownButton<String>(
-          borderRadius: BorderRadius.circular(5),
+          borderRadius: BorderRadius.circular(5.r),
           onChanged: (value) {
             customDropdownController.setDropdownValue(value.toString());
           },
@@ -46,7 +47,7 @@ class CustomDropdown extends StatelessWidget {
           isExpanded: true,
           iconEnabledColor: Theme.of(context).colorScheme.tertiary,
           menuWidth: popupWidth,
-          padding: const EdgeInsets.only(left: 7, top: 5, bottom: 5),
+          padding: EdgeInsets.only(left: 7.w, top: 5.h, bottom: 5.h),
           items: itemList.map<DropdownMenuItem<String>>((String value) {
             return DropdownMenuItem(
               value: value,

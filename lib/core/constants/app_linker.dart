@@ -103,3 +103,7 @@ export 'package:next_pass/features/database%20setup/presentation/screens/web_dat
 export 'package:next_pass/features/add_new_credential/models/new_credenatial.dart';
 export 'package:shared_preferences/shared_preferences.dart';
 export 'package:next_pass/features/getStarted/controller/get_started_controller.dart';
+export 'package:flutter_screenutil/flutter_screenutil.dart';
+export 'package:next_pass/core/utils/validators.dart';
+export 'package:next_pass/features/auth/controllers/auth_controller.dart';
+
