@@ -19,7 +19,6 @@ class AuthController extends GetxController {
     isLoading.value = true;
     isError.value = false;
     errorMessage.value = "";
-
     try {
       final response = await authRepository.login(email, password);
 
@@ -38,11 +37,11 @@ class AuthController extends GetxController {
               AppRoutes.databaseSetup); // No database type, go to Setup
         }
       } else {
-        handleError(response.message);
+        handleError(response.message.toString());
       }
     } catch (e) {
       print("Error $e");
-      handleError(e);
+      handleError(e.toString());
     } finally {
       isLoading.value = false;
     }
@@ -68,21 +67,20 @@ class AuthController extends GetxController {
         SuccessMessage(response.message ?? "Account created successfully");
         Get.offAllNamed(AppRoutes.authtab);
       } else {
-        handleError(response.message);
+        handleError(response.message.toString());
       }
     } catch (e) {
       print("Error ${e}");
-      handleError(e);
+      handleError(e.toString());
     } finally {
       isLoading.value = false;
     }
   }
 
-  void handleError(dynamic response) {
+  void handleError(String response) {
     isError.value = true;
-    errorMessage.value = "ERROR come";
+    errorMessage.value = response;
     print(response);
-    ErrorMessage(errorMessage.value);
   }
 
   void saveCredentialToLocal(email, password) {}
