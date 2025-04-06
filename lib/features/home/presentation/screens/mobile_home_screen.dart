@@ -27,9 +27,7 @@ class MobileHomeScreen extends StatelessWidget {
                         "https://writestylesonline.com/wp-content/uploads/2018/11/Three-Statistics-That-Will-Make-You-Rethink-Your-Professional-Profile-Picture.jpg",
                     userName: "Harsh Kumar Gupta",
                     onTap: () {
-                      authController.logOut();
-                      Get.toNamed(AppRoutes.login);
-                      print("VIEW PROFILE CLICKED . ✅✅");
+                      Get.toNamed(AppRoutes.profilePage);
                     },
                   ),
                   const Spacer(),
