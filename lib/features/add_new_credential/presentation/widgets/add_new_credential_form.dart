@@ -9,9 +9,15 @@ class AddNewCredentialForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Get.lazyPut(() => CategoryListController());
+    Get.lazyPut(() => ReminderListController());
     final AddNewCredentialController controller =
         Get.find<AddNewCredentialController>();
     PasswordController passwordController = Get.put(PasswordController());
+    final CategoryListController categoryController =
+        Get.find<CategoryListController>();
+    final ReminderListController reminderController =
+        Get.find<ReminderListController>();
 
     final _formKey = GlobalKey<FormState>(); // Added form key
     final RxBool isSecure = true.obs;
@@ -192,10 +198,10 @@ class AddNewCredentialForm extends StatelessWidget {
                         '60 Days',
                         '90 Days'
                       ],
-                      controller: ReminderListController(),
-                      popupWidth: 100.w,
-                      maxWidth: 130.w,
-                      maxHeight: 40.h,
+                      controller: reminderController,
+                      popupWidth: 100.0,
+                      maxWidth: 130.0,
+                      maxHeight: 40.0,
                     ),
                   ],
                 ),
@@ -209,10 +215,10 @@ class AddNewCredentialForm extends StatelessWidget {
                     SizedBox(height: 5.h),
                     CustomDropdown(
                       itemList: const ['Website', 'App', 'Payment', 'Other'],
-                      controller: CategoryListController(),
-                      popupWidth: 100.w,
-                      maxWidth: 130.w,
-                      maxHeight: 40.h,
+                      controller: categoryController,
+                      popupWidth: 100.0,
+                      maxWidth: 130.0,
+                      maxHeight: 40.0,
                     ),
                   ],
                 )
@@ -230,6 +236,8 @@ class AddNewCredentialForm extends StatelessWidget {
                       controller.titleController.text,
                       controller.password.text,
                       controller.mobileNumber.text,
+                      categoryController.selectedValue.value,
+                      reminderController.selectedValue.value,
                     );
                   } catch (e) {
                     print(e.toString());
