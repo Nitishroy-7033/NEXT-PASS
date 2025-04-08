@@ -11,4 +11,5 @@ class AppRoutes {
   static const String appCredentials='/AppCredentials';
   static const String databaseSetup ='/databaseSetup';
   static const String searchCredential = '/searchCredential';
+  static const String profilePage = '/profile';
 }

@@ -26,9 +26,7 @@ class MobileHomeScreen extends StatelessWidget {
                     profileImageURL: "",
                     userName: "Harsh Kumar Gupta",
                     onTap: () {
-                      authController.logOut();
-                      Get.toNamed(AppRoutes.authtab);
-                      print("VIEW PROFILE CLICKED . ✅✅");
+                      Get.toNamed(AppRoutes.profilePage);
                     },
                   ),
                   const Spacer(),
