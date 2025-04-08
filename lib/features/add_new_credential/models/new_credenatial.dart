@@ -6,7 +6,8 @@ class CredentialModel {
   String? password;
   String? userName;
   String? phoneNumber;
-  int? passwordChangeReminder;
+  int? passwordChangeReminder; // Adjust to String? if backend expects "30 Days"
+  String? categoryCred;
   bool? isPasswordLeaked;
   String? passwordStrength;
   bool? isPasswordCompromised;
@@ -22,29 +23,31 @@ class CredentialModel {
   String? backupEmail;
   String? notes;
 
-  CredentialModel(
-      {this.id,
-      this.siteUrl,
-      this.title,
-      this.emailId,
-      this.password,
-      this.userName,
-      this.phoneNumber,
-      this.passwordChangeReminder,
-      this.isPasswordLeaked,
-      this.passwordStrength,
-      this.isPasswordCompromised,
-      this.createdAt,
-      this.updatedAt,
-      this.lastPasswordChange,
-      this.passwordAccessed,
-      this.passwordHistory,
-      this.twoFactorAuthEnabled,
-      this.securityQuestions,
-      this.notifications,
-      this.trustedDevices,
-      this.backupEmail,
-      this.notes});
+  CredentialModel({
+    this.id,
+    this.siteUrl,
+    this.title,
+    this.emailId,
+    this.password,
+    this.userName,
+    this.phoneNumber,
+    this.passwordChangeReminder,
+    this.categoryCred,
+    this.isPasswordLeaked,
+    this.passwordStrength,
+    this.isPasswordCompromised,
+    this.createdAt,
+    this.updatedAt,
+    this.lastPasswordChange,
+    this.passwordAccessed,
+    this.passwordHistory,
+    this.twoFactorAuthEnabled,
+    this.securityQuestions,
+    this.notifications,
+    this.trustedDevices,
+    this.backupEmail,
+    this.notes,
+  });
 
   CredentialModel.fromJson(Map<String, dynamic> json) {
     if (json["id"] is String) {
@@ -70,6 +73,9 @@ class CredentialModel {
     }
     if (json["passwordChangeReminder"] is int) {
       passwordChangeReminder = json["passwordChangeReminder"];
+    }
+    if (json["category"] is String) {
+      categoryCred = json["category"];
     }
     if (json["isPasswordLeaked"] is bool) {
       isPasswordLeaked = json["isPasswordLeaked"];
@@ -147,6 +153,7 @@ class CredentialModel {
     data["userName"] = userName;
     data["phoneNumber"] = phoneNumber;
     data["passwordChangeReminder"] = passwordChangeReminder;
+    data["Category"] = categoryCred;
     data["isPasswordLeaked"] = isPasswordLeaked;
     data["passwordStrength"] = passwordStrength;
     data["isPasswordCompromised"] = isPasswordCompromised;

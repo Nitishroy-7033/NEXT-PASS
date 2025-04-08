@@ -1,16 +1,14 @@
+import 'package:get/get.dart';
 import 'package:next_pass/core/utils/messages.dart';
-
 import '../../../core/constants/app_linker.dart';
 
 class AddNewCredentialController extends GetxController {
   final CredentialInterface credentialRepository =
       Get.put(CredentialRepository());
-  final HomeScreenController homeScreenController =
-      Get.put(HomeScreenController()); // Injected automatically
   final PasswordController passwordController = Get.put(PasswordController());
 
   TextEditingController siteUrlController = TextEditingController();
-  RxString siteUrl = ''.obs; // Observable URL
+  RxString siteUrl = ''.obs;
 
   TextEditingController userName = TextEditingController();
   TextEditingController emailId = TextEditingController();
@@ -21,8 +19,6 @@ class AddNewCredentialController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-
-    // Update siteUrl whenever the user types in the TextField
     siteUrlController.addListener(() {
       siteUrl.value = siteUrlController.text.trim();
     });
@@ -32,15 +28,39 @@ class AddNewCredentialController extends GetxController {
   }
 
   Future<void> saveCredential(
-      userName, emailId, titleController, password, mobileNumber) async {
-    var success = await credentialRepository.createNewCredential(siteUrl.value,
-        userName, emailId, titleController, mobileNumber, password);
-    if (success) {
-     await homeScreenController.fetchCredentials(); // Fetch updated credentials
-      clearFormFields();
-      SuccessMessage("Credential saved successfully!");
-    } else {
-      ErrorMessage("Failed to add credential");
+    String userName,
+    String emailId,
+    String title,
+    String password,
+    String mobileNumber,
+    String categoryCred,
+    String passwordChangeReminder,
+  ) async {
+    try {
+      // Extract number from reminder string (e.g., "30 Days" -> 30)
+      final reminderDays =
+          int.tryParse(passwordChangeReminder.split(' ')[0]) ?? 30;
+
+      var success = await credentialRepository.createNewCredential(
+        siteUrl.value,
+        userName,
+        emailId,
+        title,
+        mobileNumber,
+        password,
+        categoryCred,
+        reminderDays
+            .toString(), // Send as string if API expects it, or adjust backend
+      );
+
+      if (success) {
+        clearFormFields();
+        SuccessMessage("Credential saved successfully!");
+      } else {
+        ErrorMessage("Failed to add credential");
+      }
+    } catch (e) {
+      ErrorMessage("Error saving credential: $e");
     }
   }
 
@@ -51,5 +71,17 @@ class AddNewCredentialController extends GetxController {
     titleController.clear();
     password.clear();
     mobileNumber.clear();
+    siteUrl.value = '';
+  }
+
+  @override
+  void onClose() {
+    siteUrlController.dispose();
+    userName.dispose();
+    emailId.dispose();
+    titleController.dispose();
+    password.dispose();
+    mobileNumber.dispose();
+    super.onClose();
   }
 }
