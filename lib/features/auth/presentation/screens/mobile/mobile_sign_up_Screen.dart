@@ -82,7 +82,7 @@ class MobileSignUpScreen extends StatelessWidget {
               obscureText: isSecure.value,
               decoration: InputDecoration(
                 prefixIcon: const Icon(Icons.password),
-                hintText: "⁎⁎⁎⁎⁎⁎⁎⁎⁎⁎",
+                hintText: "**********",
                 suffixIcon: InkWell(
                   onTap: () {
                     isSecure.value = !isSecure.value;
@@ -105,12 +105,14 @@ class MobileSignUpScreen extends StatelessWidget {
                   children: [
                     const Icon(Icons.error, color: Colors.red),
                     SizedBox(width: 10.w),
-                    Text(
-                      authController.errorMessage.value,
-                      style: Theme.of(context)
-                          .textTheme
-                          .bodyMedium
-                          ?.copyWith(color: Colors.red),
+                    Expanded(
+                      child: Text(
+                        authController.errorMessage.value,
+                        style: Theme.of(context)
+                            .textTheme
+                            .bodyMedium
+                            ?.copyWith(color: Colors.red),
+                      ),
                     ),
                   ],
                 )

@@ -8,7 +8,7 @@ class MobileWelcomeScreen1 extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 30.w),
       child: Column(
-        spacing: 30.h,
+        spacing: 26.h,
         children: [
           SizedBox(height: 5.h),
           Text(
@@ -16,7 +16,7 @@ class MobileWelcomeScreen1 extends StatelessWidget {
             textAlign: TextAlign.center,
             style: Theme.of(context).textTheme.headlineLarge,
           ),
-          Image.asset( 
+          Image.asset(
             AppImageAssets.getStartedLogo1,
             height: 280.h,
           ),

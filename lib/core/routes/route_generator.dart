@@ -1,4 +1,5 @@
 import 'package:next_pass/core/constants/app_linker.dart';
+import 'package:next_pass/features/profile/presentation/views/view_profile_page.dart' show ViewProfilePage;
 
 import '../../features/database setup/presentation/views/database_setup_view.dart';
 
@@ -87,6 +88,12 @@ class RouteGenerator {
         name: AppRoutes.databaseSetup,
         page: () => const DatabaseSetupView(),
         transition: Transition.zoom,
+        transitionDuration: const Duration(milliseconds: 500),
+      ),
+      GetPage(
+        name: AppRoutes.profilePage,
+        page: () => const ViewProfilePage(),
+        transition: Transition.leftToRightWithFade,
         transitionDuration: const Duration(milliseconds: 500),
       ),
     ];
