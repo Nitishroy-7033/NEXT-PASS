@@ -17,8 +17,8 @@ class AppCredentials extends StatelessWidget {
                   controller.isEditing.value
                       ? IconsAssets.check_icon
                       : IconsAssets.edit_icon,
-                  width: 20,
-                  height: 20,
+                  width: 20.w,
+                  height: 20.w,
                   colorFilter: ColorFilter.mode(
                     Theme.of(context).colorScheme.onPrimaryContainer,
                     BlendMode.srcIn,
@@ -32,21 +32,19 @@ class AppCredentials extends StatelessWidget {
                 },
               )),
         ),
-        body: Center(
+        body: SafeArea(
           child: SingleChildScrollView(
-            child: SafeArea(
-              child: Column(
-                children: [
-                  const HeaderWidget(),
+            child: Column(
+              children: [
+                const HeaderWidget(),
 
-                  //  Wrap CredentialWidget with Obx() for real-time updates
-                  Obx(() => CredentialWidget(
-                        isEditing: controller.isEditing.value,
-                      )),
+                //  Wrap CredentialWidget with Obx() for real-time updates
+                Obx(() => CredentialWidget(
+                      isEditing: controller.isEditing.value,
+                    )),
 
-                  const FooterWidget(),
-                ],
-              ),
+                const FooterWidget(),
+              ],
             ),
           ),
         ),

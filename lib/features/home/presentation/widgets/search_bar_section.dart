@@ -1,14 +1,18 @@
 import '../../../../core/constants/app_linker.dart';
 
 class SearchBarSection extends StatelessWidget {
-  const SearchBarSection({super.key});
+  final VoidCallback onTap;
+  const SearchBarSection({super.key, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
     TextEditingController homeSearchController = TextEditingController();
     return TextField(
       autofocus: false,
+      onTap: onTap,
       controller: homeSearchController,
+      canRequestFocus: false,
+      readOnly: true,
       decoration: InputDecoration(
         contentPadding: EdgeInsets.only(bottom: 5.h, right: 5.w),
         constraints: BoxConstraints(

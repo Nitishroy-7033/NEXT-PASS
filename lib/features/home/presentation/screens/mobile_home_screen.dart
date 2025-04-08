@@ -54,7 +54,11 @@ class MobileHomeScreen extends StatelessWidget {
                 ],
               ),
               SizedBox(height: 12.h),
-              const SearchBarSection(),
+              SearchBarSection(
+                onTap: () {
+                  Get.toNamed(AppRoutes.searchCredential);
+                },
+              ),
             ],
           ),
           scrolledUnderElevation: 0.0,

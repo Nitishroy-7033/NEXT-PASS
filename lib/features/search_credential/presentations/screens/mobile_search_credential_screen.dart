@@ -57,7 +57,7 @@ class MobileSearchCredentialScreen extends StatelessWidget {
         "strength": "Strong",
         "isAlert": true
       },
-     {
+      {
         "title": "Google Account",
         "emailId": "Nitishr833@gmail.com",
         "imageUrl": AppImageAssets.googleLogo,
@@ -88,89 +88,94 @@ class MobileSearchCredentialScreen extends StatelessWidget {
         "password": "*********************",
         "strength": "Strong",
         "isAlert": true
-      }, 
+      },
     ];
-    return Scaffold(
-      backgroundColor: Theme.of(context).colorScheme.surface,
-      appBar: AppBar(
-        title: Text("Search Credential",
-        style: Theme.of(context).textTheme.bodyMedium,),
-        backgroundColor: Theme.of(context).colorScheme.primaryContainer,
-        leading: Icon(Icons.arrow_back),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.fromLTRB(16, 10, 16, 20),
-        child: Column(
+    return SafeArea(
+      child: Scaffold(
+        appBar: AppBar(
+          title: const Text(
+            "Search Credential",
+          ),
+          scrolledUnderElevation: 0.0,
+        ),
+        body: Padding(
+          padding: EdgeInsets.only(right: 16.w, left: 16.w, top: 12.h),
+          child: Column(
             children: [
-                   TextField(
-                    autofocus: false,
-                    controller: searchController,
-                    decoration: InputDecoration(
-                     contentPadding: const EdgeInsets.only(bottom: 5, right: 5),
-                      constraints: const BoxConstraints(
-                        maxHeight: 40,),
-                        hintText: AppStrings.searchText,
-                      hintStyle: Theme.of(context).textTheme.labelMedium,
-                      prefixIcon: Padding(
-                        padding: const EdgeInsets.all(12.0),
-                        child: SvgPicture.asset(
-                          IconsAssets.searchIcon,
-                          colorFilter: ColorFilter.mode(
-                            Theme.of(context).colorScheme.tertiary,
-                            BlendMode.srcIn,
-                          ),
-                        ),
-                      ),
-                      fillColor: Theme.of(context).colorScheme.primaryContainer,
-                      filled: true,
-                      enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                          borderSide: BorderSide(
-                            color: Theme.of(context).colorScheme.primaryContainer,
-                          )),
-                      focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                        borderSide: BorderSide(
-                          color: Theme.of(context).colorScheme.primary,
-                        ),
+              TextField(
+                autofocus: true,
+                controller: searchController,
+                decoration: InputDecoration(
+                  contentPadding: EdgeInsets.only(bottom: 5.h, right: 5.w),
+                  constraints: BoxConstraints(
+                    maxHeight: 43.h,
+                  ),
+                  hintText: AppStrings.searchText,
+                  hintStyle: Theme.of(context).textTheme.labelMedium,
+                  prefixIcon: Padding(
+                    padding: EdgeInsets.all(12.w),
+                    child: SvgPicture.asset(
+                      IconsAssets.searchIcon,
+                      colorFilter: ColorFilter.mode(
+                        Theme.of(context).colorScheme.tertiary,
+                        BlendMode.srcIn,
                       ),
                     ),
-                    maxLines: 1,
-                    cursorColor: Theme.of(context).colorScheme.onSurface,
-                    cursorWidth: 1.5,
-                    style: Theme.of(context).textTheme.bodyMedium,
-                   ),
-                   const SizedBox(height: 12,),
-                   Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      OptionContainer(label: "App"),
-                      OptionContainer(label: "Website"),
-                      OptionContainer(label: "Payments"),
-                      OptionContainer(label: "Others")
-                    ],
-                   ),
-                   const SizedBox(height: 29,),
-                   Expanded(
-              child: ListView.builder(
-                itemCount: accounts.length,
-                itemBuilder: (context, index) {
-                  final account = accounts[index];
-                  return AccountContainerTile(
-          
-                    title: account["title"],
-                    emailId: account["emailId"],
-                    imageUrl: account["imageUrl"],
-                    password: account["password"],
-                    strength: account["strength"],
-                    isAlert: account["isAlert"],
-                    ontap: () {},
-                  );
-                },
+                  ),
+                  fillColor: Theme.of(context).colorScheme.primaryContainer,
+                  filled: true,
+                  enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10.r),
+                      borderSide: BorderSide(
+                        color: Theme.of(context).colorScheme.primaryContainer,
+                      )),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10.r),
+                    borderSide: BorderSide(
+                      color: Theme.of(context).colorScheme.primary,
+                    ),
+                  ),
+                ),
+                maxLines: 1,
+                cursorColor: Theme.of(context).colorScheme.onSurface,
+                cursorWidth: 1.5.w,
+                style: Theme.of(context).textTheme.bodyMedium,
               ),
-            ),
+              SizedBox(
+                height: 12.h,
+              ),
+              const Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  OptionContainer(label: "App"),
+                  OptionContainer(label: "Website"),
+                  OptionContainer(label: "Payments"),
+                  OptionContainer(label: "Others"),
+                ],
+              ),
+              SizedBox(
+                height: 18.h,
+              ),
+              Expanded(
+                child: ListView.builder(
+                  itemCount: accounts.length,
+                  itemBuilder: (context, index) {
+                    final account = accounts[index];
+                    return AccountContainerTile(
+                      title: account["title"],
+                      emailId: account["emailId"],
+                      imageUrl: account["imageUrl"],
+                      password: account["password"],
+                      strength: account["strength"],
+                      isAlert: account["isAlert"],
+                      ontap: () {},
+                    );
+                  },
+                ),
+              ),
             ],
           ),
+        ),
       ),
     );
   }
