@@ -9,7 +9,8 @@ class CredentialRepository implements CredentialInterface {
       String emailId,
       String titleController,
       String mobileNumber,
-      String password) async {
+      String password,
+      int passwordChangeReminder) async {
     try {
       var response = await apiClient.request(
         "/credential",
@@ -20,7 +21,8 @@ class CredentialRepository implements CredentialInterface {
           "emailId": emailId,
           "Title": titleController,
           "mobileNumber": mobileNumber,
-          "password": password
+          "password": password,
+          "passwordChangeReminder":passwordChangeReminder,
         },
       );
 

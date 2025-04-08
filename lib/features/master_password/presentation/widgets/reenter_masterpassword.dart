@@ -8,19 +8,11 @@ class ReenterMasterPinWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    
-    final double w = MediaQuery.of(context).size.width;
-
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Text(
-          "Re-enter Master PIN",
-          style: Theme.of(context).textTheme.labelMedium!.copyWith(
-                color: Theme.of(context).colorScheme.tertiary,
-              ),
-        ),
-      ],
+    return Text(
+      "Re-enter Master PIN",
+      style: Theme.of(context).textTheme.labelLarge?.copyWith(
+            color: Theme.of(context).colorScheme.tertiary,
+          ),
     );
   }
 }

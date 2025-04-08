@@ -219,23 +219,31 @@ class AddNewCredentialForm extends StatelessWidget {
               ],
             ),
             SizedBox(height: 30.h),
-            PrimaryButton(
-              text: AppStrings.buttonSave,
-              onPressed: () {
-                if (_formKey.currentState!.validate()) {
-                  try {
-                    controller.saveCredential(
-                      controller.userName.text,
-                      controller.emailId.text,
-                      controller.titleController.text,
-                      controller.password.text,
-                      controller.mobileNumber.text,
-                    );
-                  } catch (e) {
-                    print(e.toString());
-                  }
-                }
-              },
+            Obx(
+              () => (controller.isLoading.value)
+                  ? Center(
+                      child: SizedBox(
+                          height: 30.w,
+                          width: 30.w,
+                          child: const CircularProgressIndicator()))
+                  : PrimaryButton(
+                      text: AppStrings.buttonSave,
+                      onPressed: () {
+                        if (_formKey.currentState!.validate()) {
+                          try {
+                            controller.saveCredential(
+                              controller.userName.text,
+                              controller.emailId.text,
+                              controller.titleController.text,
+                              controller.password.text,
+                              controller.mobileNumber.text,
+                            );
+                          } catch (e) {
+                            print(e.toString());
+                          }
+                        }
+                      },
+                    ),
             ),
           ],
         ),

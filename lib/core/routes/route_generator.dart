@@ -18,21 +18,9 @@ class RouteGenerator {
         transitionDuration: const Duration(milliseconds: 600),
       ),
       GetPage(
-        name: AppRoutes.signUp,
-        page: () => const SignUpView(),
-        transition: Transition.cupertino,
-        transitionDuration: const Duration(milliseconds: 500),
-      ),
-      GetPage(
         name: AppRoutes.authtab,
         page: () => const AuthTabView(),
         transition: Transition.rightToLeftWithFade,
-        transitionDuration: const Duration(milliseconds: 500),
-      ),
-      GetPage(
-        name: AppRoutes.login,
-        page: () => const LoginView(),
-        transition: Transition.cupertino,
         transitionDuration: const Duration(milliseconds: 500),
       ),
       GetPage(
