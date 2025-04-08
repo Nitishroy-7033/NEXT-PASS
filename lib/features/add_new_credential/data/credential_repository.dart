@@ -1,11 +1,15 @@
-
 import 'package:next_pass/core/constants/app_linker.dart';
 
 class CredentialRepository implements CredentialInterface {
   final ApiClient apiClient = Get.find<ApiClient>();
   @override
-   Future<bool> createNewCredential(
-      String siteUrl, String userName, String emailId, String mobileNumber, String password) async {
+  Future<bool> createNewCredential(
+      String siteUrl,
+      String userName,
+      String emailId,
+      String titleController,
+      String mobileNumber,
+      String password) async {
     try {
       var response = await apiClient.request(
         "/credential",
@@ -14,6 +18,7 @@ class CredentialRepository implements CredentialInterface {
           "siteUrl": siteUrl,
           "userName": userName,
           "emailId": emailId,
+          "Title": titleController,
           "mobileNumber": mobileNumber,
           "password": password
         },
@@ -30,23 +35,18 @@ class CredentialRepository implements CredentialInterface {
       print("⚠️ Error creating credential: $e");
       return false;
     }
-      }
+  }
 
   @override
   Future<List<CredentialModel>> searchCredential() {
     throw UnimplementedError();
   }
-  
+
   @override
   Future<List<CredentialModel>> getAllCredentail() {
     // TODO: implement getAllCredentail
     throw UnimplementedError();
   }
-  
-  
-  
-
-
 
 // Nitish bro code
 // Future<bool> createNewCredeantial(CredentialModel newCredenatil) async {
@@ -65,8 +65,4 @@ class CredentialRepository implements CredentialInterface {
   //       .map((item) => CredentialModel.fromJson(item))
   //       .toList();
   // }
-
-
-
-
 }

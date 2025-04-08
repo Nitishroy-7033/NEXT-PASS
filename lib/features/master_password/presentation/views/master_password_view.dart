@@ -6,7 +6,7 @@ class MasterPasswordView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Responsive(
+    return const Responsive(
         mobile: MobileMasterPasswordScreen(),
         tablet:  MobileMasterPasswordScreen(),
         desktop:  MobileMasterPasswordScreen());

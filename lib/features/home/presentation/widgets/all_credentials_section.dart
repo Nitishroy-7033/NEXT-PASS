@@ -7,6 +7,7 @@ class AllCredentialsSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final PasswordController passwordController = Get.put(PasswordController());
     return Obx(() {
       if (controller.isLoading.value) {
         return const Center(
@@ -24,58 +25,34 @@ class AllCredentialsSection extends StatelessWidget {
         itemCount: controller.credentials.length,
         itemBuilder: (context, index) {
           final credential = controller.credentials[index];
-    print("Password Strength for ${credential.title}: ${credential.passwordStrength}");
-    print("Raw Strength Value: '${credential.passwordStrength}'");
-
-
-          return AccountContainerTile(
-            title: credential.title,
-            emailId: credential.emailId, // ✅ Backend se aaya actual email
-            password: '********',
-            strength: _getPasswordStrengthLabel(credential.passwordStrength),
-            imageUrl: _getImageUrl(credential.siteUrl),
-          isAlert: int.tryParse(credential.passwordStrength) != null 
-    ? int.parse(credential.passwordStrength) < 3 
-    : false,
-
-            ontap: () {},
+          print(
+              "Password Strength for ${credential.title}: ${credential.passwordStrength}");
+          print("Raw Strength Value: '${credential.passwordStrength}'");
+          return GestureDetector(
+            onTap: () {
+              Get.to(() => const AppCredentials(), arguments: {
+                "title": credential.title,
+                "siteUrl": credential.siteUrl,
+                "userName": credential.username,
+                "email": credential.emailId,
+                "password": credential.password,
+              });
+            },
+            child: AccountContainerTile(
+              title: credential.title,
+              emailId: credential.emailId,
+              password: credential.password, // '********',
+              strength: passwordController
+                  .checkandReturnPasswordStrength(credential.password),
+              imageUrl: credential.siteUrl,
+              isAlert: int.tryParse(credential.passwordStrength) != null
+                  ? int.parse(credential.passwordStrength) < 3
+                  : false,
+              ontap: () {},
+            ),
           );
         },
       );
     });
-  }
-
-
-
-  /// **Convert Password Strength to Label**
-String _getPasswordStrengthLabel(String strength) {
-  switch (strength.toLowerCase().trim()) {  // ✅ Ensure case-insensitivity & remove extra spaces
-    case "strong":
-      return "Strong";
-    case "medium":
-      return "Medium";
-    case "weak":
-      return "Weak";
-    default:
-      return "Unknown";  // ✅ For debugging
-  }
-}
-
-
-  /// **Get Image Based on URL**
-  String _getImageUrl(String siteUrl) {
-    if (siteUrl.contains("facebook")) {
-      return AppImageAssets.facebookLogo;
-    } else if (siteUrl.contains("google")) {
-      return AppImageAssets.googleLogo;
-    } else if (siteUrl.contains("twitter")) {
-      return AppImageAssets.twitterLogo;
-    } else if (siteUrl.contains("linkedin")) {
-      return AppImageAssets.linkedinLogo;
-    } else if (siteUrl.contains("playstore")) {
-      return AppImageAssets.playstoreLogo;
-    } else {
-      return AppImageAssets.appLogo; // ✅ Default image if no match
-    }
   }
 }

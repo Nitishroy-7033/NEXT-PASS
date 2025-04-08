@@ -13,14 +13,14 @@ class AddNewCredentialForm extends StatelessWidget {
         Get.find<AddNewCredentialController>();
     PasswordController passwordController = Get.put(PasswordController());
 
-    final _formKey = GlobalKey<FormState>();
-    final RxBool isSecure = true.obs; // Added form key
+    final _formKey = GlobalKey<FormState>(); // Added form key
+    final RxBool isSecure = true.obs;
 
     return Container(
-      padding: const EdgeInsets.all(20),
+      padding: EdgeInsets.all(20.w),
       decoration: BoxDecoration(
           color: Theme.of(context).colorScheme.primaryContainer,
-          borderRadius: BorderRadius.circular(20)),
+          borderRadius: BorderRadius.circular(20.r)),
       child: Form(
         key: _formKey, // Wrapped the form with validation
         child: Column(
@@ -30,12 +30,12 @@ class AddNewCredentialForm extends StatelessWidget {
               AppStrings.credentialNC,
               style: Theme.of(context).textTheme.bodyMedium,
             ),
-            const SizedBox(height: 15),
+            SizedBox(height: 15.h),
             Text(
               AppStrings.siteAddressLabelNC,
               style: Theme.of(context).textTheme.labelMedium,
             ),
-            const SizedBox(height: 10),
+            SizedBox(height: 10.h),
             TextFormField(
               textInputAction: TextInputAction.next,
               controller: controller.siteUrlController,
@@ -47,14 +47,33 @@ class AddNewCredentialForm extends StatelessWidget {
                 hintText: AppStrings.siteHintTextNC,
               ),
               validator: (value) =>
-                  value!.isEmpty ? "Enter Site URL*" : null, // Validation added
+                  value!.isEmpty ? "Enter Site URL" : null, // Validation added
             ),
-            const SizedBox(height: 20),
+            SizedBox(height: 20.h),
+            Text(
+              AppStrings.siteTitle,
+              style: Theme.of(context).textTheme.labelMedium,
+            ),
+            SizedBox(height: 10.h),
+            TextFormField(
+              textInputAction: TextInputAction.next,
+              controller: controller.titleController,
+              decoration: InputDecoration(
+                prefixIcon: Icon(
+                  Icons.label,
+                  color: Theme.of(context).colorScheme.tertiary,
+                ),
+                hintText: AppStrings.siteTitle,
+              ),
+              validator: (value) =>
+                  value!.isEmpty ? "Enter Title" : null, // Validation added
+            ),
+            SizedBox(height: 20.h),
             Text(
               AppStrings.userNameLabelNC,
               style: Theme.of(context).textTheme.labelMedium,
             ),
-            const SizedBox(height: 10),
+            SizedBox(height: 10.h),
             TextFormField(
               textInputAction: TextInputAction.next,
               controller: controller.userName,
@@ -66,16 +85,17 @@ class AddNewCredentialForm extends StatelessWidget {
                 hintText: AppStrings.userNameHintTextNC,
               ),
             ),
-            const SizedBox(height: 20),
+            SizedBox(height: 20.h),
             Text(
               AppStrings.emailLabelNC,
               style: Theme.of(context).textTheme.labelMedium,
             ),
-            const SizedBox(height: 10),
+            SizedBox(height: 10.h),
             TextFormField(
               textInputAction: TextInputAction.next,
               controller: controller.emailId,
               obscureText: false,
+              keyboardType: TextInputType.emailAddress,
               decoration: InputDecoration(
                 prefixIcon: Icon(
                   Icons.alternate_email,
@@ -84,18 +104,19 @@ class AddNewCredentialForm extends StatelessWidget {
                 hintText: AppStrings.emailHintTextNC,
               ),
               validator: (value) =>
-                  value!.isEmpty ? "Enter Email Address*" : null,
+                  value!.isEmpty ? "Enter Email Address" : null,
             ),
-            const SizedBox(height: 20),
+            SizedBox(height: 20.h),
             Text(
               AppStrings.phoneNumberLabelNC,
               style: Theme.of(context).textTheme.labelMedium,
             ),
-            const SizedBox(height: 10),
+            SizedBox(height: 10.h),
             TextFormField(
               textInputAction: TextInputAction.next,
               controller: controller.mobileNumber,
               obscureText: false,
+              keyboardType: TextInputType.phone,
               decoration: InputDecoration(
                 prefixIcon: Icon(
                   Icons.call,
@@ -104,41 +125,40 @@ class AddNewCredentialForm extends StatelessWidget {
                 hintText: AppStrings.phoneNumberHintTextNC,
               ),
             ),
-            const SizedBox(height: 20),
+            SizedBox(height: 20.h),
             Text(
               AppStrings.passwordAddressLabelNC,
               style: Theme.of(context).textTheme.labelMedium,
             ),
-            const SizedBox(height: 10),
-            Obx(
-              () => TextFormField(
-                textInputAction: TextInputAction.done,
-                controller: controller.password,
-                obscureText: isSecure.value,
-                onChanged: (value) {
-                  passwordController.checkPasswordStrength(value);
-                },
-                decoration: InputDecoration(
-                  suffixIcon: InkWell(
-                    onTap: () {
-                      isSecure.value = !isSecure.value;
-                    },
-                    child: Icon(
-                      isSecure.value
-                          ? Icons.remove_red_eye_outlined
-                          : Icons.remove_red_eye,
+            SizedBox(height: 10.h),
+            Obx(() => TextFormField(
+                  textInputAction: TextInputAction.done,
+                  controller: controller.password,
+                  obscureText: isSecure.value, // Toggle password visibility
+                  onChanged: (value) {
+                    passwordController.checkPasswordStrength(value);
+                  },
+                  decoration: InputDecoration(
+                    suffixIcon: InkWell(
+                      onTap: () {
+                        isSecure.value = !isSecure.value; // Toggle value
+                      },
+                      child: Icon(
+                        isSecure.value
+                            ? Icons.visibility_off
+                            : Icons.visibility, // Eye icon toggle
+                      ),
                     ),
+                    prefixIcon: Icon(
+                      Icons.lock_rounded,
+                      color: Theme.of(context).colorScheme.tertiary,
+                    ),
+                    hintText: AppStrings.passwordHintTextNC,
                   ),
-                  prefixIcon: Icon(
-                    Icons.lock_rounded,
-                    color: Theme.of(context).colorScheme.tertiary,
-                  ),
-                  hintText: AppStrings.passwordHintTextNC,
-                ),
-                validator: (value) => value!.isEmpty ? "Enter Password*" : null,
-              ),
-            ),
-            const SizedBox(height: 20),
+                  validator: (value) =>
+                      value!.isEmpty ? "Enter Password*" : null,
+                )),
+            SizedBox(height: 20.h),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -152,7 +172,7 @@ class AddNewCredentialForm extends StatelessWidget {
                 ),
               ],
             ),
-            const SizedBox(height: 10),
+            SizedBox(height: 10.h),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -163,7 +183,7 @@ class AddNewCredentialForm extends StatelessWidget {
                       AppStrings.reminderNC,
                       style: Theme.of(context).textTheme.labelMedium,
                     ),
-                    const SizedBox(height: 5),
+                    SizedBox(height: 5.h),
                     CustomDropdown(
                       itemList: const [
                         '7 Days',
@@ -173,9 +193,9 @@ class AddNewCredentialForm extends StatelessWidget {
                         '90 Days'
                       ],
                       controller: ReminderListController(),
-                      popupWidth: 90,
-                      maxWidth: 120,
-                      maxHeight: 40,
+                      popupWidth: 100.w,
+                      maxWidth: 130.w,
+                      maxHeight: 40.h,
                     ),
                   ],
                 ),
@@ -186,19 +206,19 @@ class AddNewCredentialForm extends StatelessWidget {
                       AppStrings.categoryNC,
                       style: Theme.of(context).textTheme.labelMedium,
                     ),
-                    const SizedBox(height: 5),
+                    SizedBox(height: 5.h),
                     CustomDropdown(
                       itemList: const ['Website', 'App', 'Payment', 'Other'],
                       controller: CategoryListController(),
-                      popupWidth: 120,
-                      maxWidth: 130,
-                      maxHeight: 40,
+                      popupWidth: 100.w,
+                      maxWidth: 130.w,
+                      maxHeight: 40.h,
                     ),
                   ],
                 )
               ],
             ),
-            const SizedBox(height: 30),
+            SizedBox(height: 30.h),
             PrimaryButton(
               text: AppStrings.buttonSave,
               onPressed: () {
@@ -207,6 +227,7 @@ class AddNewCredentialForm extends StatelessWidget {
                     controller.saveCredential(
                       controller.userName.text,
                       controller.emailId.text,
+                      controller.titleController.text,
                       controller.password.text,
                       controller.mobileNumber.text,
                     );

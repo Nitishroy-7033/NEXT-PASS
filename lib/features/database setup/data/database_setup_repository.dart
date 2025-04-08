@@ -18,6 +18,10 @@ class DatabaseSetupRepository implements DatabaseSetupInterface {
           "dataBaseType": dataBaseType,
         },
       );
+       if (response.data["success"] == true) {
+        await _saveDatabaseType(dataBaseType); // Save database type
+      }
+
       return ApiResponse<AuthModel>(
         data: AuthModel.fromJson(response.data["data"]),
         message: response.data["message"] ?? "Database Selected Successfully",
@@ -44,6 +48,9 @@ class DatabaseSetupRepository implements DatabaseSetupInterface {
           "dataBaseType": dataBaseType,
         },
       );
+      if (response.data["success"] == true) {
+        await _saveDatabaseType(dataBaseType); // Save database type
+      }
       return ApiResponse<AuthModel>(
         data: AuthModel.fromJson(response.data["data"]),
         message: response.data["message"] ?? "Database Selected Successfully",
@@ -57,4 +64,24 @@ class DatabaseSetupRepository implements DatabaseSetupInterface {
       );
     }
   }
+
+ // Method to save database type in SharedPreferences
+  Future<void> _saveDatabaseType(String databaseType) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString("databaseType", databaseType);
+  }
+  Future<bool> isMasterPinSet() async {
+  final prefs = await SharedPreferences.getInstance();
+  return prefs.containsKey("saved_pin"); // Agar PIN set hai to true return karega
+
+  
+}
+
+
+
+
+
+
+
+
 }

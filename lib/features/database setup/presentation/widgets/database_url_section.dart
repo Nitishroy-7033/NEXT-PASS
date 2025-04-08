@@ -12,39 +12,44 @@ class DatabaseUrlSection extends StatelessWidget {
       () => (selectDatabaseController.selectedIndex.value == 0)
           ? Column(
               children: [
-                const SizedBox(height: 40),
+                SizedBox(height: 65.h),
                 Text(
                   AppStrings.nextpassDatabaseDS,
-                  style: Theme.of(context).textTheme.bodySmall,
+                  style: Theme.of(context).textTheme.bodyMedium,
                   textAlign: TextAlign.center,
                 ),
-                const SizedBox(height: 45),
+                SizedBox(height: 71.5.h),
               ],
             )
           : Column(
               children: [
+                SizedBox(height: 44.h),
                 Text(
                   AppStrings.myOwnDatabaseDS,
-                  style: Theme.of(context).textTheme.bodySmall,
+                  style: Theme.of(context).textTheme.bodyMedium,
                   textAlign: TextAlign.center,
                 ),
-                const SizedBox(height: 20),
+                SizedBox(height: 32.h),
                 TextFormField(
                   controller: selectDatabaseController.databaseURLController,
+                  style: TextStyle(height: 2.h),
                   decoration: InputDecoration(
                     fillColor: Theme.of(context).colorScheme.primaryContainer,
                     prefixIcon: Padding(
-                      padding: const EdgeInsets.all(12.0),
+                      padding: EdgeInsets.all(12.w),
                       child: SvgPicture.asset(IconsAssets.mongoDBIcon),
                     ),
                     hintText: AppStrings.ownDatabaseHintTextDS,
                   ),
                 ),
-                const SizedBox(height: 20),
+                SizedBox(height: 12.h),
                 Text.rich(
                   TextSpan(
                       text: AppStrings.howToGetConnectionDS,
-                      style: Theme.of(context).textTheme.labelSmall,
+                      style: Theme.of(context)
+                          .textTheme
+                          .labelSmall
+                          ?.copyWith(fontSize: 11.sp),
                       children: [
                         TextSpan(
                           text: AppStrings.clickHereDS,
@@ -53,6 +58,7 @@ class DatabaseUrlSection extends StatelessWidget {
                               .labelSmall
                               ?.copyWith(
                                 color: Theme.of(context).colorScheme.primary,
+                                fontSize: 11.sp,
                               ),
                         ),
                       ]),

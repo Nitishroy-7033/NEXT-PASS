@@ -24,10 +24,12 @@ class AuthRepository implements AuthInterface {
         success: response.data["success"] ?? false,
       );
     } catch (e) {
+      var errorMap = e as Map<String, dynamic>;
+
       return ApiResponse<AuthModel>(
         data: null,
-        message: e.toString(),
-        success: false,
+        message: errorMap["message"] ?? "Something went wrong",
+        success: errorMap["success"] ?? false,
       );
     }
   }
@@ -36,26 +38,27 @@ class AuthRepository implements AuthInterface {
   Future<ApiResponse<AuthModel>> createAnAccount(
       String email, String pwd, String firstName, String lastName) async {
     try {
-      var response = await apiClient.request(
-        "/Auth/register",
-        method: "POST",
-        data: {
-          "email": email,
-          "password": pwd,
-          "firstName": firstName,
-          "lastName": lastName
-        });
-    return ApiResponse<AuthModel>(
-      data: AuthModel.fromJson(response.data["data"]),
-      message: response.data["message"] ?? "Account created successfully",
-      success: response.data["success"] ?? false,
-    );
-    } catch(e) {
-       return ApiResponse<AuthModel>(
+      var response = await apiClient.request("/Auth/register",
+          method: "POST",
+          data: {
+            "email": email,
+            "password": pwd,
+            "firstName": firstName,
+            "lastName": lastName
+          });
+      return ApiResponse<AuthModel>(
+        data: AuthModel.fromJson(response.data["data"]),
+        message: response.data["message"] ?? "Account created successfully",
+        success: response.data["success"] ?? false,
+      );
+    } catch (e) {
+      var errorMap = e as Map<String, dynamic>;
+
+      return ApiResponse<AuthModel>(
         data: null,
-        message: e.toString(),
-        success: false,
+        message: errorMap["message"] ?? "Something went wrong",
+        success: errorMap["success"] ?? false,
       );
     }
-  } 
+  }
 }

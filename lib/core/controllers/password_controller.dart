@@ -75,6 +75,31 @@ class PasswordController extends GetxController {
     }
   }
 
+  String checkandReturnPasswordStrength(String password) {
+    bool hasUpper = password.contains(RegExp(r'[A-Z]'));
+    bool hasLower = password.contains(RegExp(r'[a-z]'));
+    bool hasNumber = password.contains(RegExp(r'[0-9]'));
+    bool hasSymbol = password.contains(RegExp(r'[!@#\$%^&*()_+{}[\]|;:,.<>?]'));
+
+    int strengthPoints = 0;
+    if (hasUpper) strengthPoints++;
+    if (hasLower) strengthPoints++;
+    if (hasNumber) strengthPoints++;
+    if (hasSymbol) strengthPoints++;
+
+    if (password.length > 12 && strengthPoints == 4) {
+      return 'Very Strong';
+    } else if (password.length >= 9 && strengthPoints >= 3) {
+      return 'Strong';
+    } else if (password.length >= 6 && strengthPoints >= 2) {
+      return 'Normal';
+    } else if (password.trim().isEmpty) {
+      return '';
+    } else {
+      return "Weak";
+    }
+  }
+
   void copyToClipboard() {
     if (generatedPassword.value.isNotEmpty) {
       Clipboard.setData(ClipboardData(text: generatedPassword.value));

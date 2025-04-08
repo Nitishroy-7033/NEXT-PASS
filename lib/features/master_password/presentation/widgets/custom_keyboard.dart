@@ -1,10 +1,14 @@
 import 'package:next_pass/core/constants/biomatric_service.dart';
 
 import '../../../../core/constants/app_linker.dart';
+
 class CustomKeyboard extends StatelessWidget {
   final MasterPasswordController pinController;
+  final VoidCallback? onPinEntered; // ✅ Add this
 
-  const CustomKeyboard({required this.pinController});
+  const CustomKeyboard(
+      {super.key, required this.pinController, this.onPinEntered});
+  // ✅ Add this
 
   @override
   Widget build(BuildContext context) {
@@ -18,21 +22,20 @@ class CustomKeyboard extends StatelessWidget {
         physics: const NeverScrollableScrollPhysics(),
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 3,
-          childAspectRatio: 2,
+          childAspectRatio: 1.4,
         ),
-        itemCount: 12, 
+        itemCount: 12,
         itemBuilder: (context, index) {
           Widget buttonContent;
 
           if (index == 9) {
             // ✅ Biometric Icon
             buttonContent = InkWell(
-              onTap: () async{
-           bool check=   await  BiomatricService().authenticateLocally();
-           if(check){
-              Get.offAllNamed(AppRoutes.home);
-           }
-               
+              onTap: () async {
+                bool check = await BiomatricService().authenticateLocally();
+                if (check) {
+                  Get.offAllNamed(AppRoutes.home);
+                }
               },
               child: SvgPicture.asset(
                 color: Theme.of(context).colorScheme.onSurface,
@@ -73,19 +76,20 @@ class CustomKeyboard extends StatelessWidget {
               }
             },
             child: Container(
+              height: 100,
               decoration: BoxDecoration(
                 color: Theme.of(context).colorScheme.primaryContainer,
                 border: Border(
                   top: index < 3
                       ? BorderSide.none
                       : BorderSide(
-                          color: Theme.of(context).colorScheme.tertiary,
-                          width: 0),
+                          color: Theme.of(context).colorScheme.tertiary.withValues(alpha: 0.4),
+                          width: 1),
                   left: index % 3 == 0
                       ? BorderSide.none
                       : BorderSide(
-                          color: Theme.of(context).colorScheme.tertiary,
-                          width: 0),
+                          color: Theme.of(context).colorScheme.tertiary.withValues(alpha: 0.4),
+                          width: 1),
                 ),
               ),
               child: Center(child: buttonContent),
@@ -96,4 +100,3 @@ class CustomKeyboard extends StatelessWidget {
     );
   }
 }
-

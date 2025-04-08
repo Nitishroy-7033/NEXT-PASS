@@ -1,8 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import '../../../../../core/constants/app_linker.dart';
-import '../../../../../core/utils/validators.dart';
-import '../../../controllers/auth_controller.dart';
 
 class MobileLoginScreen extends StatelessWidget {
   MobileLoginScreen({super.key});
@@ -21,13 +17,13 @@ class MobileLoginScreen extends StatelessWidget {
       key: _formKey,
       child: Column(
         children: [
-          const SizedBox(height: 10),
+          SizedBox(height: 10.h),
           Row(
             children: [
               Text("Email", style: Theme.of(context).textTheme.labelMedium),
             ],
           ),
-          const SizedBox(height: 10),
+          SizedBox(height: 10.h),
           TextFormField(
             controller: emailController,
             textInputAction: TextInputAction.next,
@@ -37,17 +33,14 @@ class MobileLoginScreen extends StatelessWidget {
             ),
             validator: TextFieldValidators.validateEmail,
           ),
-
-          const SizedBox(height: 20),
-
+          SizedBox(height: 20.h),
           // Password Label
           Row(
             children: [
               Text("Password", style: Theme.of(context).textTheme.labelMedium),
             ],
           ),
-          const SizedBox(height: 20),
-
+          SizedBox(height: 20.h),
           // Password TextFormField with Validator
           Obx(() => TextFormField(
                 controller: passwordController,
@@ -69,9 +62,7 @@ class MobileLoginScreen extends StatelessWidget {
                 ),
                 validator: TextFieldValidators.validatePassword,
               )),
-
-          const SizedBox(height: 10),
-
+          SizedBox(height: 10.h),
           // Remember Me Checkbox
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
@@ -82,46 +73,47 @@ class MobileLoginScreen extends StatelessWidget {
                       rememberMe.value = value!;
                     },
                   )),
-              const SizedBox(width: 10),
+              SizedBox(width: 10.w),
               Text("Remember Me",
                   style: Theme.of(context).textTheme.labelMedium),
             ],
           ),
-
           // Error Message Display
           Obx(() => authController.isError.value
               ? Row(
                   children: [
                     const Icon(Icons.error, color: Colors.red),
-                    const SizedBox(width: 10),
-                    Text(
-                      authController.errorMessage.value,
-                      style: Theme.of(context)
-                          .textTheme
-                          .bodyMedium
-                          ?.copyWith(color: Colors.red),
+                    SizedBox(width: 10.w),
+                    Expanded(
+                      child: Text(
+                        authController.errorMessage.value,
+                        style: Theme.of(context)
+                            .textTheme
+                            .bodyMedium
+                            ?.copyWith(color: Colors.red),
+                      ),
                     ),
                   ],
                 )
               : const SizedBox()),
-
-          const SizedBox(height: 10),
-
+          SizedBox(height: 10.h),
           // Login Button
-          Obx(() => authController.isLoading.value
-              ? const CircularProgressIndicator()
-              : PrimaryButton(
-                  text: "LOGIN",
-                  onPressed: () {
-                    if (_formKey.currentState!.validate()) {
-                      authController.login(
-                        emailController.text,
-                        passwordController.text,
-                        true,
-                      );
-                    }
-                  },
-                )),
+          Obx(
+            () => authController.isLoading.value
+                ? const CircularProgressIndicator()
+                : PrimaryButton(
+                    text: "LOGIN",
+                    onPressed: () {
+                      if (_formKey.currentState!.validate()) {
+                        authController.login(
+                          emailController.text,
+                          passwordController.text,
+                          true,
+                        );
+                      }
+                    },
+                  ),
+          ),
         ],
       ),
     );

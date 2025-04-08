@@ -26,23 +26,31 @@ class AuthController extends GetxController {
         authModel.value = response.data;
         apiClient.setUserDetails(response.data!);
         SuccessMessage(response.message ?? "Logged in successfully");
-        Get.offAllNamed(AppRoutes.databaseSetup);
-        await pinController.loadSavedPin();
 
-        if (pinController.isCreatingPin.value) {
-          Get.offAllNamed(AppRoutes.masterPassword);
+        // Check if database type is already stored
+        String? storedDatabaseType = await _getStoredDatabaseType();
+
+        if (storedDatabaseType != null && storedDatabaseType.isNotEmpty) {
+          Get.offAllNamed(AppRoutes.home); // Database type found, go to Home
         } else {
-          Get.offAllNamed(AppRoutes.home);
+          Get.offAllNamed(
+              AppRoutes.databaseSetup); // No database type, go to Setup
         }
       } else {
-        handleError(response.message);
+        handleError(response.message.toString());
       }
     } catch (e) {
       print("Error $e");
-      handleError(e);
+      handleError(e.toString());
     } finally {
       isLoading.value = false;
     }
+  }
+
+// Method to get stored database type from SharedPreferences
+  Future<String?> _getStoredDatabaseType() async {
+    final prefs = await SharedPreferences.getInstance();
+    return prefs.getString("databaseType");
   }
 
   Future<void> createAnAccount(
@@ -57,22 +65,22 @@ class AuthController extends GetxController {
         authModel.value = response.data;
         apiClient.setUserDetails(response.data!);
         SuccessMessage(response.message ?? "Account created successfully");
+        Get.offAllNamed(AppRoutes.authtab);
       } else {
-        handleError(response.message);
+        handleError(response.message.toString());
       }
     } catch (e) {
       print("Error ${e}");
-      handleError(e);
+      handleError(e.toString());
     } finally {
       isLoading.value = false;
     }
   }
 
-  void handleError(dynamic response) {
+  void handleError(String response) {
     isError.value = true;
-    errorMessage.value = "ERROR come";
+    errorMessage.value = response;
     print(response);
-    ErrorMessage(errorMessage.value);
   }
 
   void saveCredentialToLocal(email, password) {}

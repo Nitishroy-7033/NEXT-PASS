@@ -6,11 +6,11 @@ class MobileWelcomeScreen2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 30),
+      padding: EdgeInsets.symmetric(horizontal: 30.w),
       child: Column(
-        spacing: 30,
+        spacing: 26.h,
         children: [
-          const SizedBox(height: 5),
+          SizedBox(height: 5.h),
           Text(
             AppStrings.heading2,
             textAlign: TextAlign.center,
@@ -18,7 +18,7 @@ class MobileWelcomeScreen2 extends StatelessWidget {
           ),
           Image.asset(
             AppImageAssets.getStartedLogo2,
-            height: 280,
+            height: 280.h,
           ),
           Text(
             AppStrings.content2,

@@ -1,30 +1,29 @@
 import 'package:next_pass/core/constants/app_linker.dart';
 
-Future<dynamic> BottomSheetPasswordGenerator(BuildContext context) {
+Future<dynamic> bottomSheetPasswordGenerator(BuildContext context) {
   PasswordController passwordController = Get.put(PasswordController());
   AddNewCredentialController addNewCredentialController =
       Get.put(AddNewCredentialController());
   return Get.bottomSheet(
     Container(
       decoration: BoxDecoration(
-        borderRadius: const BorderRadius.only(
-            topLeft: Radius.circular(20), topRight: Radius.circular(20)),
+        borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(20.r), topRight: Radius.circular(20.r)),
         color: Theme.of(context).colorScheme.primaryContainer,
       ),
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
+        padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 20.h),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
           children: [
-            // const SizedBox(height: 10),
             Center(
               child: Text(
                 AppStrings.generatePassword,
                 style: Theme.of(context).textTheme.bodyLarge,
               ),
             ),
-            const SizedBox(height: 20),
+            SizedBox(height: 20.h),
             // Password Display Field
             Obx(
               () => TextFormField(
@@ -43,7 +42,7 @@ Future<dynamic> BottomSheetPasswordGenerator(BuildContext context) {
                 ),
               ),
             ),
-            const SizedBox(height: 20),
+            SizedBox(height: 20.h),
             // All Check boxes section
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
@@ -65,7 +64,7 @@ Future<dynamic> BottomSheetPasswordGenerator(BuildContext context) {
                     ),
                   ],
                 ),
-                const SizedBox(width: 20),
+                SizedBox(width: 20.w),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -85,11 +84,11 @@ Future<dynamic> BottomSheetPasswordGenerator(BuildContext context) {
                 ),
               ],
             ),
-            const SizedBox(height: 20),
+            SizedBox(height: 20.h),
             // Password Length Slider
             Text(AppStrings.passwordLength,
                 style: Theme.of(context).textTheme.labelMedium),
-            const SizedBox(height: 10),
+            SizedBox(height: 10.h),
             Row(
               children: [
                 const Text("4"),
@@ -113,7 +112,7 @@ Future<dynamic> BottomSheetPasswordGenerator(BuildContext context) {
                 const Text("100"),
               ],
             ),
-            const SizedBox(height: 20),
+            SizedBox(height: 20.h),
             PrimaryButton(
               text: "COPY & INSERT",
               onPressed: () {
@@ -122,7 +121,7 @@ Future<dynamic> BottomSheetPasswordGenerator(BuildContext context) {
                 Get.back();
               },
             ),
-            const SizedBox(height: 20),
+            SizedBox(height: 20.h),
           ],
         ),
       ),

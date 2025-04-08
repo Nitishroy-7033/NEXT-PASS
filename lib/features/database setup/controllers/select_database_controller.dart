@@ -22,17 +22,28 @@ class SelectDatabaseController extends GetxController {
 
     if (selectedIndex.value == 0) {
       try {
-        final response = await databaseSetupRepository.selectNextPassDB(
-          "NEXT_PASS",
-        );
+        final response =
+            await databaseSetupRepository.selectNextPassDB("NEXT_PASS");
 
         if (response.success == true && response.data != null) {
-          // apiClient.setUserDetails(response.data!);
           SuccessMessage(response.message ?? "Next-Pass Database Selected");
-          Get.offAllNamed(AppRoutes.home);
+
+          // ✅ Master PIN Set hai ya nahi check karega
+          bool isPinSet = await databaseSetupRepository.isMasterPinSet();
+          print(
+              "Master PIN Check - isPinSet: $isPinSet"); // 🔍 Debugging output
+
+          print(isPinSet);
+
+          if (isPinSet) {
+            Get.offAllNamed(AppRoutes.home);
+            // Agar PIN set hai to home le jayega
+            print(isPinSet);
+          } else {
+            Get.offAllNamed(AppRoutes
+                .masterPassword); // Nahi to PIN set karne ka screen dikhayega
+          }
         } else {
-          print(response);
-          print(response.message);
           _handleError(response.message);
         }
       } catch (e) {
@@ -53,10 +64,20 @@ class SelectDatabaseController extends GetxController {
           databaseURLController.text,
           "USER",
         );
+
         if (response.success == true && response.data != null) {
-          // apiClient.setUserDetails(response.data!);
           SuccessMessage(response.message ?? "Your Database Selected");
-          Get.offAllNamed(AppRoutes.home);
+
+          // ✅ Master PIN check karna yaha bhi zaroori hai
+          bool isPinSet = await databaseSetupRepository.isMasterPinSet();
+          print(
+              "Master PIN Check - isPinSet: $isPinSet"); // 🔍 Debugging output
+
+          if (isPinSet) {
+            Get.offAllNamed(AppRoutes.home);
+          } else {
+            Get.offAllNamed(AppRoutes.masterPassword);
+          }
         } else {
           _handleError(response.message);
         }

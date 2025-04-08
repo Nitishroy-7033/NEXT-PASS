@@ -2,7 +2,6 @@ import '../../../../core/constants/app_linker.dart';
 
 class SearchBarSection extends StatelessWidget {
   const SearchBarSection({super.key});
-  
 
   @override
   Widget build(BuildContext context) {
@@ -11,14 +10,14 @@ class SearchBarSection extends StatelessWidget {
       autofocus: false,
       controller: homeSearchController,
       decoration: InputDecoration(
-        contentPadding: const EdgeInsets.only(bottom: 5, right: 5),
-        constraints: const BoxConstraints(
-          maxHeight: 40,
+        contentPadding: EdgeInsets.only(bottom: 5.h, right: 5.w),
+        constraints: BoxConstraints(
+          maxHeight: 43.h,
         ),
         hintText: AppStrings.searchText,
         hintStyle: Theme.of(context).textTheme.labelMedium,
         prefixIcon: Padding(
-          padding: const EdgeInsets.all(12.0),
+          padding: EdgeInsets.all(12.w),
           child: SvgPicture.asset(
             IconsAssets.searchIcon,
             colorFilter: ColorFilter.mode(
@@ -30,12 +29,12 @@ class SearchBarSection extends StatelessWidget {
         fillColor: Theme.of(context).colorScheme.primaryContainer,
         filled: true,
         enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10),
+            borderRadius: BorderRadius.circular(10.r),
             borderSide: BorderSide(
               color: Theme.of(context).colorScheme.primaryContainer,
             )),
         focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(10.r),
           borderSide: BorderSide(
             color: Theme.of(context).colorScheme.primary,
           ),
@@ -43,7 +42,7 @@ class SearchBarSection extends StatelessWidget {
       ),
       maxLines: 1,
       cursorColor: Theme.of(context).colorScheme.onSurface,
-      cursorWidth: 1.5,
+      cursorWidth: 1.5.w,
       style: Theme.of(context).textTheme.bodyMedium,
     );
   }

@@ -17,14 +17,14 @@ class PlanCardDatabase extends StatelessWidget {
       children: [
         InkWell(
           onTap: onTap,
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(10.r),
           child: AnimatedContainer(
-            height: 180,
-            width: 140,
+            height: 195.h,
+            width: 149.w,
             duration: const Duration(milliseconds: 250),
             decoration: BoxDecoration(
               color: Theme.of(context).colorScheme.primaryContainer,
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: BorderRadius.circular(10.r),
               border: isSelected
                   ? Border.all(
                       color: Theme.of(context).colorScheme.primary,
@@ -32,7 +32,7 @@ class PlanCardDatabase extends StatelessWidget {
                     )
                   : const Border(),
             ),
-            padding: const EdgeInsets.symmetric(horizontal: 25),
+            padding: EdgeInsets.symmetric(horizontal: 28.w),
             child: Opacity(
               opacity: isSelected ? 1 : 0.5,
               child: Column(
@@ -55,16 +55,16 @@ class PlanCardDatabase extends StatelessWidget {
             ),
           ),
         ),
-        const SizedBox(height: 20),
+        SizedBox(height: 15.h),
         AnimatedContainer(
-          width: 18,
-          height: 18,
+          width: 17.w,
+          height: 17.w,
           duration: const Duration(milliseconds: 250),
           decoration: BoxDecoration(
             color: isSelected
                 ? Theme.of(context).colorScheme.primary
                 : Colors.transparent,
-            borderRadius: BorderRadius.circular(15),
+            borderRadius: BorderRadius.circular(15.r),
             border: isSelected
                 ? const Border()
                 : Border.all(
