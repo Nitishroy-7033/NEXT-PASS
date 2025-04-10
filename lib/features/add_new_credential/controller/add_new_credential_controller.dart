@@ -1,5 +1,3 @@
-import 'package:get/get.dart';
-import 'package:next_pass/core/utils/messages.dart';
 import '../../../core/constants/app_linker.dart';
 
 class AddNewCredentialController extends GetxController {
@@ -7,14 +5,17 @@ class AddNewCredentialController extends GetxController {
       Get.put(CredentialRepository());
   final PasswordController passwordController = Get.put(PasswordController());
 
-  TextEditingController siteUrlController = TextEditingController();
-  RxString siteUrl = ''.obs;
+  RxString siteUrl = ''.obs; // Observable URL
+  var reminderDayValue = 30.obs;
 
+  TextEditingController siteUrlController = TextEditingController();
   TextEditingController userName = TextEditingController();
   TextEditingController emailId = TextEditingController();
   TextEditingController titleController = TextEditingController();
   TextEditingController password = TextEditingController();
   TextEditingController mobileNumber = TextEditingController();
+
+  var isLoading = false.obs;
 
   @override
   void onInit() {
@@ -37,6 +38,7 @@ class AddNewCredentialController extends GetxController {
     String passwordChangeReminder,
   ) async {
     try {
+      isLoading.value = true;
       // Extract number from reminder string (e.g., "30 Days" -> 30)
       final reminderDays =
           int.tryParse(passwordChangeReminder.split(' ')[0]) ?? 30;
@@ -61,6 +63,8 @@ class AddNewCredentialController extends GetxController {
       }
     } catch (e) {
       ErrorMessage("Error saving credential: $e");
+    } finally {
+      isLoading.value = false;
     }
   }
 

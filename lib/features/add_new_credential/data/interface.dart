@@ -1,4 +1,4 @@
-import 'package:next_pass/features/add_new_credential/models/new_credenatial.dart';
+import '../../../core/constants/app_linker.dart';
 
 abstract interface class CredentialInterface {
   Future<bool> createNewCredential(

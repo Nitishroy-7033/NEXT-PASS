@@ -1,8 +1,5 @@
 import 'package:next_pass/core/constants/app_linker.dart';
-import 'package:next_pass/features/master_password/presentation/widgets/create_master_pin.dart';
-import 'package:next_pass/features/master_password/presentation/widgets/reenter_masterpassword.dart';
 
-import '../../widgets/enter_master_pin.dart';
 
 class MobileMasterPasswordScreen extends StatefulWidget {
   const MobileMasterPasswordScreen({super.key});
@@ -55,53 +52,21 @@ class _MobileMasterPasswordScreenState extends State<MobileMasterPasswordScreen>
 
   @override
   Widget build(BuildContext context) {
-    final double w = MediaQuery.of(context).size.width;
-
     return Scaffold(
-      backgroundColor: Theme.of(context).colorScheme.primaryContainer,
-      body: SafeArea(
+      body: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 30.w),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.end,
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                Text(AppStrings.masterPasswordPrivacy,
-                    style: TextStyle(
-                        fontSize: AppDimensions.fontSmall,
-                        color: Theme.of(context).colorScheme.tertiary)),
-                Text(AppStrings.masterPasswordTerms,
-                    style: TextStyle(
-                        fontSize: AppDimensions.fontSmall,
-                        color: Theme.of(context).colorScheme.tertiary)),
-              ],
+            SizedBox(height: 120.h),
+            Image.asset(
+              AppImageAssets.appLogo,
+              height: 80.h,
             ),
-            const SizedBox(height: 15),
-           
-            Spacer(),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Container(
-                  width: w / 4,
-                  height: w / 4,
-                  decoration: BoxDecoration(
-                    color: Theme.of(context).colorScheme.primaryFixed,
-                    shape: BoxShape.rectangle,
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  child: Center(
-                    child: SvgPicture.asset(IconsAssets.second_lock_icon,
-                        width: w / 5, height: w / 5),
-                  ),
-                ),
-              ],
-            ),
-            const SizedBox(height: 50),
+            SizedBox(height: 40.h),
             Obx(() {
               return AnimatedSwitcher(
                 duration:
-                    const Duration(milliseconds: 400), // Transition duration
+                    const Duration(milliseconds: 200), // Transition duration
                 transitionBuilder: (widget, animation) {
                   return FadeTransition(
                     opacity: animation,
@@ -111,22 +76,22 @@ class _MobileMasterPasswordScreenState extends State<MobileMasterPasswordScreen>
                 child: pinController.errorMessage.value.isNotEmpty
                     ? Text(
                         pinController.errorMessage.value,
-                        key: ValueKey('errorMessage'), // Unique Key
-                        style: Theme.of(context).textTheme.labelMedium!.copyWith(
-                              color: Colors.red,
+                        key: const ValueKey('errorMessage'), // Unique Key
+                        style: Theme.of(context).textTheme.labelLarge!.copyWith(
+                              color: Theme.of(context).colorScheme.error,
                             ),
                       )
                     : pinController.isCreatingPin.value
                         ? (pinController.tempPin.value == null)
                             ? CreateMasterPinWidget(
-                                key: ValueKey('createMasterPin'))
+                                key: const ValueKey('createMasterPin'))
                             : ReenterMasterPinWidget(
-                                key: ValueKey('reenterMasterPin'))
-                        : EnterMasterPinWidget(key: ValueKey('enterMasterPin')),
+                                key: const ValueKey('reenterMasterPin'))
+                        : EnterMasterPinWidget(
+                            key: const ValueKey('enterMasterPin')),
               );
             }),
-            const SizedBox(height: 30),
-            
+            SizedBox(height: 40.h),
             Obx(() {
               return Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -137,15 +102,18 @@ class _MobileMasterPasswordScreenState extends State<MobileMasterPasswordScreen>
                     startAnimation();
                   }
                   return Container(
-                    width: w / 8,
-                    height: w / 8,
-                    margin: const EdgeInsets.symmetric(horizontal: 10),
+                    width: 50.w,
+                    height: 50.w,
+                    margin: EdgeInsets.symmetric(horizontal: 10.w),
                     alignment: Alignment.center,
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(14),
+                      borderRadius: BorderRadius.circular(15.r),
                       border: Border.all(
-                        color: Theme.of(context).colorScheme.tertiary.withValues(alpha: 0.4),
-                        width: 1,
+                        color: Theme.of(context)
+                            .colorScheme
+                            .tertiary
+                            .withValues(alpha: 0.4),
+                        width: 1.w,
                       ),
                     ),
                     child: isFilled
@@ -156,8 +124,8 @@ class _MobileMasterPasswordScreenState extends State<MobileMasterPasswordScreen>
                                 opacity: _opacityAnimation.value,
                                 child: SvgPicture.asset(
                                   getIconForIndex(index),
-                                  width: 12,
-                                  height: 12,
+                                  width: 12.w,
+                                  height: 12.w,
                                 ),
                               );
                             },
@@ -167,26 +135,37 @@ class _MobileMasterPasswordScreenState extends State<MobileMasterPasswordScreen>
                 }),
               );
             }),
-            const SizedBox(height: 20),
-             Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                GestureDetector(
-                  onTap: () {
-                    pinController.resetMasterPin();
-                  },
-                  child: Text(AppStrings.masterPasswordForgot,
-                      style: TextStyle(
-                          fontSize: AppDimensions.fontSmall,
-                          color: Theme.of(context).colorScheme.primaryFixed)),
-                ),
-              ],
-            ),
             CustomKeyboard(
               pinController: pinController,
               onPinEntered: () {
                 pinController.onPinEntered();
               },
+            ),
+            SizedBox(height: 30.h),
+            GestureDetector(
+              onTap: () {
+                pinController.resetMasterPin();
+              },
+              child: Text(
+                AppStrings.masterPasswordForgot,
+                style: Theme.of(context).textTheme.labelLarge?.copyWith(
+                      color: Theme.of(context).colorScheme.primary,
+                    ),
+              ),
+            ),
+            SizedBox(height: 20.h),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Text(
+                  AppStrings.masterPasswordPrivacy,
+                  style: Theme.of(context).textTheme.labelMedium,
+                ),
+                Text(
+                  AppStrings.masterPasswordTerms,
+                  style: Theme.of(context).textTheme.labelMedium,
+                ),
+              ],
             ),
           ],
         ),

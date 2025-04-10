@@ -1,7 +1,3 @@
-import 'package:next_pass/core/utils/messages.dart';
-import 'package:next_pass/features/auth/data/auth_repository.dart';
-import 'package:next_pass/features/auth/models/auth_model.dart';
-
 import '../../../core/constants/app_linker.dart';
 
 class AuthController extends GetxController {

@@ -1,5 +1,4 @@
-import 'package:get/get.dart';
-import 'package:next_pass/core/constants/app_linker.dart';
+import '../../../core/constants/app_linker.dart';
 
 class CredentialRepository implements CredentialInterface {
   final ApiClient apiClient = Get.find<ApiClient>();

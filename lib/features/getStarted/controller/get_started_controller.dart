@@ -1,4 +1,4 @@
-import 'package:next_pass/core/constants/app_linker.dart';
+import '../../../core/constants/app_linker.dart';
 
 class GetStartedController extends GetxController {
   RxInt selectedView = 0.obs;

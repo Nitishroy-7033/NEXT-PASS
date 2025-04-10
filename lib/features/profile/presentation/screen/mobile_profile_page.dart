@@ -1,4 +1,5 @@
-import 'package:flutter/material.dart';
+import 'package:next_pass/features/profile/presentation/widgets/profile_container.dart';
+
 import '../../../../core/constants/app_linker.dart';
 
 class MobileProfilePage extends StatelessWidget {
@@ -10,45 +11,20 @@ class MobileProfilePage extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
           title: const Text('Profile'),
+          scrolledUnderElevation: 0.0,
         ),
         body: Padding(
-          padding: const EdgeInsets.all(20),
+          padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 16.h),
           child: Column(
             children: [
-              ListTile(
-                onTap: () {
-                  // Handle the tap event here
-                },
-                leading: Container(
-                  width: 50,
-                  height: 50,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    image: DecorationImage(
-                      image: NetworkImage(
-                        'https://writestylesonline.com/wp-content/uploads/2018/11/Three-Statistics-That-Will-Make-You-Rethink-Your-Professional-Profile-Picture.jpg',
-                      ),
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                ),
-                title: const Text('Nitish Kumar'),
-                subtitle: Text(
-                  'Nitishr833@gmail.com',
-                  style: Theme.of(context).textTheme.labelMedium,
-                ),
-                trailing: IconButton(
-                  icon: Icon(
-                    Icons.arrow_forward_ios_rounded,
-                    size: 15,
-                    color: Theme.of(context).colorScheme.onSecondaryContainer,
-                  ),
-                  onPressed: () {},
-                ),
+              ProfileContainer(
+                profileImageURL:
+                    "https://writestylesonline.com/wp-content/uploads/2018/11/Three-Statistics-That-Will-Make-You-Rethink-Your-Professional-Profile-Picture.jpg",
+                name: "Nitish roy",
+                email: "nitishroy123@gmail.com",
+                onTap: () {},
               ),
-              SizedBox(
-                height: 20,
-              ),
+              SizedBox(height: 20.h),
               Row(
                 children: [
                   Text(
