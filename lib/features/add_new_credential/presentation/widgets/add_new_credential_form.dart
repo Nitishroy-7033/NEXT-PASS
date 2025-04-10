@@ -1,17 +1,19 @@
-import 'package:next_pass/core/constants/app_linker.dart';
-import 'package:next_pass/core/widgets/custom_dropdown.dart';
-import 'package:next_pass/core/widgets/generate_password_button.dart';
-import 'package:next_pass/features/add_new_credential/controller/category_list_controller.dart';
-import 'package:next_pass/features/add_new_credential/controller/reminder_list_controller.dart';
+import '../../../../core/constants/app_linker.dart';
 
 class AddNewCredentialForm extends StatelessWidget {
   const AddNewCredentialForm({super.key});
 
   @override
   Widget build(BuildContext context) {
+    Get.lazyPut(() => CategoryListController());
+    Get.lazyPut(() => ReminderListController());
     final AddNewCredentialController controller =
         Get.find<AddNewCredentialController>();
     PasswordController passwordController = Get.put(PasswordController());
+    final CategoryListController categoryController =
+        Get.find<CategoryListController>();
+    final ReminderListController reminderController =
+        Get.find<ReminderListController>();
 
     final _formKey = GlobalKey<FormState>(); // Added form key
     final RxBool isSecure = true.obs;
@@ -192,7 +194,7 @@ class AddNewCredentialForm extends StatelessWidget {
                         '60 Days',
                         '90 Days'
                       ],
-                      controller: ReminderListController(),
+                      controller: reminderController,
                       popupWidth: 100.w,
                       maxWidth: 130.w,
                       maxHeight: 40.h,
@@ -209,7 +211,7 @@ class AddNewCredentialForm extends StatelessWidget {
                     SizedBox(height: 5.h),
                     CustomDropdown(
                       itemList: const ['Website', 'App', 'Payment', 'Other'],
-                      controller: CategoryListController(),
+                      controller: categoryController,
                       popupWidth: 100.w,
                       maxWidth: 130.w,
                       maxHeight: 40.h,
@@ -237,6 +239,8 @@ class AddNewCredentialForm extends StatelessWidget {
                               controller.titleController.text,
                               controller.password.text,
                               controller.mobileNumber.text,
+                              categoryController.selectedValue.value,
+                              reminderController.selectedValue.value,
                             );
                           } catch (e) {
                             print(e.toString());

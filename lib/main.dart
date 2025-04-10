@@ -1,4 +1,5 @@
 import 'package:next_pass/core/routes/route_generator.dart';
+import 'package:next_pass/core/utils/update_system_nav_theme.dart';
 import 'core/constants/app_linker.dart';
 
 void main() {
@@ -26,6 +27,10 @@ class MyApp extends StatelessWidget {
             theme: AppThemes.lightTheme,
             darkTheme: AppThemes.darkTheme,
             themeMode: ThemeMode.dark,
+            builder: (context, child) {
+              updateSystemUIBasedOnTheme(context);
+              return child!;
+            },
             unknownRoute: GetPage(
               name: AppRoutes.notFound,
               page: () => const NotFoundView(),

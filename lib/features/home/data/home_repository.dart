@@ -1,7 +1,4 @@
-import 'package:next_pass/core/network/api_client.dart';
-import 'package:next_pass/core/constants/api_response.dart';
-import 'package:get/get.dart';
-import 'package:next_pass/features/home/model/home_model.dart';
+import '../../../core/constants/app_linker.dart';
 
 class HomeRepository {
   final ApiClient apiClient = Get.find<ApiClient>(); // ✅ Injected automatically

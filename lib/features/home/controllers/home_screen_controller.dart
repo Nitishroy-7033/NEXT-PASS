@@ -1,7 +1,4 @@
-import 'package:get/get.dart';
-import 'package:next_pass/core/utils/messages.dart';
-import 'package:next_pass/features/home/data/home_repository.dart';
-import 'package:next_pass/features/home/model/home_model.dart';
+import '../../../core/constants/app_linker.dart';
 
 class HomeScreenController extends GetxController {
   final HomeRepository homeRepository = Get.put(HomeRepository()); // ✅ Injected

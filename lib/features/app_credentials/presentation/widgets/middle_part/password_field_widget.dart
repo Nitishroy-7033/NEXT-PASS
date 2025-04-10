@@ -1,107 +1,88 @@
-import 'package:next_pass/core/constants/app_linker.dart';
+import '../../../../../core/constants/app_linker.dart';
 
 class PasswordField extends StatelessWidget {
-  final TextEditingController passwordController;
-  final CredentialController controller;
-
+  final TextEditingController passwordControllerText;
+  final CredentialController credentialController;
   const PasswordField({
     super.key,
-    required this.passwordController,
-    required this.controller,
+    required this.passwordControllerText,
+    required this.credentialController,
   });
 
   @override
   Widget build(BuildContext context) {
+    final PasswordController passwordController = Get.find();
+    final CredentialController credentialController = Get.find();
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8.0),  // 
+      padding: EdgeInsets.symmetric(vertical: 8.h), //
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Stack(
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Align(
-                alignment: Alignment.centerLeft,
-                child: Text(
-                  AppStrings.password,
-                  style: Theme.of(context).textTheme.labelMedium,
-                ),
+              Text(
+                "Password",
+                style: Theme.of(context).textTheme.labelMedium,
               ),
-              Align(
-                alignment: Alignment.centerRight,
-                child: Obx(() {
-                  String strength = controller.getPasswordStrength();
-                  return Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Text(
-                        strength,
-                        style: TextStyle(
-                          color: strength == AppStrings.weakText
-                              ? AppColors.lightred
-                              : strength == AppStrings.mediumText
-                                  ? AppColors.orangeColor
-                                  : AppColors.lightGreen,
-                        ),
-                      ),
-                      const SizedBox(width: 5),
-                      if (strength == AppStrings.weakText)
-                        SvgPicture.asset(
-                          IconsAssets.warning_icon,
-                          height: 15,
-                          width: 15,
-                          color: AppColors.lightred,
-                        ),
-                      if (strength == AppStrings.strongText)
-                        SvgPicture.asset(
-                          IconsAssets.strongPasswordIcon,
-                          width: 16,
-                          height: 16,
-                          colorFilter: const ColorFilter.mode(
-                            AppColors.greenColor,
-                            BlendMode.srcIn,
-                          ),
-                        ),
-                    ],
-                  );
-                }),
+              StrengthBadge(
+                strength: passwordController.checkandReturnPasswordStrength(
+                    passwordControllerText.text),
               ),
             ],
           ),
-          const SizedBox(height: 5),
-          Obx(() => TextFormField(
-                controller: passwordController,
-                onChanged: (value) => controller.password.value = value,
-                obscureText: !controller.isPasswordVisible.value,
-                style: Theme.of(context).textTheme.bodyLarge,
-                decoration: InputDecoration(
-                  prefixIcon: Icon(Icons.lock,
-                      color: Theme.of(context).colorScheme.onPrimaryContainer),
-                  suffixIcon: IconButton(
+          SizedBox(height: 8.h),
+          Obx(
+            () => TextFormField(
+              controller: passwordControllerText,
+              enabled: credentialController.isEditing.value,
+              onChanged: (value) => credentialController.password.value = value,
+              obscureText: !credentialController.isPasswordVisible.value,
+              style: Theme.of(context).textTheme.bodyLarge,
+              decoration: InputDecoration(
+                prefixIcon: Icon(
+                  Icons.lock,
+                  color: Theme.of(context).colorScheme.onPrimaryContainer,
+                ),
+                suffixIcon: Obx(
+                  () => IconButton(
                     icon: SvgPicture.asset(
-                      controller.isPasswordVisible.value
+                      credentialController.isPasswordVisible.value
                           ? IconsAssets.eye_block_icon
                           : IconsAssets.eye_icon,
-                      width: 15,
-                      height: 15,
+                      width: 15.w,
+                      height: 15.w,
                       colorFilter: ColorFilter.mode(
-                          Theme.of(context).colorScheme.onPrimaryContainer,
-                          BlendMode.srcIn),
+                        Theme.of(context).colorScheme.onPrimaryContainer,
+                        BlendMode.srcIn,
+                      ),
                     ),
-                    onPressed: controller.togglePasswordVisibility,
-                  ),
-                  filled: true,
-                  fillColor: Theme.of(context).colorScheme.primaryContainer,
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(8),
-                    borderSide: BorderSide.none,
+                    onPressed: credentialController.togglePasswordVisibility,
                   ),
                 ),
-              )),
-          Obx(() {
-            return controller.getPasswordStrength() == AppStrings.weakText
-                ? const WeakPasswordAlert()
-                : const SizedBox();
-          }),
+                filled: true,
+                fillColor: Theme.of(context).colorScheme.primaryContainer,
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10.r),
+                  borderSide: BorderSide(
+                    color: Theme.of(context).colorScheme.tertiary,
+                  ),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10.r),
+                  borderSide: BorderSide(
+                    color: Theme.of(context).colorScheme.primary,
+                  ),
+                ),
+                disabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10.r),
+                  borderSide: BorderSide(
+                    color: Theme.of(context).colorScheme.primaryContainer,
+                  ),
+                ),
+              ),
+            ),
+          ),
         ],
       ),
     );

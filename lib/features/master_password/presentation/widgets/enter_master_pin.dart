@@ -1,6 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:next_pass/features/master_password/presentation/getx/controller/master_password_controller.dart';
+import '../../../../core/constants/app_linker.dart';
 
 class EnterMasterPinWidget extends StatelessWidget {
   EnterMasterPinWidget({Key? key}) : super(key: key); // ✅ Add key

@@ -17,7 +17,7 @@ class CustomTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8.0),
+      padding: EdgeInsets.symmetric(vertical: 8.h),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -25,20 +25,35 @@ class CustomTextField extends StatelessWidget {
             label,
             style: Theme.of(context).textTheme.labelMedium,
           ),
-          const SizedBox(height: 5),
+          SizedBox(height: 8.h),
           TextFormField(
             controller: controller,
             enabled: isEditable,
-            style: TextStyle(
-                color: Theme.of(context).colorScheme.onPrimaryContainer),
+            style: Theme.of(context).textTheme.bodyLarge,
             decoration: InputDecoration(
-              prefixIcon: Icon(icon,
-                  color: Theme.of(context).colorScheme.onPrimaryContainer),
+              prefixIcon: Icon(
+                icon,
+                color: Theme.of(context).colorScheme.onPrimaryContainer,
+              ),
               filled: true,
               fillColor: Theme.of(context).colorScheme.primaryContainer,
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(8),
-                borderSide: BorderSide.none,
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(10.r),
+                borderSide: BorderSide(
+                  color: Theme.of(context).colorScheme.tertiary,
+                ),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(10.r),
+                borderSide: BorderSide(
+                  color: Theme.of(context).colorScheme.primary,
+                ),
+              ),
+              disabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(10.r),
+                borderSide: BorderSide(
+                  color: Theme.of(context).colorScheme.primaryContainer,
+                ),
               ),
             ),
           ),

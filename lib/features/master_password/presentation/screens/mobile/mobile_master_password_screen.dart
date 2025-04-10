@@ -1,8 +1,5 @@
 import 'package:next_pass/core/constants/app_linker.dart';
-import 'package:next_pass/features/master_password/presentation/widgets/create_master_pin.dart';
-import 'package:next_pass/features/master_password/presentation/widgets/reenter_masterpassword.dart';
 
-import '../../widgets/enter_master_pin.dart';
 
 class MobileMasterPasswordScreen extends StatefulWidget {
   const MobileMasterPasswordScreen({super.key});
@@ -55,126 +52,122 @@ class _MobileMasterPasswordScreenState extends State<MobileMasterPasswordScreen>
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 30.w),
-          child: Column(
-            children: [
-              SizedBox(height: 80.h),
-              Image.asset(
-                AppImageAssets.appLogo,
-                height: 85.h,
-              ),
-              SizedBox(height: 40.h),
-              Obx(() {
-                return AnimatedSwitcher(
-                  duration:
-                      const Duration(milliseconds: 200), // Transition duration
-                  transitionBuilder: (widget, animation) {
-                    return FadeTransition(
-                      opacity: animation,
-                      child: widget,
-                    );
-                  },
-                  child: pinController.errorMessage.value.isNotEmpty
-                      ? Text(
-                          pinController.errorMessage.value,
-                          key: const ValueKey('errorMessage'), // Unique Key
-                          style:
-                              Theme.of(context).textTheme.labelMedium!.copyWith(
-                                    color: Theme.of(context).colorScheme.error,
-                                  ),
-                        )
-                      : pinController.isCreatingPin.value
-                          ? (pinController.tempPin.value == null)
-                              ? CreateMasterPinWidget(
-                                  key: const ValueKey('createMasterPin'))
-                              : ReenterMasterPinWidget(
-                                  key: const ValueKey('reenterMasterPin'))
-                          : EnterMasterPinWidget(
-                              key: const ValueKey('enterMasterPin')),
-                );
-              }),
-              SizedBox(height: 50.h),
-              Obx(() {
-                return Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: List.generate(pinController.pinLength, (index) {
-                    bool isFilled =
-                        index < pinController.enteredDigits.value.length;
-                    if (isFilled) {
-                      startAnimation();
-                    }
-                    return Container(
-                      width: 50.w,
-                      height: 50.w,
-                      margin: EdgeInsets.symmetric(horizontal: 10.w),
-                      alignment: Alignment.center,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(15.r),
-                        border: Border.all(
-                          color: Theme.of(context)
-                              .colorScheme
-                              .tertiary
-                              .withValues(alpha: 0.4),
-                          width: 1.w,
-                        ),
-                      ),
-                      child: isFilled
-                          ? AnimatedBuilder(
-                              animation: _opacityAnimation,
-                              builder: (context, child) {
-                                return Opacity(
-                                  opacity: _opacityAnimation.value,
-                                  child: SvgPicture.asset(
-                                    getIconForIndex(index),
-                                    width: 12.w,
-                                    height: 12.w,
-                                  ),
-                                );
-                              },
-                            )
-                          : Container(),
-                    );
-                  }),
-                );
-              }),
-              SizedBox(height: 30.h),
-              CustomKeyboard(
-                pinController: pinController,
-                onPinEntered: () {
-                  pinController.onPinEntered();
+    return Scaffold(
+      body: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 30.w),
+        child: Column(
+          children: [
+            SizedBox(height: 120.h),
+            Image.asset(
+              AppImageAssets.appLogo,
+              height: 80.h,
+            ),
+            SizedBox(height: 40.h),
+            Obx(() {
+              return AnimatedSwitcher(
+                duration:
+                    const Duration(milliseconds: 200), // Transition duration
+                transitionBuilder: (widget, animation) {
+                  return FadeTransition(
+                    opacity: animation,
+                    child: widget,
+                  );
                 },
-              ),
-              SizedBox(height: 30.h),
-              GestureDetector(
-                onTap: () {
-                  pinController.resetMasterPin();
-                },
-                child: Text(
-                  AppStrings.masterPasswordForgot,
-                  style: Theme.of(context).textTheme.labelLarge?.copyWith(
-                        color: Theme.of(context).colorScheme.primary,
+                child: pinController.errorMessage.value.isNotEmpty
+                    ? Text(
+                        pinController.errorMessage.value,
+                        key: const ValueKey('errorMessage'), // Unique Key
+                        style: Theme.of(context).textTheme.labelLarge!.copyWith(
+                              color: Theme.of(context).colorScheme.error,
+                            ),
+                      )
+                    : pinController.isCreatingPin.value
+                        ? (pinController.tempPin.value == null)
+                            ? CreateMasterPinWidget(
+                                key: const ValueKey('createMasterPin'))
+                            : ReenterMasterPinWidget(
+                                key: const ValueKey('reenterMasterPin'))
+                        : EnterMasterPinWidget(
+                            key: const ValueKey('enterMasterPin')),
+              );
+            }),
+            SizedBox(height: 40.h),
+            Obx(() {
+              return Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: List.generate(pinController.pinLength, (index) {
+                  bool isFilled =
+                      index < pinController.enteredDigits.value.length;
+                  if (isFilled) {
+                    startAnimation();
+                  }
+                  return Container(
+                    width: 50.w,
+                    height: 50.w,
+                    margin: EdgeInsets.symmetric(horizontal: 10.w),
+                    alignment: Alignment.center,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(15.r),
+                      border: Border.all(
+                        color: Theme.of(context)
+                            .colorScheme
+                            .tertiary
+                            .withValues(alpha: 0.4),
+                        width: 1.w,
                       ),
+                    ),
+                    child: isFilled
+                        ? AnimatedBuilder(
+                            animation: _opacityAnimation,
+                            builder: (context, child) {
+                              return Opacity(
+                                opacity: _opacityAnimation.value,
+                                child: SvgPicture.asset(
+                                  getIconForIndex(index),
+                                  width: 12.w,
+                                  height: 12.w,
+                                ),
+                              );
+                            },
+                          )
+                        : Container(),
+                  );
+                }),
+              );
+            }),
+            CustomKeyboard(
+              pinController: pinController,
+              onPinEntered: () {
+                pinController.onPinEntered();
+              },
+            ),
+            SizedBox(height: 30.h),
+            GestureDetector(
+              onTap: () {
+                pinController.resetMasterPin();
+              },
+              child: Text(
+                AppStrings.masterPasswordForgot,
+                style: Theme.of(context).textTheme.labelLarge?.copyWith(
+                      color: Theme.of(context).colorScheme.primary,
+                    ),
+              ),
+            ),
+            SizedBox(height: 20.h),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Text(
+                  AppStrings.masterPasswordPrivacy,
+                  style: Theme.of(context).textTheme.labelMedium,
                 ),
-              ),
-              SizedBox(height: 20.h),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Text(
-                    AppStrings.masterPasswordPrivacy,
-                    style: Theme.of(context).textTheme.labelMedium,
-                  ),
-                  Text(
-                    AppStrings.masterPasswordTerms,
-                    style: Theme.of(context).textTheme.labelMedium,
-                  ),
-                ],
-              ),
-            ],
-          ),
+                Text(
+                  AppStrings.masterPasswordTerms,
+                  style: Theme.of(context).textTheme.labelMedium,
+                ),
+              ],
+            ),
+          ],
         ),
       ),
     );

@@ -19,6 +19,7 @@ class AppStrings {
   static const String nextButton = "NEXT";
   static const String skipButton = "Skip";
   static const String backButton = "Back";
+  static const String editButton = "EDIT";
 
   String welcome = "Welcome";
 
@@ -120,6 +121,10 @@ class AppStrings {
   static const String mediumText = "Medium";
   static const String weakDescription =
       "This is a Weak Password,please make it stronger";
+  static const String inviteEditBottomDescription =
+      "These all member will be able to see only this credential on all. ";
+  static const String readmoreCredentialBotton =
+      "Read More";
 
   // Database Setup Screen
   static const String headingDS = "Please Select Database";

@@ -1,5 +1,3 @@
-import 'package:next_pass/features/auth/models/auth_model.dart';
-
 import '../../../../../core/constants/app_linker.dart';
 
 class SplashController extends GetxController {

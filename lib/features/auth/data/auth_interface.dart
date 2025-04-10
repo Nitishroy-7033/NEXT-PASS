@@ -1,5 +1,4 @@
-import '../../../core/constants/api_response.dart';
-import '../models/auth_model.dart';
+import '../../../core/constants/app_linker.dart';
 
 abstract interface class AuthInterface {
   Future<ApiResponse<AuthModel>> createAnAccount(String email, String password, String firstName, String lastName);

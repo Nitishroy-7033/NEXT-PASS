@@ -1,5 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import '../../../../../core/constants/app_linker.dart';
 
 class CredentialController extends GetxController {
   var password = ''.obs;
@@ -7,16 +6,6 @@ class CredentialController extends GetxController {
 
   void togglePasswordVisibility() {
     isPasswordVisible.value = !isPasswordVisible.value;
-  }
-
-  String getPasswordStrength() {
-    if (password.value.length < 6) {
-      return "Weak";
-    } else if (password.value.length < 10) {
-      return "Medium";
-    } else {
-      return "Strong";
-    }
   }
 
   var isEditing = false.obs;
@@ -55,6 +44,7 @@ class CredentialController extends GetxController {
 
   void saveEditedCredentials() {
     // Trigger UI update
+    isPasswordVisible.value = false;
     isEditing.refresh();
   }
 }

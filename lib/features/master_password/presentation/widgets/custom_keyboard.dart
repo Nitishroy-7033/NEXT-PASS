@@ -1,5 +1,3 @@
-import 'package:next_pass/core/constants/biomatric_service.dart';
-
 import '../../../../core/constants/app_linker.dart';
 
 class CustomKeyboard extends StatelessWidget {

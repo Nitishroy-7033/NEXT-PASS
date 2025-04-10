@@ -1,16 +1,9 @@
-import 'package:next_pass/core/utils/messages.dart';
-import 'package:next_pass/features/add_new_credential/controller/reminder_list_controller.dart';
-
 import '../../../core/constants/app_linker.dart';
 
 class AddNewCredentialController extends GetxController {
   final CredentialInterface credentialRepository =
       Get.put(CredentialRepository());
-  final HomeScreenController homeScreenController =
-      Get.put(HomeScreenController()); // Injected automatically
   final PasswordController passwordController = Get.put(PasswordController());
-  final ReminderListController reminderListController =
-      Get.put(ReminderListController());
 
   RxString siteUrl = ''.obs; // Observable URL
   var reminderDayValue = 30.obs;
@@ -27,41 +20,49 @@ class AddNewCredentialController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-
-    // Update siteUrl whenever the user types in the TextField
     siteUrlController.addListener(() {
       siteUrl.value = siteUrlController.text.trim();
     });
     password.addListener(() {
       passwordController.checkPasswordStrength(password.text.trim());
     });
-
-    reminderDayValue.value = reminderListController.getReminderValue();
   }
 
   Future<void> saveCredential(
-      userName, emailId, titleController, password, mobileNumber) async {
-    isLoading.value = true;
+    String userName,
+    String emailId,
+    String title,
+    String password,
+    String mobileNumber,
+    String categoryCred,
+    String passwordChangeReminder,
+  ) async {
     try {
+      isLoading.value = true;
+      // Extract number from reminder string (e.g., "30 Days" -> 30)
+      final reminderDays =
+          int.tryParse(passwordChangeReminder.split(' ')[0]) ?? 30;
+
       var success = await credentialRepository.createNewCredential(
         siteUrl.value,
         userName,
         emailId,
-        titleController,
+        title,
         mobileNumber,
         password,
-        reminderDayValue.value,
+        categoryCred,
+        reminderDays
+            .toString(), // Send as string if API expects it, or adjust backend
       );
+
       if (success) {
-        await homeScreenController
-            .fetchCredentials(); // Fetch updated credentials
         clearFormFields();
         SuccessMessage("Credential saved successfully!");
       } else {
         ErrorMessage("Failed to add credential");
       }
     } catch (e) {
-      print(e.toString());
+      ErrorMessage("Error saving credential: $e");
     } finally {
       isLoading.value = false;
     }
@@ -74,5 +75,17 @@ class AddNewCredentialController extends GetxController {
     titleController.clear();
     password.clear();
     mobileNumber.clear();
+    siteUrl.value = '';
+  }
+
+  @override
+  void onClose() {
+    siteUrlController.dispose();
+    userName.dispose();
+    emailId.dispose();
+    titleController.dispose();
+    password.dispose();
+    mobileNumber.dispose();
+    super.onClose();
   }
 }

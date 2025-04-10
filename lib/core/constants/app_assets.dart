@@ -64,19 +64,8 @@ class IconsAssets {
   static const String delete_icon="${iconBasePath}delete_icon.svg";
   static const String warning_icon="${iconBasePath}warning_icon.svg";
   static const String check_icon="${iconBasePath}check_icon.svg";
-  // NETWORK ASSETS
-  static const String spotifyLogoUrl =
-      "https://storage.googleapis.com/pr-newsroom-wp/1/2023/05/Spotify_Primary_Logo_RGB_Green.png";
-  static const String netflixLogoUrl =
-      "https://i.ytimg.com/vi/Fe3sszhqwAE/hq720.jpg?sqp=-oaymwE7CK4FEIIDSFryq4qpAy0IARUAAAAAGAElAADIQj0AgKJD8AEB-AH-CYAC0AWKAgwIABABGH8gEygUMA8=&rs=AOn4CLA1arEYPCiQvf5fvlflvbECRYtotQ";
-  static const String instagramLogoUrl =
-      "https://i.pinimg.com/1200x/24/37/73/2437730f7e3a5705e205e67fa2cd1020.jpg";
-  static const String discordLogoUrl =
-      "https://logos-world.net/wp-content/uploads/2020/12/Discord-Emblem.png";
-  static const String slackLogoUrl =
-      "";
-  static const String githubLogoUrl =
-      "https://cdn-icons-png.flaticon.com/512/25/25231.png";
+  static const String cross_cancel_icon="${iconBasePath}cross_cancel_icon.svg";
+
 }
 
 

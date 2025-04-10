@@ -6,14 +6,12 @@ class MobileSplashScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: Center(
-          child: Lottie.asset(
-            AnimationAssets.splashLockAnimation,
-            width: 150.w,
-            height: 150.w,
-          ),
+    return Scaffold(
+      body: Center(
+        child: Lottie.asset(
+          AnimationAssets.splashLockAnimation,
+          width: 150.w,
+          height: 150.w,
         ),
       ),
     );

@@ -1,7 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:next_pass/core/constants/app_linker.dart';
-import 'package:next_pass/core/utils/messages.dart';
+import '../../../../../core/constants/app_linker.dart';
 
 class FooterController extends GetxController {
   final emailController = TextEditingController();

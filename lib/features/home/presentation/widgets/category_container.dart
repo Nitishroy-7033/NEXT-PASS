@@ -28,7 +28,7 @@ class CategoryContainer extends StatelessWidget {
               width: 50.w,
               padding: EdgeInsets.all(14.w),
               decoration: BoxDecoration(
-                color: color.withOpacity(0.3),
+                color: color.withValues(alpha: 0.3),
                 borderRadius: BorderRadius.circular(15.r),
               ),
               child: SvgPicture.asset(

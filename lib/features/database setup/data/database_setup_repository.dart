@@ -1,7 +1,3 @@
-import 'package:next_pass/core/constants/api_response.dart';
-import 'package:next_pass/features/auth/models/auth_model.dart';
-import 'package:next_pass/features/database%20setup/data/database_setup_interface.dart';
-
 import '../../../core/constants/app_linker.dart';
 
 class DatabaseSetupRepository implements DatabaseSetupInterface {
