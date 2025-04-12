@@ -1,3 +1,5 @@
+import 'package:next_pass/features/profile/controllers/getx/profile_controller.dart';
+
 import '../../../../core/constants/app_linker.dart';
 
 class MobileHomeScreen extends StatelessWidget {
@@ -5,6 +7,8 @@ class MobileHomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final ProfileController profileController = Get.put(ProfileController());
+
     final HomeScreenController homeController =
         Get.put(HomeScreenController()); // ✅ HomeScreenController injected
 
@@ -19,14 +23,21 @@ class MobileHomeScreen extends StatelessWidget {
         title: Column(
           children: [
             Row(
-              children: [
-                ViewProfileSection(
-                  profileImageURL: "",
-                  userName: "Harsh Kumar Gupta",
-                  onTap: () {
-                    Get.toNamed(AppRoutes.profilePage);
-                  },
-                ),
+              children: [          
+Obx(() {
+  final profile = profileController.profileModel.value;
+
+  // final profileImage = profile?.profileImageURL ?? "";
+
+  return ViewProfileSection(
+    profileImageURL:"",
+    userName:  "${profile?.firstName ?? "First"} ${profile?.lastName ?? "Last"}",
+    onTap: () {
+      Get.toNamed(AppRoutes.profilePage);
+    },
+  );
+}),
+
                 const Spacer(),
                 InkWell(
                   onTap: () {
