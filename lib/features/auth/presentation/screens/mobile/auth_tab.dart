@@ -1,5 +1,6 @@
 import 'package:next_pass/core/constants/app_linker.dart';
 
+
 class AuthScreen extends StatefulWidget {
   const AuthScreen({super.key});
 
