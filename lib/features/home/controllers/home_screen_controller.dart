@@ -4,7 +4,7 @@ class HomeScreenController extends GetxController {
   final HomeRepository homeRepository = Get.put(HomeRepository()); // ✅ Injected
 
   var isLoading = false.obs;
-  var credentials = <HomeModel>[].obs;
+  var credentials = <CredentialModel>[].obs;
   var isError = false.obs;
   var errorMessage = "".obs;
   RxBool isMoreTabOpen = false.obs; // ✅ Tracks whether the More tab is open
@@ -19,7 +19,7 @@ class HomeScreenController extends GetxController {
         print("API Full Response: ${response.toString()}");  // ✅ Actual API Response Print
         print("API Success: ${response.success}");  // ✅ Success Status
         print("API Message: ${response.message}");  
-    if (response.success == true && response.data is List<HomeModel>) {
+    if (response.success == true && response.data is List<CredentialModel>) {
       credentials.assignAll(response.data!);
       SuccessMessage(response.message ?? "Credentials fetched successfully");
     } else {

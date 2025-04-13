@@ -1,6 +1,6 @@
 import '../../../core/constants/app_linker.dart';
 
-abstract interface class CredentialInterface {
+abstract interface class AddCredentialInterface {
   Future<bool> createNewCredential(
     String siteUrl,
     String userName,

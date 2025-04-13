@@ -1,6 +1,6 @@
 import '../../../core/constants/app_linker.dart';
 
-class CredentialRepository implements CredentialInterface {
+class AddCredentialRepository implements AddCredentialInterface {
   final ApiClient apiClient = Get.find<ApiClient>();
 
   @override

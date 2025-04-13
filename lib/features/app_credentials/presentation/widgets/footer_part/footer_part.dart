@@ -2,7 +2,12 @@
 import '../../../../../core/constants/app_linker.dart';
 
 class FooterWidget extends StatelessWidget {
-  const FooterWidget({super.key});
+  final int passwordChangeReminder;
+  final String passwordCategory;
+  const FooterWidget(
+      {super.key,
+      required this.passwordChangeReminder,
+      required this.passwordCategory});
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +41,7 @@ class FooterWidget extends StatelessWidget {
     final CredentialController credentialController =
         Get.put(CredentialController());
 
-    final FooterController controller = Get.put(FooterController());
+    final FooterController footerController = Get.put(FooterController());
     final CategoryListController categoryController =
         Get.put(CategoryListController());
     final ReminderListController reminderController =
@@ -96,8 +101,8 @@ class FooterWidget extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        _buildRow(Icons.timer, "30 Days"),
-                        _buildRow(Icons.category_rounded, "Website"),
+                        _buildRow(Icons.timer, "$passwordChangeReminder Days"),
+                        _buildRow(Icons.category_rounded, passwordCategory),
                       ],
                     ),
                   ),
@@ -155,7 +160,7 @@ class FooterWidget extends StatelessWidget {
               ),
             )..add(
                 GestureDetector(
-                  onTap: controller.onInviteUser,
+                  onTap: footerController.onInviteUser,
                   child: Tooltip(
                     message: AppStrings.inviteUser,
                     child: Container(
@@ -198,7 +203,9 @@ class FooterWidget extends StatelessWidget {
               SizedBox(width: 16.w),
               // Delete Button
               InkWell(
-                onTap: controller.onDeletePressed,
+                onTap: () {
+                  footerController.deleteCredentialPopUP(context);
+                },
                 child: Container(
                   height: 50.w,
                   width: 50.w,

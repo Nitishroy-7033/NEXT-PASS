@@ -25,28 +25,25 @@ class AllCredentialsSection extends StatelessWidget {
         itemCount: controller.credentials.length,
         itemBuilder: (context, index) {
           final credential = controller.credentials[index];
+
           print(
               "Password Strength for ${credential.title}: ${credential.passwordStrength}");
           print("Raw Strength Value: '${credential.passwordStrength}'");
           return GestureDetector(
             onTap: () {
               Get.to(() => const AppCredentials(), arguments: {
-                "title": credential.title,
-                "siteUrl": credential.siteUrl,
-                "userName": credential.username,
-                "email": credential.emailId,
-                "password": credential.password,
+                "credential": credential, // full model pass kar rahe
               });
             },
             child: AccountContainerTile(
-              title: credential.title,
-              emailId: credential.emailId,
-              password: credential.password, // '********',
-              strength: passwordController
-                  .checkandReturnPasswordStrength(credential.password),
-              imageUrl: credential.siteUrl,
-              isAlert: int.tryParse(credential.passwordStrength) != null
-                  ? int.parse(credential.passwordStrength) < 3
+              title: credential.title ?? "Not Found",
+              emailId: credential.emailId ?? "Not Found",
+              password: credential.password ?? "Not Found", // '********',
+              strength: passwordController.checkandReturnPasswordStrength(
+                  credential.password ?? "Not Found"),
+              imageUrl: credential.siteUrl ?? "",
+              isAlert: int.tryParse(credential.passwordStrength ?? "") != null
+                  ? int.parse(credential.passwordStrength ?? "") < 3
                   : false,
               ontap: () {},
             ),
