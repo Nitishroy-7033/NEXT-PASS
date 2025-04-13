@@ -123,8 +123,7 @@ class AppStrings {
       "This is a Weak Password,please make it stronger";
   static const String inviteEditBottomDescription =
       "These all member will be able to see only this credential on all. ";
-  static const String readmoreCredentialBotton =
-      "Read More";
+  static const String readmoreCredentialBotton = "Read More";
 
   // Database Setup Screen
   static const String headingDS = "Please Select Database";
@@ -144,6 +143,7 @@ class AppStrings {
   static const String emailt = 'Email Address';
   static const String invite = 'Send Invite';
   static const String cancel = 'Cancel';
+  static const String delete = 'Delete';
   static const String pleaseEnterEmail = 'Please enter email address';
   static const String enterValidEmail = 'Please enter a valid email address';
   static const String userInvitedSuccessfully =
@@ -151,4 +151,5 @@ class AppStrings {
   static const String invitationFailed = 'Invitation failed. Please try again.';
   static const String inviteError = 'Invitation could not be sent';
   static const String inviteSuccess = 'Invitation sent successfully';
+  static const String deleteCredential = 'Delete Credential';
 }

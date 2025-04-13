@@ -1,8 +1,8 @@
 import '../../../core/constants/app_linker.dart';
 
 class AddNewCredentialController extends GetxController {
-  final CredentialInterface credentialRepository =
-      Get.put(CredentialRepository());
+  final AddCredentialInterface addCredentialRepository =
+      Get.put(AddCredentialRepository());
   final PasswordController passwordController = Get.put(PasswordController());
 
   RxString siteUrl = ''.obs; // Observable URL
@@ -43,7 +43,7 @@ class AddNewCredentialController extends GetxController {
       final reminderDays =
           int.tryParse(passwordChangeReminder.split(' ')[0]) ?? 30;
 
-      var success = await credentialRepository.createNewCredential(
+      var success = await addCredentialRepository.createNewCredential(
         siteUrl.value,
         userName,
         emailId,

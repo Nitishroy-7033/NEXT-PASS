@@ -50,7 +50,10 @@ class AppCredentials extends StatelessWidget {
                 controller: controller,
               ),
             ),
-            const FooterWidget(),
+            FooterWidget(
+              passwordChangeReminder: controller.passwordChangeReminder!,
+              passwordCategory: controller.passwordCategory!,
+            ),
           ],
         ),
       ),

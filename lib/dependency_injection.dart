@@ -1,11 +1,4 @@
-import 'package:next_pass/features/database%20setup/data/database_setup_interface.dart';
-import 'package:next_pass/features/database%20setup/data/database_setup_repository.dart';
-
-import 'core/constants/app_linker.dart';
-import 'core/network/network_service.dart';
-import 'features/auth/controllers/auth_controller.dart';
-import 'features/auth/data/auth_interface.dart';
-import 'features/auth/data/auth_repository.dart';
+import 'package:next_pass/core/constants/app_linker.dart';
 
 class DependencyInjection {
   static void init() {
