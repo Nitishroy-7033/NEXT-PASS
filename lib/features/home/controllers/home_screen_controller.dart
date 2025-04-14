@@ -16,12 +16,8 @@ class HomeScreenController extends GetxController {
 
   try {
     final response = await homeRepository.getCredentials();
-        print("API Full Response: ${response.toString()}");  // ✅ Actual API Response Print
-        print("API Success: ${response.success}");  // ✅ Success Status
-        print("API Message: ${response.message}");  
     if (response.success == true && response.data is List<CredentialModel>) {
       credentials.assignAll(response.data!);
-      SuccessMessage(response.message ?? "Credentials fetched successfully");
     } else {
       _handleError(response.message ?? "Failed to fetch credentials");
     }

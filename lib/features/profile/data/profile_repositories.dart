@@ -3,7 +3,7 @@ import '../../../core/constants/app_linker.dart';
 class ProfileRepository {
 
 final ApiClient apiClient = Get.find<ApiClient>();
-final AuthController authController = Get.find<AuthController>();
+final AuthController authController = Get.put(AuthController());
   
 
 
@@ -15,7 +15,6 @@ final AuthController authController = Get.find<AuthController>();
       if (getEmail == null || getEmail.isEmpty) {
         throw Exception("Email not found");
       }
-
       var encodedEmail = Uri.encodeComponent(getEmail);
       var response = await apiClient.request(
         "/User/$getEmail",

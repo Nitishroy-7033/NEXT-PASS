@@ -3,6 +3,7 @@ import '../../../core/constants/app_linker.dart';
 class AddNewCredentialController extends GetxController {
   final AddCredentialInterface addCredentialRepository =
       Get.put(AddCredentialRepository());
+    final HomeScreenController homeScreenController = Get.put(HomeScreenController());
   final PasswordController passwordController = Get.put(PasswordController());
 
   RxString siteUrl = ''.obs; // Observable URL
@@ -26,6 +27,7 @@ class AddNewCredentialController extends GetxController {
     password.addListener(() {
       passwordController.checkPasswordStrength(password.text.trim());
     });
+
   }
 
   Future<void> saveCredential(
@@ -52,9 +54,9 @@ class AddNewCredentialController extends GetxController {
         password,
         categoryCred,
         reminderDays
-            .toString(), // Send as string if API expects it, or adjust backend
+            .toString(), 
       );
-
+      await homeScreenController.fetchCredentials();
       if (success) {
         clearFormFields();
         SuccessMessage("Credential saved successfully!");
