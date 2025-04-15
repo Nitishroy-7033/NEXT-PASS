@@ -125,6 +125,9 @@ export 'package:next_pass/features/database%20setup/data/database_setup_interfac
 export 'package:next_pass/features/app_credentials/presentation/widgets/header_part/credential_icon_preview.dart';
 export 'package:next_pass/features/app_credentials/presentation/widgets/footer_part/invite_edit_people_bottomsheet.dart';
 export 'package:next_pass/features/app_credentials/presentation/widgets/footer_part/invited_people_tile.dart';
+export 'package:next_pass/features/app_credentials/data/credential_interface.dart';
+export 'package:next_pass/features/app_credentials/data/credential_repository.dart';
+export 'package:next_pass/core/network/network_service.dart';
 export 'package:next_pass/features/profile/model/profile_model.dart';
 export 'package:next_pass/features/profile/data/profile_repositories.dart';
 export 'package:next_pass/features/profile/controllers/getx/profile_controller.dart';
@@ -133,6 +136,3 @@ export 'package:next_pass/features/profile/presentation/widgets/Account_options_
 export 'package:next_pass/features/profile/presentation/widgets/LogoutSection.dart';
 export 'package:next_pass/features/profile/presentation/widgets/PreferenceOptionsSection.dart';
 export 'package:next_pass/features/profile/presentation/widgets/profile_header_section.dart';
-export 'package:next_pass/features/app_credentials/data/credential_interface.dart';
-export 'package:next_pass/features/app_credentials/data/credential_repository.dart';
-export 'package:next_pass/core/network/network_service.dart';

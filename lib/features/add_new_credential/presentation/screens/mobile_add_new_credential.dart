@@ -13,7 +13,7 @@ class MobileAddNewCredential extends StatelessWidget {
         scrolledUnderElevation: 0.0,
       ),
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 24.w),
+        padding: EdgeInsets.symmetric(horizontal: 15.w),
         child: ListView(
           children: [
             SizedBox(height: 35.h),
