@@ -21,6 +21,8 @@ class AuthController extends GetxController {
       if (response.success == true && response.data != null) {
         authModel.value = response.data;
         apiClient.setUserDetails(response.data!);
+        await saveEmailToLocal(email);
+
         SuccessMessage(response.message ?? "Logged in successfully");
 
         // Check if database type is already stored
