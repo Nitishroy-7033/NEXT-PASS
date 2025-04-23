@@ -1,4 +1,4 @@
-import '../../../../core/constants/app_linker.dart';
+import '../../../../../core/constants/app_linker.dart';
 
 class ProfileContainer extends StatelessWidget {
   final String profileImageURL;
