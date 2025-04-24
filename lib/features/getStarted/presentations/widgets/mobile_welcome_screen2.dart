@@ -8,18 +8,19 @@ class MobileWelcomeScreen2 extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 30.w),
       child: Column(
-        spacing: 26.h,
         children: [
-          SizedBox(height: 5.h),
+          SizedBox(height: 25.h),
           Text(
             AppStrings.heading2,
             textAlign: TextAlign.center,
             style: Theme.of(context).textTheme.headlineLarge,
           ),
+          SizedBox(height: 30.h),
           Image.asset(
             AppImageAssets.getStartedLogo2,
             height: 280.h,
           ),
+          SizedBox(height: 20.h),
           Text(
             AppStrings.content2,
             textAlign: TextAlign.center,

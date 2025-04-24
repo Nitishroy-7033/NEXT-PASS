@@ -1,8 +1,4 @@
-import 'package:next_pass/core/constants/app_linker.dart';
-import 'package:next_pass/core/widgets/custom_dropdown.dart';
-import 'package:next_pass/core/widgets/generate_password_button.dart';
-import 'package:next_pass/features/add_new_credential/controller/category_list_controller.dart';
-import 'package:next_pass/features/add_new_credential/controller/reminder_list_controller.dart';
+import '../../../../core/constants/app_linker.dart';
 
 class AddNewCredentialForm extends StatelessWidget {
   const AddNewCredentialForm({super.key});
@@ -199,9 +195,9 @@ class AddNewCredentialForm extends StatelessWidget {
                         '90 Days'
                       ],
                       controller: reminderController,
-                      popupWidth: 100.0,
-                      maxWidth: 130.0,
-                      maxHeight: 40.0,
+                      popupWidth: 100.w,
+                      maxWidth: 130.w,
+                      maxHeight: 40.h,
                     ),
                   ],
                 ),
@@ -216,34 +212,42 @@ class AddNewCredentialForm extends StatelessWidget {
                     CustomDropdown(
                       itemList: const ['Website', 'App', 'Payment', 'Other'],
                       controller: categoryController,
-                      popupWidth: 100.0,
-                      maxWidth: 130.0,
-                      maxHeight: 40.0,
+                      popupWidth: 100.w,
+                      maxWidth: 130.w,
+                      maxHeight: 40.h,
                     ),
                   ],
                 )
               ],
             ),
             SizedBox(height: 30.h),
-            PrimaryButton(
-              text: AppStrings.buttonSave,
-              onPressed: () {
-                if (_formKey.currentState!.validate()) {
-                  try {
-                    controller.saveCredential(
-                      controller.userName.text,
-                      controller.emailId.text,
-                      controller.titleController.text,
-                      controller.password.text,
-                      controller.mobileNumber.text,
-                      categoryController.selectedValue.value,
-                      reminderController.selectedValue.value,
-                    );
-                  } catch (e) {
-                    print(e.toString());
-                  }
-                }
-              },
+            Obx(
+              () => (controller.isLoading.value)
+                  ? Center(
+                      child: SizedBox(
+                          height: 30.w,
+                          width: 30.w,
+                          child: const CircularProgressIndicator()))
+                  : PrimaryButton(
+                      text: AppStrings.buttonSave,
+                      onPressed: () {
+                        if (_formKey.currentState!.validate()) {
+                          try {
+                            controller.saveCredential(
+                              controller.userName.text,
+                              controller.emailId.text,
+                              controller.titleController.text,
+                              controller.password.text,
+                              controller.mobileNumber.text,
+                              categoryController.selectedValue.value,
+                              reminderController.selectedValue.value,
+                            );
+                          } catch (e) {
+                            print(e.toString());
+                          }
+                        }
+                      },
+                    ),
             ),
           ],
         ),

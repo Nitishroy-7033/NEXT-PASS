@@ -1,7 +1,5 @@
 class AppRoutes {
   static const String splash = '/splash';
-  static const String signUp = '/signUp';
-  static const String login = '/login';
   static const String authtab = '/authtab';
   static const String masterPassword = '/masterPassword';
   static const String home = '/home';
@@ -14,4 +12,5 @@ class AppRoutes {
   static const String databaseSetup ='/databaseSetup';
   static const String searchCredential = '/searchCredential';
   static const String profilePage = '/profile';
+  static const String personalInfo = '/personalInfo';
 }

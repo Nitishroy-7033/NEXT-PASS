@@ -1,5 +1,3 @@
-import 'package:next_pass/core/constants/biomatric_service.dart';
-
 import '../../../../core/constants/app_linker.dart';
 
 class CustomKeyboard extends StatelessWidget {
@@ -13,9 +11,9 @@ class CustomKeyboard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(15),
+      padding: EdgeInsets.all(15.w),
       decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.primaryContainer,
+        color: Theme.of(context).colorScheme.surface,
       ),
       child: GridView.builder(
         shrinkWrap: true,
@@ -38,31 +36,37 @@ class CustomKeyboard extends StatelessWidget {
                 }
               },
               child: SvgPicture.asset(
-                color: Theme.of(context).colorScheme.onSurface,
                 IconsAssets.biometric_icon,
-                width: 20,
-                height: 20,
+                colorFilter: ColorFilter.mode(
+                  Theme.of(context).colorScheme.onSurface,
+                  BlendMode.srcIn,
+                ),
+                width: 20.w,
+                height: 20.w,
               ),
             );
           } else if (index == 10) {
             // ✅ Zero button
-            buttonContent = const Text(
+            buttonContent = Text(
               "0",
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              style: Theme.of(context).textTheme.headlineLarge,
             );
           } else if (index == 11) {
             // ✅ Cross (❌) Backspace Icon
             buttonContent = SvgPicture.asset(
-              color: Theme.of(context).colorScheme.onSurface,
               IconsAssets.crossIcon,
-              width: 20,
-              height: 20,
+              colorFilter: ColorFilter.mode(
+                Theme.of(context).colorScheme.onSurface,
+                BlendMode.srcIn,
+              ),
+              width: 20.w,
+              height: 20.w,
             );
           } else {
             // ✅ Number Buttons (1-9)
             buttonContent = Text(
               (index + 1).toString(),
-              style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              style: Theme.of(context).textTheme.headlineLarge,
             );
           }
 
@@ -76,19 +80,23 @@ class CustomKeyboard extends StatelessWidget {
               }
             },
             child: Container(
-              height: 100,
               decoration: BoxDecoration(
-                color: Theme.of(context).colorScheme.primaryContainer,
                 border: Border(
                   top: index < 3
                       ? BorderSide.none
                       : BorderSide(
-                          color: Theme.of(context).colorScheme.tertiary.withValues(alpha: 0.4),
+                          color: Theme.of(context)
+                              .colorScheme
+                              .tertiary
+                              .withValues(alpha: 0.4),
                           width: 1),
                   left: index % 3 == 0
                       ? BorderSide.none
                       : BorderSide(
-                          color: Theme.of(context).colorScheme.tertiary.withValues(alpha: 0.4),
+                          color: Theme.of(context)
+                              .colorScheme
+                              .tertiary
+                              .withValues(alpha: 0.4),
                           width: 1),
                 ),
               ),

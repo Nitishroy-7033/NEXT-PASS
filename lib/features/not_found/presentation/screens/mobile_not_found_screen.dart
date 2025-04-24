@@ -1,4 +1,3 @@
-
 import '../../../../core/constants/app_linker.dart';
 
 class MobileNotFoundScreen extends StatelessWidget {
@@ -6,6 +5,12 @@ class MobileNotFoundScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      body: Center(
+          child: Text(
+        'Page Not Found 😑',
+        style: Theme.of(context).textTheme.headlineLarge,
+      )),
+    );
   }
 }

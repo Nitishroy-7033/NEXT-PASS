@@ -5,7 +5,7 @@ class PasswordCategorySection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    HomeScreenController homeScreenController = Get.put(HomeScreenController());
+    // HomeScreenController homeScreenController = Get.put(HomeScreenController());
     return Column(
       children: [
         Row(
@@ -29,55 +29,61 @@ class PasswordCategorySection extends StatelessWidget {
               color: AppColors.greenColor,
               onTap: () {},
             ),
-            Obx(
-              () => CategoryContainer(
-                icon: (homeScreenController.isMoreTabOpen.value)
-                    ? IconsAssets.dropUpIcon
-                    : IconsAssets.moreDotIcon,
-                title: (homeScreenController.isMoreTabOpen.value)
-                    ? "Hide"
-                    : "More",
-                color: Theme.of(context).colorScheme.onSurface,
-                onTap: () {
-                  homeScreenController.runMoreTab();
-                },
-              ),
+            CategoryContainer(
+              icon: IconsAssets.paymentIcon,
+              title: "Others",
+              color: Theme.of(context).colorScheme.onSurface,
+              onTap: () {},
             ),
+            // Obx(
+            //   () => CategoryContainer(
+            //     icon: (homeScreenController.isMoreTabOpen.value)
+            //         ? IconsAssets.dropUpIcon
+            //         : IconsAssets.moreDotIcon,
+            //     title: (homeScreenController.isMoreTabOpen.value)
+            //         ? "Hide"
+            //         : "More",
+            //     color: Theme.of(context).colorScheme.onSurface,
+            //     onTap: () {
+            //       homeScreenController.runMoreTab();
+            //     },
+            //   ),
+            // ),
           ],
         ),
-        Obx(
-          () => (homeScreenController.isMoreTabOpen.value)
-              ? Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    CategoryContainer(
-                      icon: IconsAssets.generateIcon,
-                      title: "Generate",
-                      color: AppColors.pinkColor,
-                      onTap: () {},
-                    ),
-                    CategoryContainer(
-                      icon: IconsAssets.alertIcon,
-                      title: "Pownd",
-                      color: Theme.of(context).colorScheme.error,
-                      onTap: () {},
-                    ),
-                    CategoryContainer(
-                      icon: IconsAssets.generateIcon,
-                      title: "Generate",
-                      color: AppColors.pinkColor,
-                      onTap: () {},
-                    ),
-                    CategoryContainer(
-                      icon: IconsAssets.alertIcon,
-                      title: "Pownd",
-                      color: Theme.of(context).colorScheme.error,
-                      onTap: () {},
-                    ),
-                  ],
-                )
-              : const SizedBox.shrink(),
-        ),
+        // Obx(
+        //   () => (homeScreenController.isMoreTabOpen.value)
+        //       ? Row(
+        //           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        //           children: [
+        //             CategoryContainer(
+        //               icon: IconsAssets.generateIcon,
+        //               title: "Generate",
+        //               color: AppColors.pinkColor,
+        //               onTap: () {},
+        //             ),
+        //             CategoryContainer(
+        //               icon: IconsAssets.alertIcon,
+        //               title: "Pownd",
+        //               color: Theme.of(context).colorScheme.error,
+        //               onTap: () {},
+        //             ),
+        //             CategoryContainer(
+        //               icon: IconsAssets.generateIcon,
+        //               title: "Generate",
+        //               color: AppColors.pinkColor,
+        //               onTap: () {},
+        //             ),
+        //             CategoryContainer(
+        //               icon: IconsAssets.alertIcon,
+        //               title: "Pownd",
+        //               color: Theme.of(context).colorScheme.error,
+        //               onTap: () {},
+        //             ),
+        //           ],
+        //         )
+        //       : const SizedBox.shrink(),
+        // ),
       ],
     );
   }

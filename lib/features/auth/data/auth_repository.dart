@@ -1,8 +1,4 @@
-import 'package:next_pass/core/network/api_client.dart';
-import 'package:next_pass/features/auth/data/auth_interface.dart';
-import 'package:next_pass/features/auth/models/auth_model.dart';
-import '../../../core/constants/api_response.dart';
-import 'package:get/get.dart';
+import '../../../core/constants/app_linker.dart';
 
 class AuthRepository implements AuthInterface {
   final ApiClient apiClient = Get.find<ApiClient>(); // ✅ Injected automatically

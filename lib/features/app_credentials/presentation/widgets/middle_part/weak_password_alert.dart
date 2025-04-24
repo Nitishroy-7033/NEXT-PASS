@@ -9,7 +9,7 @@ class WeakPasswordAlert extends StatelessWidget {
       margin: const EdgeInsets.only(top: 12),
       padding: const EdgeInsets.all(10),
       decoration: BoxDecoration(
-        color: AppColors.orangeColor.withOpacity(0.2),
+        color: AppColors.orangeColor.withValues(alpha:  0.2),
         borderRadius: BorderRadius.circular(8),
         border: Border.all(color: AppColors.orangeColor),
       ),

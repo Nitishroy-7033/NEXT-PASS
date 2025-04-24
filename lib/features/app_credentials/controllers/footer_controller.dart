@@ -1,11 +1,9 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:next_pass/core/constants/app_linker.dart';
-import 'package:next_pass/core/utils/messages.dart';
+import '../../../core/constants/app_linker.dart';
 
 class FooterController extends GetxController {
   final emailController = TextEditingController();
   final formKey = GlobalKey<FormState>();
+  final CredentialController credentialController = Get.find();
 
   void onEditPressed() {
     print("Edit button clicked");
@@ -89,5 +87,60 @@ class FooterController extends GetxController {
   void onClose() {
     emailController.dispose();
     super.onClose();
+  }
+
+  void deleteCredentialPopUP(BuildContext context) {
+    Get.dialog(
+      AlertDialog(
+        title: Center(
+          child: Text(
+            AppStrings.deleteCredential,
+            style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                  color: Theme.of(context).colorScheme.error,
+                ),
+          ),
+        ),
+        backgroundColor: Theme.of(context).colorScheme.primaryContainer,
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text(
+              credentialController.titleController.text,
+              style: Theme.of(context).textTheme.bodyLarge,
+            ),
+            SizedBox(height: 20.h),
+            Text(
+              "Are you sure to delete this credential",
+              textAlign: TextAlign.center,
+              style: Theme.of(context).textTheme.labelSmall,
+            ),
+          ],
+        ),
+        titlePadding: EdgeInsets.symmetric(vertical: 20.h),
+        contentPadding: EdgeInsets.symmetric(horizontal: 20.w),
+        actionsPadding: EdgeInsets.symmetric(vertical: 10.h),
+        actionsAlignment: MainAxisAlignment.spaceEvenly,
+        actions: [
+          TextButton(
+            onPressed: () => Get.back(),
+            child: Text(
+              AppStrings.cancel,
+              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                    color: Theme.of(context).colorScheme.primary,
+                  ),
+            ),
+          ),
+          TextButton(
+            onPressed: credentialController.deleteCredential,
+            child: Text(
+              AppStrings.delete,
+              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                    color: Theme.of(context).colorScheme.error,
+                  ),
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }

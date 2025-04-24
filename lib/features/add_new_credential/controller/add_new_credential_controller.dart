@@ -1,20 +1,22 @@
-import 'package:get/get.dart';
-import 'package:next_pass/core/utils/messages.dart';
 import '../../../core/constants/app_linker.dart';
 
 class AddNewCredentialController extends GetxController {
-  final CredentialInterface credentialRepository =
-      Get.put(CredentialRepository());
+  final AddCredentialInterface addCredentialRepository =
+      Get.put(AddCredentialRepository());
+    final HomeScreenController homeScreenController = Get.put(HomeScreenController());
   final PasswordController passwordController = Get.put(PasswordController());
 
-  TextEditingController siteUrlController = TextEditingController();
-  RxString siteUrl = ''.obs;
+  RxString siteUrl = ''.obs; // Observable URL
+  var reminderDayValue = 30.obs;
 
+  TextEditingController siteUrlController = TextEditingController();
   TextEditingController userName = TextEditingController();
   TextEditingController emailId = TextEditingController();
   TextEditingController titleController = TextEditingController();
   TextEditingController password = TextEditingController();
   TextEditingController mobileNumber = TextEditingController();
+
+  var isLoading = false.obs;
 
   @override
   void onInit() {
@@ -25,6 +27,7 @@ class AddNewCredentialController extends GetxController {
     password.addListener(() {
       passwordController.checkPasswordStrength(password.text.trim());
     });
+
   }
 
   Future<void> saveCredential(
@@ -37,11 +40,12 @@ class AddNewCredentialController extends GetxController {
     String passwordChangeReminder,
   ) async {
     try {
+      isLoading.value = true;
       // Extract number from reminder string (e.g., "30 Days" -> 30)
       final reminderDays =
           int.tryParse(passwordChangeReminder.split(' ')[0]) ?? 30;
 
-      var success = await credentialRepository.createNewCredential(
+      var success = await addCredentialRepository.createNewCredential(
         siteUrl.value,
         userName,
         emailId,
@@ -50,9 +54,9 @@ class AddNewCredentialController extends GetxController {
         password,
         categoryCred,
         reminderDays
-            .toString(), // Send as string if API expects it, or adjust backend
+            .toString(), 
       );
-
+      await homeScreenController.fetchCredentials();
       if (success) {
         clearFormFields();
         SuccessMessage("Credential saved successfully!");
@@ -61,6 +65,8 @@ class AddNewCredentialController extends GetxController {
       }
     } catch (e) {
       ErrorMessage("Error saving credential: $e");
+    } finally {
+      isLoading.value = false;
     }
   }
 

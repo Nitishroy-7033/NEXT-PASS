@@ -56,8 +56,8 @@ class CredentialModel {
     if (json["siteUrl"] is String) {
       siteUrl = json["siteUrl"];
     }
-    if (json["Title"] is String) {
-      title = json["Title"];
+    if (json["title"] is String) {
+      title = json["title"];
     }
     if (json["emailId"] is String) {
       emailId = json["emailId"];

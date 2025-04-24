@@ -1,7 +1,3 @@
-import 'package:next_pass/core/utils/messages.dart';
-import 'package:next_pass/features/auth/data/auth_repository.dart';
-import 'package:next_pass/features/auth/models/auth_model.dart';
-
 import '../../../core/constants/app_linker.dart';
 
 class AuthController extends GetxController {
@@ -25,6 +21,8 @@ class AuthController extends GetxController {
       if (response.success == true && response.data != null) {
         authModel.value = response.data;
         apiClient.setUserDetails(response.data!);
+        await saveEmailToLocal(email);
+
         SuccessMessage(response.message ?? "Logged in successfully");
 
         // Check if database type is already stored
@@ -64,6 +62,8 @@ class AuthController extends GetxController {
       if (response.success == true && response.data != null) {
         authModel.value = response.data;
         apiClient.setUserDetails(response.data!);
+          await saveEmailToLocal(email);
+
         SuccessMessage(response.message ?? "Account created successfully");
         Get.offAllNamed(AppRoutes.authtab);
       } else {
@@ -83,10 +83,21 @@ class AuthController extends GetxController {
     print(response);
   }
 
-  void saveCredentialToLocal(email, password) {}
+
 
   Future<void> logOut() async {
     await apiClient.removeAuthToken();
     Get.offAllNamed(AppRoutes.authtab);
   }
+
+
+  Future<void> saveEmailToLocal(String email) async {
+  final prefs = await SharedPreferences.getInstance();
+  await prefs.setString('user_email', email);
+}
+Future<String?> getEmailFromLocal() async {
+  final prefs = await SharedPreferences.getInstance();
+  return prefs.getString('user_email');
+}
+
 }

@@ -1,4 +1,4 @@
-import 'package:get/get.dart';
+import '../../../core/constants/app_linker.dart';
 
 class CategoryListController extends GetxController {
   Rx<String> selectedValue = 'Website'.obs;

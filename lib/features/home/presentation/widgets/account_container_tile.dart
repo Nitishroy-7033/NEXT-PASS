@@ -1,4 +1,4 @@
-import 'package:next_pass/core/constants/app_linker.dart';
+import '../../../../core/constants/app_linker.dart';
 
 class AccountContainerTile extends StatelessWidget {
   final String imageUrl;

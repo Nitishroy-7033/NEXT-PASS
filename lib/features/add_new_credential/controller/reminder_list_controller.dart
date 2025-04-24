@@ -1,4 +1,4 @@
-import 'package:get/get.dart';
+import '../../../core/constants/app_linker.dart';
 
 class ReminderListController extends GetxController {
   Rx<String> selectedValue = '30 Days'.obs;
@@ -6,4 +6,5 @@ class ReminderListController extends GetxController {
   void setDropdownValue(String value) {
     selectedValue.value = value;
   }
+
 }

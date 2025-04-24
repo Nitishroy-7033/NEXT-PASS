@@ -1,21 +1,21 @@
-import 'package:flutter/material.dart';
+import '../../../../core/constants/app_linker.dart';
 
 class OptionContainer extends StatelessWidget {
-  String label;
-  OptionContainer({required this.label});
+  final String label;
+  const OptionContainer({super.key, required this.label});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 24,
-      width: 72,
+      height: 26.h,
+      width: 75.w,
       decoration: BoxDecoration(
         color: Theme.of(context).colorScheme.primaryContainer,
-        borderRadius: BorderRadius.circular(10),
+        borderRadius: BorderRadius.circular(10.r),
       ),
       child: Center(
           child: Text(
-        "$label",
+        label,
         style: Theme.of(context).textTheme.labelSmall,
         textAlign: TextAlign.center,
       )),

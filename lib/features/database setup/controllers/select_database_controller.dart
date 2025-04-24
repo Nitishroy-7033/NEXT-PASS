@@ -1,6 +1,4 @@
-import 'package:next_pass/core/constants/app_linker.dart';
-import 'package:next_pass/core/utils/messages.dart';
-import 'package:next_pass/features/database%20setup/data/database_setup_repository.dart';
+import '../../../core/constants/app_linker.dart';
 
 class SelectDatabaseController extends GetxController {
   RxInt selectedIndex = 0.obs;

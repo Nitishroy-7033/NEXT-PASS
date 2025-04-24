@@ -1,45 +1,113 @@
 // footer_part.dart
-import 'package:next_pass/core/constants/app_linker.dart';
+import '../../../../../core/constants/app_linker.dart';
 
 class FooterWidget extends StatelessWidget {
-  const FooterWidget({super.key});
+  final int passwordChangeReminder;
+  final String passwordCategory;
+  const FooterWidget(
+      {super.key,
+      required this.passwordChangeReminder,
+      required this.passwordCategory});
 
   @override
   Widget build(BuildContext context) {
+    var invitedPeopleList = [
+      {
+        "imageUrl":
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRuNhTZJTtkR6b-ADMhmzPvVwaLuLdz273wvQ&s",
+        "email": "harshkumargupta123@gmail.com",
+      },
+      {
+        "imageUrl":
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRuNhTZJTtkR6b-ADMhmzPvVwaLuLdz273wvQ&s",
+        "email": "abhaykewat@gmail.com",
+      },
+      {
+        "imageUrl":
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRuNhTZJTtkR6b-ADMhmzPvVwaLuLdz273wvQ&s",
+        "email": "nitishroy@gmail.com",
+      },
+      {
+        "imageUrl":
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRuNhTZJTtkR6b-ADMhmzPvVwaLuLdz273wvQ&s",
+        "email": "rahulbera9876@gmail.com",
+      },
+      {
+        "imageUrl":
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRuNhTZJTtkR6b-ADMhmzPvVwaLuLdz273wvQ&s",
+        "email": "shaharyarali1234@gmail.com",
+      },
+    ];
     final CredentialController credentialController =
         Get.put(CredentialController());
 
-    final FooterController controller = Get.put(FooterController());
-
+    final FooterController footerController = Get.put(FooterController());
+    final CategoryListController categoryController =
+        Get.put(CategoryListController());
+    final ReminderListController reminderController =
+        Get.put(ReminderListController());
     return Container(
-      padding: const EdgeInsets.all(16),
+      padding: EdgeInsets.all(24.w),
       decoration: BoxDecoration(
         color: Theme.of(context).colorScheme.primaryContainer,
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.vertical(top: Radius.circular(20.h)),
       ),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           // Change Reminder & Category
-          Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-            Text(
-              AppStrings.changeReminder,
-              style: Theme.of(context).textTheme.labelMedium,
-            ),
-            Text(
-              AppStrings.category,
-              style: Theme.of(context).textTheme.labelMedium,
-            ),
-          ]),
-          const SizedBox(height: 15),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              _buildRow(Icons.timer, "30 Days"),
-              _buildRow(Icons.web, "Website"),
+              Text(
+                AppStrings.changeReminder,
+                style: Theme.of(context).textTheme.labelMedium,
+              ),
+              Text(
+                AppStrings.category,
+                style: Theme.of(context).textTheme.labelMedium,
+              ),
             ],
           ),
-          const SizedBox(height: 15),
+          SizedBox(height: 8.h),
+          Obx(
+            () => (credentialController.isEditing.value)
+                ? Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      CustomDropdown(
+                        itemList: const [
+                          '7 Days',
+                          '15 Days',
+                          '30 Days',
+                          '60 Days',
+                          '90 Days'
+                        ],
+                        controller: reminderController,
+                        popupWidth: 100.w,
+                        maxWidth: 130.w,
+                        maxHeight: 40.h,
+                      ),
+                      CustomDropdown(
+                        itemList: const ['Website', 'App', 'Payment', 'Other'],
+                        controller: categoryController,
+                        popupWidth: 100.w,
+                        maxWidth: 130.w,
+                        maxHeight: 40.h,
+                      ),
+                    ],
+                  )
+                : SizedBox(
+                    height: 40.h,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        _buildRow(Icons.timer, "$passwordChangeReminder Days"),
+                        _buildRow(Icons.category_rounded, passwordCategory),
+                      ],
+                    ),
+                  ),
+          ),
+          SizedBox(height: 15.h),
 
           // Shared With Section
           Row(
@@ -49,73 +117,67 @@ class FooterWidget extends StatelessWidget {
                 AppStrings.sharedWith,
                 style: Theme.of(context).textTheme.labelMedium,
               ),
-              GestureDetector(
+              InkWell(
                 onTap: () {
-                  if (credentialController.isEditing.value) {
-                    credentialController.saveEditedCredentials();
-                  }
-                  credentialController.toggleEditing();
+                  inviteEditPeopleBottomsheet(context, invitedPeopleList);
+                  print("open invite & edit people bottomsheet");
                 },
-                child: Obx(() => Row(
-                      children: [
-                        Text(
-                          credentialController.isEditing.value
-                              ? AppStrings.save
-                              : AppStrings.edit,
-                          style: Theme.of(context).textTheme.labelMedium,
-                        ),
-                        const SizedBox(width: 5),
-                        Icon(
-                          credentialController.isEditing.value
-                              ? Icons.check
-                              : Icons.edit,
-                          color:
-                              Theme.of(context).colorScheme.onPrimaryContainer,
-                          size: 16,
-                        ),
-                      ],
-                    )),
-              )
+                child: Row(
+                  children: [
+                    Text(
+                      AppStrings.edit,
+                      style: Theme.of(context).textTheme.labelMedium?.copyWith(
+                            color: Theme.of(context).colorScheme.primary,
+                          ),
+                    ),
+                    SizedBox(width: 5.w),
+                    Icon(
+                      Icons.edit,
+                      color: Theme.of(context).colorScheme.primary,
+                      size: 15.h,
+                    ),
+                  ],
+                ),
+              ),
             ],
           ),
 
-          const SizedBox(height: 10),
+          SizedBox(height: 10.h),
           // User Icons with Invite Button
           Row(
             children: List.generate(
               4,
               (index) => Padding(
-                padding: const EdgeInsets.only(right: 8.0),
+                padding: EdgeInsets.only(right: 8.w),
                 child: Container(
-                  width: 32,
-                  height: 32,
+                  width: 32.w,
+                  height: 32.w,
                   decoration: BoxDecoration(
                     color: Theme.of(context).colorScheme.tertiary,
-                    borderRadius: BorderRadius.circular(6),
+                    borderRadius: BorderRadius.circular(6.r),
                   ),
                 ),
               ),
             )..add(
                 GestureDetector(
-                  onTap: controller.onInviteUser,
+                  onTap: footerController.onInviteUser,
                   child: Tooltip(
                     message: AppStrings.inviteUser,
                     child: Container(
-                      width: 32,
-                      height: 32,
+                      width: 32.w,
+                      height: 32.w,
                       decoration: BoxDecoration(
                         color: AppColors.blueColor,
-                        borderRadius: BorderRadius.circular(6),
+                        borderRadius: BorderRadius.circular(6.r),
                       ),
-                      child: const Icon(Icons.person_add,
-                          color: Colors.white, size: 20),
+                      child: Icon(Icons.person_add,
+                          color: Colors.white, size: 20.h),
                     ),
                   ),
                 ),
               ),
           ),
-
-          const SizedBox(height: 16),
+          SizedBox(height: 20.h),
 
           // Edit & Delete Buttons
           Row(
@@ -123,42 +185,49 @@ class FooterWidget extends StatelessWidget {
             children: [
               // Edit Button
               Expanded(
-                child: ElevatedButton(
-                  onPressed: controller.onEditPressed,
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: AppColors.blueColor,
-                    padding: const EdgeInsets.symmetric(vertical: 18),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8),
-                    ),
+                child: Obx(
+                  () => PrimaryButton(
+                    text: credentialController.isEditing.value
+                        ? AppStrings.buttonSave
+                        : AppStrings.editButton,
+                    onPressed: () {
+                      if (credentialController.isEditing.value) {
+                        credentialController.saveEditedCredentials();
+                      }
+                      credentialController.toggleEditing();
+                    },
                   ),
-                  child: const Text(AppStrings.edit,
-                      style: TextStyle(
-                          fontSize: 15, color: AppColors.backgroundLight)),
                 ),
               ),
 
-              const SizedBox(width: 10),
-
+              SizedBox(width: 16.w),
               // Delete Button
-              Container(
-                decoration: BoxDecoration(
-                  border: Border.all(color: AppColors.lightred, width: 1),
-                  color: AppColors.error.withOpacity(0.5),
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                child: IconButton(
-                  onPressed: controller.onDeletePressed,
-                  icon: SvgPicture.asset(
-                    IconsAssets.delete_icon,
-                    width: 24,
-                    height: 24,
-                    colorFilter: const ColorFilter.mode(
-                        AppColors.lightred, BlendMode.srcIn),
+              InkWell(
+                onTap: () {
+                  footerController.deleteCredentialPopUP(context);
+                },
+                child: Container(
+                  height: 50.w,
+                  width: 50.w,
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                      color: Theme.of(context).colorScheme.error,
+                      width: 1.w,
+                    ),
+                    color: Theme.of(context)
+                        .colorScheme
+                        .error
+                        .withValues(alpha: 0.3),
+                    borderRadius: BorderRadius.circular(10.r),
                   ),
-                  padding: const EdgeInsets.all(12),
-                  constraints: const BoxConstraints(),
-                  splashRadius: 24,
+                  padding: EdgeInsets.all(12.w),
+                  child: SvgPicture.asset(
+                    IconsAssets.delete_icon,
+                    colorFilter: ColorFilter.mode(
+                      Theme.of(context).colorScheme.error,
+                      BlendMode.srcIn,
+                    ),
+                  ),
                 ),
               ),
             ],
@@ -171,14 +240,16 @@ class FooterWidget extends StatelessWidget {
   Widget _buildRow(IconData icon, String text) {
     return Row(
       children: [
-        Icon(icon,
-            color: Theme.of(Get.context!).colorScheme.onPrimaryContainer,
-            size: 18),
-        const SizedBox(width: 6),
-        Text(text,
-            style: TextStyle(
-                color: Theme.of(Get.context!).colorScheme.onPrimaryContainer,
-                fontSize: 14)),
+        Icon(
+          icon,
+          color: Theme.of(Get.context!).colorScheme.onPrimaryContainer,
+          size: 24.h,
+        ),
+        SizedBox(width: 10.w),
+        Text(
+          text,
+          style: Theme.of(Get.context!).textTheme.bodyMedium,
+        ),
       ],
     );
   }
