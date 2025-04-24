@@ -167,6 +167,7 @@ Obx(() {
                       InkWell(
                         onTap: () {
                           print('View All button Clickedddd');
+                          Get.toNamed(AppRoutes.searchCredential);
                         },
                         splashColor: Colors.transparent,
                         child: Text(

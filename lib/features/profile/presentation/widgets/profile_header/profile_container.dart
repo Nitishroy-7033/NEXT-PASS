@@ -52,11 +52,6 @@ class ProfileContainer extends StatelessWidget {
               ],
             ),
             const Spacer(),
-            Icon(
-              Icons.arrow_forward_ios_rounded,
-              size: 24.h,
-              color: Theme.of(context).colorScheme.tertiary,
-            )
           ],
         ),
       ),
