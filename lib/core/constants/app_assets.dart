@@ -65,6 +65,7 @@ class IconsAssets {
   static const String warning_icon="${iconBasePath}warning_icon.svg";
   static const String check_icon="${iconBasePath}check_icon.svg";
   static const String cross_cancel_icon="${iconBasePath}cross_cancel_icon.svg";
+  static const String categoryIcon="${iconBasePath}category_icon.svg";
 
 }
 

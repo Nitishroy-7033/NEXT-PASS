@@ -11,17 +11,19 @@ class AccountOptionsSection extends StatelessWidget {
         Text("ACCOUNT", style: Theme.of(context).textTheme.labelMedium),
         ListTile(
           leading: const Icon(Icons.person),
-          title: Text('Personal Info', style: Theme.of(context).textTheme.bodyMedium),
+          title: Text('Personal Info',
+              style: Theme.of(context).textTheme.bodyMedium),
           trailing: const Icon(Icons.arrow_forward_ios_rounded, size: 15),
-          onTap: () {
-            
-          },
+          onTap: () {},
         ),
         ListTile(
           leading: const Icon(Icons.password),
-          title: Text('Password & Security', style: Theme.of(context).textTheme.bodyMedium),
+          title: Text('Password & Security',
+              style: Theme.of(context).textTheme.bodyMedium),
           trailing: const Icon(Icons.arrow_forward_ios_rounded, size: 15),
-          onTap: () {},
+          onTap: () {
+            Get.toNamed(AppRoutes.passwordAndSecurity);
+          },
         ),
         ListTile(
           leading: const Icon(Icons.privacy_tip),

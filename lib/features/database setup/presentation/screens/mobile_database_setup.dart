@@ -2,8 +2,8 @@ import '../../../../core/constants/app_linker.dart';
 
 // ignore: must_be_immutable
 class MobileDatabaseSetup extends StatelessWidget {
-  MobileDatabaseSetup({super.key});
-  MasterPasswordController pinController = Get.put(MasterPasswordController());
+  const MobileDatabaseSetup({super.key});
+  // MasterPasswordController pinController = Get.put(MasterPasswordController());
   @override
   Widget build(BuildContext context) {
     final SelectDatabaseController selectDatabaseController =
@@ -69,13 +69,13 @@ class MobileDatabaseSetup extends StatelessWidget {
                     : PrimaryButton(
                         text: AppStrings.startButton,
                         onPressed: () async {
-                          await pinController
-                              .loadSavedPin(); // Pehle PIN load karein
+                          // await pinController
+                          //     .loadSavedPin(); // Pehle PIN load karein
 
-                          if (pinController.isCreatingPin.value == false) {
-                            Get.offAllNamed(AppRoutes
-                                .masterPassword); // PIN hai toh agla screen dikhayein
-                          }
+                          // if (pinController.isCreatingPin.value == false) {
+                          //   Get.offAllNamed(AppRoutes
+                          //       .masterPassword); // PIN hai toh agla screen dikhayein
+                          // }
 
                           selectDatabaseController.chooseDataBase();
                         },

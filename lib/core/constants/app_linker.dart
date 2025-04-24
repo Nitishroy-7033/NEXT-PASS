@@ -136,3 +136,4 @@ export 'package:next_pass/features/profile/presentation/widgets/Account/Account_
 export 'package:next_pass/features/profile/presentation/widgets/logout/LogoutSection.dart';
 export 'package:next_pass/features/profile/presentation/widgets/preference/PreferenceOptionsSection.dart';
 export 'package:next_pass/features/profile/presentation/widgets/profile_header/profile_header_section.dart';
+export 'package:next_pass/features/search_credential/controllers/search_credential_controller.dart';

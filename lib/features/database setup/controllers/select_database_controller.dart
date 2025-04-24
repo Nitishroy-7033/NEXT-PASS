@@ -55,35 +55,36 @@ class SelectDatabaseController extends GetxController {
         isLoading.value = false;
         isError.value = true;
         errorMessage.value = "Please Enter Valid Database String";
-        ErrorMessage(errorMessage.value);
-      }
-      try {
-        final response = await databaseSetupRepository.selectUserDB(
-          databaseURLController.text,
-          "USER",
-        );
+        // ErrorMessage(errorMessage.value);
+      } else {
+        try {
+          final response = await databaseSetupRepository.selectUserDB(
+            databaseURLController.text,
+            "USER",
+          );
 
-        if (response.success == true && response.data != null) {
-          SuccessMessage(response.message ?? "Your Database Selected");
+          if (response.success == true && response.data != null) {
+            SuccessMessage(response.message ?? "Your Database Selected");
 
-          // ✅ Master PIN check karna yaha bhi zaroori hai
-          bool isPinSet = await databaseSetupRepository.isMasterPinSet();
-          print(
-              "Master PIN Check - isPinSet: $isPinSet"); // 🔍 Debugging output
+            // ✅ Master PIN check karna yaha bhi zaroori hai
+            bool isPinSet = await databaseSetupRepository.isMasterPinSet();
+            print(
+                "Master PIN Check - isPinSet: $isPinSet"); // 🔍 Debugging output
 
-          if (isPinSet) {
-            Get.offAllNamed(AppRoutes.home);
+            if (isPinSet) {
+              Get.offAllNamed(AppRoutes.home);
+            } else {
+              Get.offAllNamed(AppRoutes.masterPassword);
+            }
           } else {
-            Get.offAllNamed(AppRoutes.masterPassword);
+            _handleError(response.message);
           }
-        } else {
-          _handleError(response.message);
+        } catch (e) {
+          print("Error ${e}");
+          _handleError(e);
+        } finally {
+          isLoading.value = false;
         }
-      } catch (e) {
-        print("Error ${e}");
-        _handleError(e);
-      } finally {
-        isLoading.value = false;
       }
     }
   }

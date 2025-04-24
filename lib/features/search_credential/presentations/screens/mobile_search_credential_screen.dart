@@ -5,91 +5,22 @@ class MobileSearchCredentialScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    TextEditingController searchController = TextEditingController();
-    final List<Map<String, dynamic>> accounts = [
-      {
-        "title": "Facebook",
-        "emailId": "Nitishr833@gmail.com",
-        "imageUrl": AppImageAssets.facebookLogo,
-        "password": "*********************",
-        "strength": "Strong",
-        "isAlert": true
-      },
-      {
-        "title": "Google Account",
-        "emailId": "Nitishr833@gmail.com",
-        "imageUrl": AppImageAssets.googleLogo,
-        "password": "*********************",
-        "strength": "Weak",
-        "isAlert": false
-      },
-      {
-        "title": "PlayStore",
-        "emailId": "Nitishr833@gmail.com",
-        "imageUrl": AppImageAssets.playstoreLogo,
-        "password": "*********************",
-        "strength": "Strong",
-        "isAlert": true
-      },
-      {
-        "title": "Twitter",
-        "emailId": "Nitishr833@gmail.com",
-        "imageUrl": AppImageAssets.twitterLogo,
-        "password": "*********************",
-        "strength": "Strong",
-        "isAlert": true
-      },
-      {
-        "title": "LinkedIn",
-        "emailId": "Nitishr833@gmail.com",
-        "imageUrl": AppImageAssets.linkedinLogo,
-        "password": "*********************",
-        "strength": "Strong",
-        "isAlert": true
-      },
-      {
-        "title": "Facebook",
-        "emailId": "Nitishr833@gmail.com",
-        "imageUrl": AppImageAssets.facebookLogo,
-        "password": "*********************",
-        "strength": "Strong",
-        "isAlert": true
-      },
-      {
-        "title": "Google Account",
-        "emailId": "Nitishr833@gmail.com",
-        "imageUrl": AppImageAssets.googleLogo,
-        "password": "*********************",
-        "strength": "Weak",
-        "isAlert": false
-      },
-      {
-        "title": "PlayStore",
-        "emailId": "Nitishr833@gmail.com",
-        "imageUrl": AppImageAssets.playstoreLogo,
-        "password": "*********************",
-        "strength": "Strong",
-        "isAlert": true
-      },
-      {
-        "title": "Twitter",
-        "emailId": "Nitishr833@gmail.com",
-        "imageUrl": AppImageAssets.twitterLogo,
-        "password": "*********************",
-        "strength": "Strong",
-        "isAlert": true
-      },
-      {
-        "title": "LinkedIn",
-        "emailId": "Nitishr833@gmail.com",
-        "imageUrl": AppImageAssets.linkedinLogo,
-        "password": "*********************",
-        "strength": "Strong",
-        "isAlert": true
-      },
-    ];
+    final SearchCredentialController searchCredentialController =
+        Get.put(SearchCredentialController());
+    final HomeScreenController homeController = Get.find();
+    final PasswordController passwordController = Get.put(PasswordController());
+
     return Scaffold(
       appBar: AppBar(
+        leading: InkWell(
+          onTap: () {
+            searchCredentialController.selectedCategory.value = "";
+            Get.back();
+          },
+          splashColor: Colors.transparent,
+          highlightColor: Colors.transparent,
+          child: const Icon(Icons.arrow_back_rounded),
+        ),
         title: const Text(
           "Search Credential",
         ),
@@ -101,7 +32,7 @@ class MobileSearchCredentialScreen extends StatelessWidget {
           children: [
             TextField(
               autofocus: true,
-              controller: searchController,
+              onChanged: (value) => searchCredentialController.search(value),
               decoration: InputDecoration(
                 contentPadding: EdgeInsets.only(bottom: 5.h, right: 5.w),
                 constraints: BoxConstraints(
@@ -141,31 +72,104 @@ class MobileSearchCredentialScreen extends StatelessWidget {
             SizedBox(
               height: 12.h,
             ),
-            const Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                OptionContainer(label: "App"),
-                OptionContainer(label: "Website"),
-                OptionContainer(label: "Payments"),
-                OptionContainer(label: "Others"),
-              ],
+            Obx(
+              () => Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  OptionContainer(
+                    label: "App",
+                    isSelected:
+                        searchCredentialController.selectedCategory.value ==
+                            "App",
+                    onTap: () =>
+                        searchCredentialController.selectCategory("App"),
+                  ),
+                  OptionContainer(
+                    label: "Website",
+                    isSelected:
+                        searchCredentialController.selectedCategory.value ==
+                            "Website",
+                    onTap: () =>
+                        searchCredentialController.selectCategory("Website"),
+                  ),
+                  OptionContainer(
+                    label: "Payment",
+                    isSelected:
+                        searchCredentialController.selectedCategory.value ==
+                            "Payment",
+                    onTap: () =>
+                        searchCredentialController.selectCategory("Payment"),
+                  ),
+                  OptionContainer(
+                    label: "Other",
+                    isSelected:
+                        searchCredentialController.selectedCategory.value ==
+                            "Other",
+                    onTap: () =>
+                        searchCredentialController.selectCategory("Other"),
+                  ),
+                ],
+              ),
             ),
             SizedBox(
               height: 18.h,
             ),
             Expanded(
-              child: ListView.builder(
-                itemCount: accounts.length,
-                itemBuilder: (context, index) {
-                  final account = accounts[index];
-                  return AccountContainerTile(
-                    title: account["title"],
-                    emailId: account["emailId"],
-                    imageUrl: account["imageUrl"],
-                    password: account["password"],
-                    strength: account["strength"],
-                    isAlert: account["isAlert"],
-                    ontap: () {},
+              child: Obx(
+                () {
+                  final query = searchCredentialController.searchQuery.value;
+                  final category =
+                      searchCredentialController.selectedCategory.value;
+                  final results = query.isEmpty && category.isEmpty
+                      ? homeController.credentials
+                      : searchCredentialController.searchResults;
+
+                  if (results.isEmpty) {
+                    return Expanded(
+                      child: Center(
+                        child: Text(
+                          'No Credential Found${query.isNotEmpty ? '\nfor "$query"' : category.isNotEmpty ? '\nin "$category"' : ''}',
+                          textAlign: TextAlign.center,
+                          style:
+                              Theme.of(context).textTheme.labelLarge?.copyWith(
+                                    fontSize: 17.sp,
+                                  ),
+                        ),
+                      ),
+                    );
+                  }
+
+                  return Expanded(
+                    child: ListView.builder(
+                      padding: EdgeInsets.only(bottom: 16.h),
+                      itemCount: results.length,
+                      itemBuilder: (context, index) {
+                        final credential = results[index];
+                        return GestureDetector(
+                          onTap: () {
+                            Get.to(() => const AppCredentials(), arguments: {
+                              "credential": credential,
+                            });
+                          },
+                          child: AccountContainerTile(
+                            title: credential.title ?? "Not Found",
+                            emailId: credential.emailId ?? "Not Found",
+                            password: "**********",
+                            strength: passwordController
+                                .checkandReturnPasswordStrength(
+                                    credential.password ?? "Not Found"),
+                            imageUrl: credential.siteUrl ?? "",
+                            isAlert: int.tryParse(
+                                        credential.passwordStrength ?? "") !=
+                                    null
+                                ? int.parse(credential.passwordStrength ?? "") <
+                                    3
+                                : false,
+                            ontap: () {},
+                          ),
+                        );
+                      },
+                    ),
                   );
                 },
               ),

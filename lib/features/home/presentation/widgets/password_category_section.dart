@@ -5,6 +5,8 @@ class PasswordCategorySection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final SearchCredentialController searchCredentialController =
+        Get.put(SearchCredentialController());
     // HomeScreenController homeScreenController = Get.put(HomeScreenController());
     return Column(
       children: [
@@ -15,25 +17,37 @@ class PasswordCategorySection extends StatelessWidget {
               icon: IconsAssets.androidIcon,
               title: "App",
               color: AppColors.blueColor,
-              onTap: () {},
+              onTap: () {
+                searchCredentialController.selectCategory("App");
+                Get.toNamed(AppRoutes.searchCredential);
+              },
             ),
             CategoryContainer(
               icon: IconsAssets.browserIcon,
               title: "Website",
               color: AppColors.yellowColor,
-              onTap: () {},
+              onTap: () {
+                searchCredentialController.selectCategory("Website");
+                Get.toNamed(AppRoutes.searchCredential);
+              },
             ),
             CategoryContainer(
               icon: IconsAssets.paymentIcon,
               title: "Payment",
               color: AppColors.greenColor,
-              onTap: () {},
+              onTap: () {
+                searchCredentialController.selectCategory("Payment");
+                Get.toNamed(AppRoutes.searchCredential);
+              },
             ),
             CategoryContainer(
-              icon: IconsAssets.paymentIcon,
+              icon: IconsAssets.categoryIcon,
               title: "Others",
               color: Theme.of(context).colorScheme.onSurface,
-              onTap: () {},
+              onTap: () {
+                searchCredentialController.selectCategory("Other");
+                Get.toNamed(AppRoutes.searchCredential);
+              },
             ),
             // Obx(
             //   () => CategoryContainer(
