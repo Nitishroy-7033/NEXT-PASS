@@ -1,5 +1,6 @@
 import 'package:next_pass/core/constants/app_linker.dart';
 import 'package:next_pass/features/profile/presentation/views/view_profile_page.dart' show ViewProfilePage;
+import 'package:next_pass/features/profile/presentation/widgets/Account/personal_info.dart';
 
 import '../../features/database setup/presentation/views/database_setup_view.dart';
 
@@ -83,6 +84,12 @@ class RouteGenerator {
         page: () => const ViewProfilePage(),
         transition: Transition.leftToRightWithFade,
         transitionDuration: const Duration(milliseconds: 500),
+      ),
+      GetPage(
+        name: AppRoutes.personalInfo,
+        page: () =>  PersonalInfoPage(),
+        transition: Transition.circularReveal,
+        transitionDuration: const Duration(milliseconds: 600),
       ),
     ];
   }
