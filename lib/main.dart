@@ -21,24 +21,28 @@ class MyApp extends StatelessWidget {
         minTextAdapt: true,
         splitScreenMode: true,
         builder: (context, child) {
-          return Obx(()=>GetMaterialApp(
-            debugShowCheckedModeBanner: false,
-            title: 'NEXT PASS',
-            initialRoute: AppRoutes.splash,
-            getPages: RouteGenerator.getRoutes(),
-            initialBinding: SplashBinding(),
-            theme: AppThemes.lightTheme,
-            darkTheme: AppThemes.darkTheme,
-            themeMode: themeController.theme,
-            builder: (context, child) {
-              updateSystemUIBasedOnTheme(context);
-              return child!;
-            },
-            unknownRoute: GetPage(
-              name: AppRoutes.notFound,
-              page: () => const NotFoundView(),
+          return Obx(
+            () => GetMaterialApp(
+              debugShowCheckedModeBanner: false,
+              title: 'NEXT PASS',
+              initialRoute: AppRoutes.splash,
+              getPages: RouteGenerator.getRoutes(),
+              initialBinding: SplashBinding(),
+              theme: AppThemes.lightTheme,
+              darkTheme: AppThemes.darkTheme,
+              themeMode: themeController.isLightTheme.value
+                  ? ThemeMode.light
+                  : ThemeMode.dark,
+              builder: (context, child) {
+                updateSystemUIBasedOnTheme(context);
+                return child!;
+              },
+              unknownRoute: GetPage(
+                name: AppRoutes.notFound,
+                page: () => const NotFoundView(),
+              ),
             ),
-          ),);
+          );
         });
   }
 }
