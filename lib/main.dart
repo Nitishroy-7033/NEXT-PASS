@@ -1,5 +1,6 @@
 import 'package:next_pass/core/routes/route_generator.dart';
 import 'package:next_pass/core/utils/update_system_nav_theme.dart';
+import 'package:next_pass/features/profile/controllers/getx/theme_controller.dart';
 import 'core/constants/app_linker.dart';
 
 void main() {
@@ -7,6 +8,8 @@ void main() {
   DependencyInjection.init();
   runApp(const MyApp());
 }
+
+ThemeController themeController = Get.put(ThemeController());
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -18,22 +21,26 @@ class MyApp extends StatelessWidget {
         minTextAdapt: true,
         splitScreenMode: true,
         builder: (context, child) {
-          return GetMaterialApp(
-            debugShowCheckedModeBanner: false,
-            title: 'NEXT PASS',
-            initialRoute: AppRoutes.splash,
-            getPages: RouteGenerator.getRoutes(),
-            initialBinding: SplashBinding(),
-            theme: AppThemes.lightTheme,
-            darkTheme: AppThemes.darkTheme,
-            themeMode: ThemeMode.dark,
-            builder: (context, child) {
-              updateSystemUIBasedOnTheme(context);
-              return child!;
-            },
-            unknownRoute: GetPage(
-              name: AppRoutes.notFound,
-              page: () => const NotFoundView(),
+          return Obx(
+            () => GetMaterialApp(
+              debugShowCheckedModeBanner: false,
+              title: 'NEXT PASS',
+              initialRoute: AppRoutes.splash,
+              getPages: RouteGenerator.getRoutes(),
+              initialBinding: SplashBinding(),
+              theme: AppThemes.lightTheme,
+              darkTheme: AppThemes.darkTheme,
+              themeMode: themeController.isLightTheme.value
+                  ? ThemeMode.light
+                  : ThemeMode.dark,
+              builder: (context, child) {
+                updateSystemUIBasedOnTheme(context);
+                return child!;
+              },
+              unknownRoute: GetPage(
+                name: AppRoutes.notFound,
+                page: () => const NotFoundView(),
+              ),
             ),
           );
         });
