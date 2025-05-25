@@ -21,6 +21,7 @@ class MyApp extends StatelessWidget {
         minTextAdapt: true,
         splitScreenMode: true,
         builder: (context, child) {
+
           return Obx(
             () => GetMaterialApp(
               debugShowCheckedModeBanner: false,

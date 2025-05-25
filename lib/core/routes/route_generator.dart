@@ -1,6 +1,7 @@
 import 'package:next_pass/core/constants/app_linker.dart';
 import 'package:next_pass/features/profile/presentation/views/view_profile_page.dart' show ViewProfilePage;
 import 'package:next_pass/features/profile/presentation/widgets/Account/personal_info.dart';
+import 'package:next_pass/features/profile/presentation/widgets/Account/privacy.dart';
 
 import '../../features/database setup/presentation/views/database_setup_view.dart';
 
@@ -88,6 +89,12 @@ class RouteGenerator {
       GetPage(
         name: AppRoutes.personalInfo,
         page: () =>  PersonalInfoPage(),
+        transition: Transition.circularReveal,
+        transitionDuration: const Duration(milliseconds: 600),
+      ),
+      GetPage(
+        name: AppRoutes.privacyInfo,
+        page: () =>  PrivacyPolicyPage(),
         transition: Transition.circularReveal,
         transitionDuration: const Duration(milliseconds: 600),
       ),

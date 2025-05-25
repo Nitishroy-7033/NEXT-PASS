@@ -13,4 +13,5 @@ class AppRoutes {
   static const String searchCredential = '/searchCredential';
   static const String profilePage = '/profile';
   static const String personalInfo = '/personalInfo';
+  static const String privacyInfo = '/privacyInfo';
 }
