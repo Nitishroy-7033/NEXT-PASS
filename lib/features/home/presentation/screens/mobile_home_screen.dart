@@ -166,7 +166,7 @@ class MobileHomeScreen extends StatelessWidget {
                       const Spacer(),
                       InkWell(
                         onTap: () {
-                          Get.toNamed(AppRoutes.searchCredential);
+                                                    Get.toNamed(AppRoutes.searchCredential);
                         },
                         splashColor: Colors.transparent,
                         child: Text(

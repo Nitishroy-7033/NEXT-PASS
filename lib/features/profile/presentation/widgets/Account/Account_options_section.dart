@@ -1,4 +1,5 @@
 import 'package:next_pass/core/constants/app_linker.dart';
+import 'package:next_pass/features/profile/presentation/widgets/Account/personal_info.dart';
 
 class AccountOptionsSection extends StatelessWidget {
   const AccountOptionsSection({super.key});
@@ -14,7 +15,9 @@ class AccountOptionsSection extends StatelessWidget {
           title: Text('Personal Info',
               style: Theme.of(context).textTheme.bodyMedium),
           trailing: const Icon(Icons.arrow_forward_ios_rounded, size: 15),
-          onTap: () {},
+          onTap: () {
+            Get.toNamed(AppRoutes.personalInfo);
+          },
         ),
         ListTile(
           leading: const Icon(Icons.password),
@@ -29,7 +32,9 @@ class AccountOptionsSection extends StatelessWidget {
           leading: const Icon(Icons.privacy_tip),
           title: Text('Privacy', style: Theme.of(context).textTheme.bodyMedium),
           trailing: const Icon(Icons.arrow_forward_ios_rounded, size: 15),
-          onTap: () {},
+          onTap: () {
+            Get.toNamed(AppRoutes.privacyInfo);
+          },
         ),
       ],
     );

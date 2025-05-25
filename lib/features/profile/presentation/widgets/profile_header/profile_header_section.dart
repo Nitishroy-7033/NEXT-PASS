@@ -9,13 +9,10 @@ class ProfileHeaderSection extends StatelessWidget {
     return Obx(() {
       final profile = profileController.profileModel.value;
       return ProfileContainer(
-        profileImageURL:
-            "https://writestylesonline.com/wp-content/uploads/2018/11/Three-Statistics-That-Will-Make-You-Rethink-Your-Professional-Profile-Picture.jpg",
+        profileImageURL: "",
         name: "${profile?.firstName ?? "First"} ${profile?.lastName ?? "Last"}",
         email: profile?.email ?? "No email available",
-        onTap: () {
-         
-        },
+        onTap: () {},
       );
     });
   }

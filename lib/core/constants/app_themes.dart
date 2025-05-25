@@ -191,7 +191,7 @@ class AppThemes {
       bodySmall: TextStyle(
         fontSize: 13.sp,
         fontWeight: FontWeight.w500,
-        color: AppColors.fontDark,
+        color: AppColors.fontDark, 
         fontFamily: "Montserrat",
       ),
       labelLarge: TextStyle(
