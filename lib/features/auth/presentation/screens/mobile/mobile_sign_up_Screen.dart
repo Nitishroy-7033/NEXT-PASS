@@ -133,6 +133,7 @@ class MobileSignUpScreen extends StatelessWidget {
                             firstNameController.text,
                             lastNameController.text);
                       }
+                      FocusScope.of(context).unfocus();
                     },
                   ),
           ),
