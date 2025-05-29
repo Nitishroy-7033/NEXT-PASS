@@ -26,6 +26,7 @@ class CustomTextField extends StatelessWidget {
             style: Theme.of(context).textTheme.labelMedium,
           ),
           SizedBox(height: 8.h),
+          
           TextFormField(
             controller: controller,
             enabled: isEditable,
@@ -37,24 +38,6 @@ class CustomTextField extends StatelessWidget {
               ),
               filled: true,
               fillColor: Theme.of(context).colorScheme.primaryContainer,
-              enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10.r),
-                borderSide: BorderSide(
-                  color: Theme.of(context).colorScheme.tertiary,
-                ),
-              ),
-              focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10.r),
-                borderSide: BorderSide(
-                  color: Theme.of(context).colorScheme.primary,
-                ),
-              ),
-              disabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10.r),
-                borderSide: BorderSide(
-                  color: Theme.of(context).colorScheme.primaryContainer,
-                ),
-              ),
             ),
           ),
         ],

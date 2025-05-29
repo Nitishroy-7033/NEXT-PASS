@@ -21,7 +21,6 @@ class MobileProfilePage extends StatelessWidget {
             SizedBox(height: 20.h),
             const AccountOptionsSection(),
             PreferenceOptionsSection(),
-            const SizedBox(height: 50),
             LogoutSection(authController: authController),
           ],
         ),

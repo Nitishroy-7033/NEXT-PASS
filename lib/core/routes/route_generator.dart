@@ -29,7 +29,7 @@ class RouteGenerator {
       GetPage(
         name: AppRoutes.masterPassword,
         page: () => const MasterPasswordView(),
-        transition: Transition.zoom,
+        transition: Transition.fadeIn,
         transitionDuration: const Duration(milliseconds: 500),
       ),
       GetPage(
@@ -83,19 +83,19 @@ class RouteGenerator {
       GetPage(
         name: AppRoutes.profilePage,
         page: () => const ViewProfilePage(),
-        transition: Transition.leftToRightWithFade,
+        transition: Transition.leftToRight,
         transitionDuration: const Duration(milliseconds: 500),
       ),
       GetPage(
         name: AppRoutes.personalInfo,
         page: () =>  PersonalInfoPage(),
-        transition: Transition.circularReveal,
+        transition: Transition.rightToLeft,
         transitionDuration: const Duration(milliseconds: 600),
       ),
       GetPage(
         name: AppRoutes.privacyInfo,
         page: () =>  PrivacyPolicyPage(),
-        transition: Transition.circularReveal,
+        transition: Transition.leftToRight,
         transitionDuration: const Duration(milliseconds: 600),
       ),
     ];

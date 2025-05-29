@@ -76,12 +76,12 @@ class InfoCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
       elevation: 4,
       margin: const EdgeInsets.symmetric(vertical: 8),
       child: ListTile(
         leading: Icon(icon, color: Colors.blueAccent),
-        title: Text(label, style: const TextStyle(fontWeight: FontWeight.bold)),
+        title: Text(label, style: Theme.of(context).textTheme.bodyMedium),
         subtitle: Text(value),
       ),
     );

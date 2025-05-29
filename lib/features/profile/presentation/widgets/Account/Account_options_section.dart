@@ -18,17 +18,19 @@ class AccountOptionsSection extends StatelessWidget {
            Get.toNamed(AppRoutes.personalInfo);
           },
         ),
-        ListTile(
-          leading: const Icon(Icons.password),
-          title: Text('Password & Security', style: Theme.of(context).textTheme.bodyMedium),
-          trailing: const Icon(Icons.arrow_forward_ios_rounded, size: 15),
-          onTap: () {},
-        ),
+        // ListTile(
+        //   leading: const Icon(Icons.password),
+        //   title: Text('Password & Security', style: Theme.of(context).textTheme.bodyMedium),
+        //   trailing: const Icon(Icons.arrow_forward_ios_rounded, size: 15),
+        //   onTap: () {},
+        // ),
         ListTile(
           leading: const Icon(Icons.privacy_tip),
           title: Text('Privacy', style: Theme.of(context).textTheme.bodyMedium),
           trailing: const Icon(Icons.arrow_forward_ios_rounded, size: 15),
-          onTap: () {},
+          onTap: () {
+            Get.toNamed(AppRoutes.privacyInfo);
+          },
         ),
       ],
     );
