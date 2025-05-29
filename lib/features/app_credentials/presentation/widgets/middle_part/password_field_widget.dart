@@ -62,24 +62,7 @@ class PasswordField extends StatelessWidget {
                 ),
                 filled: true,
                 fillColor: Theme.of(context).colorScheme.primaryContainer,
-                enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10.r),
-                  borderSide: BorderSide(
-                    color: Theme.of(context).colorScheme.tertiary,
-                  ),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10.r),
-                  borderSide: BorderSide(
-                    color: Theme.of(context).colorScheme.primary,
-                  ),
-                ),
-                disabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10.r),
-                  borderSide: BorderSide(
-                    color: Theme.of(context).colorScheme.primaryContainer,
-                  ),
-                ),
+               
               ),
             ),
           ),

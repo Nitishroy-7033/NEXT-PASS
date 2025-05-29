@@ -103,7 +103,7 @@ class ApiClient {
       }
       return response;
     } on DioException catch (e) {
-      throw e.response?.data ?? {"message": "Network error"};
+      throw e.response?.data;
     }
   }
 }
