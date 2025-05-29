@@ -3,8 +3,9 @@ import 'package:next_pass/core/utils/update_system_nav_theme.dart';
 import 'package:next_pass/features/profile/controllers/getx/theme_controller.dart';
 import 'core/constants/app_linker.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await ScreenUtil.ensureScreenSize();
   DependencyInjection.init();
   runApp(const MyApp());
 }
