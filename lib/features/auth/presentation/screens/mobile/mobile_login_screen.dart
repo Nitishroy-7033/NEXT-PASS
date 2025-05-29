@@ -111,6 +111,7 @@ class MobileLoginScreen extends StatelessWidget {
                           true,
                         );
                       }
+                      FocusScope.of(context).unfocus();
                     },
                   ),
           ),

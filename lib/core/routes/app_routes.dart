@@ -12,6 +12,8 @@ class AppRoutes {
   static const String databaseSetup ='/databaseSetup';
   static const String searchCredential = '/searchCredential';
   static const String profilePage = '/profile';
+  static const String passwordAndSecurity = '/passwordAndSecurity';
+  static const String changePassword = '/changePassword';
   static const String personalInfo = '/personalInfo';
   static const String privacyInfo = '/privacyInfo';
 }

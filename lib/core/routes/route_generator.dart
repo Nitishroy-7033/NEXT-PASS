@@ -1,5 +1,7 @@
 import 'package:next_pass/core/constants/app_linker.dart';
 import 'package:next_pass/features/profile/presentation/views/view_profile_page.dart' show ViewProfilePage;
+import 'package:next_pass/features/profile/presentation/widgets/Account/password_and_security.dart';
+import 'package:next_pass/features/profile/presentation/widgets/Account/sub_screens/change_password_screen.dart';
 import 'package:next_pass/features/profile/presentation/widgets/Account/personal_info.dart';
 import 'package:next_pass/features/profile/presentation/widgets/Account/privacy.dart';
 
@@ -87,6 +89,18 @@ class RouteGenerator {
         transitionDuration: const Duration(milliseconds: 500),
       ),
       GetPage(
+        name: AppRoutes.passwordAndSecurity,
+        page: () => const PasswordAndSecurity(),
+        transition: Transition.leftToRightWithFade,
+        transitionDuration: const Duration(milliseconds: 500),
+      ),
+      GetPage(
+        name: AppRoutes.changePassword,
+        page: () => const ChangePasswordScreen(),
+        transition: Transition.rightToLeftWithFade,
+        transitionDuration: const Duration(milliseconds: 500),
+      ),
+      GetPage(
         name: AppRoutes.personalInfo,
         page: () =>  PersonalInfoPage(),
         transition: Transition.rightToLeft,
@@ -94,6 +108,7 @@ class RouteGenerator {
       ),
       GetPage(
         name: AppRoutes.privacyInfo,
+        page: () => const  PrivacyPolicyPage(),
         page: () =>  PrivacyPolicyPage(),
         transition: Transition.leftToRight,
         transitionDuration: const Duration(milliseconds: 600),

@@ -38,7 +38,8 @@ class AllCredentialsSection extends StatelessWidget {
             child: AccountContainerTile(
               title: credential.title ?? "Not Found",
               emailId: credential.emailId ?? "Not Found",
-              password: credential.password ?? "Not Found", // '********',
+              password:
+                  "**********", // credential.password ?? "Not Found", // '********',
               strength: passwordController.checkandReturnPasswordStrength(
                   credential.password ?? "Not Found"),
               imageUrl: credential.siteUrl ?? "",

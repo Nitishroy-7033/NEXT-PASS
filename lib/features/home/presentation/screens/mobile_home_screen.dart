@@ -23,21 +23,21 @@ class MobileHomeScreen extends StatelessWidget {
         title: Column(
           children: [
             Row(
-              children: [          
-Obx(() {
-  final profile = profileController.profileModel.value;
+              children: [
+                Obx(() {
+                  final profile = profileController.profileModel.value;
 
-  // final profileImage = profile?.profileImageURL ?? "";
+                  // final profileImage = profile?.profileImageURL ?? "";
 
-  return ViewProfileSection(
-    profileImageURL:"",
-    userName:  "${profile?.firstName ?? "First"} ${profile?.lastName ?? "Last"}",
-    onTap: () {
-      Get.toNamed(AppRoutes.profilePage);
-    },
-  );
-}),
-
+                  return ViewProfileSection(
+                    profileImageURL: "",
+                    userName:
+                        "${profile?.firstName ?? "First"} ${profile?.lastName ?? "Last"}",
+                    onTap: () {
+                      Get.toNamed(AppRoutes.profilePage);
+                    },
+                  );
+                }),
                 const Spacer(),
                 InkWell(
                   onTap: () {
@@ -166,8 +166,7 @@ Obx(() {
                       const Spacer(),
                       InkWell(
                         onTap: () {
-                          print('View All button Clickedddd');
-                          Get.toNamed(AppRoutes.searchCredential);
+                                                    Get.toNamed(AppRoutes.searchCredential);
                         },
                         splashColor: Colors.transparent,
                         child: Text(

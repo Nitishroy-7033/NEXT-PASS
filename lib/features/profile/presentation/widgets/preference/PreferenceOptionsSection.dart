@@ -30,11 +30,15 @@ class PreferenceOptionsSection extends StatelessWidget {
           title:
               Text('Dark Mode', style: Theme.of(context).textTheme.bodyMedium),
           trailing: Obx(() {
-            return Switch(
-              value: !themeController.isLightTheme.value,
-              onChanged: (value) {
-                themeController.toggleTheme(!value);
-              },
+            return Transform.scale(
+              scale: 0.7,
+              alignment: Alignment.centerRight,
+              child: Switch(
+                value: !themeController.isLightTheme.value,
+                onChanged: (value) {
+                  themeController.toggleTheme(!value);
+                },
+              ),
             );
           }),
         ),
