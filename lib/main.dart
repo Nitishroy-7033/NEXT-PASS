@@ -4,6 +4,7 @@ import 'package:next_pass/features/profile/controllers/getx/theme_controller.dar
 import 'core/constants/app_linker.dart';
 
 void main() async {
+  Get.put(PasswordController());
   WidgetsFlutterBinding.ensureInitialized();
   await ScreenUtil.ensureScreenSize();
   DependencyInjection.init();
